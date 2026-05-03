@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dIAra Viewer — Anclas en Stellar + IPFS</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      background: #f6f7f9;
+      color: #222;
+      line-height: 1.5;
+    }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid #1a73e8; }
+    header h1 { margin: 0 0 0.5rem; font-size: 1.5rem; }
+    header p { margin: 0.25rem 0; font-size: 0.9rem; color: #555; }
+    code { background: #eef; padding: 1px 6px; border-radius: 3px; font-size: 0.85em; word-break: break-all; }
+    a { color: #1a73e8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .project-meta {
+      background: white;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      margin-bottom: 1.5rem;
+    }
+    .project-meta h2 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+    .project-meta dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 0; }
+    .project-meta dt { font-weight: 600; color: #555; }
+    .project-meta dd { margin: 0; }
+    #status { padding: 1rem; background: #fff8e1; border-left: 4px solid #f9a825; margin-bottom: 1rem; }
+    #status.error { background: #ffebee; border-left-color: #c62828; }
+    #status.ok { background: #e8f5e9; border-left-color: #2e7d32; }
+    .output-card {
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      margin: 1rem 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+    }
+    .output-card .img-col {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+    }
+    .output-card .img-col img { max-width: 100%; height: auto; display: block; }
+    .output-card .img-col .placeholder { color: #999; font-size: 0.85rem; padding: 1rem; }
+    .output-card .info-col { padding: 1rem 1.25rem; }
+    .output-card h3 { margin: 0 0 0.5rem; font-size: 1rem; font-family: monospace; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 4px 12px;
+      font-size: 0.9rem;
+      margin: 0.75rem 0;
+    }
+    .meta-grid dt { font-weight: 600; color: #555; }
+    .meta-grid dd { margin: 0; word-break: break-word; }
+    .verification {
+      margin-top: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .verification.pending { background: #f0f0f0; color: #666; }
+    .verification.ok { background: #e8f5e9; color: #2e7d32; }
+    .verification.failed { background: #ffebee; color: #c62828; }
+    .verification.skip { background: #f3e5f5; color: #6a1b9a; }
+    .badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; font-size: 0.8rem; }
+    .badge { padding: 2px 8px; border-radius: 10px; background: #e0e0e0; }
+    .badge.tx { background: #d6e4ff; }
+    .badge.ipfs { background: #e6ddff; }
+    @media (max-width: 720px) {
+      .output-card { grid-template-columns: 1fr; }
+      .output-card .img-col img { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Viewer dIAra — Anclas verificables en Stellar + IPFS</h1>
+  <p>PoC Fase 1 del repositorio <code>stellar_repo</code>. Lee on-chain (Stellar testnet via Horizon), recupera el contenido desde gateway IPFS publico y verifica la integridad criptografica directamente en el navegador.</p>
+  <p>Cuenta Stellar testnet: <code id="account">GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR</code> &middot; <a id="account-link" target="_blank" rel="noopener">ver en stellar.expert</a></p>
+</header>
+
+<section class="project-meta" id="project-meta">
+  <h2>Proyecto fiscalizado</h2>
+  <p style="color:#888; font-size:0.85rem;">Cargando metadatos del proyecto desde on-chain...</p>
+</section>
+
+<div id="status">Cargando datos desde Stellar Horizon...</div>
+
+<main id="outputs"></main>
+
+<footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.85rem; color: #666;">
+  <p>Cualquier ciudadano puede verificar esta data: el sistema es transparente por diseno. La integridad esta garantizada por (a) la inmutabilidad de Stellar y (b) el caracter content-addressable de IPFS (el CID es el hash). El operador del anchor-service no puede falsear retroactivamente.</p>
+  <p>Stellar Horizon: <code>https://horizon-testnet.stellar.org</code> &middot; IPFS gateway: <code>https://gateway.pinata.cloud/ipfs/</code></p>
+</footer>
+
+<script>
+const ACCOUNT = "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR";
+const HORIZON = "https://horizon-testnet.stellar.org";
+const EXPLORER_TX = "https://stellar.expert/explorer/testnet/tx/";
+const EXPLORER_ACC = "https://stellar.expert/explorer/testnet/account/";
+const IPFS_GATEWAY = "https://gateway.pinata.cloud/ipfs/";
+
+document.getElementById("account-link").href = EXPLORER_ACC + ACCOUNT;
+
+function setStatus(msg, kind) {
+  const el = document.getElementById("status");
+  el.textContent = msg;
+  el.className = kind || "";
+}
+
+function b64ToBytes(b64) {
+  const bin = atob(b64);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+function bytesToHex(bytes) {
+  return Array.from(bytes).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+function bytesToText(bytes) {
+  return new TextDecoder("utf-8").decode(bytes);
+}
+async function sha256Hex(input) {
+  const buf = input instanceof Uint8Array ? input : new TextEncoder().encode(input);
+  const hash = await crypto.subtle.digest("SHA-256", buf);
+  return bytesToHex(new Uint8Array(hash));
+}
+
+// Canonical JSON: keys sorted, no spaces, UTF-8.
+// Debe coincidir con Python json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False).
+function canonicalJson(value) {
+  if (value === null) return "null";
+  if (typeof value === "boolean") return value ? "true" : "false";
+  if (typeof value === "number") {
+    if (!isFinite(value)) throw new Error("Non-finite number");
+    return JSON.stringify(value);
+  }
+  if (typeof value === "string") return JSON.stringify(value);
+  if (Array.isArray(value)) {
+    return "[" + value.map(canonicalJson).join(",") + "]";
+  }
+  if (typeof value === "object") {
+    const keys = Object.keys(value).sort();
+    return "{" + keys.map(k => JSON.stringify(k) + ":" + canonicalJson(value[k])).join(",") + "}";
+  }
+  throw new Error("Unsupported JSON type");
+}
+
+async function loadAccountData() {
+  const url = `${HORIZON}/accounts/${ACCOUNT}`;
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`Horizon fetch failed: ${r.status}`);
+  const acc = await r.json();
+  return acc.data || {};
+}
+
+function parseEntries(rawData) {
+  // rawData: { "diara:20251029-060211": "<b64>", "diara:20251029-060211:proj": "<b64>", ... }
+  const project = {};
+  const outputs = {};
+  const projPrefix = "proj:";
+  for (const [key, b64val] of Object.entries(rawData)) {
+    const bytes = b64ToBytes(b64val);
+    if (key.startsWith(projPrefix)) {
+      const rest = key.substring(projPrefix.length);
+      const [code, field] = rest.split(":");
+      if (!project[code]) project[code] = { code };
+      project[code][field || "name"] = bytesToText(bytes);
+      continue;
+    }
+    if (!key.startsWith("diara:")) continue;
+    const rest = key.substring("diara:".length);
+    const parts = rest.split(":");
+    const outputId = parts[0];
+    const field = parts[1] || "_hash";
+    if (!outputs[outputId]) outputs[outputId] = { outputId };
+    if (field === "_hash") {
+      outputs[outputId].combined_hash_hex = bytesToHex(bytes);
+      outputs[outputId].json_hash_onchain = bytesToHex(bytes.slice(0, 32));
+      outputs[outputId].image_hash_onchain = bytes.length >= 64 ? bytesToHex(bytes.slice(32, 64)) : null;
+    } else {
+      outputs[outputId][field] = bytesToText(bytes);
+    }
+  }
+  return { project, outputs };
+}
+
+async function findLastTxForKey(key) {
+  // Buscar la TX mas reciente que escribio esta data entry. Horizon: /accounts/{}/operations
+  // Filtrar manage_data ops con name=key, ordenadas desc.
+  const url = `${HORIZON}/accounts/${ACCOUNT}/operations?order=desc&limit=200&type=manage_data`;
+  try {
+    const r = await fetch(url);
+    if (!r.ok) return null;
+    const data = await r.json();
+    const ops = data._embedded?.records || [];
+    for (const op of ops) {
+      if (op.name === key) return op.transaction_hash;
+    }
+  } catch {}
+  return null;
+}
+
+async function verifyOutput(output, card) {
+  const verJson = card.querySelector(".ver-json");
+  const verImg = card.querySelector(".ver-img");
+
+  if (!output.json_cid) {
+    verJson.textContent = "Sin CID JSON anclado (output anclado en version anterior a v3).";
+    verJson.className = "verification skip";
+  } else {
+    verJson.textContent = "Verificando JSON desde IPFS...";
+    verJson.className = "verification pending";
+    try {
+      const r = await fetch(IPFS_GATEWAY + output.json_cid);
+      if (!r.ok) throw new Error(`gateway ${r.status}`);
+      const obj = await r.json();
+      const canonical = canonicalJson(obj);
+      const computed = await sha256Hex(canonical);
+      if (computed === output.json_hash_onchain) {
+        verJson.textContent = `Integridad JSON OK: SHA-256 calculado coincide con on-chain.`;
+        verJson.className = "verification ok";
+      } else {
+        verJson.textContent = `JSON FALLO: hash on-chain=${output.json_hash_onchain.slice(0,16)}... vs calculado=${computed.slice(0,16)}...`;
+        verJson.className = "verification failed";
+      }
+    } catch (e) {
+      verJson.textContent = `Error verificando JSON: ${e.message}`;
+      verJson.className = "verification failed";
+    }
+  }
+
+  if (!output.img_cid || !output.image_hash_onchain) {
+    verImg.textContent = "Sin CID de imagen anclado (output anclado en version anterior a v3).";
+    verImg.className = "verification skip";
+    return;
+  }
+  // Skip image if all-zero hash (cuando no se encontro imagen local en el ancla)
+  if (output.image_hash_onchain === "00".repeat(32)) {
+    verImg.textContent = "Imagen no fue anclada (hash en cero en chain).";
+    verImg.className = "verification skip";
+    return;
+  }
+  verImg.textContent = "Verificando imagen desde IPFS...";
+  verImg.className = "verification pending";
+  try {
+    const r = await fetch(IPFS_GATEWAY + output.img_cid);
+    if (!r.ok) throw new Error(`gateway ${r.status}`);
+    const buf = new Uint8Array(await r.arrayBuffer());
+    const computed = await sha256Hex(buf);
+    if (computed === output.image_hash_onchain) {
+      verImg.textContent = `Integridad imagen OK: SHA-256 calculado coincide con on-chain.`;
+      verImg.className = "verification ok";
+    } else {
+      verImg.textContent = `IMAGEN FALLO: hash on-chain=${output.image_hash_onchain.slice(0,16)}... vs calculado=${computed.slice(0,16)}...`;
+      verImg.className = "verification failed";
+    }
+  } catch (e) {
+    verImg.textContent = `Error verificando imagen: ${e.message}`;
+    verImg.className = "verification failed";
+  }
+}
+
+function renderOutputCard(output) {
+  const card = document.createElement("article");
+  card.className = "output-card";
+
+  const imgCol = document.createElement("div");
+  imgCol.className = "img-col";
+  if (output.img_cid && output.image_hash_onchain && output.image_hash_onchain !== "00".repeat(32)) {
+    const img = document.createElement("img");
+    img.src = IPFS_GATEWAY + output.img_cid;
+    img.alt = `Imagen ${output.outputId}`;
+    img.loading = "lazy";
+    imgCol.appendChild(img);
+  } else {
+    const ph = document.createElement("div");
+    ph.className = "placeholder";
+    ph.textContent = "Sin imagen pineada (ancla anterior a v3 o sin imagen local).";
+    imgCol.appendChild(ph);
+  }
+
+  const infoCol = document.createElement("div");
+  infoCol.className = "info-col";
+
+  const h3 = document.createElement("h3");
+  h3.textContent = output.outputId;
+  infoCol.appendChild(h3);
+
+  const dl = document.createElement("dl");
+  dl.className = "meta-grid";
+  const fields = [
+    ["Proyecto", output.proj || "(sin proj)"],
+    ["Fecha/hora", output.dt || "(sin dt)"],
+    ["Personas trabajadoras", output.workers ?? "(sin dato)"],
+    ["Maquinaria", output.machinery || "(sin dato)"],
+    ["Etapa constructiva", output.phase || "(sin dato)"],
+  ];
+  for (const [k, v] of fields) {
+    const dt = document.createElement("dt"); dt.textContent = k;
+    const dd = document.createElement("dd"); dd.textContent = v;
+    dl.append(dt, dd);
+  }
+  infoCol.appendChild(dl);
+
+  const badges = document.createElement("div");
+  badges.className = "badges";
+  if (output.json_cid) {
+    const a = document.createElement("a");
+    a.href = IPFS_GATEWAY + output.json_cid;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.className = "badge ipfs";
+    a.textContent = "JSON en IPFS";
+    badges.appendChild(a);
+  }
+  if (output.img_cid) {
+    const a = document.createElement("a");
+    a.href = IPFS_GATEWAY + output.img_cid;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.className = "badge ipfs";
+    a.textContent = "Imagen en IPFS";
+    badges.appendChild(a);
+  }
+  infoCol.appendChild(badges);
+
+  const verJson = document.createElement("div");
+  verJson.className = "verification pending ver-json";
+  verJson.textContent = "Esperando verificacion JSON...";
+  infoCol.appendChild(verJson);
+
+  const verImg = document.createElement("div");
+  verImg.className = "verification pending ver-img";
+  verImg.textContent = "Esperando verificacion imagen...";
+  infoCol.appendChild(verImg);
+
+  const hashesNote = document.createElement("p");
+  hashesNote.style.fontSize = "0.75rem";
+  hashesNote.style.color = "#666";
+  hashesNote.style.marginTop = "0.75rem";
+  hashesNote.style.wordBreak = "break-all";
+  hashesNote.innerHTML = `<strong>Hash JSON on-chain:</strong> <code>${output.json_hash_onchain || "?"}</code><br><strong>Hash imagen on-chain:</strong> <code>${output.image_hash_onchain || "?"}</code>`;
+  infoCol.appendChild(hashesNote);
+
+  card.append(imgCol, infoCol);
+  return card;
+}
+
+function renderProject(projectMap) {
+  const container = document.getElementById("project-meta");
+  const codes = Object.keys(projectMap);
+  if (!codes.length) {
+    container.innerHTML = "<h2>Proyecto fiscalizado</h2><p>(no se encontro setup TX de proyecto)</p>";
+    return;
+  }
+  container.innerHTML = "";
+  for (const code of codes) {
+    const p = projectMap[code];
+    const wrap = document.createElement("div");
+    wrap.innerHTML = `
+      <h2>${p.name || code}</h2>
+      <dl>
+        <dt>Codigo</dt><dd><code>${code}</code></dd>
+        <dt>Sistema productor</dt><dd>${p.system || "(no informado)"}</dd>
+        <dt>Contraparte</dt><dd>${p.partner || "(no informado)"}</dd>
+        <dt>URL publica</dt><dd>${p.url ? `<a href="https://${p.url}" target="_blank" rel="noopener">${p.url}</a>` : "(no informado)"}</dd>
+      </dl>
+    `;
+    container.appendChild(wrap);
+  }
+}
+
+(async function main() {
+  try {
+    setStatus("Cargando datos desde Stellar Horizon...");
+    const raw = await loadAccountData();
+    const { project, outputs } = parseEntries(raw);
+    renderProject(project);
+
+    const list = Object.values(outputs)
+      .sort((a, b) => (b.dt || "").localeCompare(a.dt || ""));
+
+    setStatus(`Encontrados ${list.length} output(s) anclados. Verificando integridad contra IPFS...`, "ok");
+
+    const main = document.getElementById("outputs");
+    const cards = list.map(o => {
+      const card = renderOutputCard(o);
+      main.appendChild(card);
+      return { output: o, card };
+    });
+
+    await Promise.all(cards.map(({ output, card }) => verifyOutput(output, card)));
+    setStatus(`Listo. ${list.length} output(s) cargados y verificados desde Stellar testnet + IPFS.`, "ok");
+  } catch (e) {
+    console.error(e);
+    setStatus(`Error: ${e.message}. Abrir consola para detalles.`, "error");
+  }
+})();
+</script>
+
+</body>
+</html>
