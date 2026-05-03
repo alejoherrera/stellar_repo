@@ -36,16 +36,47 @@ Servicio **anchor-service**: recibe via webhook los outputs de dIAra y por cada 
 dIAra output -> POST /ingest (firmado)
   -> validar firma de dIAra
   -> ipfs_client.pin(image) -> CID  (idempotente: si ya esta pineado, retorna mismo CID)
-  -> hash de metadatos (canonical JSON)
+  -> ipfs_client.pin(canonical_json) -> json_CID
+  -> hash canonico del JSON
   -> persist en anchor.output (idempotente por output_id)
-  -> stellar_signer.build_tx(manageData(CID, metadata_hash) + memo)
+  -> stellar_signer.build_tx con multiples manageData (ver "Schema on-chain")
   -> stellar_client.submit(testnet|mainnet)
   -> persist en anchor.transaction
-  -> verificar recuperabilidad del CID via gateway publico (sanity check)
+  -> verificar recuperabilidad de los CIDs via gateway publico (sanity check)
   -> retry exponencial en fallos de submission o pinning; alerta tras 5 fallos
 ```
 
-**Nota sobre CID y hash:** el CID v1 de IPFS es la representacion estandar del hash multihash del contenido. Anclar el CID es equivalente a anclar el hash de la imagen, con la ventaja de que el CID es directamente resolvible en cualquier nodo IPFS sin esquema externo. Por eso usamos `manageData(key=CID)` en lugar de `manageData(key=image_hash)`.
+### Schema on-chain (v2)
+
+Cada output de dIAra se ancla en una sola TX Stellar con multiples operaciones `manageData`. Stellar limita cada `manageData` a 64 bytes en `key` y 64 bytes en `value`, por lo que se descompone la informacion del output en operaciones tematicas:
+
+| Key (UTF-8) | Value | Proposito |
+|-------------|-------|-----------|
+| `diara:{output_id}` | `SHA256(json_canonico) (32B) || SHA256(imagen) (32B)` = 64 bytes | Prueba de integridad |
+| `diara:{output_id}:proj` | codigo de proyecto, ej. `circunvalacion-cr` | Adscripcion al proyecto |
+| `diara:{output_id}:dt` | fecha/hora original del JSON, truncada a 64B | Timestamp original |
+| `diara:{output_id}:workers` | cantidad de personas, como string | Metadato consultable |
+| `diara:{output_id}:machinery` | lista de maquinaria separada por coma, truncada a 64B | Metadato consultable |
+| `diara:{output_id}:phase` | etapa constructiva, truncada a 64B | Metadato consultable |
+
+Memo de la TX: `dIAra ancla v2`.
+
+Adicionalmente, **una TX one-time de setup por proyecto** registra metadata de proyecto:
+
+| Key (UTF-8) | Value | Proposito |
+|-------------|-------|-----------|
+| `proj:{code}:name` | nombre legible del proyecto | Identificacion |
+| `proj:{code}:partner` | contraparte / cooperante (ej. `LanammeUCR`) | Trazabilidad institucional |
+| `proj:{code}:url` | URL publica del monitoreo (ej. `obrapublica.info/ciudadania`) | Acceso ciudadano |
+| `proj:{code}:system` | sistema productor de los datos (`dIAra`) | Adscripcion del proveedor |
+
+Memo de la TX: `dIAra setup v1`.
+
+**Por que multi-op y no un solo manageData con todo:** la limitacion de 64 bytes por value impide meter el JSON entero. Hashear todo en un solo blob (como hacia v1) preserva integridad pero deja al ciudadano dependiendo de tener acceso al JSON original para entender que paso. Con multi-op, el explorer publico de Stellar muestra los metadatos legibles directamente y la integridad criptografica sigue garantizada por la primera operacion (`diara:{output_id}` con los hashes).
+
+**Por que no Soroban en Fase 1 a pesar del multi-op:** sigue siendo barato (~6 ops * 100 stroops = 600 stroops por output) y simple. Soroban entra en Fase 2 cuando aparecen alertas y reglas, no cuando solo se quiere mas estructura.
+
+**Nota sobre IPFS:** una vez activo el pinning service, los CIDs (de imagen y de JSON canonico) se anclan via dos operaciones adicionales (`diara:{output_id}:img_cid` y `diara:{output_id}:json_cid`) que reemplazan o complementan los hashes en `diara:{output_id}` segun la conveniencia operativa. El PoC actual aun no integra IPFS.
 
 ### Garantias exigidas a dIAra (Fase 0)
 
@@ -146,9 +177,48 @@ DB nuevas tablas en `mivisor-db` esquema `anchor`:
 
 Feature grande (10+ archivos, schema DB nuevo, integracion blockchain, integracion con sistema externo).
 
+## PoC implementado (2026-05-02)
+
+Antes del desarrollo del servicio completo, se ejecuto un PoC en `scripts/anchor_demo.py` que implementa el subset minimo del flujo descrito arriba para validar el end-to-end Stellar:
+
+**Subset implementado:**
+- Lectura de JSONs estandarizados de dIAra (`diara_circunvalacion_json/json_test_estandarizado/`).
+- Calculo de hash canonico SHA-256 del JSON y SHA-256 de la imagen JPG correspondiente.
+- Submission de TX testnet siguiendo el "Schema on-chain (v2)" definido arriba.
+- Setup TX one-time del proyecto `circunvalacion-cr`.
+- Log JSON de cada corrida con tx_hash, ledger, hashes y URL del explorer.
+
+**No implementado en el PoC** (deferido a anchor-service completo):
+- IPFS pinning.
+- DB PostgreSQL (`mivisor-db` esquema `anchor`).
+- Webhook con firma Ed25519 de dIAra.
+- Reconciler diario.
+- Cloud Run deployment.
+
+**Evidencia testnet (2026-05-03):**
+
+Cuenta anchoring: `GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR`
+- Explorer: https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR
+
+Setup TX (proyecto `circunvalacion-cr`):
+- `d7fd1582de3bbe81d73bc1d885079c681dd1a64b4970da3e66b5008b74f7e3f6`
+
+Output anchor TXs (v2, una por output):
+- `20251029-060211`: `20b5be0ca950c26217c9aada6b294ab9703c0129fe227fb93d9b0d37f90fc4ea`
+- `20251029-175920`: `4d33baad1712f8b60f262628a7d2580e1072bc7eb4dcc9007de0ee95ff582bbc`
+- `20251129-095756`: `2b9ced28102b3475627948f41d5a2f4fa22c96e5478f18e8eee3df2fdfd908d5`
+- `20251129-124015`: `e15cd270d4235e3c935a421654a844ca1df16fd490928fab6fc987ff5b56e0be`
+- `20251129-152245`: `8357a402bcd6a660f981b3926d6b9052d3c5fa22d25e9fce2e553ddc959272a4`
+- `20251129-175905`: `ad1fa6e9e1b16f107246850284bae8592be5af25b93917910234bf717aa29cfb`
+
+Existen ademas anclas v1 anteriores (formato single-op, 6 keys) en la misma cuenta. Las v2 las complementan agregando los metadatos legibles sin sobreescribir la prueba de integridad.
+
+Logs en `scripts/anchors_log_*.json` (commiteados).
+
 ---
 
-**Estado:** Borrador para revision.
+**Estado:** Borrador para revision. Schema on-chain validado en testnet.
 **Autor:** Master Juan Alejandro Herrera Lopez, a titulo personal.
 **Fecha:** 2026-05-02.
+**Ultima actualizacion:** 2026-05-03 (schema v2 + evidencia PoC testnet).
 **Constitution version requerida:** >= 0.2.

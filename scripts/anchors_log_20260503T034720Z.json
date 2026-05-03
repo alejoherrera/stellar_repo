@@ -1,0 +1,129 @@
+{
+  "anchored_by": "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR",
+  "network": "testnet",
+  "project_code": "circunvalacion-cr",
+  "results": [
+    {
+      "type": "project_setup",
+      "project_code": "circunvalacion-cr",
+      "metadata": {
+        "name": "Monitoreo ciudadano Circunvalacion San Jose",
+        "partner": "LanammeUCR",
+        "url": "obrapublica.info/ciudadania",
+        "system": "dIAra"
+      },
+      "tx_hash": "d7fd1582de3bbe81d73bc1d885079c681dd1a64b4970da3e66b5008b74f7e3f6",
+      "ledger": 2354558,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/d7fd1582de3bbe81d73bc1d885079c681dd1a64b4970da3e66b5008b74f7e3f6",
+      "anchored_at_utc": "2026-05-03T03:46:50.878451+00:00"
+    },
+    {
+      "output_id": "20251029-060211",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251029-060211.json",
+      "image_file": "20251029-060211.jpg",
+      "json_hash_hex": "54cedc6aff39f1d4beeafdbe9dbba3520b567da6a74962f076f5bc7e3af704df",
+      "image_hash_hex": "1d429b7d04c6a18401f9aa415d3f616d30b49d29758e035188487e5e1601a7f4",
+      "metadata_on_chain": {
+        "datetime": "29/10/2025 06:02:11",
+        "workers": "2",
+        "machinery": "Retroexcavadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "20b5be0ca950c26217c9aada6b294ab9703c0129fe227fb93d9b0d37f90fc4ea",
+      "ledger": 2354559,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/20b5be0ca950c26217c9aada6b294ab9703c0129fe227fb93d9b0d37f90fc4ea",
+      "anchored_at_utc": "2026-05-03T03:46:55.978008+00:00"
+    },
+    {
+      "output_id": "20251029-175920",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251029-175920.json",
+      "image_file": "20251029-175920.jpg",
+      "json_hash_hex": "9ff99a467e0ca970f492223c9b469939116a037e71e05c6626a0cc3652ffc591",
+      "image_hash_hex": "bec7aa4c9491cb0cbf8fee71f3b25fcd6856e315afcf9371b834886bbb4bd45f",
+      "metadata_on_chain": {
+        "datetime": "29/10/2025 17:59:20",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": ""
+      },
+      "tx_hash": "4d33baad1712f8b60f262628a7d2580e1072bc7eb4dcc9007de0ee95ff582bbc",
+      "ledger": 2354560,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/4d33baad1712f8b60f262628a7d2580e1072bc7eb4dcc9007de0ee95ff582bbc",
+      "anchored_at_utc": "2026-05-03T03:47:00.909869+00:00"
+    },
+    {
+      "output_id": "20251129-095756",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251129-095756.json",
+      "image_file": "20251129-095756.jpg",
+      "json_hash_hex": "136f681d517c5374273b979c2a9e56a340ad16859767ec2de5108367574f2798",
+      "image_hash_hex": "cdd8471fcbe8412a560a09b0daed6e8f5c4255eea9ef075ae26a98c47360b324",
+      "metadata_on_chain": {
+        "datetime": "29/11/2025 09:57:56",
+        "workers": "0",
+        "machinery": "Perforadora de pilotes",
+        "phase": "Cimentacion y pilotes"
+      },
+      "tx_hash": "2b9ced28102b3475627948f41d5a2f4fa22c96e5478f18e8eee3df2fdfd908d5",
+      "ledger": 2354561,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/2b9ced28102b3475627948f41d5a2f4fa22c96e5478f18e8eee3df2fdfd908d5",
+      "anchored_at_utc": "2026-05-03T03:47:05.879113+00:00"
+    },
+    {
+      "output_id": "20251129-124015",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251129-124015.json",
+      "image_file": "20251129-124015.jpg",
+      "json_hash_hex": "b1736a17a9ced8cff0f1bdc0eed2ee8a67af126be5c5dd507df60bb9def9afd6",
+      "image_hash_hex": "6e72735df92c952b54e2bca161b765c53056c15c571cfc3b98e15167af23c767",
+      "metadata_on_chain": {
+        "datetime": "29/11/2025 12:40:15",
+        "workers": "0",
+        "machinery": "Perforadora de pilotes, Grua de celesia, Generador electrico",
+        "phase": "Cimentacion y pilotes"
+      },
+      "tx_hash": "e15cd270d4235e3c935a421654a844ca1df16fd490928fab6fc987ff5b56e0be",
+      "ledger": 2354562,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/e15cd270d4235e3c935a421654a844ca1df16fd490928fab6fc987ff5b56e0be",
+      "anchored_at_utc": "2026-05-03T03:47:10.879535+00:00"
+    },
+    {
+      "output_id": "20251129-152245",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251129-152245.json",
+      "image_file": "20251129-152245.jpg",
+      "json_hash_hex": "38956bd1ca20b964dbce6715f46b91df11d9d56e73c60ac98492033ba4081e7f",
+      "image_hash_hex": "27c05705f6bdd7364d0052603e6ae12d1ca09ec436c0153f2bc7502a640c9506",
+      "metadata_on_chain": {
+        "datetime": "29/11/2025 15:22:45",
+        "workers": "1",
+        "machinery": "Perforadora de pilotes, Grua de celesia",
+        "phase": "Cimentacion y pilotes"
+      },
+      "tx_hash": "8357a402bcd6a660f981b3926d6b9052d3c5fa22d25e9fce2e553ddc959272a4",
+      "ledger": 2354563,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/8357a402bcd6a660f981b3926d6b9052d3c5fa22d25e9fce2e553ddc959272a4",
+      "anchored_at_utc": "2026-05-03T03:47:16.049048+00:00"
+    },
+    {
+      "output_id": "20251129-175905",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251129-175905.json",
+      "image_file": "20251129-175905.jpg",
+      "json_hash_hex": "6fa8b3329feb5c68b2360b1199c39256a164bc3368cfdc5dbebc6f25fdd5cec7",
+      "image_hash_hex": "08991808ba83719763fe7b25500830aa7d03bbc43ed2d0502c30eb7cd7cffae5",
+      "metadata_on_chain": {
+        "datetime": "29/11/2025 17:59:05",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": ""
+      },
+      "tx_hash": "ad1fa6e9e1b16f107246850284bae8592be5af25b93917910234bf717aa29cfb",
+      "ledger": 2354564,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/ad1fa6e9e1b16f107246850284bae8592be5af25b93917910234bf717aa29cfb",
+      "anchored_at_utc": "2026-05-03T03:47:20.981649+00:00"
+    }
+  ]
+}
