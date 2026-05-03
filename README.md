@@ -8,7 +8,7 @@ Documentacion conceptual y de arquitectura para el uso de **Stellar** y **Soroba
 
 ## Idea en una linea
 
-Una arquitectura por etapas que parte de un **gemelo on-chain de transparencia** sobre el flujo de pagos publicos, evoluciona hacia **escrow programable con liberacion por hitos validados (IA + auditores + ciudadania)**, y culmina en un **bono tokenizado emitido por un banco de desarrollo** para financiar obra publica con auditabilidad continua.
+Una arquitectura por **fases** que parte del **anclaje en Stellar de la evidencia de obra producida por dIAra** (sistema externo de IA + IoT, fuente de insumos), evoluciona hacia un **gemelo on-chain de transparencia** que ademas registra eventos de pago de SICOP/Hacienda y emite alertas publicas via smart contracts Soroban, y culmina en un **bono tokenizado emitido por un banco de desarrollo** para financiar obra publica con auditabilidad continua. Existe un fallback (escrow piloto) si Fase 3 no se asegura partner bancario en plazo razonable.
 
 ## Alcance
 
@@ -26,7 +26,7 @@ Una arquitectura por etapas que parte de un **gemelo on-chain de transparencia**
 6. [Tokenizacion y banco de desarrollo](docs/06_tokenizacion_banco_desarrollo.md) — cinco variantes de instrumento y precedentes internacionales.
 7. [Interoperabilidad bancaria](docs/07_interoperabilidad_bancaria.md) — SEPs, anchors, gap costarricense.
 8. [Marco regulatorio CR](docs/08_marco_regulatorio_cr.md) — SUGEVAL, SUGEF, Ley 7732, Ley 7428.
-9. [Roadmap por etapas](docs/09_roadmap_etapas.md) — Etapa 1 (gemelo) -> Etapa 2 (escrow) -> Etapa 3 (bono).
+9. [Roadmap por fases](docs/09_roadmap_etapas.md) — Fase 0 (dIAra externa) -> Fase 1 (anclaje en Stellar) -> Fase 2 (gemelo de transparencia + alertas) -> Fase 3 (bono tokenizado), con fallback Fase 2.5 (escrow piloto).
 10. [Dudas pendientes](docs/10_dudas_pendientes.md) — preguntas R40 sin responder antes de avanzar.
 
 ## Specs
