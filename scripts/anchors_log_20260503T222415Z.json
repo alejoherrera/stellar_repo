@@ -1,0 +1,295 @@
+{
+  "anchored_by": "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR",
+  "network": "testnet",
+  "project_code": "circunvalacion-cr",
+  "results": [
+    {
+      "output_id": "20251003-073611",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-073611.json",
+      "image_file": "20251003-073611.jpg",
+      "json_hash_hex": "e82124a103260b48a53d51210851b283b9cd73483e27cc576a76498296f83c00",
+      "image_hash_hex": "8f1835baaf359dd549c0b2b86b5b226e38e2fdaa4e62f777ebc152657cf85b06",
+      "ipfs": {
+        "image_cid": "bafkreiepda23vlzvtxkutqfsxbvvwitohdrp3ksoml3xp26bkjsxz6c3ay",
+        "json_cid": "bafkreigeizgiubw435z3ayzelt7o6dkyaqfhkkz5lnh7m6qx6kei6c3zpy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiepda23vlzvtxkutqfsxbvvwitohdrp3ksoml3xp26bkjsxz6c3ay",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigeizgiubw435z3ayzelt7o6dkyaqfhkkz5lnh7m6qx6kei6c3zpy"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 07:36:11",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "a8e6e8a0693aca3844f5acb1048fb1e532245a956aabc24849b2cb5795ff27c2",
+      "ledger": 2367933,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/a8e6e8a0693aca3844f5acb1048fb1e532245a956aabc24849b2cb5795ff27c2",
+      "anchored_at_utc": "2026-05-03T22:23:05.807788+00:00"
+    },
+    {
+      "output_id": "20251003-095053",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-095053.json",
+      "image_file": "20251003-095053.jpg",
+      "json_hash_hex": "2ce35b4de0df1441987b365df042645f1a9a201353da91da039563768711ba12",
+      "image_hash_hex": "a58071a29b342bea71bf49e0de3db0039fde2263aca33c70c335e579d1328d34",
+      "ipfs": {
+        "image_cid": "bafkreiffqby2fgzufpvhdp2j4dpd3madt7pcey5mum6hbqzv4v45cmungq",
+        "json_cid": "bafkreicnkm4sa72i5r3cl6ack6fe3naptkn233ta6r37bmgahdhqpb6sfu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiffqby2fgzufpvhdp2j4dpd3madt7pcey5mum6hbqzv4v45cmungq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicnkm4sa72i5r3cl6ack6fe3naptkn233ta6r37bmgahdhqpb6sfu"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 09:50:53",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "b7ceb4b52322c31b342a33310d04a80226f4982974e0163af0a0c46af482b032",
+      "ledger": 2367935,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/b7ceb4b52322c31b342a33310d04a80226f4982974e0163af0a0c46af482b032",
+      "anchored_at_utc": "2026-05-03T22:23:15.808182+00:00"
+    },
+    {
+      "output_id": "20251003-115951",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-115951.json",
+      "image_file": "20251003-115951.jpg",
+      "json_hash_hex": "f20537e031d940cc01cd4d15bb9af8655585fb40a23b75302e92b8bf848033aa",
+      "image_hash_hex": "eb1922111b0e1c1ec4fb26d1c2aea65027afa40f1b6b9d5702a1602d048bbf9e",
+      "ipfs": {
+        "image_cid": "bafkreihlderbcgyodqpmj6zg2hbk5jsqe6x2idy3noovoavbmawqjc57ty",
+        "json_cid": "bafkreiaujb4wcfwigcsytkkoatjvxar5uapcu5huyglcgyn3cunaoz3tr4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihlderbcgyodqpmj6zg2hbk5jsqe6x2idy3noovoavbmawqjc57ty",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaujb4wcfwigcsytkkoatjvxar5uapcu5huyglcgyn3cunaoz3tr4"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 11:59:51",
+        "workers": "1",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "cf2d27ee3bc62d8a4129e413234f6e00e5ed45a121ed5a530d5a1a59a1ce361e",
+      "ledger": 2367936,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/cf2d27ee3bc62d8a4129e413234f6e00e5ed45a121ed5a530d5a1a59a1ce361e",
+      "anchored_at_utc": "2026-05-03T22:23:20.713285+00:00"
+    },
+    {
+      "output_id": "20251003-120512",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-120512.json",
+      "image_file": "20251003-120512.jpg",
+      "json_hash_hex": "9112f5753ffc2b8a7133613c8280f6dd2c9a4b493f5224e0d7be5754e4b952f8",
+      "image_hash_hex": "3779d0cf51667d2629ca6f2829a38e6c7ce05dc2bdd789451e42f90284b5c17c",
+      "ipfs": {
+        "image_cid": "bafkreibxphim6ulgputctstpfau2hdtmptqf3qv526eukhsc7ebijnobpq",
+        "json_cid": "bafkreicjfcapdey5sibookbyxzfmtnmprwovh2gsvyyda4r32h7hsf5w5y",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibxphim6ulgputctstpfau2hdtmptqf3qv526eukhsc7ebijnobpq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicjfcapdey5sibookbyxzfmtnmprwovh2gsvyyda4r32h7hsf5w5y"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 12:05:12",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "b6e1fa22f6f16f657fa88fbdc1b3403f27adc96a8b64c78cc75f13e97ecd1182",
+      "ledger": 2367938,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/b6e1fa22f6f16f657fa88fbdc1b3403f27adc96a8b64c78cc75f13e97ecd1182",
+      "anchored_at_utc": "2026-05-03T22:23:30.824211+00:00"
+    },
+    {
+      "output_id": "20251003-140339",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-140339.json",
+      "image_file": "20251003-140339.jpg",
+      "json_hash_hex": "fad269fdffa546fcdd757628cf1c08d8dc53e32a5bd6a976e026057dedc8a581",
+      "image_hash_hex": "683bee71cb9a5494e7601eca6ec1ce74a0f700e1c9193c0ec62264627332bcea",
+      "ipfs": {
+        "image_cid": "bafkreidihpxhds42kskooya6zjxmdttuud3qbyojde6a5rrcmrrhgmv45i",
+        "json_cid": "bafkreifwyij2673qj4m2l4dbxgjj2qsdmccyddzj3ym2texbg4nohwx52i",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidihpxhds42kskooya6zjxmdttuud3qbyojde6a5rrcmrrhgmv45i",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifwyij2673qj4m2l4dbxgjj2qsdmccyddzj3ym2texbg4nohwx52i"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 14:03:39",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "66962f38731c2496da8da2b3d37b09e8e418511f9d15ea24fe6b37ece90c04bc",
+      "ledger": 2367940,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/66962f38731c2496da8da2b3d37b09e8e418511f9d15ea24fe6b37ece90c04bc",
+      "anchored_at_utc": "2026-05-03T22:23:40.714531+00:00"
+    },
+    {
+      "output_id": "20251003-155634",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-155634.json",
+      "image_file": "20251003-155634.jpg",
+      "json_hash_hex": "bd2f30b3eb0ebab2b66df16eabf7182db05780072aed6feff88e0842a00f976b",
+      "image_hash_hex": "200a3c20489edf93c09f2104597ba93bde85d1538b3f33f7955f7f0f6ba2fc75",
+      "ipfs": {
+        "image_cid": "bafkreibabi6case636j4bhzbarmxxkj332c5cu4lh4z7pfk7p4hwxix4ou",
+        "json_cid": "bafkreibkqbwn6dvbxeeikvo6e2liavxaqvvngg7y6fqnqrjyb2ms3kdw4y",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibabi6case636j4bhzbarmxxkj332c5cu4lh4z7pfk7p4hwxix4ou",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibkqbwn6dvbxeeikvo6e2liavxaqvvngg7y6fqnqrjyb2ms3kdw4y"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 15:56:34",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "247738d78a583d3921732c472dc2f886ae2a2a4d4a38ccb06c95061b24b12e01",
+      "ledger": 2367941,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/247738d78a583d3921732c472dc2f886ae2a2a4d4a38ccb06c95061b24b12e01",
+      "anchored_at_utc": "2026-05-03T22:23:45.707894+00:00"
+    },
+    {
+      "output_id": "20251004-070429",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-070429.json",
+      "image_file": "20251004-070429.jpg",
+      "json_hash_hex": "57eea42a99c9f3564a8186c67c277d9367612474ec61b79fcddd172b7d74db1f",
+      "image_hash_hex": "02c631e1eefaefe8a445d4d8cc942ab1f838da3fa8ce6cbfe9d0dcc2640de70d",
+      "ipfs": {
+        "image_cid": "bafkreiacyyy6d3x257ukirou3dgjikvr7a4nup5izzwl72oq3tbgidphbu",
+        "json_cid": "bafkreiaz52cxvfj4gwzxececwxtjqxmlsnkzvora7a6wftmv7taebe24ba",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiacyyy6d3x257ukirou3dgjikvr7a4nup5izzwl72oq3tbgidphbu",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaz52cxvfj4gwzxececwxtjqxmlsnkzvora7a6wftmv7taebe24ba"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 07:04:29",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "ca505fad5883e69c1680a4cd2fe4d66b1452c000c897d412b28e84b9f365227c",
+      "ledger": 2367942,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/ca505fad5883e69c1680a4cd2fe4d66b1452c000c897d412b28e84b9f365227c",
+      "anchored_at_utc": "2026-05-03T22:23:50.707906+00:00"
+    },
+    {
+      "output_id": "20251004-092953",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-092953.json",
+      "image_file": "20251004-092953.jpg",
+      "json_hash_hex": "e4ab31f48ed375bb51c793eb3839236812eb051109f23ce9caea34b7672cd8b4",
+      "image_hash_hex": "ae676241d71ca6b2b09d991f5f4c2f7c69b022fa33455ac913d13362b3edbef3",
+      "ipfs": {
+        "image_cid": "bafkreifom5redvy4u2zlbhmzd5puyl34ngycf6rtivnmse6rgnrlh3n66m",
+        "json_cid": "bafkreihinm7y2usp7v3ldacvbarq7bf46dhy2szk6ek523q57et5xhtbae",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifom5redvy4u2zlbhmzd5puyl34ngycf6rtivnmse6rgnrlh3n66m",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihinm7y2usp7v3ldacvbarq7bf46dhy2szk6ek523q57et5xhtbae"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 09:29:53",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "b52a981c38f040d52f57b8cc142d245ded671394dcb5061384ac99a3f4ce9f4a",
+      "ledger": 2367943,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/b52a981c38f040d52f57b8cc142d245ded671394dcb5061384ac99a3f4ce9f4a",
+      "anchored_at_utc": "2026-05-03T22:23:55.714690+00:00"
+    },
+    {
+      "output_id": "20251004-115511",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-115511.json",
+      "image_file": "20251004-115511.jpg",
+      "json_hash_hex": "e0ea85b54e8bbbd83f02894c9fb0ac5338d76edbb1335a9a2183c3821762fb46",
+      "image_hash_hex": "e0e253acaa9978b20729b1b3bbe63d6f6f084ba0c701caccf68187e554d5f42c",
+      "ipfs": {
+        "image_cid": "bafkreiha4jj2zkuzpczaoknrwo56mplpn4eexighahfmz5ubq7svjvpufq",
+        "json_cid": "bafkreic3qb6537utfb55idsmksypl2rqghcsblkht3x6t3gpjuad5jz6ki",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiha4jj2zkuzpczaoknrwo56mplpn4eexighahfmz5ubq7svjvpufq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreic3qb6537utfb55idsmksypl2rqghcsblkht3x6t3gpjuad5jz6ki"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 11:55:11",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "666402a621a449ba035322ea7a96558c799053988dd220f8326d750b4f7c9f95",
+      "ledger": 2367944,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/666402a621a449ba035322ea7a96558c799053988dd220f8326d750b4f7c9f95",
+      "anchored_at_utc": "2026-05-03T22:24:00.710163+00:00"
+    },
+    {
+      "output_id": "20251004-120033",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-120033.json",
+      "image_file": "20251004-120033.jpg",
+      "json_hash_hex": "6557fafcdadd959704cbd6ed2a42a160fbdf31745ca2913ddd845da04c767d62",
+      "image_hash_hex": "7c179baee27bcf2e56fd9946d688410d0726a40543b076bdae6166645371fe9c",
+      "ipfs": {
+        "image_cid": "bafkreid4c6n25yt3z4xfn7mzi3liqqina4tkibkdwb3l3ltbmzsfg4p6tq",
+        "json_cid": "bafkreibbuq4vew7rzfj572lvgqv5skaeyfxjkllacgici4gppszoki6tcy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreid4c6n25yt3z4xfn7mzi3liqqina4tkibkdwb3l3ltbmzsfg4p6tq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibbuq4vew7rzfj572lvgqv5skaeyfxjkllacgici4gppszoki6tcy"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 12:00:33",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "966931265a5757f6a46a4f5eedbfe3a05f87205b40334ce84065bfc284b14df1",
+      "ledger": 2367945,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/966931265a5757f6a46a4f5eedbfe3a05f87205b40334ce84065bfc284b14df1",
+      "anchored_at_utc": "2026-05-03T22:24:05.710231+00:00"
+    },
+    {
+      "output_id": "20251004-135901",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-135901.json",
+      "image_file": "20251004-135901.jpg",
+      "json_hash_hex": "a4fe0df7554dfc7e6e2fd48d64d1bf98866b55282798239d10d3b0d266113c20",
+      "image_hash_hex": "d8bd580464214669ac33e4909899d11fcbde02b7773fbe6c50f19e38a77df170",
+      "ipfs": {
+        "image_cid": "bafkreigyxvmaizbbizu2ym7escmjtui7zppafn3xh67gyuhrty4ko7proa",
+        "json_cid": "bafkreihqhfodwin65wh5s36mpj4br7p4fv7hcfvixsqtz3jelqhjia76pq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigyxvmaizbbizu2ym7escmjtui7zppafn3xh67gyuhrty4ko7proa",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihqhfodwin65wh5s36mpj4br7p4fv7hcfvixsqtz3jelqhjia76pq"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 13:59:01",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "c290206d73f520acf1117d8978e374715ec76f547948aa761ce4197d3eada129",
+      "ledger": 2367946,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/c290206d73f520acf1117d8978e374715ec76f547948aa761ce4197d3eada129",
+      "anchored_at_utc": "2026-05-03T22:24:10.809765+00:00"
+    },
+    {
+      "output_id": "20251005-070411",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251005-070411.json",
+      "image_file": "20251005-070411.jpg",
+      "json_hash_hex": "42f1dab12b6fe9033222054f5b943e1c0e9c7471e1d2a4093cd7170b3dad8627",
+      "image_hash_hex": "52dc273901192af5278d9eeb88790246b33b06eb66942cae25a48570399557d1",
+      "ipfs": {
+        "image_cid": "bafkreics3qttsaizfl2spdm65oehsasgwm5qn23gsqwk4jneqvydtfkx2e",
+        "json_cid": "bafkreifdril3n47fx67hyk7kdq5kxx6dycbvpir3ozqjpmbhm3f7qm2kou",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreics3qttsaizfl2spdm65oehsasgwm5qn23gsqwk4jneqvydtfkx2e",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifdril3n47fx67hyk7kdq5kxx6dycbvpir3ozqjpmbhm3f7qm2kou"
+      },
+      "metadata_on_chain": {
+        "datetime": "05/10/2025 07:04:11",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "e6b308e5629d687f646d2a5c5d12bd930bf49b4adf9299a36eeda735f74ab602",
+      "ledger": 2367947,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/e6b308e5629d687f646d2a5c5d12bd930bf49b4adf9299a36eeda735f74ab602",
+      "anchored_at_utc": "2026-05-03T22:24:15.714523+00:00"
+    }
+  ]
+}

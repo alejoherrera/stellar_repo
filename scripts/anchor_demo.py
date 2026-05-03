@@ -58,7 +58,8 @@ SCRIPTS_DIR = Path(__file__).resolve().parent
 ENV_PATH = SCRIPTS_DIR / ".env"
 
 DIARA_DIR = Path(r"C:\Users\aleja\diara_circunvalacion_json")
-JSONS_DIR = DIARA_DIR / "json_test_estandarizado"
+DEFAULT_JSONS_DIR = DIARA_DIR / "portal2" / "static" / "data" / "json"
+LEGACY_JSONS_DIR = DIARA_DIR / "json_test_estandarizado"
 IMAGES_DIR = DIARA_DIR / "imagenes_tratadas" / "imagenes_tratadas"
 
 NETWORK_PASSPHRASE = Network.TESTNET_NETWORK_PASSPHRASE
@@ -361,16 +362,28 @@ def anchor_one(server: Server, kp: Keypair, jwt: str, json_path: Path) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Ancla outputs de dIAra en Stellar testnet (PoC Fase 1, v2)")
+    parser = argparse.ArgumentParser(description="Ancla outputs de dIAra en Stellar testnet (PoC Fase 1, v3)")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--setup-project", action="store_true", help="One-time: registra metadatos del proyecto on-chain")
     group.add_argument("--first", action="store_true", help="Ancla solo el primer JSON disponible")
-    group.add_argument("--all", action="store_true", help="Ancla todos los JSONs estandarizados")
+    group.add_argument("--all", action="store_true", help="Ancla todos los JSONs validos del source")
+    parser.add_argument("--source", type=str, default=None,
+                        help=f"Carpeta con JSONs (default: {DEFAULT_JSONS_DIR}). Use 'legacy' para {LEGACY_JSONS_DIR.name}")
+    parser.add_argument("--limit", type=int, default=None,
+                        help="Limite de outputs a anclar (toma los primeros N por nombre/fecha)")
     args = parser.parse_args()
+
+    if args.source == "legacy":
+        JSONS_DIR = LEGACY_JSONS_DIR
+    elif args.source:
+        JSONS_DIR = Path(args.source)
+    else:
+        JSONS_DIR = DEFAULT_JSONS_DIR
 
     if not JSONS_DIR.exists():
         print(f"[ERROR] No se encontro {JSONS_DIR}")
         sys.exit(1)
+    print(f"[INFO] Source JSONs: {JSONS_DIR}")
 
     kp = get_or_create_keypair()
     server = Server(HORIZON_URL)
@@ -385,15 +398,35 @@ def main():
         else:
             print(f"[OK] Setup del proyecto ya existe on-chain para {PROJECT_CODE}")
 
-        json_files = sorted(p for p in JSONS_DIR.glob("*.json") if not p.name.startswith("_"))
+        # Filtrar: solo JSONs con nombre 'YYYYMMDD-HHMMSS.json' (no manifest, no _reportes)
+        all_files = sorted(p for p in JSONS_DIR.glob("[0-9]*-[0-9]*.json"))
+        # Filtrar fuera los que tienen 'error' (irrecuperables, ej. nocturnas oscuras)
+        json_files = []
+        skipped_error = 0
+        for p in all_files:
+            try:
+                with p.open("r", encoding="utf-8") as f:
+                    obj = json.load(f)
+                if "error" in obj:
+                    skipped_error += 1
+                    continue
+                json_files.append(p)
+            except Exception as exc:
+                print(f"[WARN] No se pudo leer {p.name}: {exc}")
+        if skipped_error:
+            print(f"[INFO] {skipped_error} JSON(s) skip por tener 'error' (ej. imagen nocturna no analizable)")
+
         if not json_files:
-            print(f"[ERROR] No hay JSONs en {JSONS_DIR}")
+            print(f"[ERROR] No hay JSONs validos en {JSONS_DIR}")
             sys.exit(1)
         if args.first:
             json_files = [json_files[0]]
+        elif args.limit:
+            json_files = json_files[:args.limit]
 
         jwt = fetch_pinata_jwt()
         print(f"[INFO] Anclando {len(json_files)} output(s) en Stellar testnet con IPFS pinning")
+        print(f"[INFO] Rango: {json_files[0].name} -> {json_files[-1].name}")
         for jf in json_files:
             try:
                 results.append(anchor_one(server, kp, jwt, jf))
