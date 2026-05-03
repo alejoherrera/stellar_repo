@@ -1,0 +1,31 @@
+{
+  "anchored_by": "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR",
+  "network": "testnet",
+  "project_code": "circunvalacion-cr",
+  "results": [
+    {
+      "output_id": "20251029-060211",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251029-060211.json",
+      "image_file": "20251029-060211.jpg",
+      "json_hash_hex": "54cedc6aff39f1d4beeafdbe9dbba3520b567da6a74962f076f5bc7e3af704df",
+      "image_hash_hex": "1d429b7d04c6a18401f9aa415d3f616d30b49d29758e035188487e5e1601a7f4",
+      "ipfs": {
+        "image_cid": "bafkreia5iknx2bggugcad6nkifot6ylngc2j2klvrybvdccipzpbmanh6q",
+        "json_cid": "bafkreib344gvdhocj4mcsu35oswovo6j5qbixvluzv4bwkgincx6mwjndu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreia5iknx2bggugcad6nkifot6ylngc2j2klvrybvdccipzpbmanh6q",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreib344gvdhocj4mcsu35oswovo6j5qbixvluzv4bwkgincx6mwjndu"
+      },
+      "metadata_on_chain": {
+        "datetime": "29/10/2025 06:02:11",
+        "workers": "2",
+        "machinery": "Retroexcavadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "b49ff4fd29ba79f64b28bdf49efe1ffe268be44451d16f12450d62d270511188",
+      "ledger": 2354896,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/b49ff4fd29ba79f64b28bdf49efe1ffe268be44451d16f12450d62d270511188",
+      "anchored_at_utc": "2026-05-03T04:15:03.004382+00:00"
+    }
+  ]
+}

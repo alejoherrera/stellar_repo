@@ -1,0 +1,11 @@
+{
+  "anchored_by": "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR",
+  "network": "testnet",
+  "project_code": "circunvalacion-cr",
+  "results": [
+    {
+      "output_id": "20251029-060211",
+      "error": "RuntimeError('Pinata pinFileToIPFS fallo 403: {\"error\":{\"reason\":\"NO_SCOPES_FOUND\",\"details\":\"This key does not have the required scopes associated with it\"}}')"
+    }
+  ]
+}

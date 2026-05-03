@@ -1,0 +1,151 @@
+{
+  "anchored_by": "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR",
+  "network": "testnet",
+  "project_code": "circunvalacion-cr",
+  "results": [
+    {
+      "output_id": "20251029-060211",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251029-060211.json",
+      "image_file": "20251029-060211.jpg",
+      "json_hash_hex": "54cedc6aff39f1d4beeafdbe9dbba3520b567da6a74962f076f5bc7e3af704df",
+      "image_hash_hex": "1d429b7d04c6a18401f9aa415d3f616d30b49d29758e035188487e5e1601a7f4",
+      "ipfs": {
+        "image_cid": "bafkreia5iknx2bggugcad6nkifot6ylngc2j2klvrybvdccipzpbmanh6q",
+        "json_cid": "bafkreib344gvdhocj4mcsu35oswovo6j5qbixvluzv4bwkgincx6mwjndu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreia5iknx2bggugcad6nkifot6ylngc2j2klvrybvdccipzpbmanh6q",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreib344gvdhocj4mcsu35oswovo6j5qbixvluzv4bwkgincx6mwjndu"
+      },
+      "metadata_on_chain": {
+        "datetime": "29/10/2025 06:02:11",
+        "workers": "2",
+        "machinery": "Retroexcavadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "9fc1f66c5c67e235095f378b13585e91c1d217befa9840bc282634b81be1b878",
+      "ledger": 2354902,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/9fc1f66c5c67e235095f378b13585e91c1d217befa9840bc282634b81be1b878",
+      "anchored_at_utc": "2026-05-03T04:15:32.903703+00:00"
+    },
+    {
+      "output_id": "20251029-175920",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251029-175920.json",
+      "image_file": "20251029-175920.jpg",
+      "json_hash_hex": "9ff99a467e0ca970f492223c9b469939116a037e71e05c6626a0cc3652ffc591",
+      "image_hash_hex": "bec7aa4c9491cb0cbf8fee71f3b25fcd6856e315afcf9371b834886bbb4bd45f",
+      "ipfs": {
+        "image_cid": "bafkreif6y6vezferzmgl7d7oohz3ex6nnblogfnpz6jxdoburbv3ws6ul4",
+        "json_cid": "bafkreiatwn4x5azcjmruchqqz7nbaswuwuhjvzajyt7zdpchaqagb2brni",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreif6y6vezferzmgl7d7oohz3ex6nnblogfnpz6jxdoburbv3ws6ul4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiatwn4x5azcjmruchqqz7nbaswuwuhjvzajyt7zdpchaqagb2brni"
+      },
+      "metadata_on_chain": {
+        "datetime": "29/10/2025 17:59:20",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": ""
+      },
+      "tx_hash": "5cd6c85fba9a19c44e72ef5911f0c5aae57c564ce21d6debb618de144d13efee",
+      "ledger": 2354903,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/5cd6c85fba9a19c44e72ef5911f0c5aae57c564ce21d6debb618de144d13efee",
+      "anchored_at_utc": "2026-05-03T04:15:38.004885+00:00"
+    },
+    {
+      "output_id": "20251129-095756",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251129-095756.json",
+      "image_file": "20251129-095756.jpg",
+      "json_hash_hex": "136f681d517c5374273b979c2a9e56a340ad16859767ec2de5108367574f2798",
+      "image_hash_hex": "cdd8471fcbe8412a560a09b0daed6e8f5c4255eea9ef075ae26a98c47360b324",
+      "ipfs": {
+        "image_cid": "bafkreign3bdr7s7iievfmcqjwdno23uplrbfl3vj54dvvytktdchgyfteq",
+        "json_cid": "bafkreiceb62hxwqf75bcucqtnitt7zxtkaopbupagkhxawp372abqxn6nu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreign3bdr7s7iievfmcqjwdno23uplrbfl3vj54dvvytktdchgyfteq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiceb62hxwqf75bcucqtnitt7zxtkaopbupagkhxawp372abqxn6nu"
+      },
+      "metadata_on_chain": {
+        "datetime": "29/11/2025 09:57:56",
+        "workers": "0",
+        "machinery": "Perforadora de pilotes",
+        "phase": "Cimentacion y pilotes"
+      },
+      "tx_hash": "34c322c1e23c196d6008b77f0ae1749eb6b7f9acd92601303a0692bad9bdb0d9",
+      "ledger": 2354904,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/34c322c1e23c196d6008b77f0ae1749eb6b7f9acd92601303a0692bad9bdb0d9",
+      "anchored_at_utc": "2026-05-03T04:15:42.905605+00:00"
+    },
+    {
+      "output_id": "20251129-124015",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251129-124015.json",
+      "image_file": "20251129-124015.jpg",
+      "json_hash_hex": "b1736a17a9ced8cff0f1bdc0eed2ee8a67af126be5c5dd507df60bb9def9afd6",
+      "image_hash_hex": "6e72735df92c952b54e2bca161b765c53056c15c571cfc3b98e15167af23c767",
+      "ipfs": {
+        "image_cid": "bafkreidoojzv36jmsuvvjyv4ufq3ozofgblmcxcxdt6dxghbkft26i6hm4",
+        "json_cid": "bafkreibbgne2zcmakoj6d2qn4o4d7elwjrca5othvbos26rqctpznfcjce",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidoojzv36jmsuvvjyv4ufq3ozofgblmcxcxdt6dxghbkft26i6hm4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibbgne2zcmakoj6d2qn4o4d7elwjrca5othvbos26rqctpznfcjce"
+      },
+      "metadata_on_chain": {
+        "datetime": "29/11/2025 12:40:15",
+        "workers": "0",
+        "machinery": "Perforadora de pilotes, Grua de celesia, Generador electrico",
+        "phase": "Cimentacion y pilotes"
+      },
+      "tx_hash": "e25fadd35b18e46561a0ae2fe5c3c59ba9b4e6b678ee15fb99b3869d5bf760e8",
+      "ledger": 2354905,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/e25fadd35b18e46561a0ae2fe5c3c59ba9b4e6b678ee15fb99b3869d5bf760e8",
+      "anchored_at_utc": "2026-05-03T04:15:48.031083+00:00"
+    },
+    {
+      "output_id": "20251129-152245",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251129-152245.json",
+      "image_file": "20251129-152245.jpg",
+      "json_hash_hex": "38956bd1ca20b964dbce6715f46b91df11d9d56e73c60ac98492033ba4081e7f",
+      "image_hash_hex": "27c05705f6bdd7364d0052603e6ae12d1ca09ec436c0153f2bc7502a640c9506",
+      "ipfs": {
+        "image_cid": "bafkreibhyblql5v5243e2acsma7gvyjndsqj5rbwyakt6k6hkavgidevay",
+        "json_cid": "bafkreicawn7vhoo4nkgdnyar4i4ituisbcje4b2ac63f5cwhvpovzfyn6a",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibhyblql5v5243e2acsma7gvyjndsqj5rbwyakt6k6hkavgidevay",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicawn7vhoo4nkgdnyar4i4ituisbcje4b2ac63f5cwhvpovzfyn6a"
+      },
+      "metadata_on_chain": {
+        "datetime": "29/11/2025 15:22:45",
+        "workers": "1",
+        "machinery": "Perforadora de pilotes, Grua de celesia",
+        "phase": "Cimentacion y pilotes"
+      },
+      "tx_hash": "c5a45041dfcd92574291550a23115c940815a1ea1d6665dbc9efdc41b5938b5a",
+      "ledger": 2354906,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/c5a45041dfcd92574291550a23115c940815a1ea1d6665dbc9efdc41b5938b5a",
+      "anchored_at_utc": "2026-05-03T04:15:52.912253+00:00"
+    },
+    {
+      "output_id": "20251129-175905",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251129-175905.json",
+      "image_file": "20251129-175905.jpg",
+      "json_hash_hex": "6fa8b3329feb5c68b2360b1199c39256a164bc3368cfdc5dbebc6f25fdd5cec7",
+      "image_hash_hex": "08991808ba83719763fe7b25500830aa7d03bbc43ed2d0502c30eb7cd7cffae5",
+      "ipfs": {
+        "image_cid": "bafkreiaitemaroudoglwh7t3eviaqmfkpub3xrb62lifalbq5n6npt724u",
+        "json_cid": "bafkreidwossvsytobukobsgu2yyjqhox7kynqfpldlgzs5rm6xndjpc2ey",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaitemaroudoglwh7t3eviaqmfkpub3xrb62lifalbq5n6npt724u",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidwossvsytobukobsgu2yyjqhox7kynqfpldlgzs5rm6xndjpc2ey"
+      },
+      "metadata_on_chain": {
+        "datetime": "29/11/2025 17:59:05",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": ""
+      },
+      "tx_hash": "66b4ebc22f7421ec6efadba7363ef694634169dc85005e4bcd3a8e223757627a",
+      "ledger": 2354907,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/66b4ebc22f7421ec6efadba7363ef694634169dc85005e4bcd3a8e223757627a",
+      "anchored_at_utc": "2026-05-03T04:15:57.904016+00:00"
+    }
+  ]
+}

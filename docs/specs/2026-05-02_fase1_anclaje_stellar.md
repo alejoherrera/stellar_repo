@@ -46,7 +46,7 @@ dIAra output -> POST /ingest (firmado)
   -> retry exponencial en fallos de submission o pinning; alerta tras 5 fallos
 ```
 
-### Schema on-chain (v2)
+### Schema on-chain (v3)
 
 Cada output de dIAra se ancla en una sola TX Stellar con multiples operaciones `manageData`. Stellar limita cada `manageData` a 64 bytes en `key` y 64 bytes en `value`, por lo que se descompone la informacion del output en operaciones tematicas:
 
@@ -58,8 +58,10 @@ Cada output de dIAra se ancla en una sola TX Stellar con multiples operaciones `
 | `diara:{output_id}:workers` | cantidad de personas, como string | Metadato consultable |
 | `diara:{output_id}:machinery` | lista de maquinaria separada por coma, truncada a 64B | Metadato consultable |
 | `diara:{output_id}:phase` | etapa constructiva, truncada a 64B | Metadato consultable |
+| `diara:{output_id}:img_cid` | CID v1 base32 de la imagen pineada en IPFS | Recuperabilidad descentralizada |
+| `diara:{output_id}:json_cid` | CID v1 base32 del JSON canonico pineado en IPFS | Recuperabilidad descentralizada |
 
-Memo de la TX: `dIAra ancla v2`.
+Memo de la TX: `dIAra ancla v3`.
 
 Adicionalmente, **una TX one-time de setup por proyecto** registra metadata de proyecto:
 
@@ -74,9 +76,19 @@ Memo de la TX: `dIAra setup v1`.
 
 **Por que multi-op y no un solo manageData con todo:** la limitacion de 64 bytes por value impide meter el JSON entero. Hashear todo en un solo blob (como hacia v1) preserva integridad pero deja al ciudadano dependiendo de tener acceso al JSON original para entender que paso. Con multi-op, el explorer publico de Stellar muestra los metadatos legibles directamente y la integridad criptografica sigue garantizada por la primera operacion (`diara:{output_id}` con los hashes).
 
-**Por que no Soroban en Fase 1 a pesar del multi-op:** sigue siendo barato (~6 ops * 100 stroops = 600 stroops por output) y simple. Soroban entra en Fase 2 cuando aparecen alertas y reglas, no cuando solo se quiere mas estructura.
+**Por que no Soroban en Fase 1 a pesar del multi-op:** sigue siendo barato (~8 ops * 100 stroops = 800 stroops por output) y simple. Soroban entra en Fase 2 cuando aparecen alertas y reglas, no cuando solo se quiere mas estructura.
 
-**Nota sobre IPFS:** una vez activo el pinning service, los CIDs (de imagen y de JSON canonico) se anclan via dos operaciones adicionales (`diara:{output_id}:img_cid` y `diara:{output_id}:json_cid`) que reemplazan o complementan los hashes en `diara:{output_id}` segun la conveniencia operativa. El PoC actual aun no integra IPFS.
+**IPFS via Pinata (activo desde v3):** cada imagen y cada JSON canonico se pinean en IPFS antes de la TX Stellar. Los CIDs resultantes (CIDv1 base32, ~59 chars) se anclan en `diara:{output_id}:img_cid` y `diara:{output_id}:json_cid`. **Cualquier tercero (CGR, ONG, ciudadania) puede:**
+
+1. Leer la TX en stellar.expert.
+2. Extraer los CIDs.
+3. Fetchear el contenido en cualquier gateway IPFS publico (`gateway.pinata.cloud`, `ipfs.io`, `dweb.link`).
+4. Calcular SHA-256 del contenido recibido.
+5. Verificar que el hash coincide con el anclado en `diara:{output_id}`.
+
+Eso cierra el loop de transparencia verificable: ni siquiera el operador del anchor-service puede falsear la cadena retroactivamente. Cualquier discrepancia entre lo pineado y lo anclado queda evidente.
+
+**Credenciales de Pinata:** vivien en Google Secret Manager (proyecto `nifty-province-474317-m0`, secrets `pinata-api-key`, `pinata-api-secret`, `pinata-jwt`). El servicio fetchea via gcloud CLI y cachea localmente en `.env` gitignored. Rotacion: invalidar key en Pinata, crear nueva, agregar nueva version al secret, borrar cache `.env`.
 
 ### Garantias exigidas a dIAra (Fase 0)
 
@@ -177,41 +189,52 @@ DB nuevas tablas en `mivisor-db` esquema `anchor`:
 
 Feature grande (10+ archivos, schema DB nuevo, integracion blockchain, integracion con sistema externo).
 
-## PoC implementado (2026-05-02)
+## PoC implementado (2026-05-02 / 2026-05-03)
 
-Antes del desarrollo del servicio completo, se ejecuto un PoC en `scripts/anchor_demo.py` que implementa el subset minimo del flujo descrito arriba para validar el end-to-end Stellar:
+Antes del desarrollo del servicio completo, se ejecuto un PoC en `scripts/anchor_demo.py` que implementa el subset minimo del flujo descrito arriba para validar el end-to-end Stellar + IPFS:
 
 **Subset implementado:**
 - Lectura de JSONs estandarizados de dIAra (`diara_circunvalacion_json/json_test_estandarizado/`).
 - Calculo de hash canonico SHA-256 del JSON y SHA-256 de la imagen JPG correspondiente.
-- Submission de TX testnet siguiendo el "Schema on-chain (v2)" definido arriba.
-- Setup TX one-time del proyecto `circunvalacion-cr`.
-- Log JSON de cada corrida con tx_hash, ledger, hashes y URL del explorer.
+- **Pinning IPFS via Pinata** de imagen JPG y de JSON canonico, obteniendo CIDs v1 base32.
+- Submission de TX testnet siguiendo el "Schema on-chain (v3)" definido arriba (8 ops manageData por output).
+- Setup TX one-time del proyecto `circunvalacion-cr` con metadatos institucionales.
+- Lectura de credenciales Pinata desde Google Secret Manager (proyecto `nifty-province-474317-m0`).
+- Log JSON de cada corrida con tx_hash, ledger, CIDs IPFS, hashes y URL del explorer.
 
 **No implementado en el PoC** (deferido a anchor-service completo):
-- IPFS pinning.
 - DB PostgreSQL (`mivisor-db` esquema `anchor`).
 - Webhook con firma Ed25519 de dIAra.
-- Reconciler diario.
+- Reconciler diario que verifica recuperabilidad de los CIDs en multiples gateways.
 - Cloud Run deployment.
 
-**Evidencia testnet (2026-05-03):**
+**Evolucion de versiones del PoC:**
+
+- **v1 (2026-05-03 03:36-03:37 UTC):** una sola op manageData por output, value = `json_hash || img_hash`. Sin metadatos legibles, sin IPFS.
+- **v2 (2026-05-03 03:47 UTC):** 6 ops por output, agregando metadatos legibles (proj, dt, workers, machinery, phase) y setup TX de proyecto. Sin IPFS.
+- **v3 (2026-05-03 04:15 UTC):** 8 ops por output, agregando IPFS CIDs (`img_cid`, `json_cid`) via Pinata pinning. **Modelo final del PoC.**
+
+Las anclas v1 y v2 permanecen como historia en la cuenta (los DataEntry de Stellar son state, no log; las TXs antiguas siguen siendo verificables en el explorer).
+
+**Evidencia testnet — anclas v3 (2026-05-03):**
 
 Cuenta anchoring: `GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR`
 - Explorer: https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR
 
-Setup TX (proyecto `circunvalacion-cr`):
-- `d7fd1582de3bbe81d73bc1d885079c681dd1a64b4970da3e66b5008b74f7e3f6`
+Output anchor TXs (v3, una por output, 8 ops cada una con CIDs IPFS):
 
-Output anchor TXs (v2, una por output):
-- `20251029-060211`: `20b5be0ca950c26217c9aada6b294ab9703c0129fe227fb93d9b0d37f90fc4ea`
-- `20251029-175920`: `4d33baad1712f8b60f262628a7d2580e1072bc7eb4dcc9007de0ee95ff582bbc`
-- `20251129-095756`: `2b9ced28102b3475627948f41d5a2f4fa22c96e5478f18e8eee3df2fdfd908d5`
-- `20251129-124015`: `e15cd270d4235e3c935a421654a844ca1df16fd490928fab6fc987ff5b56e0be`
-- `20251129-152245`: `8357a402bcd6a660f981b3926d6b9052d3c5fa22d25e9fce2e553ddc959272a4`
-- `20251129-175905`: `ad1fa6e9e1b16f107246850284bae8592be5af25b93917910234bf717aa29cfb`
+| Output | TX hash | Image CID | JSON CID |
+|--------|---------|-----------|----------|
+| 20251029-060211 | `9fc1f66c5c67e235095f378b13585e91c1d217befa9840bc282634b81be1b878` | `bafkreia5iknx2bggugcad6nkifot6ylngc2j2klvrybvdccipzpbmanh6q` | `bafkreib344gvdhocj4mcsu35oswovo6j5qbixvluzv4bwkgincx6mwjndu` |
+| 20251029-175920 | `5cd6c85fba9a19c44e72ef5911f0c5aae57c564ce21d6debb618de144d13efee` | `bafkreif6y6vezferzmgl7d7oohz3ex6nnblogfnpz6jxdoburbv3ws6ul4` | `bafkreiatwn4x5azcjmruchqqz7nbaswuwuhjvzajyt7zdpchaqagb2brni` |
+| 20251129-095756 | `34c322c1e23c196d6008b77f0ae1749eb6b7f9acd92601303a0692bad9bdb0d9` | `bafkreign3bdr7s7iievfmcqjwdno23uplrbfl3vj54dvvytktdchgyfteq` | `bafkreiceb62hxwqf75bcucqtnitt7zxtkaopbupagkhxawp372abqxn6nu` |
+| 20251129-124015 | `e25fadd35b18e46561a0ae2fe5c3c59ba9b4e6b678ee15fb99b3869d5bf760e8` | `bafkreidoojzv36jmsuvvjyv4ufq3ozofgblmcxcxdt6dxghbkft26i6hm4` | `bafkreibbgne2zcmakoj6d2qn4o4d7elwjrca5othvbos26rqctpznfcjce` |
+| 20251129-152245 | `c5a45041dfcd92574291550a23115c940815a1ea1d6665dbc9efdc41b5938b5a` | `bafkreibhyblql5v5243e2acsma7gvyjndsqj5rbwyakt6k6hkavgidevay` | `bafkreicawn7vhoo4nkgdnyar4i4ituisbcje4b2ac63f5cwhvpovzfyn6a` |
+| 20251129-175905 | `66b4ebc22f7421ec6efadba7363ef694634169dc85005e4bcd3a8e223757627a` | `bafkreiaitemaroudoglwh7t3eviaqmfkpub3xrb62lifalbq5n6npt724u` | `bafkreidwossvsytobukobsgu2yyjqhox7kynqfpldlgzs5rm6xndjpc2ey` |
 
-Existen ademas anclas v1 anteriores (formato single-op, 6 keys) en la misma cuenta. Las v2 las complementan agregando los metadatos legibles sin sobreescribir la prueba de integridad.
+Setup TX (one-time del proyecto, v1): `d7fd1582de3bbe81d73bc1d885079c681dd1a64b4970da3e66b5008b74f7e3f6`
+
+**Verificacion end-to-end (sanity check 2026-05-03 04:18 UTC):** `curl https://gateway.pinata.cloud/ipfs/bafkreib344gvdhocj4mcsu35oswovo6j5qbixvluzv4bwkgincx6mwjndu` retorna el JSON original del output `20251029-060211` correctamente, recuperable desde gateway publico sin credenciales.
 
 Logs en `scripts/anchors_log_*.json` (commiteados).
 
