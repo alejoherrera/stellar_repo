@@ -1,0 +1,19 @@
+{
+  "anchored_by": "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR",
+  "network": "testnet",
+  "results": [
+    {
+      "output_id": "20251029-060211",
+      "json_file": "20251029-060211.json",
+      "image_file": "20251029-060211.jpg",
+      "json_hash_hex": "54cedc6aff39f1d4beeafdbe9dbba3520b567da6a74962f076f5bc7e3af704df",
+      "image_hash_hex": "1d429b7d04c6a18401f9aa415d3f616d30b49d29758e035188487e5e1601a7f4",
+      "stellar_data_key": "diara:20251029-060211",
+      "stellar_data_value_hex": "54cedc6aff39f1d4beeafdbe9dbba3520b567da6a74962f076f5bc7e3af704df1d429b7d04c6a18401f9aa415d3f616d30b49d29758e035188487e5e1601a7f4",
+      "tx_hash": "9a356d3fe74f581dcf1e53a5008e6e2b4abebf44cf9d6c136793e605c157a83c",
+      "ledger": 2354439,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/9a356d3fe74f581dcf1e53a5008e6e2b4abebf44cf9d6c136793e605c157a83c",
+      "anchored_at_utc": "2026-05-03T03:36:54.869930+00:00"
+    }
+  ]
+}

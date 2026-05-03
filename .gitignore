@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+~$*
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Logs de anclajes son evidencia publica (hashes y tx ids), se commitean.
+# El .env con el secret testnet NUNCA se commitea.
+
+# Soroban / Rust artifacts (cuando aparezcan)
+target/
+**/*.rs.bk
+
+# Cache local de testnet
+.stellar/
