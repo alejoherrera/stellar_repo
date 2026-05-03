@@ -153,7 +153,7 @@ def main():
     print(f"[INFO] Probando {test_url}")
     r = requests.get(test_url, timeout=30, allow_redirects=True)
     print(f"[RESULT] HTTP {r.status_code}, content-length={len(r.content)}")
-    if r.status_code == 200 and "dIAra" in r.text:
+    if r.status_code == 200 and "Monitoreo" in r.text and "stellar.expert" in r.text:
         print(f"[OK] Deploy exitoso! Abrir: {test_url}")
     else:
         print(f"[WARN] Status inesperado o contenido no esperado. Inspeccionar manualmente.")
