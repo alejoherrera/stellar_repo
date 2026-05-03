@@ -31,7 +31,13 @@ Una arquitectura por **fases** que parte del **anclaje en Stellar de la evidenci
 
 ## Specs
 
-- [Etapa 1 — Gemelo de obra publica](docs/specs/2026-04-30_etapa1_gemelo_obra_publica.md) — primer paso construible, sin tokenizacion real.
+Specs vigentes (modelo de fases vigente desde Constitution v0.2):
+
+- [Fase 1 — Anclaje en Stellar de outputs de dIAra](docs/specs/2026-05-02_fase1_anclaje_stellar.md) — primer paso construible. Imagenes raw en IPFS, transacciones nativas Stellar (sin Soroban). Borrador para revision.
+- [Fase 2 — Gemelo de transparencia con alertas Soroban](docs/specs/2026-05-02_fase2_gemelo_transparencia.md) — registro de pagos SICOP/Hacienda + smart contracts consultivos que emiten alertas. Borrador para revision. Pre-requisito: Fase 1 desplegada en mainnet.
+- Fase 3 — Bono tokenizado piloto: spec pendiente de redactar (bloqueada por dependencias no-tecnicas, ver `docs/09_roadmap_etapas.md`).
+
+Spec historica del modelo previo (3 etapas con escrow): no se redactó archivo final; el modelo fue reemplazado en CONSTITUTION v0.2 antes de llegar a codigo.
 
 ## Constitucion
 

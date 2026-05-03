@@ -26,7 +26,7 @@ Documento operativo. La definicion **normativa** de las fases vive en `CONSTITUT
 **Lo que se le exige como proveedor de insumos al stellar_repo:**
 - Llave Stellar designada como "validador IA" para firmar sus outputs.
 - SLA de disponibilidad y reproducibilidad del modelo (a definir en spec Fase 1).
-- Almacenamiento durable de imagenes raw (GCS/IPFS) con CID/URL estable.
+- Almacenamiento durable de imagenes raw (preferentemente IPFS con pinning service contratado por anchor-service) con CID estable.
 - Procedimiento documentado de incident response cuando un output es invalidado retroactivamente.
 
 dIAra no vive en este repo. Su gobierno propio es responsabilidad de su autor; este repo solo consume sus outputs bajo las garantias listadas.
@@ -53,7 +53,7 @@ dIAra no vive en este repo. Su gobierno propio es responsabilidad de su autor; e
 - Transacciones nativas Stellar (`manageData` con hash, o `payment` con memo). **No Soroban en esta fase.**
 - Backend de ingesta: FastAPI (Python) o Express (Node), eleccion final por spec.
 - Persistencia de metadata off-chain: PostgreSQL en Cloud SQL (`mivisor-db`).
-- Imagenes raw: GCS bucket dedicado con clase Coldline tras 90 dias.
+- Imagenes raw: **IPFS** via servicio de pinning (Pinata u otro a definir en spec). El CID resultante es lo que se ancla en Stellar; cualquier tercero puede re-pinear el contenido para garantizar disponibilidad descentralizada.
 
 **Riesgos abiertos:**
 - Que dIAra cambie su esquema de outputs sin previo aviso. Mitigacion: spec define versionado de esquema; el ingestor rechaza outputs con esquema desconocido.
