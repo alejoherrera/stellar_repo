@@ -18,16 +18,39 @@ Una arquitectura por **fases** que parte del **anclaje en Stellar de la evidenci
 
 ## Indice de documentos
 
+### Disponibles
+
 1. [Motivacion y contexto](docs/01_motivacion_y_contexto.md) — el problema que se busca resolver y por que Stellar.
 2. [Casos de uso](docs/02_casos_de_uso.md) — desde notarizacion pasiva hasta bono tokenizado.
-3. [Arquitectura propuesta](docs/03_arquitectura_propuesta.md) — capas on-chain y off-chain, integracion con sistema bancario tradicional.
-4. [Comparativa de blockchains](docs/04_comparativa_blockchains.md) — Stellar vs Hedera HCS vs Polygon/EAS vs Algorand vs Arweave.
-5. [Validacion ciudadana](docs/05_validacion_ciudadana.md) — cuatro capas y limitaciones honestas.
-6. [Tokenizacion y banco de desarrollo](docs/06_tokenizacion_banco_desarrollo.md) — cinco variantes de instrumento y precedentes internacionales.
-7. [Interoperabilidad bancaria](docs/07_interoperabilidad_bancaria.md) — SEPs, anchors, gap costarricense.
-8. [Marco regulatorio CR](docs/08_marco_regulatorio_cr.md) — SUGEVAL, SUGEF, Ley 7732, Ley 7428.
-9. [Roadmap por fases](docs/09_roadmap_etapas.md) — Fase 0 (dIAra externa) -> Fase 1 (anclaje en Stellar) -> Fase 2 (gemelo de transparencia + alertas) -> Fase 3 (bono tokenizado), con fallback Fase 2.5 (escrow piloto).
-10. [Dudas pendientes](docs/10_dudas_pendientes.md) — preguntas R40 sin responder antes de avanzar.
+3. [Roadmap por fases](docs/09_roadmap_etapas.md) — Fase 0 (dIAra externa) → Fase 1 (anclaje en Stellar) → Fase 2 (gemelo de transparencia + alertas) → Fase 3 (bono tokenizado), con fallback Fase 2.5 (escrow piloto).
+4. [Open Anchor Schema v1 (CC0)](docs/SCHEMA.md) — contrato publico on-chain para que terceros construyan sobre los datos sin permiso.
+
+### Specs (R36 spec-driven development)
+
+- [Fase 1 — Anclaje en Stellar de outputs de dIAra](docs/specs/2026-05-02_fase1_anclaje_stellar.md) — schema v3 implementado en testnet.
+- [Fase 2 — Gemelo de transparencia con alertas Soroban](docs/specs/2026-05-02_fase2_gemelo_transparencia.md) — pre-requisito: Fase 1 en mainnet.
+
+### Pendientes (a redactar segun avance del roadmap)
+
+- Arquitectura propuesta detallada
+- Comparativa de blockchains (Stellar vs Hedera HCS vs Polygon/EAS vs Algorand vs Arweave)
+- Validacion ciudadana — cuatro capas y limitaciones
+- Tokenizacion y banco de desarrollo — variantes de instrumento y precedentes
+- Interoperabilidad bancaria — SEPs, anchors, gap costarricense
+- Marco regulatorio CR — SUGEVAL, SUGEF, Ley 7732, Ley 7428
+- Spec Fase 3 (bloqueada por dependencias no-tecnicas: partner bancario, regulatorio)
+- Dudas pendientes — preguntas R40 sin responder
+
+## SDKs
+
+- [`sdk/py/`](sdk/py/) — Python SDK (MIT). `pip install -e ./sdk/py` o desde GitHub.
+- [`sdk/js/`](sdk/js/) — JavaScript SDK (MIT). Importable directo en navegador via `https://www.obrapublica.info/static/monitor-as-a-service.js` o como ES module en Node 18+.
+
+## Sample apps
+
+- [`viewer/`](viewer/) — viewer principal en `/stellar`.
+- [`viewer/deploy/stellar_timelapse.html`](viewer/deploy/stellar_timelapse.html) — timelapse animado en `/stellar/timelapse`.
+- Dev hub: https://www.obrapublica.info/stellar/dev
 
 ## Specs
 
@@ -61,6 +84,8 @@ La ponencia describe el "que" y el "por que"; este repo describe el "como" y con
 
 Pendiente de definir. Por defecto: todos los derechos reservados hasta que se defina si se libera bajo MIT, Apache-2.0 o licencia restringida (en caso de adopcion institucional).
 
-## Contacto
+## Autores
 
-Master Juan Alejandro Herrera Lopez — alejandroherreracr@gmail.com
+- Master Juan Alejandro Herrera Lopez — alejandroherreracr@gmail.com
+- Andres Herrera Monge, CEO Mivisor — andres.herrera@mivisor.com
+- Claude (Anthropic AI assistant) — co-autor de implementacion (codigo, schema, SDKs)

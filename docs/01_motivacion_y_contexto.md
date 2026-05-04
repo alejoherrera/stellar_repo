@@ -42,7 +42,7 @@ Cuatro razones tecnicas y una de oportunidad:
 
 ## Por que **no** otra cadena (resumen)
 
-Esto se desarrolla en `04_comparativa_blockchains.md`, pero en breve:
+Comparativa detallada queda como documento pendiente; en breve:
 
 - **Hedera HCS** es ligeramente mejor para puro timestamping de mensajes ordenados. Pierde en emision de assets y en ecosistema LATAM.
 - **Polygon / Ethereum L2s** son mas maduros para attestations (EAS) pero costos variables y ecosistema mas orientado a DeFi que a banca regulada.
@@ -61,18 +61,18 @@ Ninguna decision esta cerrada — la Constitucion fija Stellar como stack inicia
 
 ## Stakeholders potenciales
 
-| Stakeholder | Rol potencial | Friccion estimada |
-|-------------|---------------|-------------------|
-| **CGR** | Observador privilegiado, validador externo | Baja — alineado con su mandato |
-| **BCIE** | Emisor de bono tokenizado, financiador piloto | Media — requiere convencer a comite tecnico |
-| **BCCR** | Eventual emisor de CBDC compatible | Alta — horizonte largo, exploratorio |
-| **SUGEVAL** | Regulador del bono | Alta — primer caso, requiere precedente |
-| **SUGEF** | Regulador de activos virtuales / KYC | Media — marco existente (12-21) |
-| **MOPT, municipalidades** | Usuarios primarios del sistema | Media — adopcion politica |
-| **Banco Popular, IFAM** | Alternativas domesticas a BCIE | Alta — estructura mas conservadora |
-| **Cooperacion internacional (BID, BM)** | Financiador piloto inicial | Baja — apetito por innovacion |
-| **Universidades (UCR, TEC, UNED)** | Validacion academica, investigacion | Baja — interes natural |
-| **Estado de la Nacion / Costa Rica Integra** | Aliados sociedad civil | Baja — alineado con mision |
+| Stakeholder | Rol potencial | Modo de involucramiento sugerido |
+|-------------|---------------|----------------------------------|
+| **CGR** | Observador privilegiado, validador externo | Alineamiento con su mandato de fiscalizacion |
+| **BCIE** | Emisor de bono tokenizado, financiador piloto | Interlocucion con comite tecnico |
+| **BCCR** | Eventual emisor de CBDC compatible | Exploratoria, horizonte largo |
+| **SUGEVAL** | Regulador del bono | Acompanamiento regulatorio formal |
+| **SUGEF** | Regulador de activos virtuales / KYC | Acuerdo SUGEF 12-21 como base |
+| **MOPT, municipalidades** | Usuarios primarios del sistema | Piloto institucional con caso concreto |
+| **Banco Popular, IFAM** | Alternativas domesticas a BCIE | Interlocucion con area de innovacion |
+| **Cooperacion internacional (BID, BM)** | Financiador piloto inicial | Alineamiento con agenda de innovacion publica |
+| **Universidades (UCR, TEC, UNED)** | Validacion academica, investigacion | Convenio de investigacion conjunta |
+| **Estado de la Nacion / Costa Rica Integra** | Aliados sociedad civil | Alianza temprana, alineamiento de mision |
 
 ## Origen de esta exploracion
 

@@ -5,7 +5,10 @@
 **License:** CC0 1.0 Universal (public domain)
 **Canonical URL:** https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md
 **Public viewer:** https://www.obrapublica.info/stellar
-**Maintainer:** Master Juan Alejandro Herrera Lopez (a titulo personal)
+**Authors:**
+- Master Juan Alejandro Herrera Lopez <alejandroherreracr@gmail.com>
+- Andres Herrera Monge, CEO Mivisor <andres.herrera@mivisor.com>
+- Claude (Anthropic AI assistant) <noreply@anthropic.com>
 
 This document describes the **public on-chain contract** of the Monitor as a Service
 (MaaS) project. Anyone can build dashboards, bots, alerts, mobile apps or analytic

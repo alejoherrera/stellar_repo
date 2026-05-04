@@ -4,7 +4,11 @@ version = "1.0.0"
 description = "Reference Python SDK for the Monitor as a Service Open Schema v1 (Stellar + IPFS)"
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "Juan Alejandro Herrera Lopez", email = "alejandroherreracr@gmail.com" }]
+authors = [
+    { name = "Master Juan Alejandro Herrera Lopez", email = "alejandroherreracr@gmail.com" },
+    { name = "Andres Herrera Monge (CEO Mivisor)", email = "andres.herrera@mivisor.com" },
+    { name = "Claude (Anthropic AI assistant)", email = "noreply@anthropic.com" },
+]
 requires-python = ">=3.9"
 dependencies = ["requests>=2.28"]
 

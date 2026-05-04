@@ -1,6 +1,6 @@
 # 02 — Casos de uso
 
-Cinco casos de uso identificados, ordenados de menor a mayor ambicion. No son alternativos: son **capas que se acumulan**. La etapa 1 implementa solo el caso A; la etapa 3 los combina todos.
+Cinco casos de uso identificados, ordenados de menor a mayor ambicion. No son alternativos: son **capas que se acumulan**. La Fase 1 (anclaje en Stellar) implementa caso A. La Fase 2 (gemelo de transparencia) suma B y C. La Fase 3 (bono tokenizado) los combina todos via D y E. Ver `09_roadmap_etapas.md` y `CONSTITUTION.md §10` para la hoja de fases vigente.
 
 ---
 
@@ -31,7 +31,7 @@ Cinco casos de uso identificados, ordenados de menor a mayor ambicion. No son al
 
 **Por que:** el blockchain prueba inmutabilidad, no veracidad. La validacion ciudadana convierte la inmutabilidad en accountability real.
 
-**Limitaciones honestas:** liveness de fotos, GPS spoofing, sybil attacks, friccion de wallet. Ver `05_validacion_ciudadana.md` para detalle.
+**Limitaciones honestas:** liveness de fotos, GPS spoofing, sybil attacks, friccion de wallet. Doc detallado de validacion ciudadana queda como pendiente.
 
 **Dependencias:** caso A (sin reportes anclados, no hay nada que validar).
 
@@ -52,7 +52,7 @@ Cinco casos de uso identificados, ordenados de menor a mayor ambicion. No son al
 
 **Dependencias:** casos A y B son insumos del gemelo.
 
-**Esta es la base de la Etapa 1 del roadmap.** Politicamente factible hoy, sin reforma legal.
+**Esta es la base de la Fase 2 del roadmap actual.** Politicamente factible hoy, sin reforma legal. (Nota: en una iteracion anterior del roadmap este caso era Etapa 1; el modelo vigente lo posiciona como Fase 2 con dIAra como Fase 0 externa y Fase 1 = anclaje minimo.)
 
 ---
 
@@ -88,7 +88,7 @@ Penalidades por atraso, devolucion de remanentes y reasignacion en caso de incum
 
 **Por que:** combina financiamiento + transparencia + escrow programable en un instrumento financiero unico que **no existe hoy en LATAM en produccion**. Atrae capital institucional internacional (apetito ESG / impacto) hacia infraestructura costarricense con auditabilidad completa.
 
-**Variantes alternativas analizadas en `06_tokenizacion_banco_desarrollo.md`:**
+**Variantes alternativas (analisis detallado pendiente como documento separado):**
 
 1. Bono tokenizado puro (la que se describe arriba)
 2. Stablecoin del banco de desarrollo
@@ -162,12 +162,16 @@ Penalidades por atraso, devolucion de remanentes y reasignacion en caso de incum
       - Iniciar disputas
 ```
 
-## Que se construye primero
+## Que se construye primero (modelo vigente)
 
-**Etapa 1 (Caso A + Caso C basico):** gemelo de transparencia sobre una obra piloto, sin tokenizacion real. Demuestra el flujo de eventos + IA + viewer publico. Politicamente factible hoy, costo bajo, riesgo bajo, valor demostrativo alto.
+**Fase 0 (externa):** dIAra produce datos analizados por IA + imagenes. Ya desplegado, fuera del alcance de este repo.
 
-**Etapa 2 (Caso D):** escrow programable con USDC, en piloto financiado por cooperacion internacional. Ya hay flujo de valor on-chain, pero con monto controlado y aval institucional especifico.
+**Fase 1 (Caso A):** anclaje minimo en Stellar de los outputs de dIAra. Sin Soroban, sin pagos. Ya implementada en testnet (ver `specs/2026-05-02_fase1_anclaje_stellar.md`).
 
-**Etapa 3 (Caso E):** bono tokenizado real emitido por banco de desarrollo, con escrow + transparencia + IA + ciudadania integrados. Requiere acompanamiento regulatorio.
+**Fase 2 (Caso B + Caso C):** gemelo de transparencia que extiende Fase 1 con eventos de pago de SICOP/Hacienda + alertas via Soroban. Sin dinero on-chain. Spec disponible en `specs/2026-05-02_fase2_gemelo_transparencia.md`.
 
-Detalle en `09_roadmap_etapas.md`.
+**Fase 3 (Caso E, bono tokenizado):** combina todo. Requiere partner bancario, regulatorio, anchor CRC<->Stellar, custodia institucional.
+
+**Fallback Fase 2.5 (Caso D, escrow piloto):** activable si Fase 3 no logra partner bancario en 18 meses.
+
+Detalle en `09_roadmap_etapas.md` y normativo en `CONSTITUTION.md §10`.

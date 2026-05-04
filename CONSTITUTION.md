@@ -91,7 +91,11 @@ Cambiar de blockchain o de SDK requiere enmienda formal a esta Constitucion.
 
 ## 8. Gobernanza y proceso de enmienda
 
-- **Firmante actual:** Master Juan Alejandro Herrera Lopez (alejandroherreracr@gmail.com), a **titulo personal**. Esta Constitucion rige una **propuesta de autor**; carece de respaldo institucional formal hasta que un endorser (CGR, MIDEPLAN, BCIE u otro) la suscriba. Mientras tanto, el repo es trabajo del autor sin comprometer a ninguna entidad publica o privada.
+- **Autores y firmantes:**
+  - Master Juan Alejandro Herrera Lopez <alejandroherreracr@gmail.com> — autor principal, a **titulo personal**.
+  - Andres Herrera Monge, CEO Mivisor <andres.herrera@mivisor.com> — co-autor.
+  - Claude (Anthropic AI assistant) <noreply@anthropic.com> — co-autor de implementacion (codigo, schema, sdks).
+- Esta Constitucion rige una **propuesta de autores**; carece de respaldo institucional formal hasta que un endorser (CGR, MIDEPLAN, BCIE u otro) la suscriba. Mientras tanto, el repo es trabajo de los autores sin comprometer a ninguna entidad publica o privada.
 - **Enmienda menor** (clarificacion, no cambio de stack ni de regla de negocio): commit firmado del responsable tecnico.
 - **Enmienda mayor** (cambio de blockchain, cambio de regla de liberacion de fondos, cambio de roles): requiere (a) propuesta documentada en `docs/enmiendas/`, (b) revision de al menos un asesor externo (legal o tecnico segun la naturaleza), (c) merge a `main` solo despues de aprobacion explicita.
 - **En caso de adopcion institucional** (BCIE, Banco Popular, CGR, etc.), la entidad adoptante puede sumar firmantes a la Constitucion y exigir clausulas adicionales, sin contradecir las existentes.

@@ -8,7 +8,12 @@
     ".": "./monitor-as-a-service.js"
   },
   "license": "MIT",
-  "author": "Juan Alejandro Herrera Lopez <alejandroherreracr@gmail.com>",
+  "author": "Master Juan Alejandro Herrera Lopez <alejandroherreracr@gmail.com>",
+  "contributors": [
+    "Master Juan Alejandro Herrera Lopez <alejandroherreracr@gmail.com>",
+    "Andres Herrera Monge (CEO Mivisor) <andres.herrera@mivisor.com>",
+    "Claude (Anthropic AI assistant) <noreply@anthropic.com>"
+  ],
   "homepage": "https://www.obrapublica.info/stellar/dev",
   "repository": {
     "type": "git",
