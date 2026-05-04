@@ -23,3 +23,6 @@ target/
 
 # Cache local de testnet
 .stellar/
+
+# Dashboard HTML generado por examples/04_wow_dashboard.py
+sdk/py/dashboard.html
