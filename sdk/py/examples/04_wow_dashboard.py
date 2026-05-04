@@ -260,8 +260,7 @@ def main():
         paper_bgcolor="#f8fafc",
     )
     # Empuja los subplot_titles ligeramente abajo para que no se solapen con el title principal
-    for ann in fig["layout"]["annotations"]:
-        ann["y"] = ann.get("y", 1) - 0.02
+    fig.update_annotations(yshift=-15)
     fig.update_xaxes(title_text="Datetime", row=2, col=1)
     fig.update_yaxes(title_text="Personas", row=2, col=1)
 
