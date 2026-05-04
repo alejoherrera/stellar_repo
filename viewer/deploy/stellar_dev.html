@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monitor as a Service — Devs</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+      background: #f6f7f9;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+    header {
+      border-bottom: 2px solid #1a73e8;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+    }
+    h1 { margin: 0 0 0.5rem; font-size: 1.7rem; }
+    h2 { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; }
+    h3 { margin-top: 1.5rem; }
+    code { background: #eef2ff; padding: 1px 6px; border-radius: 3px; font-size: 0.88em; word-break: break-all; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+    a { color: #1a73e8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 2px 10px;
+      border-radius: 999px;
+      margin-right: 0.5rem;
+    }
+    .pill.cc0 { background: #dcfce7; color: #166534; }
+    .pill.mit { background: #fef3c7; color: #854d0e; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+    }
+    .card h3 { margin-top: 0; }
+    .card p { font-size: 0.9rem; margin: 0.4rem 0 0.6rem; }
+    .meta { font-size: 0.85rem; color: #6b7280; }
+    .toc {
+      background: white;
+      border-left: 4px solid #1a73e8;
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.92rem;
+    }
+    .toc a { display: block; padding: 2px 0; }
+    .quick-links {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0 0;
+    }
+    .quick-links li { margin: 0.25rem 0; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Monitor as a Service — Developer Hub</h1>
+  <p>
+    <span class="pill">Open Schema v1</span>
+    <span class="pill cc0">Schema CC0</span>
+    <span class="pill mit">SDKs MIT</span>
+  </p>
+  <p style="color:#4b5563;">
+    Construí tu propio dashboard, bot, alerta o pipeline de análisis sobre datos de monitoreo de obra pública anclados en Stellar e IPFS. Sin API keys, sin backend centralizado, sin permisos.
+  </p>
+</header>
+
+<div class="toc">
+  <strong>En esta página:</strong>
+  <a href="#concepto">1. Concepto</a>
+  <a href="#publisher">2. Datos del publisher en vivo</a>
+  <a href="#schema">3. Schema spec</a>
+  <a href="#quickstart">4. Quickstart en 30 segundos</a>
+  <a href="#sdks">5. SDKs (Python, JavaScript)</a>
+  <a href="#raw">6. Acceso directo (sin SDK)</a>
+  <a href="#ideas">7. Ideas para construir</a>
+</div>
+
+<h2 id="concepto">1. Concepto</h2>
+<p>
+  Un <strong>publisher</strong> de Monitor as a Service ancla en Stellar la integridad de observaciones de obra pública (datos + imágenes producidos por sistemas de IA como dIAra). El contenido vive en IPFS, content-addressable. Cualquiera puede:
+</p>
+<ol>
+  <li>Leer la cuenta del publisher en Horizon (público, sin auth).</li>
+  <li>Recuperar el contenido desde cualquier gateway IPFS público.</li>
+  <li>Recalcular SHA-256 y comprobar que coincide con el ancla on-chain.</li>
+</ol>
+<p>
+  Eso significa que <strong>vos no dependés de nuestra API</strong>. Si esta página o la convenience API caen, la data sigue ahí, verificable, accesible. Lo único que necesitás es el schema y la public key del publisher.
+</p>
+
+<h2 id="publisher">2. Publisher en vivo (Stellar testnet)</h2>
+<div class="card">
+  <h3>circunvalacion-cr</h3>
+  <p class="meta">Monitoreo ciudadano de la Circunvalación de San José, en cooperación con LanammeUCR.</p>
+  <p>
+    <strong>Account public key:</strong><br>
+    <code>GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR</code>
+  </p>
+  <p>
+    <strong>Network:</strong> Stellar testnet<br>
+    <strong>Horizon endpoint:</strong> <code>https://horizon-testnet.stellar.org</code><br>
+    <strong>Stellar.expert:</strong>
+    <a href="https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" target="_blank" rel="noopener">ver cuenta</a><br>
+    <strong>Viewer público:</strong>
+    <a href="/stellar">obrapublica.info/stellar</a>
+  </p>
+</div>
+
+<h2 id="schema">3. Schema spec (CC0)</h2>
+<p>
+  El contrato público que define exactamente qué hay on-chain y cómo decodearlo. Versión 1.0.0.
+</p>
+<ul class="quick-links">
+  <li><a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md" target="_blank" rel="noopener">SCHEMA.md en GitHub</a> — fuente canónica del schema</li>
+</ul>
+
+<h2 id="quickstart">4. Quickstart en 30 segundos</h2>
+
+<h3>Bash + jq</h3>
+<pre><code>ACCOUNT="GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR"
+HORIZON="https://horizon-testnet.stellar.org"
+
+curl -s "$HORIZON/accounts/$ACCOUNT" | jq '.data | keys[] | select(startswith("diara:"))' | head
+</code></pre>
+
+<h3>Python (con SDK)</h3>
+<pre><code>pip install -e ./sdk/py  # desde el repo
+</code></pre>
+<pre><code>from monitor_as_a_service import Client
+
+client = Client.testnet("GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR")
+for o in client.outputs():
+    print(o.output_id, o.workers, o.phase, o.image_url)
+
+# Verificación criptográfica:
+result = client.verify("20251029-060211")
+print("JSON match:", result.json_ok, "Image match:", result.image_ok)
+</code></pre>
+
+<h3>JavaScript (browser, sin build)</h3>
+<pre><code>&lt;script type="module"&gt;
+  import { Client } from "/static/monitor-as-a-service.js";
+  const client = Client.testnet("GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR");
+  const outputs = await client.outputs();
+  console.log(outputs.length, "anchors found");
+&lt;/script&gt;
+</code></pre>
+
+<h2 id="sdks">5. SDKs de referencia</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Python</h3>
+    <p>Cliente read-only, ~150 líneas. Iterador de outputs, verificación de hashes, fallback de gateways.</p>
+    <p class="meta">Licencia: MIT &middot; Python 3.9+</p>
+    <p>
+      <a href="https://github.com/alejoherrera/stellar_repo/tree/main/sdk/py" target="_blank" rel="noopener">Código fuente</a> &middot;
+      <a href="https://github.com/alejoherrera/stellar_repo/tree/main/sdk/py/examples" target="_blank" rel="noopener">Ejemplos</a>
+    </p>
+  </div>
+  <div class="card">
+    <h3>JavaScript</h3>
+    <p>ES module único. Funciona en navegador (no requiere build) y Node 18+. Usa <code>fetch</code> y <code>crypto.subtle</code> nativos.</p>
+    <p class="meta">Licencia: MIT &middot; Node 18+ / browsers modernos</p>
+    <p>
+      <a href="/static/monitor-as-a-service.js" target="_blank">Descargar</a> &middot;
+      <a href="https://github.com/alejoherrera/stellar_repo/tree/main/sdk/js" target="_blank" rel="noopener">Código fuente</a>
+    </p>
+  </div>
+</div>
+
+<h2 id="raw">6. Acceso directo (sin SDK)</h2>
+<p>
+  Cuando el SDK no esté disponible para tu lenguaje, podés implementar un cliente con tres pasos: leer Horizon, decodear base64, y opcionalmente fetchear desde IPFS para verificar.
+</p>
+<pre><code># Listar todos los outputs anclados (key + valor base64)
+curl -s "https://horizon-testnet.stellar.org/accounts/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" \
+  | jq '.data | to_entries | map(select(.key | startswith("diara:")))'
+
+# Leer maquinaria de un output específico
+curl -s "https://horizon-testnet.stellar.org/accounts/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" \
+  | jq -r '.data["diara:20251029-060211:machinery"]' | base64 -d
+</code></pre>
+<p>
+  Ver <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md#7-code-examples-minimum-viable-consumer" target="_blank">SCHEMA §7</a> para más ejemplos.
+</p>
+
+<h2 id="ideas">7. Ideas para construir</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Bot de Telegram / Discord</h3>
+    <p>Postea cuando entra un nuevo ancla, o cuando se detecte una anomalía (ej. <code>workers=0</code> en hora laboral, hito sin evidencia, atraso en cronograma).</p>
+  </div>
+  <div class="card">
+    <h3>Timelapse animado</h3>
+    <p>Reproducí las imágenes de una obra como timelapse usando los CIDs en orden cronológico — con verificación criptográfica visible.</p>
+  </div>
+  <div class="card">
+    <h3>Mapa interactivo</h3>
+    <p>Cuando se agreguen coordenadas geográficas a la metadata, mapear obras activas con popup por output.</p>
+  </div>
+  <div class="card">
+    <h3>Email digest</h3>
+    <p>Resumen semanal automático: ¿qué obras tuvieron actividad? ¿cuántas personas-hora? ¿qué etapa constructiva avanzó?</p>
+  </div>
+  <div class="card">
+    <h3>Dataset OSINT en CSV</h3>
+    <p>Cron que dumpea todo a CSV/Parquet diariamente y lo publica para uso de periodismo de datos. Ver <code>examples/03_export_csv.py</code>.</p>
+  </div>
+  <div class="card">
+    <h3>Verificador independiente</h3>
+    <p>App que solo se dedique a re-pinear contenido en otros nodos IPFS y atestiguar su recuperabilidad — un "second IPFS notary".</p>
+  </div>
+</div>
+
+<footer style="margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; font-size: 0.85rem; color: #6b7280;">
+  <p>
+    Monitor as a Service Open Schema y SDKs son mantenidos por Master Juan Alejandro Herrera López a título personal. El schema es de dominio público (CC0). Los SDKs son MIT. Fork, copia, redistribuí — el objetivo es que esto funcione sin nosotros.
+  </p>
+  <p>
+    Issues, PRs, ideas: <a href="https://github.com/alejoherrera/stellar_repo" target="_blank">github.com/alejoherrera/stellar_repo</a>
+  </p>
+</footer>
+
+</body>
+</html>

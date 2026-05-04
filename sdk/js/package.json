@@ -1,0 +1,20 @@
+{
+  "name": "monitor-as-a-service",
+  "version": "1.0.0",
+  "description": "Reference JS SDK for the MaaS Open Schema v1 (Stellar + IPFS).",
+  "main": "monitor-as-a-service.js",
+  "type": "module",
+  "exports": {
+    ".": "./monitor-as-a-service.js"
+  },
+  "license": "MIT",
+  "author": "Juan Alejandro Herrera Lopez <alejandroherreracr@gmail.com>",
+  "homepage": "https://www.obrapublica.info/stellar/dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alejoherrera/stellar_repo",
+    "directory": "sdk/js"
+  },
+  "engines": { "node": ">=18" },
+  "keywords": ["stellar", "ipfs", "transparency", "open-schema", "monitoring", "monitor-as-a-service"]
+}

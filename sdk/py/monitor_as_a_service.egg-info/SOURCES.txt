@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+monitor_as_a_service/__init__.py
+monitor_as_a_service/client.py
+monitor_as_a_service.egg-info/PKG-INFO
+monitor_as_a_service.egg-info/SOURCES.txt
+monitor_as_a_service.egg-info/dependency_links.txt
+monitor_as_a_service.egg-info/requires.txt
+monitor_as_a_service.egg-info/top_level.txt

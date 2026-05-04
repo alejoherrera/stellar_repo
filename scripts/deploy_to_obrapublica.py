@@ -29,19 +29,30 @@ PA_BASE = f"https://www.pythonanywhere.com/api/v0/user/{PA_USER}"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar.html"
+LOCAL_DEV_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar_dev.html"
+LOCAL_JS_SDK = REPO_ROOT / "sdk" / "js" / "monitor-as-a-service.js"
 
 REMOTE_HTML = "/home/alejocr/diara/templates/stellar.html"
+REMOTE_DEV_HTML = "/home/alejocr/diara/templates/stellar_dev.html"
+REMOTE_JS_SDK = "/home/alejocr/diara/static/monitor-as-a-service.js"
 REMOTE_APP_PY = "/home/alejocr/diara/app.py"
 
 ROUTE_MARKER = "@app.route('/stellar')"
+DEV_ROUTE_MARKER = "@app.route('/stellar/dev')"
 ROUTE_BLOCK = """
-# ========== STELLAR VIEWER ROUTE (hackathon 2026) ==========
+# ========== STELLAR VIEWER ROUTES (hackathon 2026) ==========
 @app.route('/stellar')
 def stellar():
-    \"\"\"Viewer de anclas dIAra en Stellar testnet + IPFS\"\"\"
+    \"\"\"Viewer de anclas MaaS en Stellar testnet + IPFS\"\"\"
     logger.debug("Ruta /stellar accedida")
     return render_template('stellar.html')
-# ==========================================================
+
+@app.route('/stellar/dev')
+def stellar_dev():
+    \"\"\"Developer hub: schema spec, SDKs, quickstart para terceros que construyen sobre MaaS.\"\"\"
+    logger.debug("Ruta /stellar/dev accedida")
+    return render_template('stellar_dev.html')
+# ============================================================
 
 """
 
@@ -94,10 +105,26 @@ def pa_reload_webapp(token: str):
 
 def patch_app_py(content: str) -> tuple[str, bool]:
     """Inserta ROUTE_BLOCK antes del bloque blockchain o antes del if __name__.
-    Idempotente: si ROUTE_MARKER ya existe, no hace nada.
+    Idempotente: si ambas rutas ya existen, no hace nada.
     Retorna (nuevo_contenido, modificado)."""
-    if ROUTE_MARKER in content:
+    has_stellar = ROUTE_MARKER in content
+    has_dev = DEV_ROUTE_MARKER in content
+    if has_stellar and has_dev:
         return content, False
+    if has_stellar and not has_dev:
+        # Solo falta /stellar/dev; lo agregamos despues del bloque /stellar existente.
+        dev_only = """
+@app.route('/stellar/dev')
+def stellar_dev():
+    \"\"\"Developer hub: schema spec, SDKs, quickstart para terceros que construyen sobre MaaS.\"\"\"
+    logger.debug("Ruta /stellar/dev accedida")
+    return render_template('stellar_dev.html')
+"""
+        # Insertarlo antes del bloque blockchain o del if __name__
+        blockchain_marker = "# ========== BLOCKCHAIN INTEGRATION =========="
+        if blockchain_marker in content:
+            return content.replace(blockchain_marker, dev_only + "\n" + blockchain_marker, 1), True
+        return content.rstrip() + "\n" + dev_only, True
 
     # Preferencia: insertar antes del bloque blockchain
     blockchain_marker = "# ========== BLOCKCHAIN INTEGRATION =========="
@@ -122,9 +149,17 @@ def main():
 
     token = fetch_pa_token()
 
-    # Paso 1: subir stellar.html
+    # Paso 1: subir stellar.html (viewer)
     html_bytes = LOCAL_HTML.read_bytes()
     pa_upload_file(token, REMOTE_HTML, html_bytes, "stellar.html")
+
+    # Paso 1b: subir stellar_dev.html (dev hub)
+    if LOCAL_DEV_HTML.exists():
+        pa_upload_file(token, REMOTE_DEV_HTML, LOCAL_DEV_HTML.read_bytes(), "stellar_dev.html")
+
+    # Paso 1c: subir SDK JS como static asset (para que devs lo importen via CDN)
+    if LOCAL_JS_SDK.exists():
+        pa_upload_file(token, REMOTE_JS_SDK, LOCAL_JS_SDK.read_bytes(), "monitor-as-a-service.js")
 
     # Paso 2: leer y patchar app.py
     print(f"[INFO] Leyendo {REMOTE_APP_PY}...")

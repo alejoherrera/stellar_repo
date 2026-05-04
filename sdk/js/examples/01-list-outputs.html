@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>MaaS SDK example — list outputs</title>
+  <style>
+    body { font-family: system-ui; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    pre { background: #f0f0f0; padding: 1rem; border-radius: 4px; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 6px 10px; border-bottom: 1px solid #ddd; text-align: left; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>MaaS SDK — listar outputs en navegador</h1>
+  <p>Este ejemplo abre el SDK en el navegador, lee la cuenta de Stellar testnet, y lista los outputs.</p>
+  <div id="status">Cargando…</div>
+  <table id="tbl"></table>
+  <script type="module">
+    import { Client } from "../monitor-as-a-service.js";
+    const ACCOUNT = "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR";
+    const status = document.getElementById("status");
+    const tbl = document.getElementById("tbl");
+    try {
+      const client = Client.testnet(ACCOUNT);
+      const outputs = await client.outputs();
+      status.textContent = `${outputs.length} outputs anclados`;
+      tbl.innerHTML = `<tr><th>output_id</th><th>workers</th><th>phase</th><th>machinery</th><th>image</th></tr>`
+        + outputs.map(o => `<tr>
+          <td>${o.outputId}</td>
+          <td>${o.workers ?? ""}</td>
+          <td>${o.phase ?? ""}</td>
+          <td>${o.machinery ?? ""}</td>
+          <td>${o.imageUrl ? `<a href="${o.imageUrl}" target="_blank">link</a>` : ""}</td>
+        </tr>`).join("");
+    } catch (e) {
+      status.textContent = `Error: ${e.message}`;
+    }
+  </script>
+</body>
+</html>

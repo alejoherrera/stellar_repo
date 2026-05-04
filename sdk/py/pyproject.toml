@@ -1,0 +1,22 @@
+[project]
+name = "monitor-as-a-service"
+version = "1.0.0"
+description = "Reference Python SDK for the Monitor as a Service Open Schema v1 (Stellar + IPFS)"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Juan Alejandro Herrera Lopez", email = "alejandroherreracr@gmail.com" }]
+requires-python = ">=3.9"
+dependencies = ["requests>=2.28"]
+
+[project.urls]
+Homepage = "https://www.obrapublica.info/stellar/dev"
+Schema = "https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md"
+Source = "https://github.com/alejoherrera/stellar_repo/tree/main/sdk/py"
+
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["monitor_as_a_service*"]
