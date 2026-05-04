@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Monitoreo × Stellar — Transparencia verificable de obra publica</title>
+  <title>Monitoreo × Stellar — Transparencia verificable de obra pública</title>
 
   <!-- Spline runtime (web component, sin build) -->
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
@@ -235,7 +235,7 @@
 <!-- ================ HERO ================ -->
 <!--
   SCENE_URL: cambiar este valor por la escena Spline propia cuando este lista.
-  Para el hackathon se puede usar cualquier escena publica de Spline Community
+  Para el hackathon se puede usar cualquier escena pública de Spline Community
   (https://spline.design/community). Si la URL falla, el hero degrada al fondo
   con gradiente radial + acentos de color (sigue luciendo bien).
 -->
@@ -250,9 +250,9 @@
   <div class="hero-content">
     <span class="hero-eyebrow">Hackathon &middot; Transparencia 4.0</span>
     <h1 class="hero-title">Monitoreo <span class="x">×</span> Stellar</h1>
-    <p class="hero-subtitle">Transparencia verificable de obra publica</p>
+    <p class="hero-subtitle">Transparencia verificable de obra pública</p>
     <p class="hero-byline">
-      Inteligencia artificial &middot; <strong>IPFS</strong> &middot; <strong>Blockchain publica</strong>
+      Inteligencia artificial &middot; <strong>IPFS</strong> &middot; <strong>Blockchain pública</strong>
     </p>
     <a href="#contenido" class="scroll-cue">
       <span>Explorar las anclas verificables</span>
@@ -266,21 +266,21 @@
 
 <header>
   <h1>Viewer Monitoreo as a Service — Anclas verificables en Stellar + IPFS</h1>
-  <p>PoC Fase 1 del repositorio <code>stellar_repo</code>. Lee on-chain (Stellar testnet via Horizon), recupera el contenido desde gateway IPFS publico y verifica la integridad criptografica directamente en el navegador.</p>
+  <p>PoC Fase 1 del repositorio <code>stellar_repo</code>. Lee on-chain (Stellar testnet vía Horizon), recupera el contenido desde gateway IPFS público y verifica la integridad criptográfica directamente en el navegador.</p>
   <p>Cuenta Stellar testnet: <code id="account">GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR</code> &middot; <a id="account-link" target="_blank" rel="noopener">ver en stellar.expert</a></p>
 </header>
 
 <section class="project-meta" id="project-meta">
   <h2>Proyecto fiscalizado</h2>
-  <p style="color:#888; font-size:0.85rem;">Cargando metadatos del proyecto desde on-chain...</p>
+  <p style="color:#888; font-size:0.85rem;">Cargando metadatos del proyecto desde on-chain…</p>
 </section>
 
-<div id="status">Cargando datos desde Stellar Horizon...</div>
+<div id="status">Cargando datos desde Stellar Horizon…</div>
 
 <main id="outputs"></main>
 
 <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.85rem; color: #666;">
-  <p>Cualquier ciudadano puede verificar esta data: el sistema es transparente por diseno. La integridad esta garantizada por (a) la inmutabilidad de Stellar y (b) el caracter content-addressable de IPFS (el CID es el hash). El operador del anchor-service no puede falsear retroactivamente.</p>
+  <p>Cualquier ciudadano puede verificar esta data: el sistema es transparente por diseño. La integridad está garantizada por (a) la inmutabilidad de Stellar y (b) el carácter content-addressable de IPFS (el CID es el hash). El operador del anchor-service no puede falsear retroactivamente.</p>
   <p>Stellar Horizon: <code>https://horizon-testnet.stellar.org</code> &middot; IPFS gateway: <code>https://gateway.pinata.cloud/ipfs/</code></p>
 </footer>
 
@@ -448,10 +448,10 @@ async function verifyOutput(output, card) {
   const verImg = card.querySelector(".ver-img");
 
   if (!output.json_cid) {
-    verJson.textContent = "Sin CID JSON anclado (output anclado en version anterior a v3).";
+    verJson.textContent = "Sin CID JSON anclado (output anclado en versión anterior a v3).";
     verJson.className = "verification skip";
   } else {
-    verJson.textContent = "Verificando JSON desde IPFS...";
+    verJson.textContent = "Verificando JSON desde IPFS…";
     verJson.className = "verification pending";
     try {
       const obj = await ipfsLimiter.run(() => fetchFromIPFS(output.json_cid, false));
@@ -461,7 +461,7 @@ async function verifyOutput(output, card) {
         verJson.textContent = `Integridad JSON OK: SHA-256 calculado coincide con on-chain.`;
         verJson.className = "verification ok";
       } else {
-        verJson.textContent = `JSON FALLO: hash on-chain=${output.json_hash_onchain.slice(0,16)}... vs calculado=${computed.slice(0,16)}...`;
+        verJson.textContent = `JSON FALLÓ: hash on-chain=${output.json_hash_onchain.slice(0,16)}… vs calculado=${computed.slice(0,16)}…`;
         verJson.className = "verification failed";
       }
     } catch (e) {
@@ -471,7 +471,7 @@ async function verifyOutput(output, card) {
   }
 
   if (!output.img_cid || !output.image_hash_onchain) {
-    verImg.textContent = "Sin CID de imagen anclado (output anclado en version anterior a v3).";
+    verImg.textContent = "Sin CID de imagen anclado (output anclado en versión anterior a v3).";
     verImg.className = "verification skip";
     return;
   }
@@ -480,7 +480,7 @@ async function verifyOutput(output, card) {
     verImg.className = "verification skip";
     return;
   }
-  verImg.textContent = "Verificando imagen desde IPFS...";
+  verImg.textContent = "Verificando imagen desde IPFS…";
   verImg.className = "verification pending";
   try {
     const buf = new Uint8Array(await ipfsLimiter.run(() => fetchFromIPFS(output.img_cid, true)));
@@ -489,7 +489,7 @@ async function verifyOutput(output, card) {
       verImg.textContent = `Integridad imagen OK: SHA-256 calculado coincide con on-chain.`;
       verImg.className = "verification ok";
     } else {
-      verImg.textContent = `IMAGEN FALLO: hash on-chain=${output.image_hash_onchain.slice(0,16)}... vs calculado=${computed.slice(0,16)}...`;
+      verImg.textContent = `IMAGEN FALLÓ: hash on-chain=${output.image_hash_onchain.slice(0,16)}… vs calculado=${computed.slice(0,16)}…`;
       verImg.className = "verification failed";
     }
   } catch (e) {
@@ -520,7 +520,7 @@ function renderOutputCard(output) {
         this.style.display = "none";
         const ph = document.createElement("div");
         ph.className = "placeholder";
-        ph.textContent = "Imagen no disponible en ningun gateway IPFS (rate limit / red).";
+        ph.textContent = "Imagen no disponible en ningún gateway IPFS (rate limit / red).";
         this.parentElement.appendChild(ph);
       }
     };
@@ -580,12 +580,12 @@ function renderOutputCard(output) {
 
   const verJson = document.createElement("div");
   verJson.className = "verification pending ver-json";
-  verJson.textContent = "Esperando verificacion JSON...";
+  verJson.textContent = "Esperando verificación JSON…";
   infoCol.appendChild(verJson);
 
   const verImg = document.createElement("div");
   verImg.className = "verification pending ver-img";
-  verImg.textContent = "Esperando verificacion imagen...";
+  verImg.textContent = "Esperando verificación imagen…";
   infoCol.appendChild(verImg);
 
   const hashesNote = document.createElement("p");
@@ -604,7 +604,7 @@ function renderProject(projectMap) {
   const container = document.getElementById("project-meta");
   const codes = Object.keys(projectMap);
   if (!codes.length) {
-    container.innerHTML = "<h2>Proyecto fiscalizado</h2><p>(no se encontro setup TX de proyecto)</p>";
+    container.innerHTML = "<h2>Proyecto fiscalizado</h2><p>(no se encontró setup TX de proyecto)</p>";
     return;
   }
   container.innerHTML = "";
@@ -614,17 +614,17 @@ function renderProject(projectMap) {
     wrap.innerHTML = `
       <h2>${p.name || code}</h2>
       <dl>
-        <dt>Codigo</dt><dd><code>${code}</code></dd>
+        <dt>Código</dt><dd><code>${code}</code></dd>
         <dt>Sistema productor</dt><dd>${p.system || "(no informado)"}</dd>
         <dt>Contraparte</dt><dd>${p.partner || "(no informado)"}</dd>
-        <dt>URL publica</dt><dd>${p.url ? `<a href="https://${p.url}" target="_blank" rel="noopener">${p.url}</a>` : "(no informado)"}</dd>
+        <dt>URL pública</dt><dd>${p.url ? `<a href="https://${p.url}" target="_blank" rel="noopener">${p.url}</a>` : "(no informado)"}</dd>
       </dl>
     `;
     container.appendChild(wrap);
   }
 }
 
-// Estado global para el progreso de verificacion lazy
+// Estado global para el progreso de verificación lazy
 const verifyState = { total: 0, done: 0, failed: 0 };
 
 function updateVerifyStatus() {
@@ -633,7 +633,7 @@ function updateVerifyStatus() {
     const kind = failed > 0 ? "" : "ok";
     setStatus(`Listo. ${done}/${total} outputs verificados contra IPFS${failed ? ` (${failed} con error de gateway)` : ""}.`, kind);
   } else {
-    setStatus(`Verificando integridad criptografica: ${done}/${total} completados (lazy: solo los visibles).`, "ok");
+    setStatus(`Verificando integridad criptográfica: ${done}/${total} completados (lazy: solo los visibles).`, "ok");
   }
 }
 
@@ -659,7 +659,7 @@ function setupLazyVerification(cards) {
 
 (async function main() {
   try {
-    setStatus("Cargando datos desde Stellar Horizon...");
+    setStatus("Cargando datos desde Stellar Horizon…");
     const raw = await loadAccountData();
     const { project, outputs } = parseEntries(raw);
     renderProject(project);
@@ -667,7 +667,7 @@ function setupLazyVerification(cards) {
     const list = Object.values(outputs)
       .sort((a, b) => (b.dt || "").localeCompare(a.dt || ""));
 
-    setStatus(`Encontrados ${list.length} output(s) anclados. La verificacion criptografica corre lazy a medida que cada card entra a la vista.`, "ok");
+    setStatus(`Encontrados ${list.length} output(s) anclados. La verificación criptográfica corre lazy a medida que cada card entra a la vista.`, "ok");
 
     const mainEl = document.getElementById("outputs");
     const cards = list.map(o => {
