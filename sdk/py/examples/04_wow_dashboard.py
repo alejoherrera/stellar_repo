@@ -247,16 +247,21 @@ def main():
 
     fig.update_layout(
         title=dict(
-            text=f"<b>Monitor as a Service</b>  | {proj.name if proj else ''}",
+            text=f"<b>Monitor as a Service</b>  |  {proj.name if proj else ''}",
             x=0.02,
+            y=0.97,
+            yanchor="top",
             font=dict(size=20),
         ),
-        height=920,
+        height=980,
         showlegend=False,
-        margin=dict(t=80, b=40, l=40, r=40),
+        margin=dict(t=130, b=40, l=40, r=40),
         plot_bgcolor="white",
         paper_bgcolor="#f8fafc",
     )
+    # Empuja los subplot_titles ligeramente abajo para que no se solapen con el title principal
+    for ann in fig["layout"]["annotations"]:
+        ann["y"] = ann.get("y", 1) - 0.02
     fig.update_xaxes(title_text="Datetime", row=2, col=1)
     fig.update_yaxes(title_text="Personas", row=2, col=1)
 
