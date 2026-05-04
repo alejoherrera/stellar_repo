@@ -1,0 +1,2407 @@
+{
+  "anchored_by": "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR",
+  "network": "testnet",
+  "project_code": "circunvalacion-cr",
+  "results": [
+    {
+      "output_id": "20251003-073611",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-073611.json",
+      "image_file": "20251003-073611.jpg",
+      "json_hash_hex": "e82124a103260b48a53d51210851b283b9cd73483e27cc576a76498296f83c00",
+      "image_hash_hex": "8f1835baaf359dd549c0b2b86b5b226e38e2fdaa4e62f777ebc152657cf85b06",
+      "ipfs": {
+        "image_cid": "bafkreiepda23vlzvtxkutqfsxbvvwitohdrp3ksoml3xp26bkjsxz6c3ay",
+        "json_cid": "bafkreigeizgiubw435z3ayzelt7o6dkyaqfhkkz5lnh7m6qx6kei6c3zpy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiepda23vlzvtxkutqfsxbvvwitohdrp3ksoml3xp26bkjsxz6c3ay",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigeizgiubw435z3ayzelt7o6dkyaqfhkkz5lnh7m6qx6kei6c3zpy"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 07:36:11",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "5de07bd403898a6c048c153a119bbf80d16ec745856ddbcb6bbde8f08f128306",
+      "ledger": 2368023,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/5de07bd403898a6c048c153a119bbf80d16ec745856ddbcb6bbde8f08f128306",
+      "anchored_at_utc": "2026-05-03T22:30:35.717045+00:00"
+    },
+    {
+      "output_id": "20251003-095053",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-095053.json",
+      "image_file": "20251003-095053.jpg",
+      "json_hash_hex": "2ce35b4de0df1441987b365df042645f1a9a201353da91da039563768711ba12",
+      "image_hash_hex": "a58071a29b342bea71bf49e0de3db0039fde2263aca33c70c335e579d1328d34",
+      "ipfs": {
+        "image_cid": "bafkreiffqby2fgzufpvhdp2j4dpd3madt7pcey5mum6hbqzv4v45cmungq",
+        "json_cid": "bafkreicnkm4sa72i5r3cl6ack6fe3naptkn233ta6r37bmgahdhqpb6sfu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiffqby2fgzufpvhdp2j4dpd3madt7pcey5mum6hbqzv4v45cmungq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicnkm4sa72i5r3cl6ack6fe3naptkn233ta6r37bmgahdhqpb6sfu"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 09:50:53",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "7b9da2726c8637571ffe02a76010f605c562e5895e72f1b6d7d7557b6c11720d",
+      "ledger": 2368024,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/7b9da2726c8637571ffe02a76010f605c562e5895e72f1b6d7d7557b6c11720d",
+      "anchored_at_utc": "2026-05-03T22:30:40.816903+00:00"
+    },
+    {
+      "output_id": "20251003-115951",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-115951.json",
+      "image_file": "20251003-115951.jpg",
+      "json_hash_hex": "f20537e031d940cc01cd4d15bb9af8655585fb40a23b75302e92b8bf848033aa",
+      "image_hash_hex": "eb1922111b0e1c1ec4fb26d1c2aea65027afa40f1b6b9d5702a1602d048bbf9e",
+      "ipfs": {
+        "image_cid": "bafkreihlderbcgyodqpmj6zg2hbk5jsqe6x2idy3noovoavbmawqjc57ty",
+        "json_cid": "bafkreiaujb4wcfwigcsytkkoatjvxar5uapcu5huyglcgyn3cunaoz3tr4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihlderbcgyodqpmj6zg2hbk5jsqe6x2idy3noovoavbmawqjc57ty",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaujb4wcfwigcsytkkoatjvxar5uapcu5huyglcgyn3cunaoz3tr4"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 11:59:51",
+        "workers": "1",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "10ad7a04dd60e0ec49ca674b2859287a01993d665cf46343b96fae7f902f188b",
+      "ledger": 2368025,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/10ad7a04dd60e0ec49ca674b2859287a01993d665cf46343b96fae7f902f188b",
+      "anchored_at_utc": "2026-05-03T22:30:45.716865+00:00"
+    },
+    {
+      "output_id": "20251003-120512",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-120512.json",
+      "image_file": "20251003-120512.jpg",
+      "json_hash_hex": "9112f5753ffc2b8a7133613c8280f6dd2c9a4b493f5224e0d7be5754e4b952f8",
+      "image_hash_hex": "3779d0cf51667d2629ca6f2829a38e6c7ce05dc2bdd789451e42f90284b5c17c",
+      "ipfs": {
+        "image_cid": "bafkreibxphim6ulgputctstpfau2hdtmptqf3qv526eukhsc7ebijnobpq",
+        "json_cid": "bafkreicjfcapdey5sibookbyxzfmtnmprwovh2gsvyyda4r32h7hsf5w5y",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibxphim6ulgputctstpfau2hdtmptqf3qv526eukhsc7ebijnobpq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicjfcapdey5sibookbyxzfmtnmprwovh2gsvyyda4r32h7hsf5w5y"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 12:05:12",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "e1a45d88ff44afc6722d81d5489f4b4957acb2c0f7060574d4fb40ce459ea1d2",
+      "ledger": 2368026,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/e1a45d88ff44afc6722d81d5489f4b4957acb2c0f7060574d4fb40ce459ea1d2",
+      "anchored_at_utc": "2026-05-03T22:30:50.817628+00:00"
+    },
+    {
+      "output_id": "20251003-140339",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-140339.json",
+      "image_file": "20251003-140339.jpg",
+      "json_hash_hex": "fad269fdffa546fcdd757628cf1c08d8dc53e32a5bd6a976e026057dedc8a581",
+      "image_hash_hex": "683bee71cb9a5494e7601eca6ec1ce74a0f700e1c9193c0ec62264627332bcea",
+      "ipfs": {
+        "image_cid": "bafkreidihpxhds42kskooya6zjxmdttuud3qbyojde6a5rrcmrrhgmv45i",
+        "json_cid": "bafkreifwyij2673qj4m2l4dbxgjj2qsdmccyddzj3ym2texbg4nohwx52i",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidihpxhds42kskooya6zjxmdttuud3qbyojde6a5rrcmrrhgmv45i",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifwyij2673qj4m2l4dbxgjj2qsdmccyddzj3ym2texbg4nohwx52i"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 14:03:39",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "f69c166d13bda55d7c5906f36bab8a3b735b2f7778c87fe4eee0fcd87aa3c724",
+      "ledger": 2368027,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/f69c166d13bda55d7c5906f36bab8a3b735b2f7778c87fe4eee0fcd87aa3c724",
+      "anchored_at_utc": "2026-05-03T22:30:55.818822+00:00"
+    },
+    {
+      "output_id": "20251003-155634",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251003-155634.json",
+      "image_file": "20251003-155634.jpg",
+      "json_hash_hex": "bd2f30b3eb0ebab2b66df16eabf7182db05780072aed6feff88e0842a00f976b",
+      "image_hash_hex": "200a3c20489edf93c09f2104597ba93bde85d1538b3f33f7955f7f0f6ba2fc75",
+      "ipfs": {
+        "image_cid": "bafkreibabi6case636j4bhzbarmxxkj332c5cu4lh4z7pfk7p4hwxix4ou",
+        "json_cid": "bafkreibkqbwn6dvbxeeikvo6e2liavxaqvvngg7y6fqnqrjyb2ms3kdw4y",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibabi6case636j4bhzbarmxxkj332c5cu4lh4z7pfk7p4hwxix4ou",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibkqbwn6dvbxeeikvo6e2liavxaqvvngg7y6fqnqrjyb2ms3kdw4y"
+      },
+      "metadata_on_chain": {
+        "datetime": "03/10/2025 15:56:34",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "a128df31b7b22160f6b2fc8edabcf1be77d78c9d3d284304b6338e5af9d3e107",
+      "ledger": 2368028,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/a128df31b7b22160f6b2fc8edabcf1be77d78c9d3d284304b6338e5af9d3e107",
+      "anchored_at_utc": "2026-05-03T22:31:00.819053+00:00"
+    },
+    {
+      "output_id": "20251004-070429",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-070429.json",
+      "image_file": "20251004-070429.jpg",
+      "json_hash_hex": "57eea42a99c9f3564a8186c67c277d9367612474ec61b79fcddd172b7d74db1f",
+      "image_hash_hex": "02c631e1eefaefe8a445d4d8cc942ab1f838da3fa8ce6cbfe9d0dcc2640de70d",
+      "ipfs": {
+        "image_cid": "bafkreiacyyy6d3x257ukirou3dgjikvr7a4nup5izzwl72oq3tbgidphbu",
+        "json_cid": "bafkreiaz52cxvfj4gwzxececwxtjqxmlsnkzvora7a6wftmv7taebe24ba",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiacyyy6d3x257ukirou3dgjikvr7a4nup5izzwl72oq3tbgidphbu",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaz52cxvfj4gwzxececwxtjqxmlsnkzvora7a6wftmv7taebe24ba"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 07:04:29",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "0d71e06458bb6ec9c5d6a1a7bb77a0b5e4ff3494e766ccb736b94c8457ce8de4",
+      "ledger": 2368029,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/0d71e06458bb6ec9c5d6a1a7bb77a0b5e4ff3494e766ccb736b94c8457ce8de4",
+      "anchored_at_utc": "2026-05-03T22:31:05.820044+00:00"
+    },
+    {
+      "output_id": "20251004-092953",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-092953.json",
+      "image_file": "20251004-092953.jpg",
+      "json_hash_hex": "e4ab31f48ed375bb51c793eb3839236812eb051109f23ce9caea34b7672cd8b4",
+      "image_hash_hex": "ae676241d71ca6b2b09d991f5f4c2f7c69b022fa33455ac913d13362b3edbef3",
+      "ipfs": {
+        "image_cid": "bafkreifom5redvy4u2zlbhmzd5puyl34ngycf6rtivnmse6rgnrlh3n66m",
+        "json_cid": "bafkreihinm7y2usp7v3ldacvbarq7bf46dhy2szk6ek523q57et5xhtbae",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifom5redvy4u2zlbhmzd5puyl34ngycf6rtivnmse6rgnrlh3n66m",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihinm7y2usp7v3ldacvbarq7bf46dhy2szk6ek523q57et5xhtbae"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 09:29:53",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "015b45fb003b8586bdce4b3dd1dfdf0b718067726e5876e38dd5133f3bc0a6f2",
+      "ledger": 2368030,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/015b45fb003b8586bdce4b3dd1dfdf0b718067726e5876e38dd5133f3bc0a6f2",
+      "anchored_at_utc": "2026-05-03T22:31:10.717446+00:00"
+    },
+    {
+      "output_id": "20251004-115511",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-115511.json",
+      "image_file": "20251004-115511.jpg",
+      "json_hash_hex": "e0ea85b54e8bbbd83f02894c9fb0ac5338d76edbb1335a9a2183c3821762fb46",
+      "image_hash_hex": "e0e253acaa9978b20729b1b3bbe63d6f6f084ba0c701caccf68187e554d5f42c",
+      "ipfs": {
+        "image_cid": "bafkreiha4jj2zkuzpczaoknrwo56mplpn4eexighahfmz5ubq7svjvpufq",
+        "json_cid": "bafkreic3qb6537utfb55idsmksypl2rqghcsblkht3x6t3gpjuad5jz6ki",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiha4jj2zkuzpczaoknrwo56mplpn4eexighahfmz5ubq7svjvpufq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreic3qb6537utfb55idsmksypl2rqghcsblkht3x6t3gpjuad5jz6ki"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 11:55:11",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "709b6a26ce20f94540cd265e31273c6b51c7db72608833a9f1d7619a1e088b67",
+      "ledger": 2368031,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/709b6a26ce20f94540cd265e31273c6b51c7db72608833a9f1d7619a1e088b67",
+      "anchored_at_utc": "2026-05-03T22:31:15.718694+00:00"
+    },
+    {
+      "output_id": "20251004-120033",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-120033.json",
+      "image_file": "20251004-120033.jpg",
+      "json_hash_hex": "6557fafcdadd959704cbd6ed2a42a160fbdf31745ca2913ddd845da04c767d62",
+      "image_hash_hex": "7c179baee27bcf2e56fd9946d688410d0726a40543b076bdae6166645371fe9c",
+      "ipfs": {
+        "image_cid": "bafkreid4c6n25yt3z4xfn7mzi3liqqina4tkibkdwb3l3ltbmzsfg4p6tq",
+        "json_cid": "bafkreibbuq4vew7rzfj572lvgqv5skaeyfxjkllacgici4gppszoki6tcy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreid4c6n25yt3z4xfn7mzi3liqqina4tkibkdwb3l3ltbmzsfg4p6tq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibbuq4vew7rzfj572lvgqv5skaeyfxjkllacgici4gppszoki6tcy"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 12:00:33",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "0ad229826d42a3bbf463f9afa09c782b7052e4bbff8b09927e9fb22acf637399",
+      "ledger": 2368032,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/0ad229826d42a3bbf463f9afa09c782b7052e4bbff8b09927e9fb22acf637399",
+      "anchored_at_utc": "2026-05-03T22:31:20.720214+00:00"
+    },
+    {
+      "output_id": "20251004-135901",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251004-135901.json",
+      "image_file": "20251004-135901.jpg",
+      "json_hash_hex": "a4fe0df7554dfc7e6e2fd48d64d1bf98866b55282798239d10d3b0d266113c20",
+      "image_hash_hex": "d8bd580464214669ac33e4909899d11fcbde02b7773fbe6c50f19e38a77df170",
+      "ipfs": {
+        "image_cid": "bafkreigyxvmaizbbizu2ym7escmjtui7zppafn3xh67gyuhrty4ko7proa",
+        "json_cid": "bafkreihqhfodwin65wh5s36mpj4br7p4fv7hcfvixsqtz3jelqhjia76pq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigyxvmaizbbizu2ym7escmjtui7zppafn3xh67gyuhrty4ko7proa",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihqhfodwin65wh5s36mpj4br7p4fv7hcfvixsqtz3jelqhjia76pq"
+      },
+      "metadata_on_chain": {
+        "datetime": "04/10/2025 13:59:01",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "a5f764f2b3f5fe2bed43228a58d8267204312db1d9a15ca2a027eb9f3bd64916",
+      "ledger": 2368033,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/a5f764f2b3f5fe2bed43228a58d8267204312db1d9a15ca2a027eb9f3bd64916",
+      "anchored_at_utc": "2026-05-03T22:31:25.719309+00:00"
+    },
+    {
+      "output_id": "20251005-070411",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251005-070411.json",
+      "image_file": "20251005-070411.jpg",
+      "json_hash_hex": "42f1dab12b6fe9033222054f5b943e1c0e9c7471e1d2a4093cd7170b3dad8627",
+      "image_hash_hex": "52dc273901192af5278d9eeb88790246b33b06eb66942cae25a48570399557d1",
+      "ipfs": {
+        "image_cid": "bafkreics3qttsaizfl2spdm65oehsasgwm5qn23gsqwk4jneqvydtfkx2e",
+        "json_cid": "bafkreifdril3n47fx67hyk7kdq5kxx6dycbvpir3ozqjpmbhm3f7qm2kou",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreics3qttsaizfl2spdm65oehsasgwm5qn23gsqwk4jneqvydtfkx2e",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifdril3n47fx67hyk7kdq5kxx6dycbvpir3ozqjpmbhm3f7qm2kou"
+      },
+      "metadata_on_chain": {
+        "datetime": "05/10/2025 07:04:11",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "b50a7335ad0d8ad15fea10d4fd4d54981b0960f1f9144d7d7e8e70d77c6b2c20",
+      "ledger": 2368034,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/b50a7335ad0d8ad15fea10d4fd4d54981b0960f1f9144d7d7e8e70d77c6b2c20",
+      "anchored_at_utc": "2026-05-03T22:31:30.827059+00:00"
+    },
+    {
+      "output_id": "20251005-093443",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251005-093443.json",
+      "image_file": "20251005-093443.jpg",
+      "json_hash_hex": "d13ab28baae4bd560dc17e88405a0b5ef2635171d901391fddeaee610bc8c3ca",
+      "image_hash_hex": "c36c2498b5cd1e5554a1f8cfbf80386d56b588c6e267883f64d4784eb55c668a",
+      "ipfs": {
+        "image_cid": "bafkreigdnqsjrnondzkvjipyz67yaodnk22yrrxcm6ed6zgupbhlkxdgri",
+        "json_cid": "bafkreihazon3ajfhhkhs5joinuhnssaehjcipqkd3pderexiwln5copnzq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigdnqsjrnondzkvjipyz67yaodnk22yrrxcm6ed6zgupbhlkxdgri",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihazon3ajfhhkhs5joinuhnssaehjcipqkd3pderexiwln5copnzq"
+      },
+      "metadata_on_chain": {
+        "datetime": "05/10/2025 09:34:43",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "23e59f09b8d64be3e7dc103a1ad35f7522160273bb4e5b045bbc36dfe1a0a84e",
+      "ledger": 2368035,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/23e59f09b8d64be3e7dc103a1ad35f7522160273bb4e5b045bbc36dfe1a0a84e",
+      "anchored_at_utc": "2026-05-03T22:31:35.819914+00:00"
+    },
+    {
+      "output_id": "20251005-115944",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251005-115944.json",
+      "image_file": "20251005-115944.jpg",
+      "json_hash_hex": "aab96e4a53293aedecd21666ed409718b32f5f93965bdd47142a838d6766fb21",
+      "image_hash_hex": "a68c7ae412b21a7996a579c7e47a0071d6bdf3996e5361c2dd9bec98887a6264",
+      "ipfs": {
+        "image_cid": "bafkreifgrr5oievsdj4znjlzy7shuadr2267hgloknq4fxm35smiq6tcmq",
+        "json_cid": "bafkreicq2iyui53sfy5hucm5kmiviajvwitpsd7nj32jglubyh5nv6mg7q",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifgrr5oievsdj4znjlzy7shuadr2267hgloknq4fxm35smiq6tcmq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicq2iyui53sfy5hucm5kmiviajvwitpsd7nj32jglubyh5nv6mg7q"
+      },
+      "metadata_on_chain": {
+        "datetime": "05/10/2025 11:59:44",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "c65f930531d9ebaf5b0bf4b184f2ca10d537b9af6c1fcf1a43209e2c4bff7cbb",
+      "ledger": 2368036,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/c65f930531d9ebaf5b0bf4b184f2ca10d537b9af6c1fcf1a43209e2c4bff7cbb",
+      "anchored_at_utc": "2026-05-03T22:31:40.819291+00:00"
+    },
+    {
+      "output_id": "20251005-120505",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251005-120505.json",
+      "image_file": "20251005-120505.jpg",
+      "json_hash_hex": "3e20cfc9a4f5b41c0d07630b62547d4dd8d49a5c06024ec0c3eff3cee25806d7",
+      "image_hash_hex": "417b82e2426da0ca564889c005bffb5acc3c6d27f24b8510f192d2fc4ad49d7d",
+      "ipfs": {
+        "image_cid": "bafkreicbpoboeqtnudffmsejyac37622zq6g2j7sjocrb4ms2l6evve5pu",
+        "json_cid": "bafkreieabtoclg7vfh2bw7hgddlcfs3p2hi564u7rhvn3insfwxyyqou5e",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicbpoboeqtnudffmsejyac37622zq6g2j7sjocrb4ms2l6evve5pu",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreieabtoclg7vfh2bw7hgddlcfs3p2hi564u7rhvn3insfwxyyqou5e"
+      },
+      "metadata_on_chain": {
+        "datetime": "05/10/2025 12:05:05",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "f480dd74f9e822dceb3254abe4d957dc495b8fd03ad1d861e66775d13b479023",
+      "ledger": 2368037,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/f480dd74f9e822dceb3254abe4d957dc495b8fd03ad1d861e66775d13b479023",
+      "anchored_at_utc": "2026-05-03T22:31:45.831216+00:00"
+    },
+    {
+      "output_id": "20251005-140323",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251005-140323.json",
+      "image_file": "20251005-140323.jpg",
+      "json_hash_hex": "542c689fa5c4936a3e05a5a652bec41cbca47e1bac8624b97fdec20ad0d5a0a4",
+      "image_hash_hex": "d26d57414391c0ca4b1590e04cc97ba3d8dbb3df3d0e348bd475d24052049781",
+      "ipfs": {
+        "image_cid": "bafkreigsnvlucq4rydfewfmq4bgms65d3dn3hxz5by2ixvdv2jafebexqe",
+        "json_cid": "bafkreiayn7d4imnj3upody5vcs4jkposby7zsyrevj5vq3c6qv33vy35je",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigsnvlucq4rydfewfmq4bgms65d3dn3hxz5by2ixvdv2jafebexqe",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiayn7d4imnj3upody5vcs4jkposby7zsyrevj5vq3c6qv33vy35je"
+      },
+      "metadata_on_chain": {
+        "datetime": "05/10/2025 14:03:23",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "d333e5b374e043a465b546a9c950af2bde1675f338f38d170ed35231768a5239",
+      "ledger": 2368038,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/d333e5b374e043a465b546a9c950af2bde1675f338f38d170ed35231768a5239",
+      "anchored_at_utc": "2026-05-03T22:31:50.819844+00:00"
+    },
+    {
+      "output_id": "20251005-155622",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251005-155622.json",
+      "image_file": "20251005-155622.jpg",
+      "json_hash_hex": "93cd31234e7fa9c15849ed1a40ca118029846bc88010d5695da07752b1417bc1",
+      "image_hash_hex": "71b0e6cf2351ed2a835ade6c504ede9c71433a9131b3274943a63545cd6563e8",
+      "ipfs": {
+        "image_cid": "bafkreidrwdtm6i2r5uvigww6nrie5xu4ofbtvejrwmtusq5ggvc42zld5a",
+        "json_cid": "bafkreidp6n7kunrgr2xcpbvswozxslpbthk5finwzq2ioawz7mlmpxdmay",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidrwdtm6i2r5uvigww6nrie5xu4ofbtvejrwmtusq5ggvc42zld5a",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidp6n7kunrgr2xcpbvswozxslpbthk5finwzq2ioawz7mlmpxdmay"
+      },
+      "metadata_on_chain": {
+        "datetime": "05/10/2025 15:56:22",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "e3f49c63e8102ef50a5a04d9f69de4125375083bd53307a0608e3089921bb2dc",
+      "ledger": 2368039,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/e3f49c63e8102ef50a5a04d9f69de4125375083bd53307a0608e3089921bb2dc",
+      "anchored_at_utc": "2026-05-03T22:31:55.819267+00:00"
+    },
+    {
+      "output_id": "20251006-070434",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251006-070434.json",
+      "image_file": "20251006-070434.jpg",
+      "json_hash_hex": "d30305acd70ff0207136e759ea3fae61ff0ed56380af894cf6caf29fdcd10aca",
+      "image_hash_hex": "f843dab34290b73603bd52a15abe60bac5dc6999ea477e0f3470974d27266eec",
+      "ipfs": {
+        "image_cid": "bafkreihyipnlgquqw43ahpksufnl4yf2yxogtgpki57a6ndqs5gsojto5q",
+        "json_cid": "bafkreichzcrpiltl6y7re4dymdlafp3zcnlcermllss367h2y56v26tf3a",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihyipnlgquqw43ahpksufnl4yf2yxogtgpki57a6ndqs5gsojto5q",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreichzcrpiltl6y7re4dymdlafp3zcnlcermllss367h2y56v26tf3a"
+      },
+      "metadata_on_chain": {
+        "datetime": "06/10/2025 07:04:34",
+        "workers": "4",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "eace6dd4affd39ac518218b61928b5c988f4d781a909a1f96acd35e86791328b",
+      "ledger": 2368040,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/eace6dd4affd39ac518218b61928b5c988f4d781a909a1f96acd35e86791328b",
+      "anchored_at_utc": "2026-05-03T22:32:00.843070+00:00"
+    },
+    {
+      "output_id": "20251006-093532",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251006-093532.json",
+      "image_file": "20251006-093532.jpg",
+      "json_hash_hex": "e74acba33016ae9f29b42c8b62d0b4543ffb720e171d131531841d5ed75078b7",
+      "image_hash_hex": "859ba08dab259430ae997dbf8839342c43c171840b9ff0203c6fd4d7c028f16f",
+      "ipfs": {
+        "image_cid": "bafkreieftoqi3kzfsqyk5gl5x6edsnbmipaxdbalt7ycapdp2tl4akhrn4",
+        "json_cid": "bafkreigc4mwr3hanjd5flgt7tpvynb5dhkugvy7zfowniwrubycgopobqu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreieftoqi3kzfsqyk5gl5x6edsnbmipaxdbalt7ycapdp2tl4akhrn4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigc4mwr3hanjd5flgt7tpvynb5dhkugvy7zfowniwrubycgopobqu"
+      },
+      "metadata_on_chain": {
+        "datetime": "06/10/2025 09:35:32",
+        "workers": "5",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "63a836466368a2f505be5bce3052a3c9108b8ee99da2cbbd4215d00c740b9b99",
+      "ledger": 2368042,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/63a836466368a2f505be5bce3052a3c9108b8ee99da2cbbd4215d00c740b9b99",
+      "anchored_at_utc": "2026-05-03T22:32:10.818918+00:00"
+    },
+    {
+      "output_id": "20251006-115522",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251006-115522.json",
+      "image_file": "20251006-115522.jpg",
+      "json_hash_hex": "69074e1cf8ec53a39adccc14ef99c5aa87358011b2e7b9f558628ab5dc410a76",
+      "image_hash_hex": "c370b5a9ca921577705dbc9ab8cb132e10af22dbd57e985b20db36bc9e5aac89",
+      "ipfs": {
+        "image_cid": "bafkreigdoc22tsuscv3xaxn4tk4mwezoccxsfw6vp2mfwig3g26j4wvmre",
+        "json_cid": "bafkreicfxz4ze33oh3ikalhmgijathym3rkotmxexiqjwdlywepaa27woi",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigdoc22tsuscv3xaxn4tk4mwezoccxsfw6vp2mfwig3g26j4wvmre",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicfxz4ze33oh3ikalhmgijathym3rkotmxexiqjwdlywepaa27woi"
+      },
+      "metadata_on_chain": {
+        "datetime": "06/10/2025 11:55:22",
+        "workers": "1",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "b3f3f2853d0dad41ba56815c8e5026956f4a1d835d00a227a5c155138edcf9d3",
+      "ledger": 2368043,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/b3f3f2853d0dad41ba56815c8e5026956f4a1d835d00a227a5c155138edcf9d3",
+      "anchored_at_utc": "2026-05-03T22:32:15.818687+00:00"
+    },
+    {
+      "output_id": "20251006-120046",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251006-120046.json",
+      "image_file": "20251006-120046.jpg",
+      "json_hash_hex": "8ddfc10b061317cb153b02f3748cde70895c5924766a358736d8c1e3c0435dc4",
+      "image_hash_hex": "3480e67965c9921091290fb3a9fcf74819fc47be4d548e882d4e3c40a863b174",
+      "ipfs": {
+        "image_cid": "bafkreibuqdthszojsiijckipwou7z52idh6eppsnkshiqlkohrakqy5roq",
+        "json_cid": "bafkreic4xtybp5clsyvlnzsp47vsf5e5wswejb4jlcsyivppko7q7mvcsy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibuqdthszojsiijckipwou7z52idh6eppsnkshiqlkohrakqy5roq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreic4xtybp5clsyvlnzsp47vsf5e5wswejb4jlcsyivppko7q7mvcsy"
+      },
+      "metadata_on_chain": {
+        "datetime": "06/10/2025 12:00:46",
+        "workers": "1",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "bb5a20c7ac943e825128b41ebe64a7c4211850433bd0f37b5377ca5e268d48b2",
+      "ledger": 2368044,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/bb5a20c7ac943e825128b41ebe64a7c4211850433bd0f37b5377ca5e268d48b2",
+      "anchored_at_utc": "2026-05-03T22:32:20.820289+00:00"
+    },
+    {
+      "output_id": "20251006-140421",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251006-140421.json",
+      "image_file": "20251006-140421.jpg",
+      "json_hash_hex": "dde2c9aee63add8d3af7beedd2e0775de901bcfb08e27d26aa8222d547044fc0",
+      "image_hash_hex": "0f17ef71bb7486eb584393acf0c27417e0102bcb0bb2fb14d88df5467c8b68e3",
+      "ipfs": {
+        "image_cid": "bafkreiapc7xxdo3uq3vvqq4tvtyme5ax4aicxsylwl5rjwen6vdhzc3i4m",
+        "json_cid": "bafkreid2t47www4cdiof4pktety5a2o5cvsydqatgqtnvf4ublj6qy24lu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiapc7xxdo3uq3vvqq4tvtyme5ax4aicxsylwl5rjwen6vdhzc3i4m",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreid2t47www4cdiof4pktety5a2o5cvsydqatgqtnvf4ublj6qy24lu"
+      },
+      "metadata_on_chain": {
+        "datetime": "06/10/2025 14:04:21",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "1e8d174e184782ba1df3a36271e4e1abb930dcfc0ae1c64bd215b6032d574fc6",
+      "ledger": 2368045,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/1e8d174e184782ba1df3a36271e4e1abb930dcfc0ae1c64bd215b6032d574fc6",
+      "anchored_at_utc": "2026-05-03T22:32:25.819840+00:00"
+    },
+    {
+      "output_id": "20251006-155721",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251006-155721.json",
+      "image_file": "20251006-155721.jpg",
+      "json_hash_hex": "d353ebe6cc21c275308e76ee670c95c99505b305607dab1cbb99ac498b8de334",
+      "image_hash_hex": "fcba8c761d93b17136760ec75d2f288c1a459c03bd1fce07d61bce9749590b2e",
+      "ipfs": {
+        "image_cid": "bafkreih4xkghmhmtwfytm5qoy5os6kemdjczya55d7hapvq3z2luswilfy",
+        "json_cid": "bafkreihhgg2sgievbrjauu2bk2c4i5447rqofhnnpl52pmw6ucvi7vn4i4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreih4xkghmhmtwfytm5qoy5os6kemdjczya55d7hapvq3z2luswilfy",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihhgg2sgievbrjauu2bk2c4i5447rqofhnnpl52pmw6ucvi7vn4i4"
+      },
+      "metadata_on_chain": {
+        "datetime": "06/10/2025 15:57:21",
+        "workers": "1",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "3b3a5a164f28c575360a7acbac87cf4a45d958ba3bebc699d55562545b6b3d57",
+      "ledger": 2368046,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/3b3a5a164f28c575360a7acbac87cf4a45d958ba3bebc699d55562545b6b3d57",
+      "anchored_at_utc": "2026-05-03T22:32:30.819410+00:00"
+    },
+    {
+      "output_id": "20251007-070522",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251007-070522.json",
+      "image_file": "20251007-070522.jpg",
+      "json_hash_hex": "70d46fc330fbd3f87b31e966aa62bc6b7da6296eaa1e1868c1ff31f46d4f93bd",
+      "image_hash_hex": "73ea30f5ac5a46410e475a10fea2143a3e100fe8ebf466d720e5b89c96508299",
+      "ipfs": {
+        "image_cid": "bafkreidt5iypllc2izaq4r22cd7kefb2hyia72hl6rtnoihfxcojmuecte",
+        "json_cid": "bafkreigues5uwbv3yh2yyvyqi5tv42hlg7yq3zxjv2fbo7skbjym7aolvu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidt5iypllc2izaq4r22cd7kefb2hyia72hl6rtnoihfxcojmuecte",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigues5uwbv3yh2yyvyqi5tv42hlg7yq3zxjv2fbo7skbjym7aolvu"
+      },
+      "metadata_on_chain": {
+        "datetime": "07/10/2025 07:05:22",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "f9185930031d7fcfe02d75ce64a8ce2c2e4d27491613b81208d1826534a5e982",
+      "ledger": 2368047,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/f9185930031d7fcfe02d75ce64a8ce2c2e4d27491613b81208d1826534a5e982",
+      "anchored_at_utc": "2026-05-03T22:32:36.720315+00:00"
+    },
+    {
+      "output_id": "20251007-093054",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251007-093054.json",
+      "image_file": "20251007-093054.jpg",
+      "json_hash_hex": "7aba3df1fabc6fd4fcab90153ab2461baf58123977aa67586f36d8590fadddf2",
+      "image_hash_hex": "6996291b68437ce4f7543c6e14f8d43cf6a59e556cdf7cc0a25b887de8c00266",
+      "ipfs": {
+        "image_cid": "bafkreidjsyurw2cdptspovb4nykprvb462sz4vlm356mbis3rb66rqacmy",
+        "json_cid": "bafkreibzjikfl4lgjowov5wwkfv4yo5tjyvqu5qwgqxu3nokxjecivqdrq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidjsyurw2cdptspovb4nykprvb462sz4vlm356mbis3rb66rqacmy",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibzjikfl4lgjowov5wwkfv4yo5tjyvqu5qwgqxu3nokxjecivqdrq"
+      },
+      "metadata_on_chain": {
+        "datetime": "07/10/2025 09:30:54",
+        "workers": "2",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "00a048a7d6bf6145c3177f74047152a9a52bcd8d4796cdfec4ced88bf6d2f4b0",
+      "ledger": 2368049,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/00a048a7d6bf6145c3177f74047152a9a52bcd8d4796cdfec4ced88bf6d2f4b0",
+      "anchored_at_utc": "2026-05-03T22:32:46.737573+00:00"
+    },
+    {
+      "output_id": "20251007-115610",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251007-115610.json",
+      "image_file": "20251007-115610.jpg",
+      "json_hash_hex": "46da6243e5bb5c1cdc6b5b7ff14f532a3316447dd88db9af83e9d78505c57908",
+      "image_hash_hex": "c47dc43775301ed1f66b763c8dae9bf39efb89502f7d0363b9bf62463ef14415",
+      "ipfs": {
+        "image_cid": "bafkreigepxcdo5jqd3i7m23whsg25g7tt35ysubppubwhon7mjdd54kecu",
+        "json_cid": "bafkreicefow7cogx5bnmzw53rby73ak3zf5mpi7lsyyphl3yeiiucovsye",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigepxcdo5jqd3i7m23whsg25g7tt35ysubppubwhon7mjdd54kecu",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicefow7cogx5bnmzw53rby73ak3zf5mpi7lsyyphl3yeiiucovsye"
+      },
+      "metadata_on_chain": {
+        "datetime": "07/10/2025 11:56:10",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "7314a34af07619c0e0bd4b6dde83ccee5516a882116b68bd88ca7d0e38a2c12f",
+      "ledger": 2368051,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/7314a34af07619c0e0bd4b6dde83ccee5516a882116b68bd88ca7d0e38a2c12f",
+      "anchored_at_utc": "2026-05-03T22:32:56.722071+00:00"
+    },
+    {
+      "output_id": "20251007-120133",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251007-120133.json",
+      "image_file": "20251007-120133.jpg",
+      "json_hash_hex": "e355641f740ec6634fb62b86c471670162d1fe93210de9b7970429694c44a074",
+      "image_hash_hex": "1f3a9441a48d9e652281899f3d007ac68fcb432e354f8e490e77cdbfeeda60eb",
+      "ipfs": {
+        "image_cid": "bafkreia7hkkedjentzssfamjt46qa6wgr7fuglrvj6hesdtxzw765wta5m",
+        "json_cid": "bafkreicrtcuijzwpnumstic6ddbcj2kz76om5bkvp5zm5rz2heyddyzbgi",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreia7hkkedjentzssfamjt46qa6wgr7fuglrvj6hesdtxzw765wta5m",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicrtcuijzwpnumstic6ddbcj2kz76om5bkvp5zm5rz2heyddyzbgi"
+      },
+      "metadata_on_chain": {
+        "datetime": "07/10/2025 12:01:33",
+        "workers": "1",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "36d57dcd2bbc6fcf3102f4768d209cf00b05abc5ebf1978e0a22dbbbf2a930da",
+      "ledger": 2368053,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/36d57dcd2bbc6fcf3102f4768d209cf00b05abc5ebf1978e0a22dbbbf2a930da",
+      "anchored_at_utc": "2026-05-03T22:33:06.821536+00:00"
+    },
+    {
+      "output_id": "20251007-140000",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251007-140000.json",
+      "image_file": "20251007-140000.jpg",
+      "json_hash_hex": "8e0a763b6e6a59ef3efa83049d0a76cc51e77745a719737411a0a8457aeab20f",
+      "image_hash_hex": "21353904c5fa47f73ea00219ef1c6a0e97cd0e0687643000a831e1a8f1f55716",
+      "ipfs": {
+        "image_cid": "bafkreibbgu4qjrp2i73t5iacdhxry2qos7gq4buhmqyabkbr4gupd5kxcy",
+        "json_cid": "bafkreihrfob6b7q3bkkdwtrxyu4tx3gqjniqc4erwprykjmj6vk7xyapc4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibbgu4qjrp2i73t5iacdhxry2qos7gq4buhmqyabkbr4gupd5kxcy",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihrfob6b7q3bkkdwtrxyu4tx3gqjniqc4erwprykjmj6vk7xyapc4"
+      },
+      "metadata_on_chain": {
+        "datetime": "07/10/2025 14:00:00",
+        "workers": "3",
+        "machinery": "Camion cisterna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "18dde686d9c2ce90f6fae4aa76762b5911088a06020020955edad7a7c4eb8ee8",
+      "ledger": 2368055,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/18dde686d9c2ce90f6fae4aa76762b5911088a06020020955edad7a7c4eb8ee8",
+      "anchored_at_utc": "2026-05-03T22:33:16.820759+00:00"
+    },
+    {
+      "output_id": "20251007-155821",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251007-155821.json",
+      "image_file": "20251007-155821.jpg",
+      "json_hash_hex": "765a91bdcf651bad9ea34a3dbfbb33a5662e663e8da58b62d091031c26f9d0f0",
+      "image_hash_hex": "a281c225890852ca0b56996fef29b3f721771b7c2f440c89c12a1c58dd0d6c6f",
+      "ipfs": {
+        "image_cid": "bafkreifcqhbclciiklfawvuzn7xstm7xef3rw7bpiqgitqjkdrmn2dlmn4",
+        "json_cid": "bafkreif34jhco4usguwb5p6jjcxqv6g6saoummhopjyqzravr5finwltwu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifcqhbclciiklfawvuzn7xstm7xef3rw7bpiqgitqjkdrmn2dlmn4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreif34jhco4usguwb5p6jjcxqv6g6saoummhopjyqzravr5finwltwu"
+      },
+      "metadata_on_chain": {
+        "datetime": "07/10/2025 15:58:21",
+        "workers": "2",
+        "machinery": "Camion cisterna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "0f64364332c4e968620f8ffdcfa6dde4042989bebcbc18ea40df1c6b7e551626",
+      "ledger": 2368057,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/0f64364332c4e968620f8ffdcfa6dde4042989bebcbc18ea40df1c6b7e551626",
+      "anchored_at_utc": "2026-05-03T22:33:26.720153+00:00"
+    },
+    {
+      "output_id": "20251008-070130",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251008-070130.json",
+      "image_file": "20251008-070130.jpg",
+      "json_hash_hex": "6fa1d11f710b6f6375b1580080c460f5e6ea2828cc03690bcabd1e8f580c4a3c",
+      "image_hash_hex": "4130d9e3e11b08b1f89cec4c5472322041fea3f82fa9012dca218833014691f2",
+      "ipfs": {
+        "image_cid": "bafkreicbgdm6hyi3bcy7rhhmjrkhemraih7kh6bpveas3srbrazqcrur6i",
+        "json_cid": "bafkreih6r45xbqmik4clc2pd53dmvxrkdjxnaw4deye23gpa3zm3q4m2oi",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicbgdm6hyi3bcy7rhhmjrkhemraih7kh6bpveas3srbrazqcrur6i",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreih6r45xbqmik4clc2pd53dmvxrkdjxnaw4deye23gpa3zm3q4m2oi"
+      },
+      "metadata_on_chain": {
+        "datetime": "08/10/2025 07:01:30",
+        "workers": "1",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "221a470c4bdb84ed2d7244e7cffd59d56b06b3cf0796e687ef53a537889806ed",
+      "ledger": 2368059,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/221a470c4bdb84ed2d7244e7cffd59d56b06b3cf0796e687ef53a537889806ed",
+      "anchored_at_utc": "2026-05-03T22:33:36.839878+00:00"
+    },
+    {
+      "output_id": "20251008-093758",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251008-093758.json",
+      "image_file": "20251008-093758.jpg",
+      "json_hash_hex": "ef514f2a308970bb76b02ac7981621148fc0c3efd9f29913bb0cb6dc25a282cd",
+      "image_hash_hex": "d1a24ff0cfd86549c04f056089b2c5bb23f96de58157366fe9505d123ff6b4f3",
+      "ipfs": {
+        "image_cid": "bafkreigrujh7bt6ymve4atyfmce3frn3ep4w3zmbk43g72kqlujd75vu6m",
+        "json_cid": "bafkreid26lxqucyv3wk3xfoezonlascobrb643resqv74wftcucl2wn4my",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigrujh7bt6ymve4atyfmce3frn3ep4w3zmbk43g72kqlujd75vu6m",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreid26lxqucyv3wk3xfoezonlascobrb643resqv74wftcucl2wn4my"
+      },
+      "metadata_on_chain": {
+        "datetime": "08/10/2025 09:37:58",
+        "workers": "4",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "936fcc3b96a8e46c4b6fd2dbfee00015429f438489348208123496e1b8513173",
+      "ledger": 2368061,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/936fcc3b96a8e46c4b6fd2dbfee00015429f438489348208123496e1b8513173",
+      "anchored_at_utc": "2026-05-03T22:33:46.721225+00:00"
+    },
+    {
+      "output_id": "20251008-115752",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251008-115752.json",
+      "image_file": "20251008-115752.jpg",
+      "json_hash_hex": "f17e138ab3d0a22baaf89b852c6ea50c5fd1a993b3f0cc3ea486cd8f50d3e5df",
+      "image_hash_hex": "e95b0d50400ac81562dbc9cca06a1f2cf5f1191feb4d78936d6fc020150ff04c",
+      "ipfs": {
+        "image_cid": "bafkreihjlmgvaqakzakwfw6jzsqguhzm6xyrsh7ljv4jg3lpyaqbkd7qjq",
+        "json_cid": "bafkreihbacdpgket6liq5ln3r5ex7u4plcbzfyrbogyfz25i5xvmw634sy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihjlmgvaqakzakwfw6jzsqguhzm6xyrsh7ljv4jg3lpyaqbkd7qjq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihbacdpgket6liq5ln3r5ex7u4plcbzfyrbogyfz25i5xvmw634sy"
+      },
+      "metadata_on_chain": {
+        "datetime": "08/10/2025 11:57:52",
+        "workers": "2",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "b4b6c156cd44fff0462c11a22f2db601fc640a9d4912c7894a44d78e3e4a80f4",
+      "ledger": 2368063,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/b4b6c156cd44fff0462c11a22f2db601fc640a9d4912c7894a44d78e3e4a80f4",
+      "anchored_at_utc": "2026-05-03T22:33:56.901706+00:00"
+    },
+    {
+      "output_id": "20251008-120320",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251008-120320.json",
+      "image_file": "20251008-120320.jpg",
+      "json_hash_hex": "64f79ad7138a29deba1a82ea69b001aa3d589a7c57ef032214e11a2859fa2a9f",
+      "image_hash_hex": "88302d83c3cc89ae29dfd1586790829f24f6f98d2d67ad8d858e1e247b034477",
+      "ipfs": {
+        "image_cid": "bafkreieigawyhq6mrgxctx6rlbtzbau7et3ptdjnm6wy3bmodyshwa2eo4",
+        "json_cid": "bafkreib3vtyrlf56xoxpkfublxextbz6yuxjqtyhi6jyfmn2lehtdhemve",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreieigawyhq6mrgxctx6rlbtzbau7et3ptdjnm6wy3bmodyshwa2eo4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreib3vtyrlf56xoxpkfublxextbz6yuxjqtyhi6jyfmn2lehtdhemve"
+      },
+      "metadata_on_chain": {
+        "datetime": "08/10/2025 12:03:20",
+        "workers": "1",
+        "machinery": "Camion de volteo",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "17aeb77b46d14b52fc207c49cbd01a286da1d91b46f2bf5075e9336bbab85d88",
+      "ledger": 2368065,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/17aeb77b46d14b52fc207c49cbd01a286da1d91b46f2bf5075e9336bbab85d88",
+      "anchored_at_utc": "2026-05-03T22:34:06.721808+00:00"
+    },
+    {
+      "output_id": "20251008-140143",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251008-140143.json",
+      "image_file": "20251008-140143.jpg",
+      "json_hash_hex": "4c1bc3e1de195cd47ad15df9e800f710c355a7f7828de8d8b7165c45eb31a7e3",
+      "image_hash_hex": "544166f1253ae31fd6adb742da5826c5c67d8e2ae59f6a5ec1153f36faaa96e9",
+      "ipfs": {
+        "image_cid": "bafkreicuiftpcjj24mp5nlnxilnfqjwfyz6y4kxft5vf5qivh43pvkuw5e",
+        "json_cid": "bafkreih6pw3rdqgu6pnr557cnxtqzxhsjfnylbxjelwxhkp2qblnx37u4u",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicuiftpcjj24mp5nlnxilnfqjwfyz6y4kxft5vf5qivh43pvkuw5e",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreih6pw3rdqgu6pnr557cnxtqzxhsjfnylbxjelwxhkp2qblnx37u4u"
+      },
+      "metadata_on_chain": {
+        "datetime": "08/10/2025 14:01:43",
+        "workers": "2",
+        "machinery": "Generador electrico",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "2d4637253306a5b4c49bce024775c7b92980eb8e8300eb88b737bf82ddc513d4",
+      "ledger": 2368067,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/2d4637253306a5b4c49bce024775c7b92980eb8e8300eb88b737bf82ddc513d4",
+      "anchored_at_utc": "2026-05-03T22:34:16.721135+00:00"
+    },
+    {
+      "output_id": "20251008-155448",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251008-155448.json",
+      "image_file": "20251008-155448.jpg",
+      "json_hash_hex": "bdd06c4008115db69e09eb755921137845b0d78d4309af41152c740d610a66a7",
+      "image_hash_hex": "2a89251158b21436b768f923260ee5d734f9e5c06b32d6c31242e871374b23f5",
+      "ipfs": {
+        "image_cid": "bafkreibkresrcwfscq3lo2hzemta5zoxgt46lqdlgllmgesc5bytoszd6u",
+        "json_cid": "bafkreigtpv4fdjyrqssof5jhgo5emurnbkflaaxnskzutlpaf3dvfsqc2i",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibkresrcwfscq3lo2hzemta5zoxgt46lqdlgllmgesc5bytoszd6u",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigtpv4fdjyrqssof5jhgo5emurnbkflaaxnskzutlpaf3dvfsqc2i"
+      },
+      "metadata_on_chain": {
+        "datetime": "08/10/2025 15:54:48",
+        "workers": "1",
+        "machinery": "Generador electrico, Excavadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "4ae6190bbabe4e84f7f0ffe388ae310d5bc50ae251d6e92b4d0b629e322f2116",
+      "ledger": 2368068,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/4ae6190bbabe4e84f7f0ffe388ae310d5bc50ae251d6e92b4d0b629e322f2116",
+      "anchored_at_utc": "2026-05-03T22:34:21.822296+00:00"
+    },
+    {
+      "output_id": "20251009-070340",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251009-070340.json",
+      "image_file": "20251009-070340.jpg",
+      "json_hash_hex": "030efba836d2b1c866f97682c4444f5bd93b37c6f09baa941d4ccfdbeaba6ebc",
+      "image_hash_hex": "194ee3686924f82ab8bada7f38c5bf5d4b4d5a7b65efe022df7c818327f01e33",
+      "ipfs": {
+        "image_cid": "bafkreiazj3rwq2je7avlrow2p44mlp25jngvu63f57qcfx34qgbsp4a6gm",
+        "json_cid": "bafkreialxkscqgachrv4k7t73okspxijnn6nv375jtgqf7mhs7yg5pm53y",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiazj3rwq2je7avlrow2p44mlp25jngvu63f57qcfx34qgbsp4a6gm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreialxkscqgachrv4k7t73okspxijnn6nv375jtgqf7mhs7yg5pm53y"
+      },
+      "metadata_on_chain": {
+        "datetime": "09/10/2025 07:03:40",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "bdd9379775d125fcb33ef3d87e20dd6ec938e8a4d69d919b22f0d00a8312c73a",
+      "ledger": 2368069,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/bdd9379775d125fcb33ef3d87e20dd6ec938e8a4d69d919b22f0d00a8312c73a",
+      "anchored_at_utc": "2026-05-03T22:34:26.830970+00:00"
+    },
+    {
+      "output_id": "20251009-093507",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251009-093507.json",
+      "image_file": "20251009-093507.jpg",
+      "json_hash_hex": "f0d07cd68c1e3d40a9ea2b98cd4f4820f089853d82aa4c1335484af7eda7acac",
+      "image_hash_hex": "482d0e6f308c302f21583b0e8edd0d0bd641d7594de776faf5638a7d65f856f5",
+      "ipfs": {
+        "image_cid": "bafkreicifuhg6memgaxscwb3b2hn2dil2za5owkn453pv5ldrj6wl6cw6u",
+        "json_cid": "bafkreibsary7fpbdcr55o2jrsidlv35s6nffem4umra6z3zjjhwvoqi3xu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicifuhg6memgaxscwb3b2hn2dil2za5owkn453pv5ldrj6wl6cw6u",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibsary7fpbdcr55o2jrsidlv35s6nffem4umra6z3zjjhwvoqi3xu"
+      },
+      "metadata_on_chain": {
+        "datetime": "09/10/2025 09:35:07",
+        "workers": "0",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "7e47e0600f620025c217eb4a0b2797c2a30710d78044fcbdc9d3a55111f72fcf",
+      "ledger": 2368071,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/7e47e0600f620025c217eb4a0b2797c2a30710d78044fcbdc9d3a55111f72fcf",
+      "anchored_at_utc": "2026-05-03T22:34:36.866152+00:00"
+    },
+    {
+      "output_id": "20251009-115451",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251009-115451.json",
+      "image_file": "20251009-115451.jpg",
+      "json_hash_hex": "a043000bb0b78cd4091e689ef0bd787522c6ef0dfc430a0f346e5eaa854b8562",
+      "image_hash_hex": "c05b6839d691ec2f0e0d5820d7a484e2e5b534c8da42915b636f899f836f6607",
+      "ipfs": {
+        "image_cid": "bafkreigalnudtvur5qxq4dkyedl2jbhc4w2tjsg2ikivwy3prgpyg33ga4",
+        "json_cid": "bafkreihkulo66vdw3oqzesxzrduyeablrcmg2gjlivconhtidiiexdsfme",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigalnudtvur5qxq4dkyedl2jbhc4w2tjsg2ikivwy3prgpyg33ga4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihkulo66vdw3oqzesxzrduyeablrcmg2gjlivconhtidiiexdsfme"
+      },
+      "metadata_on_chain": {
+        "datetime": "09/10/2025 11:54:51",
+        "workers": "0",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "3424dea50f373219c6470ee5fce573f33497c26d1ae1cfcf4a28b0b32bcaf983",
+      "ledger": 2368073,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/3424dea50f373219c6470ee5fce573f33497c26d1ae1cfcf4a28b0b32bcaf983",
+      "anchored_at_utc": "2026-05-03T22:34:46.732190+00:00"
+    },
+    {
+      "output_id": "20251009-120012",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251009-120012.json",
+      "image_file": "20251009-120012.jpg",
+      "json_hash_hex": "16d3ec60d7f622d708115467ddd704b6d32d2d712800f44804d4496dfef6ad69",
+      "image_hash_hex": "1c9ac3962ab29c2650c3fe15eb7bb7c9ba1d6ece910a68db5758d3b3762af2aa",
+      "ipfs": {
+        "image_cid": "bafkreia4tlbzmkvstqtfbq76cxvxxn6jxiow5turbjunwv2y2ozxmkxsvi",
+        "json_cid": "bafkreic7kjkjiopftbpnpunye4zeebnreitxcpxzjjdy7vpcbkal57hypq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreia4tlbzmkvstqtfbq76cxvxxn6jxiow5turbjunwv2y2ozxmkxsvi",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreic7kjkjiopftbpnpunye4zeebnreitxcpxzjjdy7vpcbkal57hypq"
+      },
+      "metadata_on_chain": {
+        "datetime": "09/10/2025 12:00:12",
+        "workers": "0",
+        "machinery": "Generador electrico",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "65205e1bb0bf0c941f69ec97db40ae54019fedc4ecad92962ed5c998383709d0",
+      "ledger": 2368075,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/65205e1bb0bf0c941f69ec97db40ae54019fedc4ecad92962ed5c998383709d0",
+      "anchored_at_utc": "2026-05-03T22:34:56.727640+00:00"
+    },
+    {
+      "output_id": "20251009-135834",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251009-135834.json",
+      "image_file": "20251009-135834.jpg",
+      "json_hash_hex": "59030bf06e1a1473378f3adeb67563a3687549a49bcdd55bc3eee44eabd7cb66",
+      "image_hash_hex": "004697ebbd404f8f90434dc8f812383d3913b0c433a5f8952878df0d9a9e45fe",
+      "ipfs": {
+        "image_cid": "bafkreiaai2l6xpkaj6hzaq2nzd4beob5hej3brbtux4jkkdy34gzvhsf7y",
+        "json_cid": "bafkreigdf5wgoycppfgdp7a7mbbpiarhhc2a3hada3kh3i6q3474q5w5za",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaai2l6xpkaj6hzaq2nzd4beob5hej3brbtux4jkkdy34gzvhsf7y",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigdf5wgoycppfgdp7a7mbbpiarhhc2a3hada3kh3i6q3474q5w5za"
+      },
+      "metadata_on_chain": {
+        "datetime": "09/10/2025 13:58:34",
+        "workers": "0",
+        "machinery": "Generador electrico",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "218c70a700ca7575192defaa7a846c1ac4c0e27bba25d4a5b03c9b5cc6d355ea",
+      "ledger": 2368077,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/218c70a700ca7575192defaa7a846c1ac4c0e27bba25d4a5b03c9b5cc6d355ea",
+      "anchored_at_utc": "2026-05-03T22:35:06.824241+00:00"
+    },
+    {
+      "output_id": "20251009-155703",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251009-155703.json",
+      "image_file": "20251009-155703.jpg",
+      "json_hash_hex": "4ee882ddfd27eb3b37abe42499a921616d4ec6fcdf96bcb605a7536f50f1e800",
+      "image_hash_hex": "a213d471686cb1892984e4e0bbe770515ed0b87d6ab6c48633999ae42bc590b0",
+      "ipfs": {
+        "image_cid": "bafkreifccpkhc2dmwgestbhe4c56o4crl3ilq7lkw3cimm4ztlscxrmqwa",
+        "json_cid": "bafkreibve3n5qvslr64iswcncxrgvgowwhdotshjx2zx2qu7fiumspaaae",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifccpkhc2dmwgestbhe4c56o4crl3ilq7lkw3cimm4ztlscxrmqwa",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibve3n5qvslr64iswcncxrgvgowwhdotshjx2zx2qu7fiumspaaae"
+      },
+      "metadata_on_chain": {
+        "datetime": "09/10/2025 15:57:03",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "c4bf1562d59352aad0641d53f67be93cd0ea24cf6c89a38f369dde3b514df77e",
+      "ledger": 2368078,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/c4bf1562d59352aad0641d53f67be93cd0ea24cf6c89a38f369dde3b514df77e",
+      "anchored_at_utc": "2026-05-03T22:35:11.722196+00:00"
+    },
+    {
+      "output_id": "20251010-070511",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251010-070511.json",
+      "image_file": "20251010-070511.jpg",
+      "json_hash_hex": "c267156c4274f0574ea0a77ea721eb9d26f0f80bb9365805cdb05b579c0182d6",
+      "image_hash_hex": "0f2492db8110bb83ab5b28c6cac7e5423cfff24ea10564a0002a2bbd1e2dc105",
+      "ipfs": {
+        "image_cid": "bafkreiapesjnxaiqxob2wwziy3fmpzkcht77etvbavskaabkfo6r4lobau",
+        "json_cid": "bafkreidd5xbqvplvk2ly2q4zasdvvcb3bcwikpvdk6e3ey2lerp5xshqjm",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiapesjnxaiqxob2wwziy3fmpzkcht77etvbavskaabkfo6r4lobau",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidd5xbqvplvk2ly2q4zasdvvcb3bcwikpvdk6e3ey2lerp5xshqjm"
+      },
+      "metadata_on_chain": {
+        "datetime": "10/10/2025 07:05:11",
+        "workers": "6",
+        "machinery": "Generador electrico",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "a14edd2df5616ed65f378118a9a133192f19299d936164731224ac17c6d06533",
+      "ledger": 2368079,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/a14edd2df5616ed65f378118a9a133192f19299d936164731224ac17c6d06533",
+      "anchored_at_utc": "2026-05-03T22:35:16.836807+00:00"
+    },
+    {
+      "output_id": "20251010-093050",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251010-093050.json",
+      "image_file": "20251010-093050.jpg",
+      "json_hash_hex": "331f0f3427d93b732eb84394959e62f78c536903c8a1df774df2f0faf3516d0e",
+      "image_hash_hex": "4c6e278d64d7134f8a750d5a73a19fb2d93e50d49d12eb0326894faaca8924bb",
+      "ipfs": {
+        "image_cid": "bafkreicmnyty2zgxcnhyu5inljz2dh5s3e7fbve5clvqgjujj6vmvcjexm",
+        "json_cid": "bafkreihbn3g242mwrctf6rpl7n4sx3t5xuq36qrufv4yq3cl6e4dcjb7x4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicmnyty2zgxcnhyu5inljz2dh5s3e7fbve5clvqgjujj6vmvcjexm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihbn3g242mwrctf6rpl7n4sx3t5xuq36qrufv4yq3cl6e4dcjb7x4"
+      },
+      "metadata_on_chain": {
+        "datetime": "10/10/2025 09:30:50",
+        "workers": "4",
+        "machinery": "Generador electrico, Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "03ef75004831db94146c10b736cb043f2e9819f56b187baf581424d8757f3c63",
+      "ledger": 2368081,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/03ef75004831db94146c10b736cb043f2e9819f56b187baf581424d8757f3c63",
+      "anchored_at_utc": "2026-05-03T22:35:26.750403+00:00"
+    },
+    {
+      "output_id": "20251010-115955",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251010-115955.json",
+      "image_file": "20251010-115955.jpg",
+      "json_hash_hex": "2d1405ad8f577dcb365a1a0602bcd7c7a6979e0117cf0a240ed6ae9d3d938990",
+      "image_hash_hex": "85506bc8fd7bfdb66dbe65c52642c1d0511e7304265ee638d90abbda5a800a56",
+      "ipfs": {
+        "image_cid": "bafkreiefkbv4r7l37w3g3ptfyutefqoqkephgbbgl3tdrwikxpnfvaakky",
+        "json_cid": "bafkreihjjdei3dkjm6un3aghqefxwptex2vlzmjze2cscoknnlrdt2blpe",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiefkbv4r7l37w3g3ptfyutefqoqkephgbbgl3tdrwikxpnfvaakky",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihjjdei3dkjm6un3aghqefxwptex2vlzmjze2cscoknnlrdt2blpe"
+      },
+      "metadata_on_chain": {
+        "datetime": "10/10/2025 11:59:55",
+        "workers": "6",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "0b11c69c591db3ded0352554ef9d597780462f49b907ffd84e40b461da1e97c8",
+      "ledger": 2368082,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/0b11c69c591db3ded0352554ef9d597780462f49b907ffd84e40b461da1e97c8",
+      "anchored_at_utc": "2026-05-03T22:35:31.728268+00:00"
+    },
+    {
+      "output_id": "20251010-120517",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251010-120517.json",
+      "image_file": "20251010-120517.jpg",
+      "json_hash_hex": "5eb452de1c93496a90bc51a5a75387e8cb2f6e39065c5f468174a90006d8146d",
+      "image_hash_hex": "b813e54faea2f85a08334a8e61bc1400c30bf522c7e4ea3b28e78307e7c37782",
+      "ipfs": {
+        "image_cid": "bafkreifycpsu7lvc7bnaqm2krzq3yfaaymf7kiwh4tvdwkhhqmd6pq3xqi",
+        "json_cid": "bafkreicakk467oaoo6hd6m2kr456kj5esysusauguecapubr4munqekdwe",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifycpsu7lvc7bnaqm2krzq3yfaaymf7kiwh4tvdwkhhqmd6pq3xqi",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicakk467oaoo6hd6m2kr456kj5esysusauguecapubr4munqekdwe"
+      },
+      "metadata_on_chain": {
+        "datetime": "10/10/2025 12:05:17",
+        "workers": "3",
+        "machinery": "Generador electrico, Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "751744bde31bdf484c801616a1db9c3812274d20d0d674506d2f3652fbdbf4d6",
+      "ledger": 2368084,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/751744bde31bdf484c801616a1db9c3812274d20d0d674506d2f3652fbdbf4d6",
+      "anchored_at_utc": "2026-05-03T22:35:41.722707+00:00"
+    },
+    {
+      "output_id": "20251010-140351",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251010-140351.json",
+      "image_file": "20251010-140351.jpg",
+      "json_hash_hex": "06a16fb69ac60b832267b20f0e111c9f525a70afaca910c1cf85c1fdf986d7f6",
+      "image_hash_hex": "d1a05a0fc14e336a76922d097f74ba1890705643923a08fe4f7c1560d1fe324d",
+      "ipfs": {
+        "image_cid": "bafkreigrubna7qkognvhnernbf7xjoqysbyfmq4shiep4t34cvqnd7rsju",
+        "json_cid": "bafkreifeztluj46d2mfy4orw4s6lutxynh3z26dnfidvivhspikodk5sfq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigrubna7qkognvhnernbf7xjoqysbyfmq4shiep4t34cvqnd7rsju",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifeztluj46d2mfy4orw4s6lutxynh3z26dnfidvivhspikodk5sfq"
+      },
+      "metadata_on_chain": {
+        "datetime": "10/10/2025 14:03:51",
+        "workers": "5",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "33bed4772d385353d7be6e00158b027f3054e741c3359af6f5c26d01dd66b3f4",
+      "ledger": 2368086,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/33bed4772d385353d7be6e00158b027f3054e741c3359af6f5c26d01dd66b3f4",
+      "anchored_at_utc": "2026-05-03T22:35:51.823881+00:00"
+    },
+    {
+      "output_id": "20251010-155656",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251010-155656.json",
+      "image_file": "20251010-155656.jpg",
+      "json_hash_hex": "6756fa6e2b584b0ae63781dcd07f4fa5ea4e28bd4117d520df10c1e5815ac8c2",
+      "image_hash_hex": "49e639ebb91d0589dc427073e4a02feca7e2629ece85b1cd940659b71208b13c",
+      "ipfs": {
+        "image_cid": "bafkreicj4y46xoi5awe5yqtqopskal7mu7rgfhwoqwy43faglg3recfrhq",
+        "json_cid": "bafkreif4xiu42gho7domrzpu7pupdmygbfjqwjdwaqtlnfrwkw37udayuq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicj4y46xoi5awe5yqtqopskal7mu7rgfhwoqwy43faglg3recfrhq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreif4xiu42gho7domrzpu7pupdmygbfjqwjdwaqtlnfrwkw37udayuq"
+      },
+      "metadata_on_chain": {
+        "datetime": "10/10/2025 15:56:56",
+        "workers": "0",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "0e5ecff1dec86328bfcaa2726674f79bd9f125d42f280e06ce002a8237ad6192",
+      "ledger": 2368088,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/0e5ecff1dec86328bfcaa2726674f79bd9f125d42f280e06ce002a8237ad6192",
+      "anchored_at_utc": "2026-05-03T22:36:01.936425+00:00"
+    },
+    {
+      "output_id": "20251011-070009",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251011-070009.json",
+      "image_file": "20251011-070009.jpg",
+      "json_hash_hex": "38ef264e692e86c9e2a8cda253d218d828501f11ba0613e59a18cfada279f163",
+      "image_hash_hex": "4660f00dcbb93f4b59e1ded48e8106426cba269a677c1267aeff0fa5a33048cc",
+      "ipfs": {
+        "image_cid": "bafkreicgmdya3s5zh5fvtyo62shicbscns5cngthpqjgplx7b6s2gmcizq",
+        "json_cid": "bafkreieksnb5k55dyd547o3mpy3msgcua3vm3bvpbfn7vq3btohufcl7ru",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicgmdya3s5zh5fvtyo62shicbscns5cngthpqjgplx7b6s2gmcizq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreieksnb5k55dyd547o3mpy3msgcua3vm3bvpbfn7vq3btohufcl7ru"
+      },
+      "metadata_on_chain": {
+        "datetime": "11/10/2025 07:00:09",
+        "workers": "5",
+        "machinery": "Generador electrico, Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "ba3295bfacfab5c3b6e75d9154c44266f823965a18ce84f1f58c08ba00e321f1",
+      "ledger": 2368089,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/ba3295bfacfab5c3b6e75d9154c44266f823965a18ce84f1f58c08ba00e321f1",
+      "anchored_at_utc": "2026-05-03T22:36:06.724753+00:00"
+    },
+    {
+      "output_id": "20251011-093136",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251011-093136.json",
+      "image_file": "20251011-093136.jpg",
+      "json_hash_hex": "68fc8923e3396e07c1b88a39e97d532ad9b8096610f896e8804a0b84f2f06529",
+      "image_hash_hex": "9d2f7dec25a548d1baa19a866b13ed8e41cca1abb63fe2623576763b68bb102a",
+      "ipfs": {
+        "image_cid": "bafkreie5f566yjnfjdi3vim2qzvrh3moihgkdk5wh7rgenlwoy5wroyqfi",
+        "json_cid": "bafkreidcnkfsuro2xd7a273afapxgaog64xehchphgo7kd733fp6ufkqry",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreie5f566yjnfjdi3vim2qzvrh3moihgkdk5wh7rgenlwoy5wroyqfi",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidcnkfsuro2xd7a273afapxgaog64xehchphgo7kd733fp6ufkqry"
+      },
+      "metadata_on_chain": {
+        "datetime": "11/10/2025 09:31:36",
+        "workers": "3",
+        "machinery": "Compactador manual, Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "d2fac1fd94ae82c82f7e6254aa4ce3e6b3118e555fb0aa63730e379c0874615f",
+      "ledger": 2368090,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/d2fac1fd94ae82c82f7e6254aa4ce3e6b3118e555fb0aa63730e379c0874615f",
+      "anchored_at_utc": "2026-05-03T22:36:11.867825+00:00"
+    },
+    {
+      "output_id": "20251011-115658",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251011-115658.json",
+      "image_file": "20251011-115658.jpg",
+      "json_hash_hex": "1ee4b423644d13bdd732e5298c8ef4cb3704eb9a4fe91ea40a02fda254151565",
+      "image_hash_hex": "d7d68f0a623e127a437b473699b3fac71c3505ee126a8ba3472a3aa53fdb832b",
+      "ipfs": {
+        "image_cid": "bafkreigx22hquyr6cj5eg62hg2m3h6whdq2ql3qsnkf2grzkhkst7w4dfm",
+        "json_cid": "bafkreicxauj2dbgenamjqrnb3uirudlrako4hshbmyhinmhjzge66bsji4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigx22hquyr6cj5eg62hg2m3h6whdq2ql3qsnkf2grzkhkst7w4dfm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicxauj2dbgenamjqrnb3uirudlrako4hshbmyhinmhjzge66bsji4"
+      },
+      "metadata_on_chain": {
+        "datetime": "11/10/2025 11:56:58",
+        "workers": "5",
+        "machinery": "Generador electrico, Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "6d05111f2b6dd2f5881d8db9c5590ec4cd0e4c5e7ced3cc264807cc8818e61e4",
+      "ledger": 2368091,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/6d05111f2b6dd2f5881d8db9c5590ec4cd0e4c5e7ced3cc264807cc8818e61e4",
+      "anchored_at_utc": "2026-05-03T22:36:16.823630+00:00"
+    },
+    {
+      "output_id": "20251011-120220",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251011-120220.json",
+      "image_file": "20251011-120220.jpg",
+      "json_hash_hex": "408b283ddd2addfaad7613fed2c4f9108dbe8bd43a6a8ea93b228b98d804c25e",
+      "image_hash_hex": "08790ea3ebd97bd014adffdaf0d9e46fe3d0cc6e79e0cf0826a1438e596fd387",
+      "ipfs": {
+        "image_cid": "bafkreiaipehkh26zppibjlp73lyntzdp4pimy3tz4dhqqjvbiohfs36tq4",
+        "json_cid": "bafkreibkbgie5c4sjhf2w3lu3z5uptblz6bwbl7sgreurl2ollg4h2hu5e",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaipehkh26zppibjlp73lyntzdp4pimy3tz4dhqqjvbiohfs36tq4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibkbgie5c4sjhf2w3lu3z5uptblz6bwbl7sgreurl2ollg4h2hu5e"
+      },
+      "metadata_on_chain": {
+        "datetime": "11/10/2025 12:02:20",
+        "workers": "3",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "2a6fd614a85d78388fa5be061c2eb2cc74782875502d262a285019bed58bc125",
+      "ledger": 2368093,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/2a6fd614a85d78388fa5be061c2eb2cc74782875502d262a285019bed58bc125",
+      "anchored_at_utc": "2026-05-03T22:36:26.723221+00:00"
+    },
+    {
+      "output_id": "20251011-140038",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251011-140038.json",
+      "image_file": "20251011-140038.jpg",
+      "json_hash_hex": "79e3080eb6ebb852dbf9a7caea7092870e6224dc846a6f4c44eb3c6ff7da4b0d",
+      "image_hash_hex": "6b0aea125ee76007b69f4fb8ceb98a2020071d39eb0ce0ba45c9cc3dfd0f0da9",
+      "ipfs": {
+        "image_cid": "bafkreidlblvbexxhmad3nh2pxdhltcraeadr2oplbtqlurojzq672dynve",
+        "json_cid": "bafkreibgv5kczh4ngynli5cgsj6jlot26k3trocmpcnl3it3glwtyxxcmy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidlblvbexxhmad3nh2pxdhltcraeadr2oplbtqlurojzq672dynve",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibgv5kczh4ngynli5cgsj6jlot26k3trocmpcnl3it3glwtyxxcmy"
+      },
+      "metadata_on_chain": {
+        "datetime": "11/10/2025 14:00:38",
+        "workers": "5",
+        "machinery": "Compactador manual, Compactador manual",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "df62bf7c28d7cd024d926977ebe673dd8f5544210bff263b6913b475a9d78b75",
+      "ledger": 2368094,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/df62bf7c28d7cd024d926977ebe673dd8f5544210bff263b6913b475a9d78b75",
+      "anchored_at_utc": "2026-05-03T22:36:31.723212+00:00"
+    },
+    {
+      "output_id": "20251011-155907",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251011-155907.json",
+      "image_file": "20251011-155907.jpg",
+      "json_hash_hex": "7cff7f21d04ceb0d532b184b321c44ec3379d2f1e46e8e32ce6883c386555f3e",
+      "image_hash_hex": "0a88b31e259afc7ca69e16028f9d38285d2b6c7a55f1f8bb8a5bd067aea06377",
+      "ipfs": {
+        "image_cid": "bafkreiakrczr4jm27r6knhqwakhz2obiluvwy6sv6h4lxcs32bt25iddo4",
+        "json_cid": "bafkreifyutlcistkooxtplhol66uugeupv5tgs2frkhdahxixl6g5izmiq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiakrczr4jm27r6knhqwakhz2obiluvwy6sv6h4lxcs32bt25iddo4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifyutlcistkooxtplhol66uugeupv5tgs2frkhdahxixl6g5izmiq"
+      },
+      "metadata_on_chain": {
+        "datetime": "11/10/2025 15:59:07",
+        "workers": "3",
+        "machinery": "Generador electrico, Generador electrico",
+        "phase": "Encofrado"
+      },
+      "tx_hash": "edc0dab347ddeab913fc9fc2b5fe8eb4aad0e8a77dea4937074f3899cb207643",
+      "ledger": 2368095,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/edc0dab347ddeab913fc9fc2b5fe8eb4aad0e8a77dea4937074f3899cb207643",
+      "anchored_at_utc": "2026-05-03T22:36:36.824868+00:00"
+    },
+    {
+      "output_id": "20251012-070223",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251012-070223.json",
+      "image_file": "20251012-070223.jpg",
+      "json_hash_hex": "078e32be08bf257688117fc12276e8ee793f82e22d57f9b3b5923997294c0966",
+      "image_hash_hex": "cb468153de3b39dd95f5464fc071730543197d84c93d7e56e6959fc001cea495",
+      "ipfs": {
+        "image_cid": "bafkreigli2avhxr3hhozl5kgj7ahc4yfimmx3bgjhv7fnzuvt7aadtvesu",
+        "json_cid": "bafkreibvp2s2433iize5bxawbhsmsnids6klamc65whxxbyeuduxkwmmyi",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigli2avhxr3hhozl5kgj7ahc4yfimmx3bgjhv7fnzuvt7aadtvesu",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibvp2s2433iize5bxawbhsmsnids6klamc65whxxbyeuduxkwmmyi"
+      },
+      "metadata_on_chain": {
+        "datetime": "12/10/2025 07:02:23",
+        "workers": "0",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "d057d68c09370b0ffec700d5706d1e9f5f88fa4485fa58fd47bd9dc8401031fb",
+      "ledger": 2368096,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/d057d68c09370b0ffec700d5706d1e9f5f88fa4485fa58fd47bd9dc8401031fb",
+      "anchored_at_utc": "2026-05-03T22:36:41.824542+00:00"
+    },
+    {
+      "output_id": "20251012-093302",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251012-093302.json",
+      "image_file": "20251012-093302.jpg",
+      "json_hash_hex": "d1b10b0465484371dce01bb3839130b6958094bd694ddc1564fb44e98e862ffb",
+      "image_hash_hex": "141214f7e861740c8f57a197c44372f0868f317d831c927e3696df46a7ec087b",
+      "ipfs": {
+        "image_cid": "bafkreiaucikpp2dboqgi6v5bs7ceg4xqq2htc7mddsjh4nuw35dkp3aipm",
+        "json_cid": "bafkreibikwimjgwtbtkhfgelgglu7gznqbrxo7zpca5q6ge4qboiiqipjq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaucikpp2dboqgi6v5bs7ceg4xqq2htc7mddsjh4nuw35dkp3aipm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibikwimjgwtbtkhfgelgglu7gznqbrxo7zpca5q6ge4qboiiqipjq"
+      },
+      "metadata_on_chain": {
+        "datetime": "12/10/2025 09:33:02",
+        "workers": "1",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "33f6b9826b5e2d8cbcc603a2a0c0731b59cc7e2e2b504e074bb6f77feaa4f821",
+      "ledger": 2368098,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/33f6b9826b5e2d8cbcc603a2a0c0731b59cc7e2e2b504e074bb6f77feaa4f821",
+      "anchored_at_utc": "2026-05-03T22:36:51.724517+00:00"
+    },
+    {
+      "output_id": "20251012-115849",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251012-115849.json",
+      "image_file": "20251012-115849.jpg",
+      "json_hash_hex": "f93339a6292fa5eba64212f0b6ae0379fedb06bfa03487043fa34cd09e5d5359",
+      "image_hash_hex": "43eb18f81b2b2e0c1ad9b8b1b4abe644454b17c67b9eba8ee29d268a4c558dea",
+      "ipfs": {
+        "image_cid": "bafkreicd5mmpqgzlfygbvwnywg2kxzseivfrprt3t25i5yu5e2feyvmn5i",
+        "json_cid": "bafkreidsbgpofhyrz46eatqsx66ty6bvnjffha6esic7t67dxs3bpu6tmq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicd5mmpqgzlfygbvwnywg2kxzseivfrprt3t25i5yu5e2feyvmn5i",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidsbgpofhyrz46eatqsx66ty6bvnjffha6esic7t67dxs3bpu6tmq"
+      },
+      "metadata_on_chain": {
+        "datetime": "12/10/2025 11:58:49",
+        "workers": "0",
+        "machinery": "Generador electrico, Generador electrico, Retroexcavadora",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "36d5a9024379b750882fc4110b4596bd7bddcebf90568b7577bf433f724334bc",
+      "ledger": 2368100,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/36d5a9024379b750882fc4110b4596bd7bddcebf90568b7577bf433f724334bc",
+      "anchored_at_utc": "2026-05-03T22:37:01.824836+00:00"
+    },
+    {
+      "output_id": "20251012-120411",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251012-120411.json",
+      "image_file": "20251012-120411.jpg",
+      "json_hash_hex": "9fa395310d904d0a781e2111d3b4a0ff2a08ce6f450ff4092c0a6ce05766c9dd",
+      "image_hash_hex": "4e22d7fd1227d09cb060aa3bb63a56c61a7317104736693872c08fd2c3dbdf59",
+      "ipfs": {
+        "image_cid": "bafkreicoell72erh2colayfkho3duvwgdjzroechgzutq4war7jmhw67le",
+        "json_cid": "bafkreiddqyzcdplthjifyvbbxnq3vyd4cl4w3ihmsr7vpsi5j4sglplkpq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicoell72erh2colayfkho3duvwgdjzroechgzutq4war7jmhw67le",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiddqyzcdplthjifyvbbxnq3vyd4cl4w3ihmsr7vpsi5j4sglplkpq"
+      },
+      "metadata_on_chain": {
+        "datetime": "12/10/2025 12:04:11",
+        "workers": "0",
+        "machinery": "Excavadora",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "6cdc99392ab6be301f84ce4ddfb67841e51a75d054144a34c1a03e19f63d9583",
+      "ledger": 2368101,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/6cdc99392ab6be301f84ce4ddfb67841e51a75d054144a34c1a03e19f63d9583",
+      "anchored_at_utc": "2026-05-03T22:37:06.825102+00:00"
+    },
+    {
+      "output_id": "20251012-140235",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251012-140235.json",
+      "image_file": "20251012-140235.jpg",
+      "json_hash_hex": "2215e5182918d6fd38740b55ae73163f9be2274f823313beb7a0cc49f49c7b2d",
+      "image_hash_hex": "28c5bc5c0c0b76ef03863a2ebe38ba3140f3e42e9b68830f6491275006f0d24b",
+      "ipfs": {
+        "image_cid": "bafkreibiyw6fydalo3xqhbr2f27drorridz6ilu3ncbq6zere5ian4gsjm",
+        "json_cid": "bafkreiezcr3mgpw5qsson45vx3nti2mgt3woaass3vr4gn2ik6izesgfhi",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibiyw6fydalo3xqhbr2f27drorridz6ilu3ncbq6zere5ian4gsjm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiezcr3mgpw5qsson45vx3nti2mgt3woaass3vr4gn2ik6izesgfhi"
+      },
+      "metadata_on_chain": {
+        "datetime": "12/10/2025 14:02:35",
+        "workers": "2",
+        "machinery": "Camion de volteo, Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "8ca1598a8a4cb6711b6f0138a15738ccfac2807f8ef1814e92c847e3d4f7b457",
+      "ledger": 2368102,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/8ca1598a8a4cb6711b6f0138a15738ccfac2807f8ef1814e92c847e3d4f7b457",
+      "anchored_at_utc": "2026-05-03T22:37:11.773605+00:00"
+    },
+    {
+      "output_id": "20251012-155534",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251012-155534.json",
+      "image_file": "20251012-155534.jpg",
+      "json_hash_hex": "da00f40703769356fa635e7930a2e37b62709b5820897d192be481657d027323",
+      "image_hash_hex": "7105a77986bb0136c68a957b63df91f9a6476ed604c7d673cd9e3f8487c1f5b2",
+      "ipfs": {
+        "image_cid": "bafkreidrawtxtbv3ae3mncuvpnr57epzuzdw5vqey7lhhtm6h6cipqpvwi",
+        "json_cid": "bafkreialzl5xi5ficx2wn7vkpo3p2sqv3kvkmmtu4cuvdgkrsd2ohi6xzm",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidrawtxtbv3ae3mncuvpnr57epzuzdw5vqey7lhhtm6h6cipqpvwi",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreialzl5xi5ficx2wn7vkpo3p2sqv3kvkmmtu4cuvdgkrsd2ohi6xzm"
+      },
+      "metadata_on_chain": {
+        "datetime": "12/10/2025 15:55:34",
+        "workers": "0",
+        "machinery": "Generador electrico, Cargador frontal",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "5b3438b1e455424e35c16873bc0284aa851e01416a2e8151741336f30971c912",
+      "ledger": 2368103,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/5b3438b1e455424e35c16873bc0284aa851e01416a2e8151741336f30971c912",
+      "anchored_at_utc": "2026-05-03T22:37:16.792244+00:00"
+    },
+    {
+      "output_id": "20251013-070357",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251013-070357.json",
+      "image_file": "20251013-070357.jpg",
+      "json_hash_hex": "f348117970e5996e1005e679f79caf2120b5591ca7f07d9f611619a451b3e414",
+      "image_hash_hex": "aa441555c8b6757e7d0f8b82b92d6fe4a3cf437974511581279b9f87ea49a810",
+      "ipfs": {
+        "image_cid": "bafkreifkiqkvlsfwov7h2d4lqk4s237euphug6lukekycj43t6d6usnica",
+        "json_cid": "bafkreibh3sjdnxq7cm4vkc5cpdxau5om26uu3ywnzosflup56obu566yai",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifkiqkvlsfwov7h2d4lqk4s237euphug6lukekycj43t6d6usnica",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibh3sjdnxq7cm4vkc5cpdxau5om26uu3ywnzosflup56obu566yai"
+      },
+      "metadata_on_chain": {
+        "datetime": "13/10/2025 07:03:57",
+        "workers": "7",
+        "machinery": "Rodillo compactador, Pavimentadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "9c1886728846baf0d4699f82910d3e52a5a5e432bde5862313353dce80f847d4",
+      "ledger": 2368104,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/9c1886728846baf0d4699f82910d3e52a5a5e432bde5862313353dce80f847d4",
+      "anchored_at_utc": "2026-05-03T22:37:21.810038+00:00"
+    },
+    {
+      "output_id": "20251013-093031",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251013-093031.json",
+      "image_file": "20251013-093031.jpg",
+      "json_hash_hex": "595724d458fea0502d3986c5c6cd8462d0c6aaa7aed970f37ae87f84f47679a0",
+      "image_hash_hex": "d3c4c474add04680469bd463842bc28a31e5dfeaabff9b5c86baf6c7d239ff8c",
+      "ipfs": {
+        "image_cid": "bafkreigtytchjloqi2aeng6umoccxqukghs572vl76nvzbv263d5eop7rq",
+        "json_cid": "bafkreibhpk4netk6tfzdhr7ugnnyjwj67bahjj5gjxdkbxfqd7fr6xnzlm",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigtytchjloqi2aeng6umoccxqukghs572vl76nvzbv263d5eop7rq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibhpk4netk6tfzdhr7ugnnyjwj67bahjj5gjxdkbxfqd7fr6xnzlm"
+      },
+      "metadata_on_chain": {
+        "datetime": "13/10/2025 09:30:31",
+        "workers": "3",
+        "machinery": "Generador electrico, Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "64aabff9908beba26e7e523af657c022e8d821e58cd4c0f9505170ee9b28e258",
+      "ledger": 2368105,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/64aabff9908beba26e7e523af657c022e8d821e58cd4c0f9505170ee9b28e258",
+      "anchored_at_utc": "2026-05-03T22:37:26.936810+00:00"
+    },
+    {
+      "output_id": "20251013-115639",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251013-115639.json",
+      "image_file": "20251013-115639.jpg",
+      "json_hash_hex": "01bb23699e73d98cea1e77f0b2005cb3e7073f59c9150dcd52fed84c0d38d26d",
+      "image_hash_hex": "afbeb553b75ce73c2c86ed32bca59bc95774c1604e514c2d8b91f51e7253c02e",
+      "ipfs": {
+        "image_cid": "bafkreifpx22vhn24446czbxngk6klg6jk52mcycokfgc3c4r6upheu6afy",
+        "json_cid": "bafkreievgatdmr6tw5p4vj3lhfvrb4goqrzcekq5kfvs3vudvpmrwzfwm4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifpx22vhn24446czbxngk6klg6jk52mcycokfgc3c4r6upheu6afy",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreievgatdmr6tw5p4vj3lhfvrb4goqrzcekq5kfvs3vudvpmrwzfwm4"
+      },
+      "metadata_on_chain": {
+        "datetime": "13/10/2025 11:56:39",
+        "workers": "2",
+        "machinery": "Generador electrico",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "4acd3ddc636e576aa970c9cd83883a36e98dda77889092fb1ef95cff43295dda",
+      "ledger": 2368106,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/4acd3ddc636e576aa970c9cd83883a36e98dda77889092fb1ef95cff43295dda",
+      "anchored_at_utc": "2026-05-03T22:37:31.825359+00:00"
+    },
+    {
+      "output_id": "20251013-120203",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251013-120203.json",
+      "image_file": "20251013-120203.jpg",
+      "json_hash_hex": "8a9cf91bc8e6c65e20ea7aba5c70f2c8de079735a015998b814cadf810eb375f",
+      "image_hash_hex": "40a65a474078528a3ad22ffeae0f0ff2c1aa77d9c3de92fbf1fd1391e54958a7",
+      "ipfs": {
+        "image_cid": "bafkreicauzneoqdykkfdvurp72xa6d7sygvhpwod32jpx4p5coi6kskyu4",
+        "json_cid": "bafkreia5bbsub25fmx3mz7fsm5itsikfrzcyc2todl7fvs4gomi6ojkg3e",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicauzneoqdykkfdvurp72xa6d7sygvhpwod32jpx4p5coi6kskyu4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreia5bbsub25fmx3mz7fsm5itsikfrzcyc2todl7fvs4gomi6ojkg3e"
+      },
+      "metadata_on_chain": {
+        "datetime": "13/10/2025 12:02:03",
+        "workers": "2",
+        "machinery": "Generador electrico, Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "0d74bb9c644be4a99c2e2e50136c69c4c01ec5eb8f2dc21c7cd6aeac78f80f06",
+      "ledger": 2368108,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/0d74bb9c644be4a99c2e2e50136c69c4c01ec5eb8f2dc21c7cd6aeac78f80f06",
+      "anchored_at_utc": "2026-05-03T22:37:41.827193+00:00"
+    },
+    {
+      "output_id": "20251013-140122",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251013-140122.json",
+      "image_file": "20251013-140122.jpg",
+      "json_hash_hex": "1775badf6a3d5f0fd6ea82c08a888d0e95eebd4192ee04ab895c00d1ab94ac68",
+      "image_hash_hex": "aaf480d9170108bac7cfe4d10afbbc6f1473b102af97a3896afcbcd4cc3a065b",
+      "ipfs": {
+        "image_cid": "bafkreifk6sansfybbc5mpt7e2efpxpdpcrz3cavps6rys2x4xtkmyoqglm",
+        "json_cid": "bafkreifwwbfiua27n6weyilbj6woxanltbbf5lhpcx6qskc7k2yyrerbem",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifk6sansfybbc5mpt7e2efpxpdpcrz3cavps6rys2x4xtkmyoqglm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifwwbfiua27n6weyilbj6woxanltbbf5lhpcx6qskc7k2yyrerbem"
+      },
+      "metadata_on_chain": {
+        "datetime": "13/10/2025 14:01:22",
+        "workers": "3",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "670b47db5d7582fd937e549bbdd5d4c18c735c4cfdceab4a043cf94aced0d7ef",
+      "ledger": 2368110,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/670b47db5d7582fd937e549bbdd5d4c18c735c4cfdceab4a043cf94aced0d7ef",
+      "anchored_at_utc": "2026-05-03T22:37:51.812779+00:00"
+    },
+    {
+      "output_id": "20251013-155529",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251013-155529.json",
+      "image_file": "20251013-155529.jpg",
+      "json_hash_hex": "ceff23d17a08ccba16976eb7f11d467068e47ac28b1fa40acacb7471d2a8c387",
+      "image_hash_hex": "42b28bc6cc908d32e372a24ee12b69456ac1b8ae931088da8f29fd68f2b8be24",
+      "ipfs": {
+        "image_cid": "bafkreiccwkf4nteqruzog4vcj3qsw2kfnla3rlutccenvdzj7vupfof6eq",
+        "json_cid": "bafkreibj3ow4wre7bn6lql5umlueqkq2ztajd7gc4awvggxqng7o4xh7pu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiccwkf4nteqruzog4vcj3qsw2kfnla3rlutccenvdzj7vupfof6eq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibj3ow4wre7bn6lql5umlueqkq2ztajd7gc4awvggxqng7o4xh7pu"
+      },
+      "metadata_on_chain": {
+        "datetime": "13/10/2025 15:55:29",
+        "workers": "7",
+        "machinery": "Retroexcavadora",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "3379d3344c3b27e2493bbe621ccde2d763cde82506ed86228ebbb890329e5420",
+      "ledger": 2368111,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/3379d3344c3b27e2493bbe621ccde2d763cde82506ed86228ebbb890329e5420",
+      "anchored_at_utc": "2026-05-03T22:37:56.826029+00:00"
+    },
+    {
+      "output_id": "20251014-070432",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251014-070432.json",
+      "image_file": "20251014-070432.jpg",
+      "json_hash_hex": "dfbc0da94801313c9f882ec618ba3e69aa9d6dfe64d8ba6680d4335f3326d40a",
+      "image_hash_hex": "19640950aea63d5b18422d2f6866e9bf31629f580faa2df1f432846d28919fe4",
+      "ipfs": {
+        "image_cid": "bafkreiazmqevblvghvnrqqrnf5ugn2n7gfrj6wapviw7d5bsqrwsrem74q",
+        "json_cid": "bafkreifrp32bdafaufjqu3wmol4vu75fo7zb5qajrnx22lfpjeslr2dc2e",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiazmqevblvghvnrqqrnf5ugn2n7gfrj6wapviw7d5bsqrwsrem74q",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifrp32bdafaufjqu3wmol4vu75fo7zb5qajrnx22lfpjeslr2dc2e"
+      },
+      "metadata_on_chain": {
+        "datetime": "14/10/2025 07:04:32",
+        "workers": "7",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "91160a88bd92889a11da60d83babba48f07bb1cec900f6227e80c4f1a88a227e",
+      "ledger": 2368113,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/91160a88bd92889a11da60d83babba48f07bb1cec900f6227e80c4f1a88a227e",
+      "anchored_at_utc": "2026-05-03T22:38:06.763573+00:00"
+    },
+    {
+      "output_id": "20251014-093052",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251014-093052.json",
+      "image_file": "20251014-093052.jpg",
+      "json_hash_hex": "80ce8d9100004bd11e9d78c13c4e599813dd5459c3fa045441238b27b013610b",
+      "image_hash_hex": "56c7ebc180afeb520ca9ab8d45c8855da50f708f0584f5027016257bb6d71c03",
+      "ipfs": {
+        "image_cid": "bafkreicwy7v4dafp5njazknlrvc4rbk5uuhxbdyfqt2qe4awev53nvy4am",
+        "json_cid": "bafkreihwoojsg4xkvdcj7f7oewiaef3z6viuvnymdfe55kw2xh7zgeocm4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicwy7v4dafp5njazknlrvc4rbk5uuhxbdyfqt2qe4awev53nvy4am",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihwoojsg4xkvdcj7f7oewiaef3z6viuvnymdfe55kw2xh7zgeocm4"
+      },
+      "metadata_on_chain": {
+        "datetime": "14/10/2025 09:30:52",
+        "workers": "7",
+        "machinery": "Retroexcavadora",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "19da63bae1bf4ecb77ed1fc589a132f6082dfe251d688e7bfad8e5b01c29fffe",
+      "ledger": 2368114,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/19da63bae1bf4ecb77ed1fc589a132f6082dfe251d688e7bfad8e5b01c29fffe",
+      "anchored_at_utc": "2026-05-03T22:38:11.827347+00:00"
+    },
+    {
+      "output_id": "20251014-115725",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251014-115725.json",
+      "image_file": "20251014-115725.jpg",
+      "json_hash_hex": "cc88955172c93445d6d4f45b05b551d6b1f4ac5d5c46b527f6357f3f6fd2aadb",
+      "image_hash_hex": "8af71b534c74de2b11bc83ae879bfd6c7154252192aea47801cc599073579832",
+      "ipfs": {
+        "image_cid": "bafkreiek64nvgtdu3yvrdpedv2dzx7lmofkckimsv2shqaomlgihgv4ygi",
+        "json_cid": "bafkreibhsjp5e54c7kile2atpoqr5on7sdsitzecig7ik5u7c5ofwg5n7m",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiek64nvgtdu3yvrdpedv2dzx7lmofkckimsv2shqaomlgihgv4ygi",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibhsjp5e54c7kile2atpoqr5on7sdsitzecig7ik5u7c5ofwg5n7m"
+      },
+      "metadata_on_chain": {
+        "datetime": "14/10/2025 11:57:25",
+        "workers": "4",
+        "machinery": "Camion de volteo",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "a02b49330dcc18d91045f1e869c3c6019106d1e47aed98b0d8b99fb3c0c0a201",
+      "ledger": 2368115,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/a02b49330dcc18d91045f1e869c3c6019106d1e47aed98b0d8b99fb3c0c0a201",
+      "anchored_at_utc": "2026-05-03T22:38:16.826414+00:00"
+    },
+    {
+      "output_id": "20251014-120247",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251014-120247.json",
+      "image_file": "20251014-120247.jpg",
+      "json_hash_hex": "05b83a767c2ad68373d3e6d4060b83f443e7d998f3f7b8ead26329680a67b2f7",
+      "image_hash_hex": "9980a37a60b7f6753b88898bde6093c43ffa1eeba3aa2d8ae8e97ed524209fb4",
+      "ipfs": {
+        "image_cid": "bafkreiezqcrxuyfx6z2txcejrppgbe6eh75b525dviwyv2hjp3ksiie7wq",
+        "json_cid": "bafkreihtplyfezqvmzrcln73aujbhi7f5zinnf7ejdyrbcm5vyfv3gce2y",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiezqcrxuyfx6z2txcejrppgbe6eh75b525dviwyv2hjp3ksiie7wq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihtplyfezqvmzrcln73aujbhi7f5zinnf7ejdyrbcm5vyfv3gce2y"
+      },
+      "metadata_on_chain": {
+        "datetime": "14/10/2025 12:02:47",
+        "workers": "2",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "6e0c687db09fb8d4e1b1647c403fbdb0ac2ac06d02b5644faee135d04dd47fc4",
+      "ledger": 2368116,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/6e0c687db09fb8d4e1b1647c403fbdb0ac2ac06d02b5644faee135d04dd47fc4",
+      "anchored_at_utc": "2026-05-03T22:38:21.746971+00:00"
+    },
+    {
+      "output_id": "20251014-135619",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251014-135619.json",
+      "image_file": "20251014-135619.jpg",
+      "json_hash_hex": "fb00719046d12a390f5ee608bc68ba044e3c97adc28f3016c1c8c3db1c60d36a",
+      "image_hash_hex": "84e3e4e2f0e39a27571e919bb3b9604264abd0dfaeaa46e0b208e128e4aa65b4",
+      "ipfs": {
+        "image_cid": "bafkreiee4psof4hdtitvohurtoz3syccmsv5bx5ovjdobmqi4euojktfwq",
+        "json_cid": "bafkreibi2jwmg4cdpcgj65iy64tbt2rghbr4dcb2osa4lv2u4a6fkbzqqa",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiee4psof4hdtitvohurtoz3syccmsv5bx5ovjdobmqi4euojktfwq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibi2jwmg4cdpcgj65iy64tbt2rghbr4dcb2osa4lv2u4a6fkbzqqa"
+      },
+      "metadata_on_chain": {
+        "datetime": "14/10/2025 13:56:19",
+        "workers": "6",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "46f35c380a724753fcd7743ed2622dae9ac8ec5de456b9fe40a8bceaaccbe063",
+      "ledger": 2368117,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/46f35c380a724753fcd7743ed2622dae9ac8ec5de456b9fe40a8bceaaccbe063",
+      "anchored_at_utc": "2026-05-03T22:38:26.736977+00:00"
+    },
+    {
+      "output_id": "20251014-155504",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251014-155504.json",
+      "image_file": "20251014-155504.jpg",
+      "json_hash_hex": "d1a6e3f6f95411929eae9aeca8b04f421e4c8879dad332fa8a2e17ea95cdf702",
+      "image_hash_hex": "70d5281fda1e1d7467e6ca3ac73effd70e823de886527087222db40705efd435",
+      "ipfs": {
+        "image_cid": "bafkreidq2uub7wq6dv2gpzwkhldt576xb2bd32egkjyioirnwqdql36ugu",
+        "json_cid": "bafkreicif2kz2ge63gq245cxqbyka4qrdd3fogc463ndzfa2jtrvwhhs24",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidq2uub7wq6dv2gpzwkhldt576xb2bd32egkjyioirnwqdql36ugu",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicif2kz2ge63gq245cxqbyka4qrdd3fogc463ndzfa2jtrvwhhs24"
+      },
+      "metadata_on_chain": {
+        "datetime": "14/10/2025 15:55:04",
+        "workers": "4",
+        "machinery": "ninguna",
+        "phase": "Encofrado"
+      },
+      "tx_hash": "0a6534c36629ec2fa9c56e255b137435a6e197a0e4494ed4ec414612b1ece42b",
+      "ledger": 2368118,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/0a6534c36629ec2fa9c56e255b137435a6e197a0e4494ed4ec414612b1ece42b",
+      "anchored_at_utc": "2026-05-03T22:38:31.727063+00:00"
+    },
+    {
+      "output_id": "20251015-070346",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251015-070346.json",
+      "image_file": "20251015-070346.jpg",
+      "json_hash_hex": "3d7dedb28f13c4bcbb42713681f1dadcf573ea616c138867f170323a3b04526f",
+      "image_hash_hex": "da092a37513c25b8208c32f606dfec51289520dd088fee7261874ba1cd8162fa",
+      "ipfs": {
+        "image_cid": "bafkreig2bevdouj4ew4cbdbs6ydn73crfcksbxiir7xheymhjoq43alc7i",
+        "json_cid": "bafkreig2zp6amzq226btoxx3tj2zrp3aufs6rpcoco53ehdbzmeyng4xw4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreig2bevdouj4ew4cbdbs6ydn73crfcksbxiir7xheymhjoq43alc7i",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreig2zp6amzq226btoxx3tj2zrp3aufs6rpcoco53ehdbzmeyng4xw4"
+      },
+      "metadata_on_chain": {
+        "datetime": "15/10/2025 07:03:46",
+        "workers": "6",
+        "machinery": "Retroexcavadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "fd1cffd8e1d0d8af8b6fee09a8e9bca020e8d75ce5b45c615b76389d5e5f98b1",
+      "ledger": 2368119,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/fd1cffd8e1d0d8af8b6fee09a8e9bca020e8d75ce5b45c615b76389d5e5f98b1",
+      "anchored_at_utc": "2026-05-03T22:38:36.735835+00:00"
+    },
+    {
+      "output_id": "20251015-092946",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251015-092946.json",
+      "image_file": "20251015-092946.jpg",
+      "json_hash_hex": "7691aebd4a6046ecca2ba08ae16101f62b6df48ed64d98bcb8458948f78435ca",
+      "image_hash_hex": "00e3dadefe4f38cb02c8ec6529a95dc893fdffe49789a4e8cbbaa123e9d9b451",
+      "ipfs": {
+        "image_cid": "bafkreiaa4pnn57sphdfqfshmmuu2sxoisp677zexrgsors52uer6twnuke",
+        "json_cid": "bafkreiakq73pvhpd4ttjsgonlfir3fnjfpst3bgczl5xrghbwhtff7lhjy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaa4pnn57sphdfqfshmmuu2sxoisp677zexrgsors52uer6twnuke",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiakq73pvhpd4ttjsgonlfir3fnjfpst3bgczl5xrghbwhtff7lhjy"
+      },
+      "metadata_on_chain": {
+        "datetime": "15/10/2025 09:29:46",
+        "workers": "3",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "a5d408eac862b16bd535f134b2ad3f6aa7b557aa93247d663e41a1cf316c1399",
+      "ledger": 2368120,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/a5d408eac862b16bd535f134b2ad3f6aa7b557aa93247d663e41a1cf316c1399",
+      "anchored_at_utc": "2026-05-03T22:38:41.725007+00:00"
+    },
+    {
+      "output_id": "20251015-115541",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251015-115541.json",
+      "image_file": "20251015-115541.jpg",
+      "json_hash_hex": "23787cfa7bfb8f87e64f9c0e2e4ec871486508395a370beb260da38b32b31dec",
+      "image_hash_hex": "dde135b8ed59155128dcd689150366394b50134c056c8e99716560fb8e8f81a2",
+      "ipfs": {
+        "image_cid": "bafkreig54e23r3kzcvisrxgwrekqgzrzjnibgtafnshjs4lfmd5y5d4bui",
+        "json_cid": "bafkreiadoef2qyugwa6wrsvrr5y4kdfhfo4dbapucyonwddcsx3iss5asi",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreig54e23r3kzcvisrxgwrekqgzrzjnibgtafnshjs4lfmd5y5d4bui",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiadoef2qyugwa6wrsvrr5y4kdfhfo4dbapucyonwddcsx3iss5asi"
+      },
+      "metadata_on_chain": {
+        "datetime": "15/10/2025 11:55:41",
+        "workers": "6",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "cd685bce122cd1003edfa1141d0ce649b0a554ba988d8f5f97c30eb3fcebf131",
+      "ledger": 2368121,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/cd685bce122cd1003edfa1141d0ce649b0a554ba988d8f5f97c30eb3fcebf131",
+      "anchored_at_utc": "2026-05-03T22:38:46.826453+00:00"
+    },
+    {
+      "output_id": "20251015-120102",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251015-120102.json",
+      "image_file": "20251015-120102.jpg",
+      "json_hash_hex": "f78cd3b53cdda7a034797aee77fdb29266ee730f387d57c9d1d09bbe421c60dc",
+      "image_hash_hex": "7af81f586568d0291427907d67d56fe862d93a694f6a012fb3a3b802a3a3531e",
+      "ipfs": {
+        "image_cid": "bafkreid27apvqzli2aurij4qpvt5k37imlmtu2kpnias7m5dxabkhi2tdy",
+        "json_cid": "bafkreihdpurwsdu5rsguyta5bfblgrfulkui3alsdt5i75lcebvbwssqd4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreid27apvqzli2aurij4qpvt5k37imlmtu2kpnias7m5dxabkhi2tdy",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihdpurwsdu5rsguyta5bfblgrfulkui3alsdt5i75lcebvbwssqd4"
+      },
+      "metadata_on_chain": {
+        "datetime": "15/10/2025 12:01:02",
+        "workers": "4",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "c92570ff15da97c18b1c2b6fd327dffa083e5f766fc41e02bf811eed74a97c69",
+      "ledger": 2368122,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/c92570ff15da97c18b1c2b6fd327dffa083e5f766fc41e02bf811eed74a97c69",
+      "anchored_at_utc": "2026-05-03T22:38:51.829693+00:00"
+    },
+    {
+      "output_id": "20251015-135944",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251015-135944.json",
+      "image_file": "20251015-135944.jpg",
+      "json_hash_hex": "63b4ce7b4c0b133dd5e666c2f15fd24fa8c3f30f04044c8fce310b7611a3e41b",
+      "image_hash_hex": "c91e72aa696e4c45bca98466b0ab289ff326358dd3d3c986cbc6818a24422ac4",
+      "ipfs": {
+        "image_cid": "bafkreigjdzzku2lojrc3zkmem2ykwke76mtdldot2peyns6gqgfciqrkyq",
+        "json_cid": "bafkreifvioc4vl5fwvsojmhym5lrf522xvfsuxfw6fcn5qyrfv2kuu3l7y",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigjdzzku2lojrc3zkmem2ykwke76mtdldot2peyns6gqgfciqrkyq",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifvioc4vl5fwvsojmhym5lrf522xvfsuxfw6fcn5qyrfv2kuu3l7y"
+      },
+      "metadata_on_chain": {
+        "datetime": "15/10/2025 13:59:44",
+        "workers": "7",
+        "machinery": "Camion de volteo",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "0982abba11c4f3b816099459c9165b43a030b08cb91462b22aa88e6f960e6072",
+      "ledger": 2368123,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/0982abba11c4f3b816099459c9165b43a030b08cb91462b22aa88e6f960e6072",
+      "anchored_at_utc": "2026-05-03T22:38:56.724866+00:00"
+    },
+    {
+      "output_id": "20251015-155835",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251015-155835.json",
+      "image_file": "20251015-155835.jpg",
+      "json_hash_hex": "f5ddffa0448ad45c80a281e9bb1eed1867ad6605fe6470c0a5d44eeef811d1ae",
+      "image_hash_hex": "a7565e02d90036c194b285b2fece20d417cd5ce5028d70810b909052d7eaafd6",
+      "ipfs": {
+        "image_cid": "bafkreifhkzpafwiag3azjmufwl7m4iguc7gvzzicrvyicc4qsbjnp2vp2y",
+        "json_cid": "bafkreieuobifhdpxb4zvvtf4bdsq6fgilcqxvzjzpxl46k6vqst2dtzgs4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifhkzpafwiag3azjmufwl7m4iguc7gvzzicrvyicc4qsbjnp2vp2y",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreieuobifhdpxb4zvvtf4bdsq6fgilcqxvzjzpxl46k6vqst2dtzgs4"
+      },
+      "metadata_on_chain": {
+        "datetime": "15/10/2025 15:58:35",
+        "workers": "5",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "0e1fc7351d56beac32f7bb820e829d576325ca25e3ef68e29257c86d819aed65",
+      "ledger": 2368124,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/0e1fc7351d56beac32f7bb820e829d576325ca25e3ef68e29257c86d819aed65",
+      "anchored_at_utc": "2026-05-03T22:39:01.827272+00:00"
+    },
+    {
+      "output_id": "20251016-070159",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251016-070159.json",
+      "image_file": "20251016-070159.jpg",
+      "json_hash_hex": "a26cc6ab662427f66f9d264b2aa3a57a548bb8c5aee8a6671c280cb502a7b70e",
+      "image_hash_hex": "46f7f9df3edcbfafc52a28bb0c3f7aeea42378518c601a3f95322a893d439a37",
+      "ipfs": {
+        "image_cid": "bafkreicg67456pw4x6x4kkrixmgd66xouqrxqummmand7fjsfket2q42g4",
+        "json_cid": "bafkreigwszctggaudtjpsljmm7vd32o7rkztnuhceebt2vyfof654tdrwy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicg67456pw4x6x4kkrixmgd66xouqrxqummmand7fjsfket2q42g4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigwszctggaudtjpsljmm7vd32o7rkztnuhceebt2vyfof654tdrwy"
+      },
+      "metadata_on_chain": {
+        "datetime": "16/10/2025 07:01:59",
+        "workers": "3",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "5b4799a25c31f4622406447401fa65887c6f11a2d2de1be8adb9a0862923f0f9",
+      "ledger": 2368126,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/5b4799a25c31f4622406447401fa65887c6f11a2d2de1be8adb9a0862923f0f9",
+      "anchored_at_utc": "2026-05-03T22:39:11.725642+00:00"
+    },
+    {
+      "output_id": "20251016-092807",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251016-092807.json",
+      "image_file": "20251016-092807.jpg",
+      "json_hash_hex": "041229f8a8ef98715c683856c35f592a0816300d347862e9f29d43957ce60093",
+      "image_hash_hex": "258c336948a87c9f786fdbdf26c8b3f1e01b1c8587f4ab20f48fbbd436fde133",
+      "ipfs": {
+        "image_cid": "bafkreibfrqzwssfipspxq36334tmrm7r4anrzbmh6svsb5epxpkdn7pbgm",
+        "json_cid": "bafkreibqtjpudf67gjbzl5j2u6jib5z4dngjvwnbhiybmxcabpr722m2k4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibfrqzwssfipspxq36334tmrm7r4anrzbmh6svsb5epxpkdn7pbgm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibqtjpudf67gjbzl5j2u6jib5z4dngjvwnbhiybmxcabpr722m2k4"
+      },
+      "metadata_on_chain": {
+        "datetime": "16/10/2025 09:28:07",
+        "workers": "17",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "96af6c3f4ccbf6a99f0a793392be75d965cf36ca461c128ad14af498064caea0",
+      "ledger": 2368127,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/96af6c3f4ccbf6a99f0a793392be75d965cf36ca461c128ad14af498064caea0",
+      "anchored_at_utc": "2026-05-03T22:39:16.909795+00:00"
+    },
+    {
+      "output_id": "20251016-115452",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251016-115452.json",
+      "image_file": "20251016-115452.jpg",
+      "json_hash_hex": "2867626aaf888771d79d6d4a27dad57ed47de6a8b5cb41f3733fd80442be5f94",
+      "image_hash_hex": "74cb32165330952f84f939c873514d389439d5440f1ac88942313e280f312ff6",
+      "ipfs": {
+        "image_cid": "bafkreiduzmzbmuzqsuxyj6jzzbzvctjysq45krapdleisqrrhyua6mjp6y",
+        "json_cid": "bafkreib6xraeutqmlygn42hqezbqf4xbc6ax34mktch5cmsztqwhqcatsi",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiduzmzbmuzqsuxyj6jzzbzvctjysq45krapdleisqrrhyua6mjp6y",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreib6xraeutqmlygn42hqezbqf4xbc6ax34mktch5cmsztqwhqcatsi"
+      },
+      "metadata_on_chain": {
+        "datetime": "16/10/2025 11:54:52",
+        "workers": "1",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "53aa8f8f13b3b4e2cf4f99933a4f8b88c4bf7e3615b8748c56109beb5c063177",
+      "ledger": 2368128,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/53aa8f8f13b3b4e2cf4f99933a4f8b88c4bf7e3615b8748c56109beb5c063177",
+      "anchored_at_utc": "2026-05-03T22:39:21.735243+00:00"
+    },
+    {
+      "output_id": "20251016-120015",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251016-120015.json",
+      "image_file": "20251016-120015.jpg",
+      "json_hash_hex": "defe6385100cc9daae596e111d8db93488e1ae632bf033376c4bec08663cc45b",
+      "image_hash_hex": "01357da45fd925cfc1ad2eec539c368e1088f18e29862545755ffb7958b54803",
+      "ipfs": {
+        "image_cid": "bafkreiabgv62ix6zexh4dljo5rjzynuoccepddrjqysuk5k77n4vrnkiam",
+        "json_cid": "bafkreiep54vhrhoytblwwqx4z6eq3wqsvllrepyt7jwtomt32jakt4vhci",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiabgv62ix6zexh4dljo5rjzynuoccepddrjqysuk5k77n4vrnkiam",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiep54vhrhoytblwwqx4z6eq3wqsvllrepyt7jwtomt32jakt4vhci"
+      },
+      "metadata_on_chain": {
+        "datetime": "16/10/2025 12:00:15",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "2439f5402f6d1e810eb90d47c89997bf86d889f4be359945f4eceba5442e7db8",
+      "ledger": 2368129,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/2439f5402f6d1e810eb90d47c89997bf86d889f4be359945f4eceba5442e7db8",
+      "anchored_at_utc": "2026-05-03T22:39:26.845431+00:00"
+    },
+    {
+      "output_id": "20251016-135844",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251016-135844.json",
+      "image_file": "20251016-135844.jpg",
+      "json_hash_hex": "426163f65b6f1f4e6ed99be97133b337afd85e5b23318bdebdf5b884d34a663d",
+      "image_hash_hex": "ffd7c2716fc3b0a17d1815dd2d5696a714ec6b374f7685f023ec7475881ca7c6",
+      "ipfs": {
+        "image_cid": "bafkreih727bhc36dwcqx2gav3uwvnfvhctwgwn2po2c7ai7mor2yqhfhyy",
+        "json_cid": "bafkreifyxb4l6duseitu5jznpj24ezovpxfctchkavo7io5i77gqoyrvze",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreih727bhc36dwcqx2gav3uwvnfvhctwgwn2po2c7ai7mor2yqhfhyy",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifyxb4l6duseitu5jznpj24ezovpxfctchkavo7io5i77gqoyrvze"
+      },
+      "metadata_on_chain": {
+        "datetime": "16/10/2025 13:58:44",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "5e04817d656979a9078a2509e7b6261d6475cf5a4b906dada204ac02b50be6ff",
+      "ledger": 2368130,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/5e04817d656979a9078a2509e7b6261d6475cf5a4b906dada204ac02b50be6ff",
+      "anchored_at_utc": "2026-05-03T22:39:31.826959+00:00"
+    },
+    {
+      "output_id": "20251016-155650",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251016-155650.json",
+      "image_file": "20251016-155650.jpg",
+      "json_hash_hex": "235777562f28ba80de3cf598fa1ec603569f85af7926bbce834725abee79e52b",
+      "image_hash_hex": "a13c0e57c8ef5ae504b8e3ef071f948ad06e19bc66ed0432b517892a793e4433",
+      "ipfs": {
+        "image_cid": "bafkreifbhqhfpshpllsqjohd54dr7fek2bxbtpdg5ucdfnixrevhspsegm",
+        "json_cid": "bafkreid5jc5ugwniirhyk4svjrb2imhpbzr3astar2nudexp4gw62zuf7e",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifbhqhfpshpllsqjohd54dr7fek2bxbtpdg5ucdfnixrevhspsegm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreid5jc5ugwniirhyk4svjrb2imhpbzr3astar2nudexp4gw62zuf7e"
+      },
+      "metadata_on_chain": {
+        "datetime": "16/10/2025 15:56:50",
+        "workers": "0",
+        "machinery": "Cargador frontal",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "6ebc6d0f33a52ff56109fea358a161c1530ac87f8c89ec037a4f2e9401bff3f5",
+      "ledger": 2368131,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/6ebc6d0f33a52ff56109fea358a161c1530ac87f8c89ec037a4f2e9401bff3f5",
+      "anchored_at_utc": "2026-05-03T22:39:36.775716+00:00"
+    },
+    {
+      "output_id": "20251017-070035",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251017-070035.json",
+      "image_file": "20251017-070035.jpg",
+      "json_hash_hex": "c666ee5cec3464def8b9e6ecec662241ebbb46a060e99fee1929107202d7f4a1",
+      "image_hash_hex": "ca988e75d4850dbabb7685c636f29955074680fcd65441af2de2a1243fa06572",
+      "ipfs": {
+        "image_cid": "bafkreigktchhlvefbw5lw5ufyy3pfgkva5dib7gwkra26lpcuesd7idfoi",
+        "json_cid": "bafkreic2d7uqb5nwmw2pqpb7ageqqjzmfq6gq7xmfc67aanydekobjrsji",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigktchhlvefbw5lw5ufyy3pfgkva5dib7gwkra26lpcuesd7idfoi",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreic2d7uqb5nwmw2pqpb7ageqqjzmfq6gq7xmfc67aanydekobjrsji"
+      },
+      "metadata_on_chain": {
+        "datetime": "17/10/2025 07:00:35",
+        "workers": "11",
+        "machinery": "Bomba de concreto, Camion mixer",
+        "phase": "Colado de concreto"
+      },
+      "tx_hash": "2e72ca790bc7af0a23402ef5fd2d3192d2116363b600cd0ed8d647e486bed44c",
+      "ledger": 2368132,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/2e72ca790bc7af0a23402ef5fd2d3192d2116363b600cd0ed8d647e486bed44c",
+      "anchored_at_utc": "2026-05-03T22:39:41.727630+00:00"
+    },
+    {
+      "output_id": "20251017-093217",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251017-093217.json",
+      "image_file": "20251017-093217.jpg",
+      "json_hash_hex": "f6bc56e3e90beaa7487616f0dbbdb1137a9fc55d7b88afdd4b029e04ff423ad9",
+      "image_hash_hex": "1f801259edba448512c3690fed535cbe465f3151a17cc4517d4e782ed2c6e9e3",
+      "ipfs": {
+        "image_cid": "bafkreia7qajft3n2iscrfq3jb7wvgxf6izptcunbptcfc7kopaxnfrxj4m",
+        "json_cid": "bafkreibq7gzwc4insmewtvdphnvu44tcwtuioes6y63vxbpzwubsfiboxa",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreia7qajft3n2iscrfq3jb7wvgxf6izptcunbptcfc7kopaxnfrxj4m",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibq7gzwc4insmewtvdphnvu44tcwtuioes6y63vxbpzwubsfiboxa"
+      },
+      "metadata_on_chain": {
+        "datetime": "17/10/2025 09:32:17",
+        "workers": "5",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "30fb79944bf50da4c8d621c808ba9bd8b440af32ace637db8150db9abd230554",
+      "ledger": 2368133,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/30fb79944bf50da4c8d621c808ba9bd8b440af32ace637db8150db9abd230554",
+      "anchored_at_utc": "2026-05-03T22:39:46.810997+00:00"
+    },
+    {
+      "output_id": "20251017-115840",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251017-115840.json",
+      "image_file": "20251017-115840.jpg",
+      "json_hash_hex": "e096db43a04505b779008d1020518acae29c40e8c14566ebbf77e89b68c749ee",
+      "image_hash_hex": "a1494adca30da92f8dd4619b1a26d505ba97239a84a632b1634a06ceb2b761bb",
+      "ipfs": {
+        "image_cid": "bafkreifbjffnziynvexy3vdbtmncnvifxklshgueuyzlcy2ka3hlfn3bxm",
+        "json_cid": "bafkreieykp43qj454fdc6faiddiis2z7yw4ufdybogta623trcboioqm7u",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifbjffnziynvexy3vdbtmncnvifxklshgueuyzlcy2ka3hlfn3bxm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreieykp43qj454fdc6faiddiis2z7yw4ufdybogta623trcboioqm7u"
+      },
+      "metadata_on_chain": {
+        "datetime": "17/10/2025 11:58:40",
+        "workers": "0",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "2ebab5ea229c74e9def00c15b2f2c222d6d470d9c2f4a9d1c2013a7ee4de9892",
+      "ledger": 2368134,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/2ebab5ea229c74e9def00c15b2f2c222d6d470d9c2f4a9d1c2013a7ee4de9892",
+      "anchored_at_utc": "2026-05-03T22:39:51.827400+00:00"
+    },
+    {
+      "output_id": "20251017-120404",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251017-120404.json",
+      "image_file": "20251017-120404.jpg",
+      "json_hash_hex": "def8d8df0f3b2e1685f659b6dac37130fe6ccce93fa3a351eb4627d9176138b2",
+      "image_hash_hex": "861265ca60bed0d963964ee60136818870f5e5fcbb733ad0804805c596fc375e",
+      "ipfs": {
+        "image_cid": "bafkreiegcjs4uyf62dmwhfso4yatnamiod26l7f3om5nbaciaxczn7bxly",
+        "json_cid": "bafkreihksitvhwmqwrkqqrqro3itieimx2ua6wkzeddwwrwrlwir7lihyi",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiegcjs4uyf62dmwhfso4yatnamiod26l7f3om5nbaciaxczn7bxly",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihksitvhwmqwrkqqrqro3itieimx2ua6wkzeddwwrwrlwir7lihyi"
+      },
+      "metadata_on_chain": {
+        "datetime": "17/10/2025 12:04:04",
+        "workers": "3",
+        "machinery": "Generador electrico",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "8958c8a7031696f31a912c522c1dd00e76bd46613bc6f568aeac1c5455092ce0",
+      "ledger": 2368135,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/8958c8a7031696f31a912c522c1dd00e76bd46613bc6f568aeac1c5455092ce0",
+      "anchored_at_utc": "2026-05-03T22:39:56.727057+00:00"
+    },
+    {
+      "output_id": "20251017-140248",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251017-140248.json",
+      "image_file": "20251017-140248.jpg",
+      "json_hash_hex": "849ff4ece58bd55fe8945b342d12d67637ddc464b0ce123a4dbe4df586043377",
+      "image_hash_hex": "9b092db3735fc136a199664f2e5c44be76d541f99fa233b2ae1d62d2ca28947b",
+      "ipfs": {
+        "image_cid": "bafkreie3bew3g427ye3kdglgj4xfyrf6o3kud6m7uiz3flq5mljmukeupm",
+        "json_cid": "bafkreibabapb4cul3gknsht6oat4rnjisgozsbpukj4t6d4lvtiiquiv4i",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreie3bew3g427ye3kdglgj4xfyrf6o3kud6m7uiz3flq5mljmukeupm",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibabapb4cul3gknsht6oat4rnjisgozsbpukj4t6d4lvtiiquiv4i"
+      },
+      "metadata_on_chain": {
+        "datetime": "17/10/2025 14:02:48",
+        "workers": "4",
+        "machinery": "Bomba de concreto, Generador electrico",
+        "phase": "Colado de concreto"
+      },
+      "tx_hash": "e983578de5846622cc3d62b72c783c7b76293836921577a4ce8c47e17d1596d6",
+      "ledger": 2368136,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/e983578de5846622cc3d62b72c783c7b76293836921577a4ce8c47e17d1596d6",
+      "anchored_at_utc": "2026-05-03T22:40:01.933535+00:00"
+    },
+    {
+      "output_id": "20251017-155612",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251017-155612.json",
+      "image_file": "20251017-155612.jpg",
+      "json_hash_hex": "c85234c6a22a3b88ac9f5ff1b5ee606dde35ad51f806dd1e8de7de017f83963e",
+      "image_hash_hex": "a8d5ec4bac0d7aa18fe8386cbbc62800a37520cad968d1a343bcfdc4b87d9b25",
+      "ipfs": {
+        "image_cid": "bafkreifi2xwexlanpkqy72byns54mkaaun2sbswzndi2gq547xclq7m3eu",
+        "json_cid": "bafkreibs32ufvjmiou43lz4eoqanboopstylhlicivmknjxivrl4njg4xi",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifi2xwexlanpkqy72byns54mkaaun2sbswzndi2gq547xclq7m3eu",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibs32ufvjmiou43lz4eoqanboopstylhlicivmknjxivrl4njg4xi"
+      },
+      "metadata_on_chain": {
+        "datetime": "17/10/2025 15:56:12",
+        "workers": "0",
+        "machinery": "Generador electrico",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "ae3db81fe089498506af42f9482bb6488417a568aa1ff9e155883890a5bd40c2",
+      "ledger": 2368137,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/ae3db81fe089498506af42f9482bb6488417a568aa1ff9e155883890a5bd40c2",
+      "anchored_at_utc": "2026-05-03T22:40:06.728680+00:00"
+    },
+    {
+      "output_id": "20251018-070459",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251018-070459.json",
+      "image_file": "20251018-070459.jpg",
+      "json_hash_hex": "8a91db91989c53ec9248aa3a2279978d19282b06539f1883fb951b2c33980a84",
+      "image_hash_hex": "bcaa815493eb04d68c1a94143ba05afda2a510c10a59189e561f6f29356262dd",
+      "ipfs": {
+        "image_cid": "bafkreif4vkavje7latliyguucq52awx5uksrbqiklemj4vq7n4utkytc3u",
+        "json_cid": "bafkreibuhiioiqckurwvfbf3ntb3kjs345ok5yc5fii7bunyfhc45neriu",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreif4vkavje7latliyguucq52awx5uksrbqiklemj4vq7n4utkytc3u",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibuhiioiqckurwvfbf3ntb3kjs345ok5yc5fii7bunyfhc45neriu"
+      },
+      "metadata_on_chain": {
+        "datetime": "18/10/2025 07:04:59",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "22386496d3afd5d8d901b8e386979992adc6d7d37906d4691239b33ef4ec98a6",
+      "ledger": 2368139,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/22386496d3afd5d8d901b8e386979992adc6d7d37906d4691239b33ef4ec98a6",
+      "anchored_at_utc": "2026-05-03T22:40:16.726720+00:00"
+    },
+    {
+      "output_id": "20251018-093033",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251018-093033.json",
+      "image_file": "20251018-093033.jpg",
+      "json_hash_hex": "4464be867c87589103d35167dc243eeeec46c5365dfeb4a7e005c07d748613f8",
+      "image_hash_hex": "32b5bfe4d2099ab80c4b3080700b2ba8fc61d81d009095dd9fd6e55b4c4e7023",
+      "ipfs": {
+        "image_cid": "bafkreibsww76juqjtk4ayszqqbyawk5i7rq5qhiasck53h6w4vnuyttqem",
+        "json_cid": "bafkreicx3gsiukgqhk43aqa6emjejezzubgccun7eavldkwmkas2ggnuf4",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreibsww76juqjtk4ayszqqbyawk5i7rq5qhiasck53h6w4vnuyttqem",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicx3gsiukgqhk43aqa6emjejezzubgccun7eavldkwmkas2ggnuf4"
+      },
+      "metadata_on_chain": {
+        "datetime": "18/10/2025 09:30:33",
+        "workers": "0",
+        "machinery": "Generador electrico",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "885c5c3d708b53012d6a05d27ed05bc8f58a476da4b9dfcde68525bfc8ffd0bc",
+      "ledger": 2368140,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/885c5c3d708b53012d6a05d27ed05bc8f58a476da4b9dfcde68525bfc8ffd0bc",
+      "anchored_at_utc": "2026-05-03T22:40:21.831239+00:00"
+    },
+    {
+      "output_id": "20251018-115602",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251018-115602.json",
+      "image_file": "20251018-115602.jpg",
+      "json_hash_hex": "cb6d69b6c59fb07c20573ad536a60b9b417d865d5f24c448d800eea33c08d80b",
+      "image_hash_hex": "b6fb9a937e1a4ff6b39d01ad094b139c618b87c67d2aa478f5109e687b396562",
+      "ipfs": {
+        "image_cid": "bafkreifw7onjg7q2j73lhhibvueuwe44mgfyprt5fkshr5iqtzuhwolfmi",
+        "json_cid": "bafkreigqvevcajoxfp32m3ldyl3w5yyzmszreg2widqkdbwmjd2zpljd7q",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifw7onjg7q2j73lhhibvueuwe44mgfyprt5fkshr5iqtzuhwolfmi",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigqvevcajoxfp32m3ldyl3w5yyzmszreg2widqkdbwmjd2zpljd7q"
+      },
+      "metadata_on_chain": {
+        "datetime": "18/10/2025 11:56:02",
+        "workers": "1",
+        "machinery": "Excavadora",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "bee9d5adc4aa93e29d324fe58bdebc4d715fc76d28be44c052afb99ecdaf8f9c",
+      "ledger": 2368141,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/bee9d5adc4aa93e29d324fe58bdebc4d715fc76d28be44c052afb99ecdaf8f9c",
+      "anchored_at_utc": "2026-05-03T22:40:26.827856+00:00"
+    },
+    {
+      "output_id": "20251018-120128",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251018-120128.json",
+      "image_file": "20251018-120128.jpg",
+      "json_hash_hex": "c9685810c4c23f6dc5c0a9c0541d26ed530b3f2c230a878f7f92a41bfafdc422",
+      "image_hash_hex": "0e7e5225aa523ea2a0accdd0d8cdae5a372f72c22de31571327ace16c70fa069",
+      "ipfs": {
+        "image_cid": "bafkreiaopzjclkssh2rkblgn2dmm3ls2g4xxfqrn4mkxcmt2zylmod5ane",
+        "json_cid": "bafkreihn4ddsrzc72pzrfp46tz2tg2ivgyddu425xi3ncbyt26xcs3kb4m",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiaopzjclkssh2rkblgn2dmm3ls2g4xxfqrn4mkxcmt2zylmod5ane",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihn4ddsrzc72pzrfp46tz2tg2ivgyddu425xi3ncbyt26xcs3kb4m"
+      },
+      "metadata_on_chain": {
+        "datetime": "18/10/2025 12:01:28",
+        "workers": "0",
+        "machinery": "Retroexcavadora",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "86fa1ead6582ff6fe15ca49990aa01765d3d3a16f7f97911446d5c19082fa4bb",
+      "ledger": 2368142,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/86fa1ead6582ff6fe15ca49990aa01765d3d3a16f7f97911446d5c19082fa4bb",
+      "anchored_at_utc": "2026-05-03T22:40:31.729527+00:00"
+    },
+    {
+      "output_id": "20251018-155615",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251018-155615.json",
+      "image_file": "20251018-155615.jpg",
+      "json_hash_hex": "54841fda8bee1db6263710a152cdd53ec9f421d8c4324f48b58ef3c947910e6b",
+      "image_hash_hex": "c3a12046e876375cdf423d5666b6fc276f64db835c8b94d9cfb0e924e72c46f5",
+      "ipfs": {
+        "image_cid": "bafkreigdueqen2dwg5on6qr5kztln7bhn5snxa24rokntt5q5esoolcg6u",
+        "json_cid": "bafkreicjl74jli3ykxahn5coumcixl44x7nf77doaj37tjqyuxqekgt2qy",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreigdueqen2dwg5on6qr5kztln7bhn5snxa24rokntt5q5esoolcg6u",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicjl74jli3ykxahn5coumcixl44x7nf77doaj37tjqyuxqekgt2qy"
+      },
+      "metadata_on_chain": {
+        "datetime": "18/10/2025 15:56:15",
+        "workers": "0",
+        "machinery": "Excavadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "32e93c9c9750fa5537ace6c46613e5ec8fd773931efa9a395f2a9a4f8dfdc270",
+      "ledger": 2368143,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/32e93c9c9750fa5537ace6c46613e5ec8fd773931efa9a395f2a9a4f8dfdc270",
+      "anchored_at_utc": "2026-05-03T22:40:36.728811+00:00"
+    },
+    {
+      "output_id": "20251019-070345",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251019-070345.json",
+      "image_file": "20251019-070345.jpg",
+      "json_hash_hex": "439e11f580615472fc26adef74a8658ff1294c1f177617c08c76f248e021c461",
+      "image_hash_hex": "dab83c4453ebab4f5d6f7c63c6dfd3ec3cd41057938c8de66540caec9dfdb887",
+      "ipfs": {
+        "image_cid": "bafkreig2xa6eiu7lvnhv2334mpdn7u7mhtkbav4trsg6mzkazlwj37nyq4",
+        "json_cid": "bafkreify4ukxutd7dmfaztbheut3mls5uozkdssxvosiuleyucvbx3r43m",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreig2xa6eiu7lvnhv2334mpdn7u7mhtkbav4trsg6mzkazlwj37nyq4",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreify4ukxutd7dmfaztbheut3mls5uozkdssxvosiuleyucvbx3r43m"
+      },
+      "metadata_on_chain": {
+        "datetime": "19/10/2025 07:03:45",
+        "workers": "0",
+        "machinery": "Cargador frontal",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "744f800663784b89e5a731a281b2a7ca875487bb141ec0b90d4674d682245e13",
+      "ledger": 2368144,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/744f800663784b89e5a731a281b2a7ca875487bb141ec0b90d4674d682245e13",
+      "anchored_at_utc": "2026-05-03T22:40:41.906905+00:00"
+    },
+    {
+      "output_id": "20251019-093414",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251019-093414.json",
+      "image_file": "20251019-093414.jpg",
+      "json_hash_hex": "bf2c6f1bcd2bf64bb20471231a2b5e11a7ce184d3d91b88ca3ad5c3c4f6a9e89",
+      "image_hash_hex": "7867ef7ebdcc3408887ff101c0c66ad9444d303332029b32ecde3ef3c8c7c051",
+      "ipfs": {
+        "image_cid": "bafkreidym7xx5pomgqeiq77rahamm2wzirgtamzsakntf3g6h3z4rr6ake",
+        "json_cid": "bafkreicjonqxiu3yanimgpubvm5sa7d2b5cr2fcks4r6733f2u5joohxyq",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreidym7xx5pomgqeiq77rahamm2wzirgtamzsakntf3g6h3z4rr6ake",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreicjonqxiu3yanimgpubvm5sa7d2b5cr2fcks4r6733f2u5joohxyq"
+      },
+      "metadata_on_chain": {
+        "datetime": "19/10/2025 09:34:14",
+        "workers": "0",
+        "machinery": "Excavadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "2920243f20e2dbb3cc02233e987a35107456403b13f25787e9fb89645c3079a9",
+      "ledger": 2368145,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/2920243f20e2dbb3cc02233e987a35107456403b13f25787e9fb89645c3079a9",
+      "anchored_at_utc": "2026-05-03T22:40:46.727839+00:00"
+    },
+    {
+      "output_id": "20251019-115949",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251019-115949.json",
+      "image_file": "20251019-115949.jpg",
+      "json_hash_hex": "76cad00b804d393b0ab3f53f427573b39ee24957de7654ea181e128ee6762df2",
+      "image_hash_hex": "de01bd58afd75655ae7e4bf7c666fe7e977e47668fad8f8afe0c76db85fb97c0",
+      "ipfs": {
+        "image_cid": "bafkreig6ag6vrl6xkzk247sl67dgn7t6s57eozupvwhyv7qmo3nyl64xya",
+        "json_cid": "bafkreifcegadfw4ltdxg4tf2v3fq4prwocbvmawwncd7an5svz73paasdm",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreig6ag6vrl6xkzk247sl67dgn7t6s57eozupvwhyv7qmo3nyl64xya",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifcegadfw4ltdxg4tf2v3fq4prwocbvmawwncd7an5svz73paasdm"
+      },
+      "metadata_on_chain": {
+        "datetime": "19/10/2025 11:59:49",
+        "workers": "0",
+        "machinery": "Excavadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "1e4824ab1d39712139e073721a8887dda02cb84386c3e9d472d03bde5ec763e7",
+      "ledger": 2368146,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/1e4824ab1d39712139e073721a8887dda02cb84386c3e9d472d03bde5ec763e7",
+      "anchored_at_utc": "2026-05-03T22:40:51.831025+00:00"
+    },
+    {
+      "output_id": "20251019-120515",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251019-120515.json",
+      "image_file": "20251019-120515.jpg",
+      "json_hash_hex": "3cbf974be46243c997cc4d5b61d8fce951e28cf31be8c22ad75fd0b73806d5af",
+      "image_hash_hex": "e246bf444e1734ec045e309defae4e720f3560fccf8061839d02924df1a53ae7",
+      "ipfs": {
+        "image_cid": "bafkreihci27uitqxgtwaixrqtxx24ttsb42wb7gpqbqyhhicsjg7djj244",
+        "json_cid": "bafkreifpb4vp7uep4x3pls2er3onuidkxw2i5o65yaq7rzr2rd3w52pj6m",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihci27uitqxgtwaixrqtxx24ttsb42wb7gpqbqyhhicsjg7djj244",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreifpb4vp7uep4x3pls2er3onuidkxw2i5o65yaq7rzr2rd3w52pj6m"
+      },
+      "metadata_on_chain": {
+        "datetime": "19/10/2025 12:05:15",
+        "workers": "0",
+        "machinery": "ninguna",
+        "phase": "Armado de acero"
+      },
+      "tx_hash": "5b38bcaaa97005fe05a34f2f7a70eccce8b23ddb04d27e7f25c1a0cba5dfd4c4",
+      "ledger": 2368147,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/5b38bcaaa97005fe05a34f2f7a70eccce8b23ddb04d27e7f25c1a0cba5dfd4c4",
+      "anchored_at_utc": "2026-05-03T22:40:56.727088+00:00"
+    },
+    {
+      "output_id": "20251019-140350",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251019-140350.json",
+      "image_file": "20251019-140350.jpg",
+      "json_hash_hex": "9b64ce5eebde9a2532b44aa9888be913c0dea5fc8382cde3eb4fa6a7a36730cd",
+      "image_hash_hex": "8fe0f759ae6f36348da988a95902de6920e91766bad4a00eed0a2bd77f75cdba",
+      "ipfs": {
+        "image_cid": "bafkreiep4d3vtltpgy2i3kmivfmqfxtjedurozv22sqa53ikfplx65onxi",
+        "json_cid": "bafkreiayuagsck4xscbw5iocwknj633l5u2xg3egqeey4rudpq6e3nee7q",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiep4d3vtltpgy2i3kmivfmqfxtjedurozv22sqa53ikfplx65onxi",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreiayuagsck4xscbw5iocwknj633l5u2xg3egqeey4rudpq6e3nee7q"
+      },
+      "metadata_on_chain": {
+        "datetime": "19/10/2025 14:03:50",
+        "workers": "0",
+        "machinery": "Compactador manual",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "55887fac5639ec5b5f3a2cb24b758a8517dc661283b6e27597da7502cccf226a",
+      "ledger": 2368148,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/55887fac5639ec5b5f3a2cb24b758a8517dc661283b6e27597da7502cccf226a",
+      "anchored_at_utc": "2026-05-03T22:41:01.836032+00:00"
+    },
+    {
+      "output_id": "20251019-155645",
+      "project_code": "circunvalacion-cr",
+      "json_file": "20251019-155645.json",
+      "image_file": "20251019-155645.jpg",
+      "json_hash_hex": "8d92cb54a91ec09a729ceb32890e89c70c5fdd0f16d02709e10538c31309e034",
+      "image_hash_hex": "e2eac7d85cf33bd2e56e69c646a0da587fd7d9721e123fc43495b341c7e97d79",
+      "ipfs": {
+        "image_cid": "bafkreihc5ld5qxhthpjok3tjyzdkbwsyp7l5s4q6ci74inevwna4p2l5pe",
+        "json_cid": "bafkreid7wbrpse4mtntwfxfhssdjo5tzktmtavxtk632x5iajdbe5is3va",
+        "image_gateway": "https://gateway.pinata.cloud/ipfs/bafkreihc5ld5qxhthpjok3tjyzdkbwsyp7l5s4q6ci74inevwna4p2l5pe",
+        "json_gateway": "https://gateway.pinata.cloud/ipfs/bafkreid7wbrpse4mtntwfxfhssdjo5tzktmtavxtk632x5iajdbe5is3va"
+      },
+      "metadata_on_chain": {
+        "datetime": "19/10/2025 15:56:45",
+        "workers": "1",
+        "machinery": "Excavadora",
+        "phase": "Estructura de concreto"
+      },
+      "tx_hash": "9a2ab48ceb0c2207483607c27a491d74ba3af37a521806145de30929277f9f4a",
+      "ledger": 2368149,
+      "explorer_url": "https://stellar.expert/explorer/testnet/tx/9a2ab48ceb0c2207483607c27a491d74ba3af37a521806145de30929277f9f4a",
+      "anchored_at_utc": "2026-05-03T22:41:06.828104+00:00"
+    }
+  ]
+}
