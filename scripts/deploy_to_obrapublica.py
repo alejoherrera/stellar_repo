@@ -30,15 +30,18 @@ PA_BASE = f"https://www.pythonanywhere.com/api/v0/user/{PA_USER}"
 REPO_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar.html"
 LOCAL_DEV_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar_dev.html"
+LOCAL_TIMELAPSE_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar_timelapse.html"
 LOCAL_JS_SDK = REPO_ROOT / "sdk" / "js" / "monitor-as-a-service.js"
 
 REMOTE_HTML = "/home/alejocr/diara/templates/stellar.html"
 REMOTE_DEV_HTML = "/home/alejocr/diara/templates/stellar_dev.html"
+REMOTE_TIMELAPSE_HTML = "/home/alejocr/diara/templates/stellar_timelapse.html"
 REMOTE_JS_SDK = "/home/alejocr/diara/static/monitor-as-a-service.js"
 REMOTE_APP_PY = "/home/alejocr/diara/app.py"
 
 ROUTE_MARKER = "@app.route('/stellar')"
 DEV_ROUTE_MARKER = "@app.route('/stellar/dev')"
+TIMELAPSE_ROUTE_MARKER = "@app.route('/stellar/timelapse')"
 ROUTE_BLOCK = """
 # ========== STELLAR VIEWER ROUTES (hackathon 2026) ==========
 @app.route('/stellar')
@@ -104,27 +107,39 @@ def pa_reload_webapp(token: str):
 
 
 def patch_app_py(content: str) -> tuple[str, bool]:
-    """Inserta ROUTE_BLOCK antes del bloque blockchain o antes del if __name__.
-    Idempotente: si ambas rutas ya existen, no hace nada.
+    """Inserta rutas faltantes antes del bloque blockchain o antes del if __name__.
+    Idempotente: si todas las rutas ya existen, no hace nada.
     Retorna (nuevo_contenido, modificado)."""
     has_stellar = ROUTE_MARKER in content
     has_dev = DEV_ROUTE_MARKER in content
-    if has_stellar and has_dev:
+    has_timelapse = TIMELAPSE_ROUTE_MARKER in content
+    if has_stellar and has_dev and has_timelapse:
         return content, False
-    if has_stellar and not has_dev:
-        # Solo falta /stellar/dev; lo agregamos despues del bloque /stellar existente.
-        dev_only = """
+
+    # Construir bloques individuales solo para las rutas que faltan
+    blocks = []
+    if not has_dev:
+        blocks.append("""
 @app.route('/stellar/dev')
 def stellar_dev():
     \"\"\"Developer hub: schema spec, SDKs, quickstart para terceros que construyen sobre MaaS.\"\"\"
     logger.debug("Ruta /stellar/dev accedida")
     return render_template('stellar_dev.html')
-"""
-        # Insertarlo antes del bloque blockchain o del if __name__
-        blockchain_marker = "# ========== BLOCKCHAIN INTEGRATION =========="
-        if blockchain_marker in content:
-            return content.replace(blockchain_marker, dev_only + "\n" + blockchain_marker, 1), True
-        return content.rstrip() + "\n" + dev_only, True
+""")
+    if not has_timelapse:
+        blocks.append("""
+@app.route('/stellar/timelapse')
+def stellar_timelapse():
+    \"\"\"Sample app: timelapse animado de outputs anclados, demuestra reusabilidad del SDK.\"\"\"
+    logger.debug("Ruta /stellar/timelapse accedida")
+    return render_template('stellar_timelapse.html')
+""")
+
+    additions = "".join(blocks)
+    blockchain_marker = "# ========== BLOCKCHAIN INTEGRATION =========="
+    if blockchain_marker in content:
+        return content.replace(blockchain_marker, additions + "\n" + blockchain_marker, 1), True
+    return content.rstrip() + "\n" + additions, True
 
     # Preferencia: insertar antes del bloque blockchain
     blockchain_marker = "# ========== BLOCKCHAIN INTEGRATION =========="
@@ -157,7 +172,11 @@ def main():
     if LOCAL_DEV_HTML.exists():
         pa_upload_file(token, REMOTE_DEV_HTML, LOCAL_DEV_HTML.read_bytes(), "stellar_dev.html")
 
-    # Paso 1c: subir SDK JS como static asset (para que devs lo importen via CDN)
+    # Paso 1c: subir stellar_timelapse.html (sample app)
+    if LOCAL_TIMELAPSE_HTML.exists():
+        pa_upload_file(token, REMOTE_TIMELAPSE_HTML, LOCAL_TIMELAPSE_HTML.read_bytes(), "stellar_timelapse.html")
+
+    # Paso 1d: subir SDK JS como static asset (para que devs lo importen via CDN)
     if LOCAL_JS_SDK.exists():
         pa_upload_file(token, REMOTE_JS_SDK, LOCAL_JS_SDK.read_bytes(), "monitor-as-a-service.js")
 

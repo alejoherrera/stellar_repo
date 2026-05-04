@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timelapse — Monitor as a Service</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #000;
+      color: #e5e7eb;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      height: 100vh;
+    }
+
+    /* ====== TOP BAR ====== */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 10;
+    }
+    .topbar .brand { font-size: 0.95rem; letter-spacing: 0.04em; }
+    .topbar .brand .x { color: #fbbf24; font-weight: 700; }
+    .topbar a { color: #93c5fd; text-decoration: none; font-size: 0.85rem; }
+    .topbar a:hover { text-decoration: underline; }
+    .topbar nav { display: flex; gap: 1rem; align-items: center; }
+
+    /* ====== STAGE ====== */
+    .stage {
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+    .stage img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+    .stage img.active { opacity: 1; }
+
+    .meta-overlay {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      pointer-events: none;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+    }
+    .meta-overlay .ts {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .meta-overlay .ts .small { font-size: 0.5em; font-weight: 500; color: #cbd5e1; display: block; margin-top: 0.4rem; }
+    .meta-overlay .info {
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(8px);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      max-width: 360px;
+      pointer-events: auto;
+    }
+    .meta-overlay .info dt { display: inline; color: #94a3b8; font-weight: 500; }
+    .meta-overlay .info dd { display: inline; margin: 0; color: #fff; }
+    .meta-overlay .info dl { margin: 0; }
+    .meta-overlay .info dl > * { display: block; }
+    .meta-overlay .info dl > div { margin-bottom: 0.15rem; }
+
+    .verify-badge {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      transition: background 0.3s;
+    }
+    .verify-badge.pending { background: rgba(255, 193, 7, 0.85); color: #422; }
+    .verify-badge.ok { background: rgba(34, 197, 94, 0.85); color: #fff; }
+    .verify-badge.fail { background: rgba(239, 68, 68, 0.85); color: #fff; }
+
+    .empty {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 1rem;
+    }
+
+    /* ====== CONTROLS ====== */
+    .controls {
+      padding: 0.75rem 1.25rem;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+    .controls button {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .controls button:hover { background: rgba(255,255,255,0.16); }
+    .controls button:disabled { opacity: 0.4; cursor: default; }
+    .progress {
+      position: relative;
+      height: 8px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .progress .bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      background: linear-gradient(90deg, #1a73e8, #fbbf24);
+      transition: width 0.2s;
+    }
+    .progress .info {
+      position: absolute;
+      top: -1.6rem;
+      right: 0;
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+    .speed-group { display: flex; gap: 0.4rem; align-items: center; font-size: 0.8rem; }
+    .speed-group select {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.35rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .controls .center { display: flex; gap: 0.5rem; justify-content: center; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Timelapse <span class="x">×</span> Stellar &middot; <span style="color:#94a3b8;">obra pública verificable</span></div>
+  <nav>
+    <a href="/stellar">Viewer</a>
+    <a href="/stellar/dev">Devs</a>
+    <a href="https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" target="_blank" rel="noopener">Explorer</a>
+  </nav>
+</div>
+
+<div class="stage" id="stage">
+  <div class="empty" id="empty">Cargando outputs desde Stellar…</div>
+  <div class="verify-badge pending" id="verifyBadge" style="display:none;">Verificando…</div>
+  <div class="meta-overlay" id="metaOverlay" style="display:none;">
+    <div class="ts" id="ts"></div>
+    <div class="info">
+      <dl>
+        <div><dt>Output:</dt> <dd id="outputId"></dd></div>
+        <div><dt>Personas:</dt> <dd id="workers"></dd></div>
+        <div><dt>Maquinaria:</dt> <dd id="machinery"></dd></div>
+        <div><dt>Etapa:</dt> <dd id="phase"></dd></div>
+        <div style="margin-top:0.5rem;"><dt>TX:</dt> <dd><a id="txLink" href="#" target="_blank" rel="noopener" style="color:#93c5fd;">on-chain</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="center">
+    <button id="prevBtn" disabled>◀</button>
+    <button id="playBtn" disabled>▶ Play</button>
+    <button id="nextBtn" disabled>▶</button>
+  </div>
+  <div class="progress" id="progress">
+    <div class="bar" id="bar"></div>
+    <div class="info" id="progressInfo">— / —</div>
+  </div>
+  <div class="speed-group">
+    <label for="speedSel">Velocidad</label>
+    <select id="speedSel">
+      <option value="1500">0.7×</option>
+      <option value="1000" selected>1×</option>
+      <option value="500">2×</option>
+      <option value="250">4×</option>
+      <option value="100">10×</option>
+    </select>
+  </div>
+</div>
+
+<script type="module">
+import { Client } from "/static/monitor-as-a-service.js";
+
+const ACCOUNT = "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR";
+const IPFS_GATEWAYS = [
+  "https://gateway.pinata.cloud/ipfs/",
+  "https://ipfs.io/ipfs/",
+  "https://dweb.link/ipfs/",
+];
+
+const stage = document.getElementById("stage");
+const empty = document.getElementById("empty");
+const metaOverlay = document.getElementById("metaOverlay");
+const verifyBadge = document.getElementById("verifyBadge");
+const tsEl = document.getElementById("ts");
+const outputIdEl = document.getElementById("outputId");
+const workersEl = document.getElementById("workers");
+const machineryEl = document.getElementById("machinery");
+const phaseEl = document.getElementById("phase");
+const txLink = document.getElementById("txLink");
+const playBtn = document.getElementById("playBtn");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const progressBar = document.getElementById("bar");
+const progressInfo = document.getElementById("progressInfo");
+const progressEl = document.getElementById("progress");
+const speedSel = document.getElementById("speedSel");
+
+let outputs = [];
+let idx = 0;
+let playing = false;
+let timer = null;
+
+function formatDate(dt) {
+  // dt: "29/10/2025 06:02:11"
+  if (!dt) return "—";
+  const m = dt.match(/^(\d{2})\/(\d{2})\/(\d{4})\s+(\d{2}):(\d{2}):(\d{2})$/);
+  if (!m) return dt;
+  const [, dd, mm, yyyy, hh, mi] = m;
+  const months = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+  return `<span style="font-weight:600;">${dd}</span> <span style="color:#cbd5e1; font-weight:500;">${months[parseInt(mm,10)-1]} ${yyyy}</span><span class="small">${hh}:${mi}</span>`;
+}
+
+function imgUrl(cid) { return IPFS_GATEWAYS[0] + cid; }
+
+function preloadImage(cid) {
+  if (!cid) return Promise.resolve(null);
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => {
+      // Try next gateway
+      for (let i = 1; i < IPFS_GATEWAYS.length; i++) {
+        const fallback = new Image();
+        fallback.onload = () => resolve(fallback);
+        fallback.onerror = i === IPFS_GATEWAYS.length - 1 ? () => resolve(null) : null;
+        fallback.src = IPFS_GATEWAYS[i] + cid;
+      }
+    };
+    img.src = imgUrl(cid);
+  });
+}
+
+async function showFrame(i) {
+  if (i < 0 || i >= outputs.length) return;
+  idx = i;
+  const o = outputs[i];
+
+  // Limpiar imagenes anteriores excepto las dos mas cercanas (para crossfade)
+  Array.from(stage.querySelectorAll("img")).forEach(im => {
+    if (!im.dataset.idx) return;
+    const d = Math.abs(parseInt(im.dataset.idx, 10) - i);
+    if (d > 1) im.remove();
+  });
+
+  // Crear imagen del frame actual si no existe
+  let imgEl = stage.querySelector(`img[data-idx="${i}"]`);
+  if (!imgEl && o.imageCid) {
+    imgEl = document.createElement("img");
+    imgEl.dataset.idx = String(i);
+    imgEl.src = imgUrl(o.imageCid);
+    imgEl.dataset.gw = "0";
+    imgEl.dataset.cid = o.imageCid;
+    imgEl.onerror = function() {
+      const next = parseInt(this.dataset.gw, 10) + 1;
+      if (next < IPFS_GATEWAYS.length) {
+        this.dataset.gw = String(next);
+        this.src = IPFS_GATEWAYS[next] + this.dataset.cid;
+      }
+    };
+    stage.appendChild(imgEl);
+    await new Promise(r => { imgEl.onload = r; setTimeout(r, 5000); });
+  }
+
+  // Activar el frame
+  Array.from(stage.querySelectorAll("img")).forEach(im => im.classList.remove("active"));
+  if (imgEl) imgEl.classList.add("active");
+  empty.style.display = "none";
+  metaOverlay.style.display = "flex";
+
+  // Update meta
+  tsEl.innerHTML = formatDate(o.datetime);
+  outputIdEl.textContent = o.outputId;
+  workersEl.textContent = o.workers ?? "—";
+  machineryEl.textContent = o.machinery || "—";
+  phaseEl.textContent = o.phase || "—";
+  txLink.href = `https://stellar.expert/explorer/testnet/account/${ACCOUNT}`;
+
+  // Verification badge
+  verifyBadge.style.display = "block";
+  verifyBadge.className = "verify-badge pending";
+  verifyBadge.textContent = "Verificando…";
+
+  progressBar.style.width = `${((i + 1) / outputs.length) * 100}%`;
+  progressInfo.textContent = `${i + 1} / ${outputs.length}`;
+  prevBtn.disabled = i === 0;
+  nextBtn.disabled = i === outputs.length - 1;
+
+  // Lazy preload next 2 frames
+  if (i + 1 < outputs.length) preloadImage(outputs[i + 1].imageCid);
+  if (i + 2 < outputs.length) preloadImage(outputs[i + 2].imageCid);
+
+  // Verify integrity in background (no blocks the playback)
+  verifyAsync(o, i);
+}
+
+async function verifyAsync(o, frameIdx) {
+  if (!o.jsonCid) {
+    verifyBadge.className = "verify-badge fail";
+    verifyBadge.textContent = "Sin CID";
+    return;
+  }
+  try {
+    const client = Client.testnet(ACCOUNT);
+    const result = await client.verify(o.outputId);
+    if (idx !== frameIdx) return;  // already moved on
+    if (result.jsonOk && (result.imageOk === undefined || result.imageOk)) {
+      verifyBadge.className = "verify-badge ok";
+      verifyBadge.textContent = "✓ Verificado on-chain";
+    } else {
+      verifyBadge.className = "verify-badge fail";
+      verifyBadge.textContent = "✗ Hash mismatch";
+    }
+  } catch (e) {
+    if (idx !== frameIdx) return;
+    verifyBadge.className = "verify-badge pending";
+    verifyBadge.textContent = "Verif. timeout";
+  }
+}
+
+function play() {
+  playing = true;
+  playBtn.textContent = "❚❚ Pause";
+  const interval = parseInt(speedSel.value, 10);
+  const tick = async () => {
+    if (!playing) return;
+    if (idx >= outputs.length - 1) { playing = false; playBtn.textContent = "▶ Play"; return; }
+    await showFrame(idx + 1);
+    timer = setTimeout(tick, parseInt(speedSel.value, 10));
+  };
+  tick();
+}
+
+function pause() {
+  playing = false;
+  if (timer) clearTimeout(timer);
+  playBtn.textContent = "▶ Play";
+}
+
+playBtn.addEventListener("click", () => playing ? pause() : play());
+prevBtn.addEventListener("click", () => { pause(); showFrame(idx - 1); });
+nextBtn.addEventListener("click", () => { pause(); showFrame(idx + 1); });
+progressEl.addEventListener("click", (e) => {
+  const rect = progressEl.getBoundingClientRect();
+  const ratio = (e.clientX - rect.left) / rect.width;
+  const newIdx = Math.max(0, Math.min(outputs.length - 1, Math.floor(ratio * outputs.length)));
+  pause();
+  showFrame(newIdx);
+});
+
+(async function init() {
+  try {
+    const client = Client.testnet(ACCOUNT);
+    const all = await client.outputs();
+    // Orden cronologico ascendente (mas viejo primero) y solo los con imagen
+    outputs = all
+      .filter(o => o.imageCid && o.imageHashOnChain && o.imageHashOnChain !== "00".repeat(32))
+      .sort((a, b) => (a.outputId || "").localeCompare(b.outputId || ""));
+    if (!outputs.length) {
+      empty.textContent = "No hay outputs con imagen pineada.";
+      return;
+    }
+    playBtn.disabled = false;
+    progressInfo.textContent = `0 / ${outputs.length}`;
+    await showFrame(0);
+  } catch (e) {
+    empty.textContent = `Error: ${e.message}`;
+    console.error(e);
+  }
+})();
+</script>
+
+</body>
+</html>

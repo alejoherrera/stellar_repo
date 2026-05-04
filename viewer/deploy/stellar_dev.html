@@ -103,8 +103,9 @@
   <a href="#schema">3. Schema spec</a>
   <a href="#quickstart">4. Quickstart en 30 segundos</a>
   <a href="#sdks">5. SDKs (Python, JavaScript)</a>
-  <a href="#raw">6. Acceso directo (sin SDK)</a>
-  <a href="#ideas">7. Ideas para construir</a>
+  <a href="#sample">6. Sample app: timelapse</a>
+  <a href="#raw">7. Acceso directo (sin SDK)</a>
+  <a href="#ideas">8. Ideas para construir</a>
 </div>
 
 <h2 id="concepto">1. Concepto</h2>
@@ -200,7 +201,16 @@ print("JSON match:", result.json_ok, "Image match:", result.image_ok)
   </div>
 </div>
 
-<h2 id="raw">6. Acceso directo (sin SDK)</h2>
+<h2 id="sample">6. Sample app: timelapse animado</h2>
+<p>
+  Una segunda app pública que reusa el mismo SDK JS para mostrar los outputs como timelapse cronológico, con verificación criptográfica frame-by-frame en tiempo real. Ejemplo concreto de "una vez publicada la data, cualquiera construye su propia experiencia".
+</p>
+<ul class="quick-links">
+  <li><a href="/stellar/timelapse">Abrir timelapse en vivo</a> — full-screen, controles de velocidad, badge de verificación on-chain por frame</li>
+  <li><a href="https://github.com/alejoherrera/stellar_repo/blob/main/viewer/deploy/stellar_timelapse.html" target="_blank" rel="noopener">Ver código fuente</a> — ~300 líneas HTML+JS, importa el SDK desde <code>/static/monitor-as-a-service.js</code></li>
+</ul>
+
+<h2 id="raw">7. Acceso directo (sin SDK)</h2>
 <p>
   Cuando el SDK no esté disponible para tu lenguaje, podés implementar un cliente con tres pasos: leer Horizon, decodear base64, y opcionalmente fetchear desde IPFS para verificar.
 </p>
@@ -216,7 +226,7 @@ curl -s "https://horizon-testnet.stellar.org/accounts/GDRWQERI6PI3WICTGPJBFBEFRV
   Ver <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md#7-code-examples-minimum-viable-consumer" target="_blank">SCHEMA §7</a> para más ejemplos.
 </p>
 
-<h2 id="ideas">7. Ideas para construir</h2>
+<h2 id="ideas">8. Ideas para construir</h2>
 <div class="grid">
   <div class="card">
     <h3>Bot de Telegram / Discord</h3>
