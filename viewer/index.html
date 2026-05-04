@@ -289,7 +289,58 @@ const ACCOUNT = "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR";
 const HORIZON = "https://horizon-testnet.stellar.org";
 const EXPLORER_TX = "https://stellar.expert/explorer/testnet/tx/";
 const EXPLORER_ACC = "https://stellar.expert/explorer/testnet/account/";
-const IPFS_GATEWAY = "https://gateway.pinata.cloud/ipfs/";
+
+// Cadena de gateways IPFS con fallback automatico (si uno falla por rate limit
+// o disponibilidad, se prueba el siguiente). El contenido es el mismo en todos
+// porque el CID es el hash; cualquier nodo IPFS sirve el mismo bytes.
+const IPFS_GATEWAYS = [
+  "https://gateway.pinata.cloud/ipfs/",
+  "https://ipfs.io/ipfs/",
+  "https://dweb.link/ipfs/",
+  "https://4everland.io/ipfs/",
+];
+const IPFS_GATEWAY = IPFS_GATEWAYS[0]; // para badges/links visibles
+const FETCH_TIMEOUT_MS = 12000;
+const MAX_CONCURRENT_FETCHES = 4;
+
+// Semaforo simple para limitar concurrencia de fetches a IPFS
+class Semaphore {
+  constructor(limit) { this.limit = limit; this.active = 0; this.waiters = []; }
+  async run(fn) {
+    while (this.active >= this.limit) {
+      await new Promise(r => this.waiters.push(r));
+    }
+    this.active++;
+    try { return await fn(); }
+    finally {
+      this.active--;
+      const next = this.waiters.shift();
+      if (next) next();
+    }
+  }
+}
+const ipfsLimiter = new Semaphore(MAX_CONCURRENT_FETCHES);
+
+async function fetchFromIPFS(cid, asArrayBuffer = false) {
+  let lastError;
+  for (const gw of IPFS_GATEWAYS) {
+    try {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
+      const resp = await fetch(gw + cid, { signal: ctrl.signal });
+      clearTimeout(t);
+      if (!resp.ok) {
+        lastError = new Error(`${new URL(gw).host}: HTTP ${resp.status}`);
+        continue;
+      }
+      return asArrayBuffer ? await resp.arrayBuffer() : await resp.json();
+    } catch (e) {
+      lastError = e;
+      continue;
+    }
+  }
+  throw lastError || new Error("Todos los gateways IPFS fallaron");
+}
 
 document.getElementById("account-link").href = EXPLORER_ACC + ACCOUNT;
 
@@ -403,9 +454,7 @@ async function verifyOutput(output, card) {
     verJson.textContent = "Verificando JSON desde IPFS...";
     verJson.className = "verification pending";
     try {
-      const r = await fetch(IPFS_GATEWAY + output.json_cid);
-      if (!r.ok) throw new Error(`gateway ${r.status}`);
-      const obj = await r.json();
+      const obj = await ipfsLimiter.run(() => fetchFromIPFS(output.json_cid, false));
       const canonical = canonicalJson(obj);
       const computed = await sha256Hex(canonical);
       if (computed === output.json_hash_onchain) {
@@ -426,7 +475,6 @@ async function verifyOutput(output, card) {
     verImg.className = "verification skip";
     return;
   }
-  // Skip image if all-zero hash (cuando no se encontro imagen local en el ancla)
   if (output.image_hash_onchain === "00".repeat(32)) {
     verImg.textContent = "Imagen no fue anclada (hash en cero en chain).";
     verImg.className = "verification skip";
@@ -435,9 +483,7 @@ async function verifyOutput(output, card) {
   verImg.textContent = "Verificando imagen desde IPFS...";
   verImg.className = "verification pending";
   try {
-    const r = await fetch(IPFS_GATEWAY + output.img_cid);
-    if (!r.ok) throw new Error(`gateway ${r.status}`);
-    const buf = new Uint8Array(await r.arrayBuffer());
+    const buf = new Uint8Array(await ipfsLimiter.run(() => fetchFromIPFS(output.img_cid, true)));
     const computed = await sha256Hex(buf);
     if (computed === output.image_hash_onchain) {
       verImg.textContent = `Integridad imagen OK: SHA-256 calculado coincide con on-chain.`;
@@ -460,9 +506,25 @@ function renderOutputCard(output) {
   imgCol.className = "img-col";
   if (output.img_cid && output.image_hash_onchain && output.image_hash_onchain !== "00".repeat(32)) {
     const img = document.createElement("img");
-    img.src = IPFS_GATEWAY + output.img_cid;
     img.alt = `Imagen ${output.outputId}`;
     img.loading = "lazy";
+    img.dataset.cid = output.img_cid;
+    img.dataset.gw = "0";
+    // onerror chain: si un gateway falla cargando la imagen, salta al siguiente
+    img.onerror = function() {
+      const next = parseInt(this.dataset.gw, 10) + 1;
+      if (next < IPFS_GATEWAYS.length) {
+        this.dataset.gw = String(next);
+        this.src = IPFS_GATEWAYS[next] + this.dataset.cid;
+      } else {
+        this.style.display = "none";
+        const ph = document.createElement("div");
+        ph.className = "placeholder";
+        ph.textContent = "Imagen no disponible en ningun gateway IPFS (rate limit / red).";
+        this.parentElement.appendChild(ph);
+      }
+    };
+    img.src = IPFS_GATEWAYS[0] + output.img_cid;
     imgCol.appendChild(img);
   } else {
     const ph = document.createElement("div");
@@ -562,6 +624,39 @@ function renderProject(projectMap) {
   }
 }
 
+// Estado global para el progreso de verificacion lazy
+const verifyState = { total: 0, done: 0, failed: 0 };
+
+function updateVerifyStatus() {
+  const { total, done, failed } = verifyState;
+  if (done + failed >= total) {
+    const kind = failed > 0 ? "" : "ok";
+    setStatus(`Listo. ${done}/${total} outputs verificados contra IPFS${failed ? ` (${failed} con error de gateway)` : ""}.`, kind);
+  } else {
+    setStatus(`Verificando integridad criptografica: ${done}/${total} completados (lazy: solo los visibles).`, "ok");
+  }
+}
+
+function setupLazyVerification(cards) {
+  verifyState.total = cards.length;
+  const observer = new IntersectionObserver((entries, obs) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting || entry.target.dataset.verifying) continue;
+      entry.target.dataset.verifying = "1";
+      obs.unobserve(entry.target);
+      const idx = parseInt(entry.target.dataset.idx, 10);
+      verifyOutput(cards[idx].output, cards[idx].card)
+        .then(() => { verifyState.done++; updateVerifyStatus(); })
+        .catch(e => { console.error(e); verifyState.failed++; updateVerifyStatus(); });
+    }
+  }, { rootMargin: "400px 0px" }); // empezar 400px antes de que entre al viewport
+
+  cards.forEach((c, i) => {
+    c.card.dataset.idx = String(i);
+    observer.observe(c.card);
+  });
+}
+
 (async function main() {
   try {
     setStatus("Cargando datos desde Stellar Horizon...");
@@ -572,17 +667,16 @@ function renderProject(projectMap) {
     const list = Object.values(outputs)
       .sort((a, b) => (b.dt || "").localeCompare(a.dt || ""));
 
-    setStatus(`Encontrados ${list.length} output(s) anclados. Verificando integridad contra IPFS...`, "ok");
+    setStatus(`Encontrados ${list.length} output(s) anclados. La verificacion criptografica corre lazy a medida que cada card entra a la vista.`, "ok");
 
-    const main = document.getElementById("outputs");
+    const mainEl = document.getElementById("outputs");
     const cards = list.map(o => {
       const card = renderOutputCard(o);
-      main.appendChild(card);
+      mainEl.appendChild(card);
       return { output: o, card };
     });
 
-    await Promise.all(cards.map(({ output, card }) => verifyOutput(output, card)));
-    setStatus(`Listo. ${list.length} output(s) cargados y verificados desde Stellar testnet + IPFS.`, "ok");
+    setupLazyVerification(cards);
   } catch (e) {
     console.error(e);
     setStatus(`Error: ${e.message}. Abrir consola para detalles.`, "error");
