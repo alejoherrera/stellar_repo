@@ -7,6 +7,8 @@ Reads, parses and verifies dIAra/MaaS anchors directly from Stellar + IPFS — n
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb)
+
 ## Coautores
 
 - **Master Juan Alejandro Herrera López** &lt;alejandroherreracr@gmail.com&gt; — autor principal
