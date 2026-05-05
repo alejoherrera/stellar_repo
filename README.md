@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/SDKs-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Schema: CC0](https://img.shields.io/badge/Schema-CC0-green.svg)](docs/SCHEMA.md)
 
-Documentación conceptual y de arquitectura para el uso de **Stellar** y **Soroban** como infraestructura de transparencia, monitoreo y financiamiento de **obra pública en Costa Rica**, integrando IA, validación ciudadana y banca de desarrollo.
+Documentación conceptual y de arquitectura para el uso de **Stellar** y **Soroban** como infraestructura de transparencia, monitoreo y financiamiento de **obra pública en LATAM**, integrando IA, validación ciudadana y banca de desarrollo.
 
 **Powered by [Mivisor.com](https://mivisor.com).** Live: [obrapublica.info/stellar](https://www.obrapublica.info/stellar) | [/dashboard](https://www.obrapublica.info/stellar/dashboard) | [/dev](https://www.obrapublica.info/stellar/dev) | [/timelapse](https://www.obrapublica.info/stellar/timelapse)
 
