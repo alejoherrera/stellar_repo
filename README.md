@@ -1,6 +1,19 @@
-# stellar_repo
+# stellar_repo — Monitor as a Service
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb)
+[![PyPI](https://img.shields.io/pypi/v/monitor-as-a-service?label=PyPI)](https://pypi.org/project/monitor-as-a-service/)
+[![License: MIT](https://img.shields.io/badge/SDKs-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Schema: CC0](https://img.shields.io/badge/Schema-CC0-green.svg)](docs/SCHEMA.md)
 
 Documentacion conceptual y de arquitectura para el uso de **Stellar** y **Soroban** como infraestructura de transparencia, monitoreo y financiamiento de **obra publica en Costa Rica**, integrando IA, validacion ciudadana y banca de desarrollo.
+
+**Powered by [Mivisor.com](https://mivisor.com).** Live: [obrapublica.info/stellar](https://www.obrapublica.info/stellar) | [/dashboard](https://www.obrapublica.info/stellar/dashboard) | [/dev](https://www.obrapublica.info/stellar/dev) | [/timelapse](https://www.obrapublica.info/stellar/timelapse)
+
+## Try it now (no install)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb)
+
+Click el badge — abre el notebook en Google Colab, conecta a Stellar testnet, lista 100+ outputs anclados, verifica integridad criptografica contra IPFS, genera dashboard interactivo. Cero credenciales, cero install.
 
 ## Estado
 
