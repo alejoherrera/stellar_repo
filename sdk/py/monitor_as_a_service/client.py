@@ -174,6 +174,71 @@ class Client:
                 return o
         return None
 
+    @staticmethod
+    def _to_yyyymmdd(value) -> str:
+        """Acepta str (YYYYMMDD, YYYY-MM-DD, YYYYMMDD-HHMMSS, ISO), date, datetime. Retorna 'YYYYMMDD'."""
+        if hasattr(value, "strftime"):
+            return value.strftime("%Y%m%d")
+        s = str(value)
+        if "T" in s:
+            s = s.split("T")[0]
+        return s.replace("-", "").replace("/", "")[:8]
+
+    @staticmethod
+    def _to_output_key(value) -> str:
+        """Acepta cualquier representacion de fecha+hora, retorna clave comparable 'YYYYMMDD-HHMMSS'."""
+        if hasattr(value, "strftime"):
+            return value.strftime("%Y%m%d-%H%M%S")
+        s = str(value).replace("/", "-")
+        if "T" in s:
+            d, t = s.split("T", 1)
+            t = t.split(".")[0].split("Z")[0].split("+")[0].replace(":", "")
+            return f"{d.replace('-', '')}-{(t + '000000')[:6]}"
+        if " " in s:
+            d, t = s.split(" ", 1)
+            t = t.replace(":", "")
+            return f"{d.replace('-', '')}-{(t + '000000')[:6]}"
+        if "-" in s and len(s) >= 15:  # already YYYYMMDD-HHMMSS o YYYY-MM-DD-HH-MM-SS
+            return s.replace("/", "")
+        return f"{s.replace('-', '')[:8]}-000000"
+
+    def available_dates(self) -> list[str]:
+        """Lista ordenada de fechas (YYYY-MM-DD) que tienen al menos un output anclado."""
+        out = set()
+        for o in self.outputs():
+            if len(o.output_id) >= 8:
+                out.add(f"{o.output_id[:4]}-{o.output_id[4:6]}-{o.output_id[6:8]}")
+        return sorted(out)
+
+    def outputs_on_date(self, day) -> list[Output]:
+        """Outputs anclados en un dia especifico (acepta date, datetime, str)."""
+        prefix = self._to_yyyymmdd(day)
+        return [o for o in self.outputs() if o.output_id.startswith(prefix)]
+
+    def outputs_in_range(self, start, end) -> list[Output]:
+        """Outputs entre dos fechas/datetimes inclusive (acepta date, datetime, str YYYYMMDD)."""
+        start_key = self._to_output_key(start)
+        end_key = self._to_output_key(end)
+        # Permite strings de solo fecha como 'end inclusivo' hasta 23:59:59
+        if hasattr(end, "hour") is False and len(str(end)) <= 10:
+            end_key = end_key.replace("-000000", "-235959")
+        return [o for o in self.outputs() if start_key <= o.output_id <= end_key]
+
+    def find_nearest(self, target) -> Output | None:
+        """Output cuyo output_id (YYYYMMDD-HHMMSS) este temporalmente mas cercano al target dado."""
+        target_key = self._to_output_key(target)
+        all_outs = list(self.outputs())
+        if not all_outs:
+            return None
+        from datetime import datetime as _dt
+        def parse(k):
+            try:
+                return _dt.strptime(k[:15], "%Y%m%d-%H%M%S")
+            except Exception:
+                return _dt.min
+        target_dt = parse(target_key)
+        return min(all_outs, key=lambda o: abs((parse(o.output_id) - target_dt).total_seconds()))
+
     def fetch_from_ipfs(self, cid: str, as_bytes: bool = False):
         """Try each gateway in order until one returns 2xx. Returns parsed JSON or raw bytes."""
         last_err = None

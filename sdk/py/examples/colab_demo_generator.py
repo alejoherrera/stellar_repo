@@ -194,6 +194,56 @@ cells = [
     ),
 
     md(
+        "## 8. Widgets interactivos (NUEVO en 1.1.0)",
+        "",
+        "El SDK incluye widgets de ipywidgets para explorar los datos sin escribir codigo.",
+        "",
+        "### 8.1 Buscar imagen anclada por fecha y hora",
+        "",
+        "Calendario + sliders de hora y minuto. El SDK encuentra el output mas cercano y muestra la imagen pineada en IPFS con su metadata."
+    ),
+    code(
+        "!pip install --quiet ipywidgets",
+    ),
+    code(
+        "from monitor_as_a_service.widgets import image_at_datetime",
+        "image_at_datetime(client)",
+    ),
+
+    md(
+        "### 8.2 Generar dashboard por rango de fechas",
+        "",
+        "Dos DatePickers + boton. Filtra los outputs en el rango y renderiza un dashboard plotly inline con KPIs y 4 charts."
+    ),
+    code(
+        "from monitor_as_a_service.widgets import dashboard_for_range",
+        "dashboard_for_range(client)",
+    ),
+
+    md(
+        "### 8.3 Helpers programaticos (sin widget)",
+        "",
+        "Si preferis llamar las funciones directo:"
+    ),
+    code(
+        "# Listar fechas disponibles on-chain",
+        "fechas = client.available_dates()",
+        "print(f\"{len(fechas)} dias con outputs: {fechas[0]} -> {fechas[-1]}\")",
+        "",
+        "# Outputs de un dia especifico",
+        "octubre_3 = client.outputs_on_date(\"2025-10-03\")",
+        "print(f\"3 oct 2025: {len(octubre_3)} outputs\")",
+        "",
+        "# Outputs de un rango",
+        "primera_semana = client.outputs_in_range(\"2025-10-03\", \"2025-10-09\")",
+        "print(f\"Primera semana: {len(primera_semana)} outputs\")",
+        "",
+        "# Output mas cercano a un datetime",
+        "cercano = client.find_nearest(\"2025-10-29 14:30:00\")",
+        "print(f\"Mas cercano a 14:30 del 29-oct: {cercano.output_id}\")",
+    ),
+
+    md(
         "## 8. Que mas se puede construir",
         "",
         "- **Bot Telegram/Discord** que postee cuando entra un output con anomalia",

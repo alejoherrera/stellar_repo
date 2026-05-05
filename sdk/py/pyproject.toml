@@ -1,6 +1,6 @@
 [project]
 name = "monitor-as-a-service"
-version = "1.0.3"
+version = "1.1.0"
 description = "Reference Python SDK for the Monitor as a Service Open Schema v1 (Stellar + IPFS). Powered by Mivisor.com."
 readme = "README.md"
 license = { text = "MIT" }
