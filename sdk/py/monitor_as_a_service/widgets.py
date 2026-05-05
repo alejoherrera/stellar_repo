@@ -97,8 +97,18 @@ def dashboard_for_range(client: Client):
     _ensure_deps()
     import ipywidgets as ipw
     import plotly.graph_objects as go
+    import plotly.io as pio
     from plotly.subplots import make_subplots
     from IPython.display import display, HTML, clear_output
+
+    # En Colab/Jupyter dentro de un ipywidgets.Output, fig.show() no renderiza.
+    # Usamos display(fig) que invoca _repr_html_ y muestra el chart inline.
+    # Tambien forzamos el renderer "notebook" como fallback global.
+    try:
+        if pio.renderers.default in (None, "browser"):
+            pio.renderers.default = "notebook"
+    except Exception:
+        pass
 
     available = client.available_dates()
     if not available:
@@ -177,7 +187,8 @@ def dashboard_for_range(client: Client):
                 plot_bgcolor="white", paper_bgcolor="#f8fafc",
             )
             fig.update_annotations(yshift=-12)
-            fig.show()
+            # display(fig) en lugar de fig.show() para que renderice dentro de ipw.Output en Colab
+            display(fig)
 
     btn.on_click(on_click)
     display(ipw.VBox([title, ipw.HBox([start_pick, end_pick]), btn, out]))
