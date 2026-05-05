@@ -1,6 +1,6 @@
 [project]
 name = "monitor-as-a-service"
-version = "1.0.1"
+version = "1.0.2"
 description = "Reference Python SDK for the Monitor as a Service Open Schema v1 (Stellar + IPFS). Powered by Mivisor.com."
 readme = "README.md"
 license = { text = "MIT" }
@@ -8,6 +8,10 @@ authors = [
     { name = "Master Juan Alejandro Herrera Lopez", email = "alejandroherreracr@gmail.com" },
     { name = "Andres Herrera Monge (CEO Mivisor)", email = "andres.herrera@mivisor.com" },
     { name = "Claude (Anthropic AI assistant)", email = "noreply@anthropic.com" },
+]
+maintainers = [
+    { name = "Master Juan Alejandro Herrera Lopez", email = "alejandroherreracr@gmail.com" },
+    { name = "Andres Herrera Monge (CEO Mivisor)", email = "andres.herrera@mivisor.com" },
 ]
 requires-python = ">=3.9"
 dependencies = ["requests>=2.28"]

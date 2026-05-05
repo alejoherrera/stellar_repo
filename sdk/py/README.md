@@ -7,6 +7,12 @@ Reads, parses and verifies dIAra/MaaS anchors directly from Stellar + IPFS — n
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+## Coautores
+
+- **Master Juan Alejandro Herrera López** &lt;alejandroherreracr@gmail.com&gt; — autor principal
+- **Andrés Herrera Monge**, CEO [Mivisor.com](https://mivisor.com) &lt;andres.herrera@mivisor.com&gt; — coautor
+- **Claude** (Anthropic AI assistant) &lt;noreply@anthropic.com&gt; — coautor de implementación (código, schema, SDKs)
+
 - **Schema:** [`docs/SCHEMA.md`](../../docs/SCHEMA.md) (CC0)
 - **Live publisher:** `GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR` (Stellar testnet)
 - **Public viewer:** https://www.obrapublica.info/stellar
