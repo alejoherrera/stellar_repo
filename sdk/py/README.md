@@ -3,6 +3,8 @@
 Reference Python implementation of the **MaaS Open Schema v1**.
 Reads, parses and verifies dIAra/MaaS anchors directly from Stellar + IPFS — no API key, no centralized backend.
 
+**Powered by [Mivisor.com](https://mivisor.com).**
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 - **Schema:** [`docs/SCHEMA.md`](../../docs/SCHEMA.md) (CC0)

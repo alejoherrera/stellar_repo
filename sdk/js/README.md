@@ -2,6 +2,8 @@
 
 Reference JS SDK for the **MaaS Open Schema v1**. Works in modern browsers (no build) and Node.js >= 18.
 
+**Powered by [Mivisor.com](https://mivisor.com).**
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 - **Schema:** [`docs/SCHEMA.md`](../../docs/SCHEMA.md) (CC0)

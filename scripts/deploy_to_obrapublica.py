@@ -31,17 +31,20 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar.html"
 LOCAL_DEV_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar_dev.html"
 LOCAL_TIMELAPSE_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar_timelapse.html"
+LOCAL_DASHBOARD_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar_dashboard.html"
 LOCAL_JS_SDK = REPO_ROOT / "sdk" / "js" / "monitor-as-a-service.js"
 
 REMOTE_HTML = "/home/alejocr/diara/templates/stellar.html"
 REMOTE_DEV_HTML = "/home/alejocr/diara/templates/stellar_dev.html"
 REMOTE_TIMELAPSE_HTML = "/home/alejocr/diara/templates/stellar_timelapse.html"
+REMOTE_DASHBOARD_HTML = "/home/alejocr/diara/templates/stellar_dashboard.html"
 REMOTE_JS_SDK = "/home/alejocr/diara/static/monitor-as-a-service.js"
 REMOTE_APP_PY = "/home/alejocr/diara/app.py"
 
 ROUTE_MARKER = "@app.route('/stellar')"
 DEV_ROUTE_MARKER = "@app.route('/stellar/dev')"
 TIMELAPSE_ROUTE_MARKER = "@app.route('/stellar/timelapse')"
+DASHBOARD_ROUTE_MARKER = "@app.route('/stellar/dashboard')"
 ROUTE_BLOCK = """
 # ========== STELLAR VIEWER ROUTES (hackathon 2026) ==========
 @app.route('/stellar')
@@ -113,7 +116,8 @@ def patch_app_py(content: str) -> tuple[str, bool]:
     has_stellar = ROUTE_MARKER in content
     has_dev = DEV_ROUTE_MARKER in content
     has_timelapse = TIMELAPSE_ROUTE_MARKER in content
-    if has_stellar and has_dev and has_timelapse:
+    has_dashboard = DASHBOARD_ROUTE_MARKER in content
+    if has_stellar and has_dev and has_timelapse and has_dashboard:
         return content, False
 
     # Construir bloques individuales solo para las rutas que faltan
@@ -133,6 +137,14 @@ def stellar_timelapse():
     \"\"\"Sample app: timelapse animado de outputs anclados, demuestra reusabilidad del SDK.\"\"\"
     logger.debug("Ruta /stellar/timelapse accedida")
     return render_template('stellar_timelapse.html')
+""")
+    if not has_dashboard:
+        blocks.append("""
+@app.route('/stellar/dashboard')
+def stellar_dashboard():
+    \"\"\"Live dashboard: KPIs y graficos auto-actualizables cada 30s desde Stellar testnet.\"\"\"
+    logger.debug("Ruta /stellar/dashboard accedida")
+    return render_template('stellar_dashboard.html')
 """)
 
     additions = "".join(blocks)
@@ -175,6 +187,10 @@ def main():
     # Paso 1c: subir stellar_timelapse.html (sample app)
     if LOCAL_TIMELAPSE_HTML.exists():
         pa_upload_file(token, REMOTE_TIMELAPSE_HTML, LOCAL_TIMELAPSE_HTML.read_bytes(), "stellar_timelapse.html")
+
+    # Paso 1d: subir stellar_dashboard.html (live dashboard auto-refresh)
+    if LOCAL_DASHBOARD_HTML.exists():
+        pa_upload_file(token, REMOTE_DASHBOARD_HTML, LOCAL_DASHBOARD_HTML.read_bytes(), "stellar_dashboard.html")
 
     # Paso 1d: subir SDK JS como static asset (para que devs lo importen via CDN)
     if LOCAL_JS_SDK.exists():

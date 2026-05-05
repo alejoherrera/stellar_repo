@@ -103,7 +103,7 @@
   <a href="#schema">3. Schema spec</a>
   <a href="#quickstart">4. Quickstart en 30 segundos</a>
   <a href="#sdks">5. SDKs (Python, JavaScript)</a>
-  <a href="#sample">6. Sample app: timelapse</a>
+  <a href="#sample">6. Sample apps: timelapse y live dashboard</a>
   <a href="#raw">7. Acceso directo (sin SDK)</a>
   <a href="#ideas">8. Ideas para construir</a>
 </div>
@@ -201,14 +201,35 @@ print("JSON match:", result.json_ok, "Image match:", result.image_ok)
   </div>
 </div>
 
-<h2 id="sample">6. Sample app: timelapse animado</h2>
+<h2 id="sample">6. Sample apps</h2>
 <p>
-  Una segunda app pública que reusa el mismo SDK JS para mostrar los outputs como timelapse cronológico, con verificación criptográfica frame-by-frame en tiempo real. Ejemplo concreto de "una vez publicada la data, cualquiera construye su propia experiencia".
+  Apps reutilizables que muestran cómo construir distintas experiencias sobre el mismo SDK. Cada una es un único archivo HTML que importa <code>/static/monitor-as-a-service.js</code>. Forkeá libremente.
 </p>
-<ul class="quick-links">
-  <li><a href="/stellar/timelapse">Abrir timelapse en vivo</a> — full-screen, controles de velocidad, badge de verificación on-chain por frame</li>
-  <li><a href="https://github.com/alejoherrera/stellar_repo/blob/main/viewer/deploy/stellar_timelapse.html" target="_blank" rel="noopener">Ver código fuente</a> — ~300 líneas HTML+JS, importa el SDK desde <code>/static/monitor-as-a-service.js</code></li>
-</ul>
+<div class="grid">
+  <div class="card">
+    <h3>Live Dashboard</h3>
+    <p>KPIs y 3 charts (etapas, maquinaria, timeline) con auto-refresh cada 30 segundos. Detecta nuevos anclas y los flashea visualmente.</p>
+    <p>
+      <a href="/stellar/dashboard">Abrir live</a> &middot;
+      <a href="https://github.com/alejoherrera/stellar_repo/blob/main/viewer/deploy/stellar_dashboard.html" target="_blank" rel="noopener">Código fuente</a>
+    </p>
+  </div>
+  <div class="card">
+    <h3>Timelapse animado</h3>
+    <p>Reproduce las imágenes anclas como timelapse cronológico, full-screen, con badge de verificación on-chain frame-by-frame.</p>
+    <p>
+      <a href="/stellar/timelapse">Abrir timelapse</a> &middot;
+      <a href="https://github.com/alejoherrera/stellar_repo/blob/main/viewer/deploy/stellar_timelapse.html" target="_blank" rel="noopener">Código fuente</a>
+    </p>
+  </div>
+  <div class="card">
+    <h3>Python wow demo</h3>
+    <p>Pipeline completo (Stellar → IPFS verify → dashboard plotly) en un solo script. Tres comandos: instalar, descargar, correr.</p>
+    <p>
+      <a href="https://github.com/alejoherrera/stellar_repo/blob/main/sdk/py/examples/04_wow_dashboard.py" target="_blank" rel="noopener">Ver código</a>
+    </p>
+  </div>
+</div>
 
 <h2 id="raw">7. Acceso directo (sin SDK)</h2>
 <p>
@@ -255,6 +276,9 @@ curl -s "https://horizon-testnet.stellar.org/accounts/GDRWQERI6PI3WICTGPJBFBEFRV
 </div>
 
 <footer style="margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; font-size: 0.85rem; color: #6b7280;">
+  <p style="font-size: 1rem; color: #0f172a; font-weight: 600;">
+    Powered by <a href="https://mivisor.com" target="_blank" rel="noopener" style="color: #1a73e8;">Mivisor.com</a>
+  </p>
   <p>
     <strong>Autores:</strong> Master Juan Alejandro Herrera López &lt;alejandroherreracr@gmail.com&gt; &middot; Andrés Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt; &middot; Claude (Anthropic AI assistant) &lt;noreply@anthropic.com&gt;.
   </p>

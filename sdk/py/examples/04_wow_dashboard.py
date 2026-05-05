@@ -45,7 +45,8 @@ def banner():
             "[bold cyan]Monitor as a Service[/]  | live demo\n"
             "[dim]Lee anclas de obra publica desde Stellar testnet,\n"
             "verifica integridad contra IPFS, genera dashboard interactivo.[/]\n"
-            "[dim cyan]Schema CC0 |SDK MIT |0 API keys, 0 backend dependencies[/]",
+            "[dim cyan]Schema CC0 |SDK MIT |0 API keys, 0 backend dependencies[/]\n"
+            "[bold yellow]Powered by Mivisor.com[/]",
             border_style="cyan",
             padding=(1, 3),
         )
@@ -247,20 +248,35 @@ def main():
 
     fig.update_layout(
         title=dict(
-            text=f"<b>Monitor as a Service</b>  |  {proj.name if proj else ''}",
+            text=(f"<b>Monitor as a Service</b>  |  {proj.name if proj else ''}"
+                  f"<br><span style='font-size:11px; color:#6b7280;'>"
+                  f"Powered by <a href='https://mivisor.com' style='color:#1a73e8;'>Mivisor.com</a> "
+                  f"&nbsp;|&nbsp; Open Schema CC0 &nbsp;|&nbsp; "
+                  f"Stellar testnet (verificable on-chain)</span>"),
             x=0.02,
             y=0.97,
             yanchor="top",
             font=dict(size=20),
         ),
-        height=980,
+        height=1020,
         showlegend=False,
-        margin=dict(t=130, b=40, l=40, r=40),
+        margin=dict(t=145, b=80, l=40, r=40),
         plot_bgcolor="white",
         paper_bgcolor="#f8fafc",
     )
-    # Empuja los subplot_titles ligeramente abajo para que no se solapen con el title principal
+    # Empuja los subplot_titles (annotations existentes) ligeramente abajo para no chocar con el title
     fig.update_annotations(yshift=-15)
+    # Footer con coautores como annotation adicional paper-anchored
+    fig.add_annotation(
+        text=("<b>Coautores:</b> Master Juan Alejandro Herrera Lopez &lt;alejandroherreracr@gmail.com&gt; "
+              "&nbsp;|&nbsp; Andres Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt; "
+              "&nbsp;|&nbsp; Claude (Anthropic AI assistant)"),
+        xref="paper", yref="paper",
+        x=0.5, y=-0.04,
+        xanchor="center", yanchor="top",
+        showarrow=False,
+        font=dict(size=10, color="#6b7280"),
+    )
     fig.update_xaxes(title_text="Datetime", row=2, col=1)
     fig.update_yaxes(title_text="Personas", row=2, col=1)
 

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Dashboard — Monitor as a Service</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      margin: 0;
+      background: #f6f7f9;
+      color: #1f2937;
+      line-height: 1.5;
+    }
+    .topbar {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: white;
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+    .topbar h1 { margin: 0; font-size: 1.4rem; font-weight: 700; }
+    .topbar .subtitle { font-size: 0.85rem; color: #93c5fd; margin-top: 0.25rem; }
+    .topbar .status {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      align-items: center;
+    }
+    .pulse {
+      display: inline-block;
+      width: 10px; height: 10px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+    .topbar a { color: #93c5fd; text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .kpi {
+      background: white;
+      padding: 1.25rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+    }
+    .kpi:hover { transform: translateY(-2px); }
+    .kpi .value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .kpi .label {
+      font-size: 0.85rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.5rem;
+    }
+    .kpi .delta {
+      font-size: 0.78rem;
+      color: #16a34a;
+      margin-top: 0.25rem;
+      font-weight: 600;
+    }
+    .kpi .delta.flash {
+      animation: flash 1.2s ease-out;
+    }
+    @keyframes flash {
+      0%, 100% { background: transparent; }
+      30% { background: #dcfce7; }
+    }
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .chart-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .chart-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1rem;
+      color: #374151;
+    }
+    .chart-card .plot { width: 100%; height: 320px; }
+    .chart-card.full { grid-column: 1 / -1; }
+    .chart-card.full .plot { height: 280px; }
+    @media (max-width: 800px) {
+      .charts-grid { grid-template-columns: 1fr; }
+      .topbar { grid-template-columns: 1fr; }
+      .topbar .status { justify-content: flex-start; }
+    }
+    footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    footer a { color: #1a73e8; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .powered-by {
+      font-weight: 600;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div>
+    <h1>Live Dashboard <span style="color:#93c5fd;">·</span> Monitor as a Service</h1>
+    <div class="subtitle">Datos leidos en vivo desde Stellar testnet, actualizacion automatica cada 30 segundos.</div>
+  </div>
+  <div class="status">
+    <span><span class="pulse"></span> Live</span>
+    <span id="lastUpdate">cargando…</span>
+    <span id="nextRefresh">—</span>
+    <a href="/stellar" title="Ver viewer principal">Viewer</a>
+    <a href="/stellar/dev" title="Build your own">Devs</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="kpis">
+    <div class="kpi">
+      <div class="value" id="kpiTotal">—</div>
+      <div class="label">Outputs anclados</div>
+      <div class="delta" id="deltaTotal"></div>
+    </div>
+    <div class="kpi">
+      <div class="value" id="kpiPhases">—</div>
+      <div class="label">Etapas constructivas</div>
+    </div>
+    <div class="kpi">
+      <div class="value" id="kpiMachinery">—</div>
+      <div class="label">Tipos de maquinaria</div>
+    </div>
+    <div class="kpi">
+      <div class="value" id="kpiPersonObs">—</div>
+      <div class="label">Persona-observaciones</div>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>Outputs por etapa constructiva</h3>
+      <div class="plot" id="chartPhases"></div>
+    </div>
+    <div class="chart-card">
+      <h3>Maquinaria detectada (top 10)</h3>
+      <div class="plot" id="chartMachinery"></div>
+    </div>
+    <div class="chart-card full">
+      <h3>Personas trabajadoras a lo largo del tiempo</h3>
+      <div class="plot" id="chartTimeline"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div style="flex: 1 1 100%;">
+    <p style="margin: 0 0 0.5rem; font-size: 0.78rem; color: #4b5563;">
+      <strong style="color:#0f172a;">Coautores:</strong>
+      Master Juan Alejandro Herrera López &lt;alejandroherreracr@gmail.com&gt;
+      &nbsp;·&nbsp; Andrés Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt;
+      &nbsp;·&nbsp; Claude (Anthropic AI assistant)
+    </p>
+  </div>
+  <div>
+    <span class="powered-by">Powered by <a href="https://mivisor.com" target="_blank" rel="noopener">Mivisor.com</a></span>
+    &nbsp;·&nbsp; Open data on <a href="https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" target="_blank" rel="noopener">Stellar testnet</a>
+  </div>
+  <div>
+    Schema: <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md" target="_blank" rel="noopener">CC0</a>
+    &nbsp;·&nbsp; SDKs: <a href="https://pypi.org/project/monitor-as-a-service/" target="_blank" rel="noopener">PyPI</a> | <a href="https://github.com/alejoherrera/stellar_repo/tree/main/sdk/js" target="_blank" rel="noopener">JS</a>
+  </div>
+</footer>
+
+<script type="module">
+import { Client } from "/static/monitor-as-a-service.js";
+
+const ACCOUNT = "GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR";
+const REFRESH_MS = 30_000;
+
+let lastTotal = null;
+let lastUpdateAt = null;
+let countdownInterval = null;
+
+const PLOTLY_CONFIG = { displayModeBar: false, responsive: true };
+const PLOTLY_LAYOUT_BASE = {
+  margin: { t: 20, b: 60, l: 60, r: 30 },
+  paper_bgcolor: "white",
+  plot_bgcolor: "white",
+  font: { family: "system-ui, -apple-system, sans-serif", size: 12 },
+};
+
+function fmtRelative(ts) {
+  const sec = Math.floor((Date.now() - ts) / 1000);
+  if (sec < 5) return "hace un momento";
+  if (sec < 60) return `hace ${sec}s`;
+  if (sec < 3600) return `hace ${Math.floor(sec/60)}m`;
+  return `hace ${Math.floor(sec/3600)}h`;
+}
+
+function startCountdown() {
+  if (countdownInterval) clearInterval(countdownInterval);
+  let remaining = Math.floor(REFRESH_MS / 1000);
+  document.getElementById("nextRefresh").textContent = `proximo refresh en ${remaining}s`;
+  countdownInterval = setInterval(() => {
+    remaining--;
+    if (remaining <= 0) {
+      document.getElementById("nextRefresh").textContent = "actualizando…";
+      clearInterval(countdownInterval);
+    } else {
+      document.getElementById("nextRefresh").textContent = `proximo refresh en ${remaining}s`;
+    }
+    if (lastUpdateAt) {
+      document.getElementById("lastUpdate").textContent = `actualizado ${fmtRelative(lastUpdateAt)}`;
+    }
+  }, 1000);
+}
+
+function flashKpi(id) {
+  const el = document.getElementById(id);
+  el.classList.remove("flash");
+  void el.offsetWidth;
+  el.classList.add("flash");
+}
+
+async function fetchAndRender() {
+  // Cliente nuevo cada vez = cero cache, datos siempre frescos.
+  const client = Client.testnet(ACCOUNT);
+  const outputs = await client.outputs();
+  const project = await client.project();
+
+  // KPIs
+  const total = outputs.length;
+  const phases = new Map();
+  const machinery = new Map();
+  let totalWorkers = 0;
+  for (const o of outputs) {
+    const ph = o.phase || "(sin etapa)";
+    phases.set(ph, (phases.get(ph) || 0) + 1);
+    if (o.machinery) {
+      for (const m of o.machinery.split(",").map(s => s.trim())) {
+        if (m && m.toLowerCase() !== "ninguna") {
+          machinery.set(m, (machinery.get(m) || 0) + 1);
+        }
+      }
+    }
+    totalWorkers += (o.workers || 0);
+  }
+
+  document.getElementById("kpiTotal").textContent = total;
+  document.getElementById("kpiPhases").textContent = phases.size;
+  document.getElementById("kpiMachinery").textContent = machinery.size;
+  document.getElementById("kpiPersonObs").textContent = totalWorkers;
+
+  if (lastTotal !== null && total !== lastTotal) {
+    const diff = total - lastTotal;
+    const sign = diff > 0 ? "+" : "";
+    document.getElementById("deltaTotal").textContent = `${sign}${diff} desde ultimo refresh`;
+    flashKpi("kpiTotal");
+  }
+  lastTotal = total;
+  lastUpdateAt = Date.now();
+  document.getElementById("lastUpdate").textContent = `actualizado ${fmtRelative(lastUpdateAt)}`;
+
+  // Pie chart — phases
+  const phaseLabels = [...phases.keys()];
+  const phaseValues = [...phases.values()];
+  Plotly.react("chartPhases", [{
+    type: "pie",
+    labels: phaseLabels,
+    values: phaseValues,
+    hole: 0.45,
+    textinfo: "label+percent",
+    marker: { colors: ["#1a73e8", "#fbbf24", "#10b981", "#ef4444", "#8b5cf6", "#06b6d4", "#f97316"] },
+  }], { ...PLOTLY_LAYOUT_BASE, showlegend: false }, PLOTLY_CONFIG);
+
+  // Bar chart — machinery
+  const sortedM = [...machinery.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
+  Plotly.react("chartMachinery", [{
+    type: "bar",
+    orientation: "h",
+    x: sortedM.map(e => e[1]),
+    y: sortedM.map(e => e[0]),
+    marker: { color: "#1a73e8" },
+  }], { ...PLOTLY_LAYOUT_BASE, yaxis: { autorange: "reversed" }, xaxis: { title: "Apariciones" } }, PLOTLY_CONFIG);
+
+  // Timeline — workers
+  const chrono = [...outputs].sort((a, b) => (a.outputId || "").localeCompare(b.outputId || ""));
+  Plotly.react("chartTimeline", [{
+    type: "scatter",
+    mode: "lines+markers",
+    x: chrono.map(o => o.datetime || o.outputId),
+    y: chrono.map(o => o.workers || 0),
+    line: { color: "#fbbf24", width: 2 },
+    marker: { size: 5, color: "#f97316" },
+    fill: "tozeroy",
+    fillcolor: "rgba(251, 191, 36, 0.1)",
+  }], {
+    ...PLOTLY_LAYOUT_BASE,
+    xaxis: { title: "Fecha/hora", tickangle: -45 },
+    yaxis: { title: "Personas trabajadoras", rangemode: "tozero" },
+  }, PLOTLY_CONFIG);
+
+  startCountdown();
+}
+
+// Initial load + interval
+fetchAndRender().catch(e => {
+  console.error(e);
+  document.getElementById("lastUpdate").textContent = `error: ${e.message}`;
+});
+setInterval(() => {
+  fetchAndRender().catch(e => {
+    console.error(e);
+    document.getElementById("lastUpdate").textContent = `error refresh: ${e.message}`;
+  });
+}, REFRESH_MS);
+</script>
+
+</body>
+</html>
