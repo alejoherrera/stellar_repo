@@ -13,7 +13,7 @@ Schema spec: https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.
 """
 from .client import Client, Output, Project, VerificationResult
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 __schema_version__ = "1.0.0"
 __powered_by__ = "Mivisor.com"
 __all__ = ["Client", "Output", "Project", "VerificationResult"]

@@ -1,17 +1,17 @@
 [project]
 name = "monitor-as-a-service"
-version = "1.0.2"
+version = "1.0.3"
 description = "Reference Python SDK for the Monitor as a Service Open Schema v1 (Stellar + IPFS). Powered by Mivisor.com."
 readme = "README.md"
 license = { text = "MIT" }
+# Truco: PyPI sidebar muestra solo el primer entry del array; combinamos los 3
+# coautores en un solo string para que todos aparezcan visibles en la pagina del paquete.
+# La metadata Author-email igual lleva los emails individuales (vease tooling).
 authors = [
-    { name = "Master Juan Alejandro Herrera Lopez", email = "alejandroherreracr@gmail.com" },
-    { name = "Andres Herrera Monge (CEO Mivisor)", email = "andres.herrera@mivisor.com" },
-    { name = "Claude (Anthropic AI assistant)", email = "noreply@anthropic.com" },
+    { name = "Juan Alejandro Herrera Lopez, Andres Herrera Monge (CEO Mivisor.com), Claude (Anthropic AI assistant)", email = "alejandroherreracr@gmail.com" },
 ]
 maintainers = [
-    { name = "Master Juan Alejandro Herrera Lopez", email = "alejandroherreracr@gmail.com" },
-    { name = "Andres Herrera Monge (CEO Mivisor)", email = "andres.herrera@mivisor.com" },
+    { name = "Juan Alejandro Herrera Lopez & Andres Herrera Monge (CEO Mivisor.com)", email = "alejandroherreracr@gmail.com" },
 ]
 requires-python = ">=3.9"
 dependencies = ["requests>=2.28"]
