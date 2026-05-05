@@ -1,45 +1,84 @@
 """
-deploy_to_obrapublica.py - Despliega el viewer dIAra×Stellar a obrapublica.info/stellar.
+deploy_to_obrapublica.py - Despliega el viewer y SDK assets al webapp PythonAnywhere
+configurado por env vars.
+
+La configuración específica del usuario (PA username, paths del servidor, dominio,
+GCP project) se lee desde scripts/.env (gitignored). Ver scripts/.env.example
+para el schema. Esto evita commitear datos personales / de infraestructura
+al repo público.
 
 Pasos:
-  1. Lee PA token desde Google Secret Manager (proyecto nifty-province-474317-m0,
-     secret 'pythonanywhere-token').
-  2. Sube viewer/deploy/stellar.html a /home/alejocr/diara/templates/stellar.html.
-  3. Lee /home/alejocr/diara/app.py de PA, agrega route /stellar si no existe
-     (idempotente), sube de vuelta.
-  4. Reload del webapp www.obrapublica.info.
-  5. Test HTTP 200 en https://www.obrapublica.info/stellar.
+  1. Lee config local desde scripts/.env (PA_USER, PA_DOMAIN, PA_PROJECT_PATH, GCP_PROJECT).
+  2. Lee PA token desde Google Secret Manager (secret 'pythonanywhere-token').
+  3. Sube los HTML a {PA_PROJECT_PATH}/templates/ y SDK JS a /static/.
+  4. Lee {PA_PROJECT_PATH}/app.py, agrega rutas faltantes, sube de vuelta (idempotente).
+  5. Reload del webapp.
+  6. Test HTTP 200 en https://{PA_DOMAIN}/stellar.
 
 Uso:
     python scripts/deploy_to_obrapublica.py
 """
+import os
 import subprocess
 import sys
 from pathlib import Path
 
 import requests
 
-GCLOUD_BIN = r"C:\Users\aleja\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.cmd"
-GCP_PROJECT = "nifty-province-474317-m0"
-PA_TOKEN_SECRET = "pythonanywhere-token"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+SCRIPTS_DIR = Path(__file__).resolve().parent
+ENV_PATH = SCRIPTS_DIR / ".env"
 
-PA_USER = "alejocr"
-PA_DOMAIN = "www.obrapublica.info"
+
+def _load_env() -> dict:
+    """Lee scripts/.env con formato KEY=VALUE."""
+    if not ENV_PATH.exists():
+        return {}
+    out = {}
+    for line in ENV_PATH.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        out[k.strip()] = v.strip().strip('"').strip("'")
+    return out
+
+
+_env = _load_env()
+
+
+def _get(key: str, default: str | None = None) -> str:
+    val = _env.get(key) or os.environ.get(key) or default
+    if not val:
+        raise SystemExit(
+            f"[ERROR] Falta variable {key}. Definir en scripts/.env "
+            f"(ver scripts/.env.example) o exportar como variable de entorno."
+        )
+    return val
+
+
+GCLOUD_BIN = _env.get("GCLOUD_BIN", os.environ.get("GCLOUD_BIN",
+    r"C:\Users\aleja\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.cmd"))
+GCP_PROJECT = _get("GCP_PROJECT")
+PA_TOKEN_SECRET = _env.get("PA_TOKEN_SECRET", "pythonanywhere-token")
+
+PA_USER = _get("PA_USER")
+PA_DOMAIN = _get("PA_DOMAIN")
+PA_PROJECT_PATH = _get("PA_PROJECT_PATH").rstrip("/")  # e.g. "/home/USER/myproject"
 PA_BASE = f"https://www.pythonanywhere.com/api/v0/user/{PA_USER}"
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar.html"
 LOCAL_DEV_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar_dev.html"
 LOCAL_TIMELAPSE_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar_timelapse.html"
 LOCAL_DASHBOARD_HTML = REPO_ROOT / "viewer" / "deploy" / "stellar_dashboard.html"
 LOCAL_JS_SDK = REPO_ROOT / "sdk" / "js" / "monitor-as-a-service.js"
 
-REMOTE_HTML = "/home/alejocr/diara/templates/stellar.html"
-REMOTE_DEV_HTML = "/home/alejocr/diara/templates/stellar_dev.html"
-REMOTE_TIMELAPSE_HTML = "/home/alejocr/diara/templates/stellar_timelapse.html"
-REMOTE_DASHBOARD_HTML = "/home/alejocr/diara/templates/stellar_dashboard.html"
-REMOTE_JS_SDK = "/home/alejocr/diara/static/monitor-as-a-service.js"
-REMOTE_APP_PY = "/home/alejocr/diara/app.py"
+REMOTE_HTML = f"{PA_PROJECT_PATH}/templates/stellar.html"
+REMOTE_DEV_HTML = f"{PA_PROJECT_PATH}/templates/stellar_dev.html"
+REMOTE_TIMELAPSE_HTML = f"{PA_PROJECT_PATH}/templates/stellar_timelapse.html"
+REMOTE_DASHBOARD_HTML = f"{PA_PROJECT_PATH}/templates/stellar_dashboard.html"
+REMOTE_JS_SDK = f"{PA_PROJECT_PATH}/static/monitor-as-a-service.js"
+REMOTE_APP_PY = f"{PA_PROJECT_PATH}/app.py"
 
 ROUTE_MARKER = "@app.route('/stellar')"
 DEV_ROUTE_MARKER = "@app.route('/stellar/dev')"
