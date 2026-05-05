@@ -38,15 +38,23 @@ cells = [
     md(
         "## 1. Instalar el SDK",
         "",
-        "Usamos `--upgrade --force-reinstall` para evitar cache stale en Colab/Jupyter."
+        "Solo instalamos `monitor-as-a-service` — Colab ya trae `pandas`, `plotly` y `ipywidgets` pre-instalados con versiones compatibles. **NO** uses `--force-reinstall` ni instales `pandas`/`plotly` aqui: rompe el ambiente de Colab."
     ),
-    code("!pip install --quiet --upgrade --force-reinstall monitor-as-a-service ipywidgets plotly pandas"),
+    code("!pip install --quiet --upgrade monitor-as-a-service"),
     md(
-        "**Si es la primera vez que corres esta celda, hace falta reiniciar el runtime** "
-        "para que Python pickee la nueva version del paquete:",
+        "**Si Colab ya tenia una version vieja de `monitor-as-a-service` cacheada** (caso comun cuando trabajas el notebook por varios dias), reinicia el runtime una sola vez:",
         "",
         "1. Menu: `Runtime` → `Restart session` (o `Ctrl+M .`).",
-        "2. Volver a correr la celda 2 en adelante (no hace falta reinstalar).",
+        "2. **No** hace falta volver a correr esta celda 1 — saltea directo a la celda 2.",
+        "",
+        "Si despues de reiniciar igual ves `ModuleNotFoundError`, corré esta celda diagnostica:",
+        "",
+        "```python",
+        "import monitor_as_a_service",
+        "print('Version:', monitor_as_a_service.__version__)  # debe decir 1.1.0 o superior",
+        "from monitor_as_a_service import Client",
+        "print('Client.available_dates exists:', hasattr(Client, 'available_dates'))",
+        "```",
     ),
 
     md(
