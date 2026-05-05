@@ -1,15 +1,26 @@
 """Genera el notebook colab_demo.ipynb desde Python para evitar problemas de escaping JSON."""
 import json
+import uuid
 from pathlib import Path
 
 
+def _cell_id():
+    return uuid.uuid4().hex[:12]
+
+
 def md(*lines):
-    return {"cell_type": "markdown", "metadata": {}, "source": [l + "\n" for l in lines]}
+    return {
+        "cell_type": "markdown",
+        "id": _cell_id(),
+        "metadata": {},
+        "source": [l + "\n" for l in lines],
+    }
 
 
 def code(*lines):
     return {
         "cell_type": "code",
+        "id": _cell_id(),
         "execution_count": None,
         "metadata": {},
         "outputs": [],
@@ -299,6 +310,15 @@ notebook = {
         },
         "language_info": {
             "name": "python",
+        },
+        # widgets metadata vacia + valida (state present) por si Colab agrega algo despues
+        # y para evitar el render error 'state key missing from metadata.widgets' en GitHub.
+        "widgets": {
+            "application/vnd.jupyter.widget-state+json": {
+                "state": {},
+                "version_major": 2,
+                "version_minor": 0,
+            },
         },
     },
     "nbformat": 4,
