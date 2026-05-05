@@ -291,7 +291,7 @@ const HORIZON = "https://horizon-testnet.stellar.org";
 const EXPLORER_TX = "https://stellar.expert/explorer/testnet/tx/";
 const EXPLORER_ACC = "https://stellar.expert/explorer/testnet/account/";
 
-// Cadena de gateways IPFS con fallback automatico (si uno falla por rate limit
+// Cadena de gateways IPFS con fallback automático (si uno falla por rate limit
 // o disponibilidad, se prueba el siguiente). El contenido es el mismo en todos
 // porque el CID es el hash; cualquier nodo IPFS sirve el mismo bytes.
 const IPFS_GATEWAYS = [
@@ -690,7 +690,7 @@ function setupLazyVerification(cards) {
   const sv = document.getElementById("splineScene");
   if (!sv) return;
   const reveal = () => sv.classList.add("loaded");
-  // El web component dispara 'load' cuando el scene termina; tambien hay un tope por si tarda.
+  // El web component dispara 'load' cuando el scene termina; también hay un tope por si tarda.
   sv.addEventListener("load", reveal);
   setTimeout(reveal, 4000);
 })();

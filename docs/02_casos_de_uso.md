@@ -6,53 +6,53 @@ Cinco casos de uso identificados, ordenados de menor a mayor ambicion. No son al
 
 ## Caso A — Notarizacion del output de IA sobre avance de obra
 
-**Que:** anclar en Stellar el hash de cada reporte generado por un modelo de IA que evalua el avance fisico de una obra publica, junto con metadatos minimos: hash del modelo, version del prompt, hash de la evidencia (foto, BIM, video), timestamp.
+**Que:** anclar en Stellar el hash de cada reporte generado por un modelo de IA que evalua el avance físico de una obra pública, junto con metadatos minimos: hash del modelo, versión del prompt, hash de la evidencia (foto, BIM, video), timestamp.
 
-**Por que:** convierte el output de la IA en evidencia con timestamp inmutable. Si manana se demuestra que el modelo se equivoco o estaba sesgado, queda traza historica. Si el contratista o la institucion intentan despues "reescribir" lo que la IA dijo, no pueden.
+**Por que:** convierte el output de la IA en evidencia con timestamp inmutable. Si mañana se demuestra que el modelo se equivoco o estaba sesgado, queda traza historica. Si el contratista o la institucion intentan después "reescribir" lo que la IA dijo, no pueden.
 
 **Lo que prueba:** *que* se dijo, *cuando* y *quien firmo*. **No** prueba que sea cierto.
 
-**Costo on-chain:** una transaccion Stellar con `manageData` o un evento Soroban por reporte. Centavos.
+**Costo on-chain:** una transacción Stellar con `manageData` o un evento Soroban por reporte. Centavos.
 
-**Fuera de alcance:** validacion de la veracidad del reporte (eso lo agrega el caso B).
+**Fuera de alcance:** validación de la veracidad del reporte (eso lo agrega el caso B).
 
 ---
 
-## Caso B — Validacion ciudadana en capas
+## Caso B — Validación ciudadana en capas
 
 **Que:** cuatro capas de participacion ciudadana, desde la pasiva hasta la activa.
 
 | Capa | Accion ciudadana | Requiere wallet |
 |------|------------------|-----------------|
-| 1. Verificacion pasiva | Lee viewer publico, calcula hash y verifica integridad del reporte | No |
+| 1. Verificación pasiva | Lee viewer público, calcula hash y verifica integridad del reporte | No |
 | 2. Observacion de realidad | Sube foto geolocalizada de la obra, comparada contra reporte oficial | Si (custodial) |
 | 3. Disputa formal | Inicia disputa on-chain referenciando hash del reporte | Si (custodial o propia) |
 | 4. Reputacion del modelo | Lectura agregada del track record de la IA y de los inspectores | No |
 
-**Por que:** el blockchain prueba inmutabilidad, no veracidad. La validacion ciudadana convierte la inmutabilidad en accountability real.
+**Por que:** el blockchain prueba inmutabilidad, no veracidad. La validación ciudadana convierte la inmutabilidad en accountability real.
 
-**Limitaciones honestas:** liveness de fotos, GPS spoofing, sybil attacks, friccion de wallet. Doc detallado de validacion ciudadana queda como pendiente.
+**Limitaciones honestas:** liveness de fotos, GPS spoofing, sybil attacks, friccion de wallet. Doc detallado de validación ciudadana queda como pendiente.
 
 **Dependencias:** caso A (sin reportes anclados, no hay nada que validar).
 
 ---
 
-## Caso C — Gemelo on-chain del flujo de pagos publicos
+## Caso C — Gemelo on-chain del flujo de pagos públicos
 
-**Que:** mantener un espejo en blockchain de cada evento financiero relevante de la obra publica. **No mueve dinero on-chain.** El sistema bancario tradicional (Tesoreria → SINPE → contratista) sigue siendo la autoridad legal y unica fuente de movimiento real de valor. La cadena espeja eventos:
+**Que:** mantener un espejo en blockchain de cada evento financiero relevante de la obra pública. **No mueve dinero on-chain.** El sistema bancario tradicional (Tesoreria → SINPE → contratista) sigue siendo la autoridad legal y única fuente de movimiento real de valor. La cadena espeja eventos:
 
 - Adjudicacion del contrato (hash del cartel + monto + cronograma + wallets autorizadas)
-- Cada autorizacion de pago (monto, justificacion, hash del reporte IA, firmas)
+- Cada autorización de pago (monto, justificacion, hash del reporte IA, firmas)
 - Cada confirmacion de desembolso real (referencia SINPE, monto efectivo, fecha)
-- Cierre y liquidacion (remanentes, garantias)
+- Cierre y liquidacion (remanentes, garantías)
 
-**Por que:** transparencia publica sin tocar Hacienda. Cero friccion legal porque no es medio de pago, es publicacion de informacion (encaja con articulo 11 constitucional y Ley 7428).
+**Por que:** transparencia pública sin tocar Hacienda. Cero friccion legal porque no es medio de pago, es publicación de información (encaja con articulo 11 constitucional y Ley 7428).
 
-**Limitaciones honestas:** garbage in / garbage out. Si el oraculo que ancla la confirmacion SINPE miente, la cadena refleja la mentira con timestamp inmutable. Mitigacion: idealmente el evento de confirmacion lo emite el propio sistema de Tesoreria (oraculo autoritativo); reconciliacion periodica contra datos oficiales (SICOP, presupuesto publico).
+**Limitaciones honestas:** garbage in / garbage out. Si el oraculo que ancla la confirmacion SINPE miente, la cadena refleja la mentira con timestamp inmutable. Mitigacion: idealmente el evento de confirmacion lo emite el propio sistema de Tesoreria (oraculo autoritativo); reconciliacion periodica contra datos oficiales (SICOP, presupuesto público).
 
 **Dependencias:** casos A y B son insumos del gemelo.
 
-**Esta es la base de la Fase 2 del roadmap actual.** Politicamente factible hoy, sin reforma legal. (Nota: en una iteracion anterior del roadmap este caso era Etapa 1; el modelo vigente lo posiciona como Fase 2 con dIAra como Fase 0 externa y Fase 1 = anclaje minimo.)
+**Está es la base de la Fase 2 del roadmap actual.** Politicamente factible hoy, sin reforma legal. (Nota: en una iteración anterior del roadmap este caso era Etapa 1; el modelo vigente lo posiciona como Fase 2 con dIAra como Fase 0 externa y Fase 1 = anclaje minimo.)
 
 ---
 
@@ -67,11 +67,11 @@ Cinco casos de uso identificados, ordenados de menor a mayor ambicion. No son al
 
 Penalidades por atraso, devolucion de remanentes y reasignacion en caso de incumplimiento, todo automatizado.
 
-**Por que:** elimina la posibilidad de pagos "discrecionales" sin justificacion. El dinero solo se mueve si la cadena de evidencia esta completa.
+**Por que:** elimina la posibilidad de pagos "discrecionales" sin justificacion. El dinero solo se mueve si la cadena de evidencia está completa.
 
-**Limitaciones legales en CR:** Ley de Contratacion Administrativa probablemente no permite hoy que un contrato inteligente sea el medio de pago oficial. Por eso esta etapa requiere o (a) piloto financiado por cooperacion internacional (BID, Banco Mundial, BCIE) que opera fuera del flujo legal domestico, o (b) reforma o reglamentacion especifica.
+**Limitaciones legales en CR:** Ley de Contratacion Administrativa probablemente no permite hoy que un contrato inteligente sea el medio de pago oficial. Por eso esta etapa requiere o (a) piloto financiado por cooperación internacional (BID, Banco Mundial, BCIE) que opera fuera del flujo legal doméstico, o (b) reforma o reglamentacion especifica.
 
-**Limitaciones tecnicas:** custodia de la llave maestra del escrow. Riesgo enorme si se compromete. Exige multisig hardware + procedimientos institucionales serios.
+**Limitaciones técnicas:** custodia de la llave maestra del escrow. Riesgo enorme si se compromete. Exige multisig hardware + procedimientos institucionales serios.
 
 **Dependencias:** casos A, B y C.
 
@@ -79,14 +79,14 @@ Penalidades por atraso, devolucion de remanentes y reasignacion en caso de incum
 
 ## Caso E — Bono tokenizado emitido por banco de desarrollo
 
-**Que:** un banco de desarrollo (idealmente BCIE; alternativas: Banco Popular, IFAM, SBD) emite un bono cuyo capital financia la obra publica. El bono esta tokenizado en Stellar:
+**Que:** un banco de desarrollo (idealmente BCIE; alternativas: Banco Popular, IFAM, SBD) emite un bono cuyo capital financia la obra pública. El bono está tokenizado en Stellar:
 
-- Cada token = fraccion de la deuda
+- Cada token = fracción de la deuda
 - Inversionistas (institucionales o retail acreditado) compran tokens, capital ingresa al escrow del caso D
 - Cupones se distribuyen on-chain a los holders proporcionalmente
 - Al vencimiento, principal devuelto
 
-**Por que:** combina financiamiento + transparencia + escrow programable en un instrumento financiero unico que **no existe hoy en LATAM en produccion**. Atrae capital institucional internacional (apetito ESG / impacto) hacia infraestructura costarricense con auditabilidad completa.
+**Por que:** combina financiamiento + transparencia + escrow programable en un instrumento financiero único que **no existe hoy en LATAM en producción**. Atrae capital institucional internacional (apetito ESG / impacto) hacia infraestructura costarricense con auditabilidad completa.
 
 **Variantes alternativas (analisis detallado pendiente como documento separado):**
 
@@ -103,7 +103,7 @@ Penalidades por atraso, devolucion de remanentes y reasignacion en caso de incum
 - **BID Lab** piloto en BNB Chain
 - Bonos verdes tokenizados en Polygon
 
-**Limitaciones regulatorias en CR:** SUGEVAL aplica. Ley 7732 podria requerir reforma o uso de figura "oferta privada / inversionistas sofisticados" para no requerir prospecto publico. BCIE como emisor multilateral tiene menos friccion regulatoria domestica.
+**Limitaciones regulatorias en CR:** SUGEVAL aplica. Ley 7732 podria requerir reforma o uso de figura "oferta privada / inversionistas sofisticados" para no requerir prospecto público. BCIE como emisor multilateral tiene menos friccion regulatoria doméstica.
 
 **Dependencias:** todos los anteriores.
 
@@ -152,10 +152,10 @@ Penalidades por atraso, devolucion de remanentes y reasignacion en caso de incum
 
     EN PARALELO (gemelo de transparencia):
 
-    Cada evento (adjudicacion, autorizacion, desembolso real, cierre)
+    Cada evento (adjudicacion, autorización, desembolso real, cierre)
     se ancla on-chain con todos sus hashes y firmas.
 
-    Viewer publico permite a ciudadanos:
+    Viewer público permite a ciudadanos:
       - Ver el estado de cualquier obra en tiempo real
       - Verificar hashes de reportes
       - Subir observaciones de campo

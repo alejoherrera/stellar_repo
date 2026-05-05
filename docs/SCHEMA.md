@@ -1,7 +1,7 @@
 # Monitor as a Service — Open Schema v1
 
 **Status:** Stable
-**Version:** 1.0.0
+**Versión:** 1.0.0
 **License:** CC0 1.0 Universal (public domain)
 **Canonical URL:** https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md
 **Public viewer:** https://www.obrapublica.info/stellar
@@ -24,7 +24,7 @@ reading directly from Stellar Horizon and IPFS gateways using this schema.
 
 A **Monitor as a Service publisher** is a Stellar account that anchors integrity
 metadata of public-infrastructure observations (currently produced by the
-[dIAra](https://www.obrapublica.info/ciudadania) AI system, but the schema is
+[dIAra](https://www.obrapublica.info/ciudadanía) AI system, but the schema is
 publisher-agnostic). Each observation ("output") consists of:
 
 - A JSON document with structured metadata of a moment in a construction site.
@@ -121,7 +121,7 @@ Per output, exactly one Stellar TX with multiple `manageData` operations:
 | `diara:{output_id}:img_cid` | UTF-8: IPFS CIDv1 base32 of the image | Yes (if image exists) |
 | `diara:{output_id}:json_cid` | UTF-8: IPFS CIDv1 base32 of the canonical JSON | Yes |
 
-**Memo of the output TX:** `dIAra ancla v3` (current schema version v1 corresponds
+**Memo of the output TX:** `dIAra ancla v3` (current schema versión v1 corresponds
 to anchor format v3).
 
 #### Output ID convention
@@ -144,7 +144,7 @@ should treat this as "JSON-only anchor".
 Future spec versions may add fields. To avoid collisions, implementations and
 extensions MUST NOT use these reserved suffixes after `diara:{output_id}:`:
 
-`hash`, `version`, `signature`, `geo`, `lat`, `lon`, `weather`, `vehicles`,
+`hash`, `versión`, `signature`, `geo`, `lat`, `lon`, `weather`, `vehicles`,
 `workers`, `machinery`, `phase`, `dt`, `proj`, `img_cid`, `json_cid`, `prev`,
 `next`, `epoch`, `block`, `tx`, `signer`.
 
@@ -308,8 +308,8 @@ This document follows semantic versioning:
   backward-compatible.
 - **Major (2.0.0):** breaking changes — modified semantics, deprecated keys.
 
-Major version transitions MUST be reflected in the TX memo prefix (e.g. v2 anchors
-use memo `dIAra ancla v4` or similar) so consumers can filter by version.
+Major versión transitions MUST be reflected in the TX memo prefix (e.g. v2 anchors
+use memo `dIAra ancla v4` or similar) so consumers can filter by versión.
 
 ---
 

@@ -138,7 +138,7 @@
 <header class="topbar">
   <div>
     <h1>Live Dashboard <span style="color:#93c5fd;">·</span> Monitor as a Service</h1>
-    <div class="subtitle">Datos leidos en vivo desde Stellar testnet, actualizacion automatica cada 30 segundos.</div>
+    <div class="subtitle">Datos leidos en vivo desde Stellar testnet, actualizacion automática cada 30 segundos.</div>
   </div>
   <div class="status">
     <span><span class="pulse"></span> Live</span>
@@ -290,7 +290,7 @@ async function fetchAndRender() {
   if (lastTotal !== null && total !== lastTotal) {
     const diff = total - lastTotal;
     const sign = diff > 0 ? "+" : "";
-    document.getElementById("deltaTotal").textContent = `${sign}${diff} desde ultimo refresh`;
+    document.getElementById("deltaTotal").textContent = `${sign}${diff} desde último refresh`;
     flashKpi("kpiTotal");
   }
   lastTotal = total;
