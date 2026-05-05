@@ -33,8 +33,19 @@ cells = [
         "Coautores: Juan Alejandro Herrera Lopez | Andres Herrera Monge (CEO Mivisor.com) | Claude (Anthropic AI assistant)",
     ),
 
-    md("## 1. Instalar el SDK"),
-    code("!pip install --quiet monitor-as-a-service plotly pandas"),
+    md(
+        "## 1. Instalar el SDK",
+        "",
+        "Usamos `--upgrade --force-reinstall` para evitar cache stale en Colab/Jupyter."
+    ),
+    code("!pip install --quiet --upgrade --force-reinstall monitor-as-a-service ipywidgets plotly pandas"),
+    md(
+        "**Si es la primera vez que corres esta celda, hace falta reiniciar el runtime** "
+        "para que Python pickee la nueva version del paquete:",
+        "",
+        "1. Menu: `Runtime` → `Restart session` (o `Ctrl+M .`).",
+        "2. Volver a correr la celda 2 en adelante (no hace falta reinstalar).",
+    ),
 
     md(
         "## 2. Conectar a Stellar testnet",
@@ -201,9 +212,6 @@ cells = [
         "### 8.1 Buscar imagen anclada por fecha y hora",
         "",
         "Calendario + sliders de hora y minuto. El SDK encuentra el output mas cercano y muestra la imagen pineada en IPFS con su metadata."
-    ),
-    code(
-        "!pip install --quiet ipywidgets",
     ),
     code(
         "from monitor_as_a_service.widgets import image_at_datetime",
