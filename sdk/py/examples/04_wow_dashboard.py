@@ -258,9 +258,9 @@ def main():
             yanchor="top",
             font=dict(size=20),
         ),
-        height=1020,
+        height=1100,
         showlegend=False,
-        margin=dict(t=145, b=80, l=40, r=40),
+        margin=dict(t=145, b=200, l=40, r=40),
         plot_bgcolor="white",
         paper_bgcolor="#f8fafc",
     )
@@ -272,7 +272,7 @@ def main():
               "<a href='https://www.cgr.go.cr' style='color:#334155;'>"
               "Contraloria General de la Republica de Costa Rica</a>."),
         xref="paper", yref="paper",
-        x=0.5, y=-0.04,
+        x=0.5, y=-0.16,
         xanchor="center", yanchor="top",
         showarrow=False,
         font=dict(size=11, color="#334155"),
@@ -283,7 +283,7 @@ def main():
               "&nbsp;|&nbsp; Andres Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt; "
               "&nbsp;|&nbsp; Claude (Anthropic AI assistant)"),
         xref="paper", yref="paper",
-        x=0.5, y=-0.07,
+        x=0.5, y=-0.19,
         xanchor="center", yanchor="top",
         showarrow=False,
         font=dict(size=10, color="#6b7280"),
