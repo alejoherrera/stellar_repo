@@ -2,6 +2,7 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb)
 [![PyPI](https://img.shields.io/pypi/v/monitor-as-a-service?label=PyPI)](https://pypi.org/project/monitor-as-a-service/)
+[![npm](https://img.shields.io/npm/v/monitor-as-a-service?label=npm)](https://www.npmjs.com/package/monitor-as-a-service)
 [![License: MIT](https://img.shields.io/badge/SDKs-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Schema: CC0](https://img.shields.io/badge/Schema-CC0-green.svg)](docs/SCHEMA.md)
 
@@ -11,9 +12,18 @@ Documentación conceptual y de arquitectura para el uso de **Stellar** y **Sorob
 
 ## Try it now (no install)
 
+**Python (Colab notebook):**
+
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb)
 
 Click el badge — abre el notebook en Google Colab, conecta a Stellar testnet, lista 100+ outputs anclados, verifica integridad criptográfica contra IPFS, genera dashboard interactivo. Cero credenciales, cero install.
+
+**JavaScript (demos en navegador):**
+
+- [Live verification demo](https://cdn.jsdelivr.net/gh/alejoherrera/stellar_repo@main/sdk/js/examples/03-live-verify.html) — verifica un output: descarga JSON+imagen desde IPFS, recomputa SHA-256 contra el hash on-chain. Source: [`sdk/js/examples/03-live-verify.html`](sdk/js/examples/03-live-verify.html).
+- [Live dashboard interactivo](https://cdn.jsdelivr.net/gh/alejoherrera/stellar_repo@main/sdk/js/examples/04-dashboard.html) — pipeline visible (6 pasos), metadata del proyecto, 100+ outputs decodificados, verificacion criptografica de muestra y dashboard Plotly con etapas / maquinaria / personas-en-el-tiempo. Mismas vistas que el notebook Python. Source: [`sdk/js/examples/04-dashboard.html`](sdk/js/examples/04-dashboard.html).
+
+Ambos paginas son HTML self-contained que cargan el SDK desde jsDelivr — sin build, sin install. Tambien podes descargarlas y abrirlas local con doble-click.
 
 ## Estado
 
@@ -56,8 +66,15 @@ Una arquitectura por **fases** que parte del **anclaje en Stellar de la evidenci
 
 ## SDKs
 
-- [`sdk/py/`](sdk/py/) — Python SDK (MIT). `pip install -e ./sdk/py` o desde GitHub.
-- [`sdk/js/`](sdk/js/) — JavaScript SDK (MIT). Importable directo en navegador via `https://www.obrapublica.info/static/monitor-as-a-service.js` o como ES module en Node 18+.
+- [`sdk/py/`](sdk/py/) — Python SDK (MIT). Publicado en PyPI: `pip install monitor-as-a-service`.
+- [`sdk/js/`](sdk/js/) — JavaScript SDK (MIT). Publicado en npm: `npm install monitor-as-a-service`. Tambien importable directo desde [jsDelivr CDN](https://cdn.jsdelivr.net/npm/monitor-as-a-service) sin build:
+  ```html
+  <script type="module">
+    import { Client } from "https://cdn.jsdelivr.net/npm/monitor-as-a-service@latest/monitor-as-a-service.js";
+    const client = Client.testnet("GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR");
+    console.log(await client.outputs());
+  </script>
+  ```
 
 ## Sample apps
 
