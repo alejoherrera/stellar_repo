@@ -34,8 +34,6 @@ cells = [
         "",
         "# Monitor as a Service — Colab Demo",
         "",
-        "**Powered by [Mivisor.com](https://mivisor.com)**",
-        "",
         "Lee anclas de obra publica desde **Stellar testnet**, verifica integridad contra **IPFS** publico, "
         "y genera un **dashboard interactivo** — todo desde Google Colab, sin servidor propio, sin API keys.",
         "",
@@ -43,7 +41,9 @@ cells = [
         "",
         "---",
         "",
-        "Coautores: Juan Alejandro Herrera Lopez | Andres Herrera Monge (CEO Mivisor.com) | Claude (Anthropic AI assistant)",
+        "Imagenes publicas generadas por el proyecto **dIAra** de la [Contraloria General de la Republica de Costa Rica](https://www.cgr.go.cr).",
+        "",
+        "**Powered by [Mivisor.com](https://mivisor.com)** &nbsp;·&nbsp; Coautores: Juan Alejandro Herrera Lopez | Andres Herrera Monge (CEO Mivisor.com) | Claude (Anthropic AI assistant)",
     ),
 
     md(
@@ -204,10 +204,18 @@ cells = [
         "        x=0.02, y=0.97, yanchor=\"top\", font=dict(size=20),",
         "    ),",
         "    height=900, showlegend=False,",
-        "    margin=dict(t=145, b=40, l=40, r=40),",
+        "    margin=dict(t=145, b=80, l=40, r=40),",
         "    paper_bgcolor=\"#f8fafc\",",
         ")",
         "fig.update_annotations(yshift=-15)",
+        "fig.add_annotation(",
+        "    text=(\"Imagenes publicas generadas por el proyecto <b>dIAra</b> de la \"",
+        "          \"<a href='https://www.cgr.go.cr' style='color:#334155;'>\"",
+        "          \"Contraloria General de la Republica de Costa Rica</a>.\"),",
+        "    xref=\"paper\", yref=\"paper\", x=0.5, y=-0.06,",
+        "    xanchor=\"center\", yanchor=\"top\", showarrow=False,",
+        "    font=dict(size=11, color=\"#334155\"),",
+        ")",
         "fig.show()",
     ),
 
@@ -291,9 +299,9 @@ cells = [
         "",
         "---",
         "",
-        "**Powered by [Mivisor.com](https://mivisor.com)**",
+        "Imagenes publicas generadas por el proyecto **dIAra** de la [Contraloria General de la Republica de Costa Rica](https://www.cgr.go.cr).",
         "",
-        "Coautores: Juan Alejandro Herrera Lopez ・ Andres Herrera Monge (CEO Mivisor.com) ・ Claude (Anthropic AI assistant)",
+        "**Powered by [Mivisor.com](https://mivisor.com)** ・ Coautores: Juan Alejandro Herrera Lopez ・ Andres Herrera Monge (CEO Mivisor.com) ・ Claude (Anthropic AI assistant)",
     ),
 ]
 

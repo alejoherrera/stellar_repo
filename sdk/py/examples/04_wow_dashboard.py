@@ -266,13 +266,24 @@ def main():
     )
     # Empuja los subplot_titles (annotations existentes) ligeramente abajo para no chocar con el title
     fig.update_annotations(yshift=-15)
+    # Credito CGR (fuente de imagenes) - va primero, mas visible
+    fig.add_annotation(
+        text=("Imagenes publicas generadas por el proyecto <b>dIAra</b> de la "
+              "<a href='https://www.cgr.go.cr' style='color:#334155;'>"
+              "Contraloria General de la Republica de Costa Rica</a>."),
+        xref="paper", yref="paper",
+        x=0.5, y=-0.04,
+        xanchor="center", yanchor="top",
+        showarrow=False,
+        font=dict(size=11, color="#334155"),
+    )
     # Footer con coautores como annotation adicional paper-anchored
     fig.add_annotation(
         text=("<b>Coautores:</b> Master Juan Alejandro Herrera Lopez &lt;alejandroherreracr@gmail.com&gt; "
               "&nbsp;|&nbsp; Andres Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt; "
               "&nbsp;|&nbsp; Claude (Anthropic AI assistant)"),
         xref="paper", yref="paper",
-        x=0.5, y=-0.04,
+        x=0.5, y=-0.07,
         xanchor="center", yanchor="top",
         showarrow=False,
         font=dict(size=10, color="#6b7280"),
