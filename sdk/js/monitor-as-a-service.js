@@ -30,8 +30,9 @@ const DEFAULT_GATEWAYS = [
   "https://4everland.io/ipfs/",
 ];
 
-export const VERSION = "1.0.0";
+export const VERSION = "1.1.1";
 export const SCHEMA_VERSION = "1.0.0";
+export const POWERED_BY = "Mivisor.com";
 
 /** Encode value as canonical JSON per MaaS Open Schema section 4. */
 export function canonicalJson(value) {
@@ -151,6 +152,87 @@ export class Client {
   async get(outputId) {
     const list = await this.outputs();
     return list.find(o => o.outputId === outputId) || null;
+  }
+
+  /** Convierte fecha/datetime a clave 'YYYYMMDD-HHMMSS' comparable con outputId. */
+  static _toOutputKey(value) {
+    if (value instanceof Date) {
+      const pad = n => String(n).padStart(2, "0");
+      return `${value.getFullYear()}${pad(value.getMonth()+1)}${pad(value.getDate())}-${pad(value.getHours())}${pad(value.getMinutes())}${pad(value.getSeconds())}`;
+    }
+    let s = String(value).replace(/\//g, "-");
+    if (s.includes("T")) {
+      const [d, t] = s.split("T", 2);
+      const tt = t.split(".")[0].split("Z")[0].split("+")[0].replace(/:/g, "");
+      return `${d.replace(/-/g, "")}-${(tt + "000000").slice(0, 6)}`;
+    }
+    if (s.includes(" ")) {
+      const [d, t] = s.split(" ", 2);
+      const tt = t.replace(/:/g, "");
+      return `${d.replace(/-/g, "")}-${(tt + "000000").slice(0, 6)}`;
+    }
+    if (s.includes("-") && s.length >= 15) return s.replace(/\//g, "");
+    return `${s.replace(/-/g, "").slice(0, 8)}-000000`;
+  }
+
+  static _toYYYYMMDD(value) {
+    if (value instanceof Date) {
+      const pad = n => String(n).padStart(2, "0");
+      return `${value.getFullYear()}${pad(value.getMonth()+1)}${pad(value.getDate())}`;
+    }
+    let s = String(value);
+    if (s.includes("T")) s = s.split("T")[0];
+    return s.replace(/-/g, "").replace(/\//g, "").slice(0, 8);
+  }
+
+  /** Lista ordenada de fechas YYYY-MM-DD con al menos un output anclado. */
+  async availableDates() {
+    const outs = await this.outputs();
+    const set = new Set();
+    for (const o of outs) {
+      if (o.outputId && o.outputId.length >= 8) {
+        set.add(`${o.outputId.slice(0,4)}-${o.outputId.slice(4,6)}-${o.outputId.slice(6,8)}`);
+      }
+    }
+    return [...set].sort();
+  }
+
+  /** Outputs anclados en un dia especifico (acepta Date o string). */
+  async outputsOnDate(day) {
+    const prefix = Client._toYYYYMMDD(day);
+    const outs = await this.outputs();
+    return outs.filter(o => o.outputId && o.outputId.startsWith(prefix));
+  }
+
+  /** Outputs anclados entre dos fechas inclusive (acepta Date o string). */
+  async outputsInRange(start, end) {
+    let s = Client._toOutputKey(start);
+    let e = Client._toOutputKey(end);
+    // Si end es solo fecha, extender al fin del dia
+    if (!(end instanceof Date) && String(end).length <= 10) {
+      e = e.replace("-000000", "-235959");
+    }
+    const outs = await this.outputs();
+    return outs.filter(o => o.outputId >= s && o.outputId <= e);
+  }
+
+  /** Output cuyo timestamp este temporalmente mas cercano al target dado. */
+  async findNearest(target) {
+    const targetKey = Client._toOutputKey(target);
+    const outs = await this.outputs();
+    if (!outs.length) return null;
+    const parse = k => {
+      const m = (k || "").match(/^(\d{4})(\d{2})(\d{2})-(\d{2})(\d{2})(\d{2})/);
+      if (!m) return new Date(0);
+      return new Date(+m[1], +m[2]-1, +m[3], +m[4], +m[5], +m[6]);
+    };
+    const td = parse(targetKey);
+    let best = outs[0], bestDiff = Math.abs(parse(outs[0].outputId) - td);
+    for (const o of outs) {
+      const d = Math.abs(parse(o.outputId) - td);
+      if (d < bestDiff) { best = o; bestDiff = d; }
+    }
+    return best;
   }
 
   async fetchFromIPFS(cid, asArrayBuffer = false) {
