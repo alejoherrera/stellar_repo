@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>monitor-as-a-service · Anclaje Stellar de evidencia de obra pública</title>
+  <meta name="description" content="SDK open-source para anclar evidencia de obra pública en Stellar. SHA-256 + IPFS + transacciones Stellar nativas. Verificable por cualquier ciudadano o auditor.">
+
+  <link rel="preconnect" href="https://horizon-testnet.stellar.org">
+  <link rel="preconnect" href="https://stellar.expert">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://prod.spline.design">
+  <link rel="preconnect" href="https://unpkg.com">
+
+  <!-- Spline 3D viewer (robot mivisor) -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      background: #f6f7f9;
+      color: #1f2937;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #1a73e8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      background:
+        radial-gradient(ellipse at 25% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 85%, rgba(251, 191, 36, 0.10) 0%, transparent 55%),
+        linear-gradient(180deg, #0a0a14 0%, #11111e 60%, #0a0a14 100%);
+      color: #e0e8ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem 6rem;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; left: 0; right: 0; bottom: 0;
+      height: 80px;
+      background: linear-gradient(180deg, transparent 0%, #f6f7f9 100%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+      align-items: center;
+    }
+    .hero-copy { min-width: 0; }
+    .hero-robot {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 360px;
+      justify-self: end;
+      border-radius: 16px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+    }
+    .hero-robot spline-viewer {
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-out;
+    }
+    .hero-robot spline-viewer.loaded { opacity: 1; }
+    .hero-robot::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 60px;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 20, 0.4) 100%);
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .topbar a { color: #cbd5e1; }
+    .topbar .nav { display: flex; gap: 1.5rem; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #fbbf24;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    h1.hero-title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      margin: 0 0 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #f8fafc;
+    }
+    h1.hero-title .accent { color: #fbbf24; }
+    .hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+      color: #cbd5e1;
+      max-width: 720px;
+      margin: 0 0 2rem;
+    }
+    .install {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2rem;
+      max-width: 720px;
+    }
+    .install code {
+      display: block;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      color: #fbbf24;
+      font-size: 0.92rem;
+    }
+    .install code .prompt { color: #64748b; user-select: none; }
+    .ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.1s ease, background 0.15s ease;
+      border: 1px solid transparent;
+    }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .btn-primary { background: #fbbf24; color: #0a0a14; }
+    .btn-primary:hover { background: #fcd34d; }
+    .btn-ghost {
+      background: transparent;
+      color: #e0e8ff;
+      border-color: rgba(224, 232, 255, 0.25);
+    }
+    .btn-ghost:hover { background: rgba(224, 232, 255, 0.08); }
+    .hero-meta {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.15);
+      font-size: 0.85rem;
+      color: #94a3b8;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .hero-meta a { color: #cbd5e1; border-bottom: 1px dotted #475569; }
+    .hero-meta a:hover { color: #fbbf24; border-bottom-color: #fbbf24; text-decoration: none; }
+    .hero-meta .acct {
+      font-family: ui-monospace, monospace;
+      font-size: 0.78rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* ============ SECTIONS ============ */
+    section { padding: 4rem 1.5rem; }
+    .container { max-width: 1040px; margin: 0 auto; }
+    h2.section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.01em;
+      color: #0f172a;
+    }
+    .section-sub {
+      font-size: 1.02rem;
+      color: #475569;
+      max-width: 720px;
+      margin: 0 0 2.5rem;
+    }
+
+    /* ============ STEPS GRID ============ */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .step {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 1.5rem 1.25rem;
+      position: relative;
+    }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      background: #0f172a;
+      color: #fbbf24;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      font-family: ui-monospace, monospace;
+    }
+    .step h3 {
+      font-size: 1rem;
+      margin: 0 0 0.4rem;
+      color: #0f172a;
+    }
+    .step p {
+      font-size: 0.88rem;
+      color: #475569;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .step code {
+      font-size: 0.78rem;
+      background: #f1f5f9;
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #334155;
+    }
+
+    /* ============ DEMO BOX ============ */
+    .demo-box {
+      background: linear-gradient(135deg, #0a0a14 0%, #1e1b4b 100%);
+      color: #e0e8ff;
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .demo-box h3 {
+      font-size: 1.4rem;
+      margin: 0 0 0.6rem;
+      color: #fbbf24;
+    }
+    .demo-box p { color: #cbd5e1; margin: 0 0 1.2rem; font-size: 0.95rem; }
+    .demo-box ul { color: #cbd5e1; padding-left: 1.2rem; font-size: 0.9rem; margin: 0 0 1.5rem; }
+    .demo-box li { margin-bottom: 0.4rem; }
+    .demo-mock {
+      background: #0a0a14;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 10px;
+      padding: 1rem;
+      font-family: ui-monospace, monospace;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+    .demo-mock .ok { color: #22c55e; }
+    .demo-mock .key { color: #fbbf24; }
+    .demo-mock .num { color: #60a5fa; }
+
+    /* ============ ON-CHAIN DATA ============ */
+    .chain-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .chain-card h3 { margin: 0 0 0.5rem; color: #0f172a; font-size: 1.2rem; }
+    .chain-card .acct-block {
+      font-family: ui-monospace, monospace;
+      font-size: 0.82rem;
+      background: #f1f5f9;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      color: #334155;
+      word-break: break-all;
+      margin: 0.75rem 0;
+    }
+    .chain-card .stats { display: flex; flex-direction: column; gap: 0.75rem; }
+    .stat {
+      background: #f8fafc;
+      border-left: 3px solid #fbbf24;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+    }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: #0f172a; line-height: 1; }
+    .stat-label { font-size: 0.78rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 0.25rem; }
+
+    /* ============ RESOURCES ============ */
+    .resources {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .res-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 1.25rem;
+      transition: border-color 0.15s, transform 0.1s;
+    }
+    .res-card:hover { border-color: #fbbf24; transform: translateY(-2px); }
+    .res-card a { color: inherit; text-decoration: none; display: block; }
+    .res-card .res-tag {
+      font-size: 0.72rem;
+      color: #1a73e8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+    .res-card h4 { margin: 0 0 0.35rem; color: #0f172a; font-size: 1rem; }
+    .res-card p { margin: 0; color: #64748b; font-size: 0.85rem; line-height: 1.5; }
+
+    /* ============ CONTEXT ============ */
+    .context {
+      background: #0f172a;
+      color: #e0e8ff;
+      padding: 3rem 1.5rem;
+    }
+    .context .container { max-width: 720px; }
+    .context h2 { color: #fbbf24; }
+    .context p { color: #cbd5e1; font-size: 0.98rem; }
+    .context .pill-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .pill {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: #fbbf24;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: #0a0a14;
+      color: #94a3b8;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    footer .footer-inner { max-width: 940px; margin: 0 auto; }
+    footer .credit-cgr {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      color: #cbd5e1;
+    }
+    footer .credit-cgr a { color: #60a5fa; }
+    footer .credit-cgr strong { color: #fbbf24; }
+    footer .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+    footer .footer-links a { color: #cbd5e1; }
+    footer .small { font-size: 0.8rem; color: #64748b; margin-top: 0.5rem; }
+    footer .small a { color: #94a3b8; border-bottom: 1px dotted #475569; }
+    footer .small a:hover { color: #fbbf24; border-bottom-color: #fbbf24; text-decoration: none; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 820px) {
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .resources { grid-template-columns: 1fr; }
+      .demo-box, .chain-card { grid-template-columns: 1fr; }
+      .install { grid-template-columns: 1fr; }
+      .topbar { margin-bottom: 2.5rem; }
+      .hero { min-height: auto; padding-bottom: 4rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-robot {
+        max-width: 240px;
+        justify-self: center;
+        order: -1;
+        margin-bottom: 1rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .steps { grid-template-columns: 1fr; }
+      .ctas { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+      section { padding: 3rem 1rem; }
+      .hero { padding: 2rem 1rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================== HERO ================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="topbar">
+      <span><strong style="color:#fbbf24;">stellar.mivisor.com</strong></span>
+      <nav class="nav">
+        <a href="#como">Cómo funciona</a>
+        <a href="#demo">Demo</a>
+        <a href="#recursos">Recursos</a>
+        <a href="https://github.com/alejoherrera/stellar_repo" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="badge">Open-source · MIT · Stellar testnet</span>
+
+        <h1 class="hero-title">
+          Anclaje en <span class="accent">Stellar</span> de evidencia<br>
+          de obra pública verificable.
+        </h1>
+
+        <p class="hero-sub">
+          SDK que firma cada output con SHA-256, lo pinea en IPFS y lo ancla
+          en una transacción Stellar nativa. Cualquier ciudadano puede recomputar
+          el hash y verificar integridad sin confiar en el operador.
+        </p>
+
+        <div class="install">
+          <code><span class="prompt">$ </span>pip install monitor-as-a-service</code>
+          <code><span class="prompt">$ </span>npm install monitor-as-a-service</code>
+        </div>
+
+        <div class="ctas">
+          <a class="btn btn-primary" href="https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb" target="_blank" rel="noopener">
+            ▶ Probar en Colab
+          </a>
+          <a class="btn btn-ghost" href="#demo">Ver demo en vivo →</a>
+          <a class="btn btn-ghost" href="https://github.com/alejoherrera/stellar_repo" target="_blank" rel="noopener">Código fuente ↗</a>
+        </div>
+
+        <div class="hero-meta">
+          <span>Cuenta validador (testnet):</span>
+          <a class="acct" href="https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" target="_blank" rel="noopener">
+            GDRWQERI…3JCPFR
+          </a>
+          <span>·</span>
+          <a href="https://www.npmjs.com/package/monitor-as-a-service" target="_blank" rel="noopener">npm</a>
+          <a href="https://pypi.org/project/monitor-as-a-service/" target="_blank" rel="noopener">PyPI</a>
+          <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md" target="_blank" rel="noopener">Schema CC0</a>
+        </div>
+      </div>
+
+      <div class="hero-robot" aria-hidden="true">
+        <spline-viewer
+          url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+          loading-anim-type="spinner-small-light"
+          events-target="global">
+        </spline-viewer>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================== HOW IT WORKS ================== -->
+<section id="como">
+  <div class="container">
+    <h2 class="section-title">Cómo funciona</h2>
+    <p class="section-sub">
+      Cuatro pasos simples. Sin custodios, sin servidor central, sin confianza requerida.
+      Cualquier tercero puede reproducir la verificación con código abierto.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Hash canónico</h3>
+        <p>El SDK calcula <code>SHA-256</code> del JSON canonicalizado y de la imagen raw, en el lado del productor.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>IPFS pin</h3>
+        <p>El JSON y la imagen se pinean en IPFS. El <code>CID</code> resultante es el hash mismo (content-addressable).</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Stellar manageData</h3>
+        <p>Una transacción nativa con 8 ops <code>manageData</code> ancla los hashes y CIDs. Memo: <code>dIAra ancla v3</code>.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Verificación abierta</h3>
+        <p>Cualquiera lee la TX, fetchea IPFS desde cualquier gateway y recomputa el SHA-256. Coinciden o el ancla está rota.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== DEMO ================== -->
+<section id="demo" style="padding-top: 1rem;">
+  <div class="container">
+    <div class="demo-box">
+      <div>
+        <h3>Demo en vivo</h3>
+        <p>Dashboard interactivo conectado a Stellar testnet. Lee 100+ outputs anclados, verifica integridad criptográfica contra IPFS, y renderiza estadísticas de obra (etapas, maquinaria, personas-en-el-tiempo).</p>
+        <ul>
+          <li>Verificación SHA-256 en vivo, lado cliente</li>
+          <li>Fallback de gateways IPFS con timeout</li>
+          <li>Galería de fotografías ancladas</li>
+          <li>Selector de período por fecha</li>
+        </ul>
+        <a class="btn btn-primary" href="https://cdn.jsdelivr.net/gh/alejoherrera/stellar_repo@main/sdk/js/examples/04-dashboard.html" target="_blank" rel="noopener">
+          Abrir dashboard ↗
+        </a>
+        &nbsp;
+        <a class="btn btn-ghost" href="https://cdn.jsdelivr.net/gh/alejoherrera/stellar_repo@main/sdk/js/examples/03-live-verify.html" target="_blank" rel="noopener">
+          Live verify ↗
+        </a>
+      </div>
+      <div class="demo-mock">
+<span class="ok">[OK]</span> Conectado a horizon-testnet.stellar.org<br>
+<span class="ok">[OK]</span> Cuenta <span class="key">GDRW…3JCPFR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; outputs anclados: <span class="num">147</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; rango: 2025-10-03 → 2026-04-22<br>
+<br>
+<span class="ok">[VERIFY]</span> output <span class="key">20251029-143000</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; img CID: <span class="num">bafkrei…q4y</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; img SHA-256: <span class="ok">match ✓</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; json SHA-256: <span class="ok">match ✓</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; integridad: <span class="ok">verificada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== ON-CHAIN ================== -->
+<section style="padding-top: 1rem;">
+  <div class="container">
+    <h2 class="section-title">Datos on-chain abiertos</h2>
+    <p class="section-sub">
+      Toda la evidencia anclada está pública en Stellar testnet. Cualquier desarrollador,
+      auditor o periodista puede consultar la cuenta sin permisos previos.
+    </p>
+
+    <div class="chain-card">
+      <div>
+        <h3>Cuenta validador IA</h3>
+        <div class="acct-block">GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR</div>
+        <p style="font-size: 0.9rem; color: #64748b; margin: 0.5rem 0 1rem;">
+          Cada output produce una transacción con 8 operaciones <code>manageData</code>.
+          Memo: <code>dIAra ancla v3</code>.
+        </p>
+        <a class="btn btn-ghost" style="color: #1a73e8; border-color: #1a73e8;" href="https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" target="_blank" rel="noopener">
+          Ver en stellar.expert ↗
+        </a>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num">100+</div>
+          <div class="stat-label">Outputs anclados</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">8 ops</div>
+          <div class="stat-label">Por TX (multi-op)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">~800 stroops</div>
+          <div class="stat-label">Costo por output</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== RESOURCES ================== -->
+<section id="recursos" style="background: #f1f5f9;">
+  <div class="container">
+    <h2 class="section-title">Recursos</h2>
+    <p class="section-sub">
+      Schema, SDKs, demos y especificaciones técnicas. Todo bajo MIT (código) o CC0 (schema).
+    </p>
+
+    <div class="resources">
+      <div class="res-card">
+        <a href="https://github.com/alejoherrera/stellar_repo" target="_blank" rel="noopener">
+          <div class="res-tag">Repo</div>
+          <h4>GitHub · stellar_repo</h4>
+          <p>Código completo, contratos, specs Fase 1 y Fase 2, roadmap por fases.</p>
+        </a>
+      </div>
+      <div class="res-card">
+        <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md" target="_blank" rel="noopener">
+          <div class="res-tag">Schema · CC0</div>
+          <h4>Open Anchor Schema v1</h4>
+          <p>Contrato público on-chain. Cualquiera puede construir sobre los datos sin permiso.</p>
+        </a>
+      </div>
+      <div class="res-card">
+        <a href="https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb" target="_blank" rel="noopener">
+          <div class="res-tag">Notebook</div>
+          <h4>Colab demo (Python)</h4>
+          <p>Conecta a testnet, lista 100+ outputs, verifica integridad y genera dashboard. Cero install.</p>
+        </a>
+      </div>
+      <div class="res-card">
+        <a href="https://pypi.org/project/monitor-as-a-service/" target="_blank" rel="noopener">
+          <div class="res-tag">Python · PyPI</div>
+          <h4>monitor-as-a-service</h4>
+          <p><code>pip install monitor-as-a-service</code>. SDK de referencia con widgets ipywidgets.</p>
+        </a>
+      </div>
+      <div class="res-card">
+        <a href="https://www.npmjs.com/package/monitor-as-a-service" target="_blank" rel="noopener">
+          <div class="res-tag">JavaScript · npm</div>
+          <h4>monitor-as-a-service</h4>
+          <p><code>npm install</code> o importable directo desde jsDelivr CDN sin build.</p>
+        </a>
+      </div>
+      <div class="res-card">
+        <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/specs/2026-05-02_fase1_anclaje_stellar.md" target="_blank" rel="noopener">
+          <div class="res-tag">Spec</div>
+          <h4>Fase 1 — Anclaje testnet</h4>
+          <p>Especificación técnica del anchor-service: ingesta, IPFS pinning, multi-op Stellar.</p>
+        </a>
+      </div>
+      <div class="res-card">
+        <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/specs/2026-05-02_fase2_gemelo_transparencia.md" target="_blank" rel="noopener">
+          <div class="res-tag">Spec</div>
+          <h4>Fase 2 — Soroban + alertas</h4>
+          <p>Smart contracts consultivos sobre pagos SICOP/Hacienda. Pre-requisito: Fase 1 en mainnet.</p>
+        </a>
+      </div>
+      <div class="res-card">
+        <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/09_roadmap_etapas.md" target="_blank" rel="noopener">
+          <div class="res-tag">Roadmap</div>
+          <h4>Modelo por fases</h4>
+          <p>Fase 0 (dIAra) → Fase 1 (anclaje) → Fase 2 (gemelo de transparencia) → Fase 3 (bono tokenizado).</p>
+        </a>
+      </div>
+      <div class="res-card">
+        <a href="https://www.obrapublica.info/stellar" target="_blank" rel="noopener">
+          <div class="res-tag">Caso real</div>
+          <h4>obrapublica.info / stellar</h4>
+          <p>Viewer ciudadano con datos reales: dashboard, mapa, timelapse y dev hub.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CONTEXT ================== -->
+<section class="context">
+  <div class="container">
+    <h2 class="section-title" style="color:#fbbf24;">Contexto</h2>
+    <p>
+      Este SDK fue desarrollado como base técnica de la ponencia
+      <em>"Fortaleciendo la gobernanza de la ejecución de obra pública con tecnologías 4.0
+      viables en la región: IA, IoT y blockchain para el monitoreo en tiempo real"</em>
+      (CIGEPRO 2026), y como entrega para el Hackathon Stellar.
+    </p>
+    <p>
+      El objetivo es demostrar que la transparencia verificable de obra pública en LATAM
+      es construible hoy con infraestructura abierta — Stellar, IPFS, esquemas CC0 y SDKs
+      MIT — sin depender de custodios, plataformas privadas o licencias restrictivas.
+    </p>
+    <div class="pill-row">
+      <span class="pill">Ponencia CIGEPRO 2026</span>
+      <span class="pill">Hackathon Stellar</span>
+      <span class="pill">Open-source MIT</span>
+      <span class="pill">Schema CC0</span>
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 0.88rem; color: #94a3b8;">
+      Material académico y paper de referencia disponibles bajo solicitud:
+      <a href="mailto:alejandroherreracr@gmail.com" style="color:#fbbf24;">alejandroherreracr@gmail.com</a>
+    </p>
+  </div>
+</section>
+
+<script>
+  // Hide Spline "Built with Spline" watermark + fade-in on load
+  (function () {
+    const viewer = document.querySelector('.hero-robot spline-viewer');
+    if (!viewer) return;
+
+    function hideWatermark() {
+      document.querySelectorAll('spline-viewer').forEach(v => {
+        if (v.shadowRoot && !v.shadowRoot.querySelector('style[data-hide-logo]')) {
+          const style = document.createElement('style');
+          style.setAttribute('data-hide-logo', '');
+          style.textContent = '#logo, a[href*="spline.design"], .spline-logo { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }';
+          v.shadowRoot.appendChild(style);
+        }
+      });
+    }
+
+    const interval = setInterval(hideWatermark, 250);
+    setTimeout(() => clearInterval(interval), 15000);
+
+    viewer.addEventListener('load', () => {
+      viewer.classList.add('loaded');
+      hideWatermark();
+    });
+    // Fallback in case 'load' never fires
+    setTimeout(() => viewer.classList.add('loaded'), 4000);
+  })();
+</script>
+
+<!-- ================== FOOTER ================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="credit-cgr">
+      Imágenes públicas generadas por el proyecto <strong>dIAra</strong> de la
+      <a href="https://www.cgr.go.cr" target="_blank" rel="noopener">Contraloría General de la República de Costa Rica</a>.
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/alejoherrera/stellar_repo" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md" target="_blank" rel="noopener">Schema CC0</a>
+      <a href="https://pypi.org/project/monitor-as-a-service/" target="_blank" rel="noopener">PyPI</a>
+      <a href="https://www.npmjs.com/package/monitor-as-a-service" target="_blank" rel="noopener">npm</a>
+      <a href="https://www.obrapublica.info/stellar" target="_blank" rel="noopener">Caso real</a>
+    </div>
+    <div class="small">
+      SDK MIT · Schema CC0 · Powered by
+      <a href="https://mivisor.com" target="_blank" rel="noopener">mivisor.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
