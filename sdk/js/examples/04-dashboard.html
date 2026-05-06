@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monitor as a Service — Dashboard interactivo (Stellar + IPFS)</title>
+  <meta name="description" content="Dashboard interactivo del SDK monitor-as-a-service: lee outputs anclados en Stellar testnet, verifica integridad contra IPFS y renderiza estadisticas con Plotly.">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 4rem;
+      color: #0f172a;
+      background: #f8fafc;
+      line-height: 1.5;
+    }
+    .banner {
+      background: linear-gradient(135deg, #0c4a6e 0%, #1a73e8 100%);
+      color: white;
+      padding: 1.5rem 1.8rem;
+      border-radius: 12px;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+    }
+    .banner h1 { margin: 0 0 0.3rem; font-size: 1.6rem; }
+    .banner .sub { font-size: 0.95rem; opacity: 0.9; }
+    .banner .powered { margin-top: 0.6rem; font-size: 0.88rem; }
+    .banner .powered strong { color: #fbbf24; }
+    .banner a { color: #fbbf24; }
+    .controls {
+      display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;
+      padding: 0.8rem 1rem; background: white; border-radius: 8px;
+      border: 1px solid #e2e8f0; margin-bottom: 1rem;
+    }
+    .controls label { font-weight: 600; font-size: 0.88rem; color: #334155; }
+    .controls input {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      padding: 6px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #fff;
+      flex: 1; min-width: 180px;
+    }
+    button {
+      background: #1a73e8; color: white; border: none;
+      padding: 7px 16px; border-radius: 6px; font-weight: 600;
+      cursor: pointer; font-size: 0.88rem;
+    }
+    button:hover { background: #1557b0; }
+    button:disabled { background: #94a3b8; cursor: not-allowed; }
+    .status {
+      padding: 0.6rem 0.9rem; border-radius: 8px;
+      background: #e0f2fe; border: 1px solid #7dd3fc;
+      font-size: 0.88rem; margin-bottom: 1rem; color: #075985;
+    }
+    .status.error { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+    .status.ok { background: #dcfce7; border-color: #86efac; color: #166534; }
+    .pipeline {
+      background: white; border: 1px solid #e2e8f0; border-radius: 8px;
+      padding: 1rem 1.2rem; margin-bottom: 1rem;
+    }
+    .pipeline h3 { margin: 0 0 0.6rem; font-size: 1rem; color: #334155; }
+    .step {
+      padding: 0.4rem 0; border-bottom: 1px dashed #e2e8f0;
+      font-size: 0.88rem;
+      display: flex; gap: 0.6rem; align-items: baseline;
+    }
+    .step:last-child { border-bottom: none; }
+    .step .num { color: #94a3b8; font-weight: 600; min-width: 1.4em; }
+    .step .ok { color: #16a34a; font-weight: 600; }
+    .step .pending { color: #94a3b8; }
+    .step .label { color: #334155; }
+    .step .detail { color: #64748b; font-family: ui-monospace, monospace; font-size: 0.82rem; }
+    .meta {
+      display: grid; grid-template-columns: 1fr 2fr; gap: 0.4rem 1rem;
+      font-size: 0.88rem; padding: 0.6rem 0;
+    }
+    .meta .k { color: #64748b; text-align: right; }
+    .meta .v { color: #0f172a; font-weight: 600; word-break: break-all; }
+    #dashboard {
+      background: white; border: 1px solid #e2e8f0; border-radius: 8px;
+      padding: 0.6rem; margin-top: 1rem;
+      min-height: 60px;
+    }
+    .footer {
+      font-size: 0.82rem; color: #64748b; margin-top: 2rem;
+      padding: 1rem; background: white; border: 1px solid #e2e8f0; border-radius: 8px;
+    }
+    .footer .row { margin-bottom: 0.4rem; }
+    .footer strong { color: #334155; }
+    .footer a { color: #1a73e8; }
+    code { background: #e2e8f0; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; }
+    .badge.ok { background: #16a34a; color: white; }
+    .badge.fail { background: #dc2626; color: white; }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <h1>Monitor as a Service &middot; live dashboard</h1>
+    <div class="sub">
+      Lee anclas de obra publica desde Stellar testnet, verifica integridad contra IPFS,
+      renderiza dashboard interactivo. Cero backend, cero API keys.
+    </div>
+    <div class="powered">
+      <strong>Powered by <a href="https://mivisor.com" target="_blank">Mivisor.com</a></strong>
+      &nbsp;|&nbsp; Open Schema CC0
+      &nbsp;|&nbsp; SDK MIT
+      &nbsp;|&nbsp; <a href="https://www.npmjs.com/package/monitor-as-a-service" target="_blank">npm</a>
+      &nbsp;|&nbsp; <a href="https://pypi.org/project/monitor-as-a-service/" target="_blank">PyPI</a>
+    </div>
+  </div>
+
+  <div class="controls">
+    <label for="account">Cuenta Stellar:</label>
+    <input id="account" value="GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" spellcheck="false">
+    <button id="run">Ejecutar pipeline</button>
+  </div>
+
+  <div id="status" class="status">Listo. Pulsa "Ejecutar pipeline" para arrancar (auto-corre al cargar la pagina).</div>
+
+  <div id="pipeline-wrap" class="pipeline" style="display:none">
+    <h3>Pipeline</h3>
+    <div id="steps"></div>
+  </div>
+
+  <div id="project-wrap" class="pipeline" style="display:none">
+    <h3>Metadata del proyecto on-chain</h3>
+    <div class="meta" id="project-meta"></div>
+  </div>
+
+  <div id="dashboard"></div>
+
+  <div class="footer">
+    <div class="row">
+      <strong>Source:</strong>
+      <a href="https://github.com/alejoherrera/stellar_repo/blob/main/sdk/js/examples/04-dashboard.html" target="_blank">stellar_repo / sdk/js/examples/04-dashboard.html</a>
+      &middot; SDK <code>monitor-as-a-service@1.x</code> (MIT) cargado desde
+      <a href="https://www.jsdelivr.com/package/npm/monitor-as-a-service" target="_blank">jsDelivr</a>
+    </div>
+    <div class="row">
+      <strong>Powered by:</strong>
+      <a href="https://mivisor.com" target="_blank">Mivisor.com</a>
+    </div>
+    <div class="row">
+      <strong>Coautores:</strong>
+      Master Juan Alejandro Herrera Lopez &lt;alejandroherreracr@gmail.com&gt;
+      &nbsp;|&nbsp; Andres Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt;
+      &nbsp;|&nbsp; Claude (Anthropic AI assistant)
+    </div>
+  </div>
+
+  <script type="module">
+    import { Client, VERSION, SCHEMA_VERSION } from "https://cdn.jsdelivr.net/npm/monitor-as-a-service@latest/monitor-as-a-service.js";
+
+    const $ = (id) => document.getElementById(id);
+    const status = $("status");
+    const stepsEl = $("steps");
+    const pipelineWrap = $("pipeline-wrap");
+    const projectWrap = $("project-wrap");
+    const projectMeta = $("project-meta");
+
+    const setStatus = (msg, kind = "") => {
+      status.textContent = msg;
+      status.className = "status" + (kind ? " " + kind : "");
+    };
+
+    let stepCount = 0;
+    function step(label, detail = "", state = "pending") {
+      stepCount++;
+      const id = `step-${stepCount}`;
+      const stateBadge = state === "ok" ? `<span class="ok">[OK]</span>` : `<span class="pending">[..]</span>`;
+      stepsEl.insertAdjacentHTML(
+        "beforeend",
+        `<div class="step" id="${id}">
+          <span class="num">${stepCount}.</span>
+          ${stateBadge}
+          <span class="label">${label}</span>
+          ${detail ? `<span class="detail">${detail}</span>` : ""}
+        </div>`
+      );
+      return id;
+    }
+    function stepDone(id, label, detail = "") {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.querySelector(".pending,.ok").outerHTML = `<span class="ok">[OK]</span>`;
+      el.querySelector(".label").textContent = label;
+      const d = el.querySelector(".detail");
+      if (detail) {
+        if (d) d.textContent = detail;
+        else el.insertAdjacentHTML("beforeend", `<span class="detail">${detail}</span>`);
+      }
+    }
+
+    const ACCOUNT_INPUT = $("account");
+
+    function counter(items) {
+      const m = new Map();
+      for (const k of items) m.set(k, (m.get(k) || 0) + 1);
+      return m;
+    }
+
+    async function run() {
+      stepCount = 0;
+      stepsEl.innerHTML = "";
+      pipelineWrap.style.display = "block";
+      projectWrap.style.display = "none";
+      $("dashboard").innerHTML = "";
+      $("run").disabled = true;
+
+      const account = ACCOUNT_INPUT.value.trim();
+      if (!account) { setStatus("Ingresa una cuenta Stellar.", "error"); $("run").disabled = false; return; }
+
+      const t0 = performance.now();
+
+      try {
+        // Step 1
+        let id = step("Conectando a Stellar Horizon (testnet)");
+        const client = Client.testnet(account);
+        stepDone(id, "Conectado a Stellar Horizon (testnet)", `SDK v${VERSION} | schema v${SCHEMA_VERSION}`);
+
+        // Step 2
+        id = step("Leyendo metadata del proyecto on-chain");
+        const proj = await client.project();
+        if (proj) {
+          projectWrap.style.display = "block";
+          projectMeta.innerHTML = [
+            ["Codigo on-chain", proj.code],
+            ["Nombre", proj.name || "(sin nombre)"],
+            ["Sistema productor", proj.system || "(sin sistema)"],
+            ["URL publica", proj.url ? `<a href="https://${proj.url}" target="_blank">${proj.url}</a>` : "(no URL)"],
+          ].map(([k, v]) => `<div class="k">${k}:</div><div class="v">${v}</div>`).join("");
+          stepDone(id, "Metadata del proyecto leida", `proyecto: ${proj.code}`);
+        } else {
+          stepDone(id, "Sin metadata de proyecto on-chain");
+        }
+
+        // Step 3
+        id = step("Decodificando data entries on-chain");
+        const outputs = await client.outputs();
+        if (!outputs.length) {
+          setStatus("La cuenta no tiene outputs anclados.", "error");
+          $("run").disabled = false;
+          return;
+        }
+        stepDone(id, `${outputs.length} anclas decodificadas`,
+          `rango: ${outputs[outputs.length - 1].outputId} -> ${outputs[0].outputId}`);
+
+        // Step 4 - verification sample
+        const N = Math.min(8, outputs.length);
+        id = step(`Verificando integridad criptografica (muestra ${N})`);
+        let okCount = 0;
+        for (let i = 0; i < N; i++) {
+          const r = await client.verify(outputs[i].outputId, false);
+          if (r.jsonOk) okCount++;
+        }
+        stepDone(id, `Verificacion criptografica completa`, `${okCount}/${N} OK desde IPFS`);
+
+        // Step 5 - aggregations
+        id = step("Agregando estadisticas para el dashboard");
+        const phases = counter(outputs.map(o => o.phase || "(sin etapa)"));
+        const machinery = counter(
+          outputs.flatMap(o =>
+            (o.machinery || "").split(",")
+              .map(m => m.trim())
+              .filter(m => m && m.toLowerCase() !== "ninguna")
+          )
+        );
+        const sortedByTime = [...outputs].sort((a, b) => (a.outputId < b.outputId ? -1 : 1));
+        const workersSeries = sortedByTime.map(o => ({
+          x: o.datetime || o.outputId,
+          y: o.workers || 0,
+        }));
+        const totalPersonaObs = workersSeries.reduce((s, p) => s + p.y, 0);
+        stepDone(id, "Estadisticas agregadas",
+          `${phases.size} etapas | ${machinery.size} tipos maquinaria | ${totalPersonaObs} persona-observaciones`);
+
+        // Step 6 - render dashboard
+        id = step("Renderizando dashboard interactivo");
+        await renderDashboard({ outputs, proj, phases, machinery, workersSeries, okSample: okCount, totalSample: N, account });
+        stepDone(id, "Dashboard renderizado");
+
+        const elapsed = ((performance.now() - t0) / 1000).toFixed(1);
+        setStatus(`Listo en ${elapsed}s. Toda la data viene de Stellar testnet + IPFS publico. Cero backend, cero API keys.`, "ok");
+      } catch (e) {
+        setStatus(`Error: ${e.message}`, "error");
+        console.error(e);
+      } finally {
+        $("run").disabled = false;
+      }
+    }
+
+    async function renderDashboard({ outputs, proj, phases, machinery, workersSeries, okSample, totalSample, account }) {
+      const phaseLabels = [...phases.keys()];
+      const phaseValues = phaseLabels.map(k => phases.get(k));
+
+      const machinerySorted = [...machinery.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
+      const machineryLabels = machinerySorted.map(([k]) => k);
+      const machineryCounts = machinerySorted.map(([, v]) => v);
+
+      const totalFeeXLM = outputs.length * 0.00008;
+      const totalFeeUSD = totalFeeXLM * 0.30;
+
+      // Layout in 2x2 grid using paper-coordinate domains (no Plotly `grid` pattern)
+      // Top row: y in [0.52, 0.92]   Bottom row: y in [0.05, 0.42]
+      // Left col:  x in [0.00, 0.45]  Right col:  x in [0.55, 1.00]
+      const data = [
+        // Pie - phases (top-left)
+        {
+          type: "pie",
+          labels: phaseLabels,
+          values: phaseValues,
+          hole: 0.45,
+          textinfo: "label+percent",
+          domain: { x: [0.0, 0.45], y: [0.52, 0.92] },
+          name: "Etapas",
+          marker: { colors: ["#1a73e8", "#fbbf24", "#22c55e", "#a855f7", "#ec4899", "#06b6d4", "#f97316"] },
+        },
+        // Bar - machinery (top-right)
+        {
+          type: "bar",
+          x: machineryCounts,
+          y: machineryLabels,
+          orientation: "h",
+          marker: { color: "#1a73e8" },
+          xaxis: "x2",
+          yaxis: "y2",
+          name: "Maquinaria",
+        },
+        // Scatter - workers timeline (bottom-left)
+        {
+          type: "scatter",
+          x: workersSeries.map(p => p.x),
+          y: workersSeries.map(p => p.y),
+          mode: "lines+markers",
+          line: { color: "#fbbf24", width: 2 },
+          marker: { size: 6, color: "#fbbf24" },
+          xaxis: "x3",
+          yaxis: "y3",
+          name: "Personas",
+        },
+        // Table - summary (bottom-right)
+        {
+          type: "table",
+          header: {
+            values: ["<b>Atributo</b>", "<b>Valor</b>"],
+            fill: { color: "#0f172a" },
+            font: { color: "white", size: 12 },
+            align: "left",
+          },
+          cells: {
+            values: [
+              [
+                "Network",
+                "Stellar account",
+                "Outputs anclados",
+                "Esquema",
+                "Verificacion (muestra)",
+                "Costo total fees",
+                "Dependencias backend",
+              ],
+              [
+                "Stellar testnet",
+                `${account.slice(0, 8)}...${account.slice(-6)}`,
+                String(outputs.length),
+                "MaaS Open Schema v1 (CC0)",
+                `${okSample}/${totalSample} OK criptografico`,
+                `~${totalFeeXLM.toFixed(5)} XLM (~${totalFeeUSD.toFixed(4)} USD)`,
+                "0 (lectura directa Stellar+IPFS)",
+              ],
+            ],
+            fill: { color: "#f1f5f9" },
+            align: "left",
+            font: { size: 11 },
+            height: 28,
+          },
+          domain: { x: [0.55, 1.0], y: [0.05, 0.42] },
+        },
+      ];
+
+      const projName = proj?.name || proj?.code || "";
+      const titleHtml =
+        `<b>Monitor as a Service</b>${projName ? "  |  " + projName : ""}` +
+        `<br><span style="font-size:11px; color:#6b7280;">` +
+        `Powered by <a href="https://mivisor.com" style="color:#1a73e8;">Mivisor.com</a> ` +
+        `&nbsp;|&nbsp; Open Schema CC0 ` +
+        `&nbsp;|&nbsp; Stellar testnet (verificable on-chain)</span>`;
+
+      const layout = {
+        title: { text: titleHtml, x: 0.02, y: 0.98, yanchor: "top", font: { size: 20 } },
+        showlegend: false,
+        height: 1020,
+        margin: { t: 145, b: 110, l: 60, r: 40 },
+        plot_bgcolor: "white",
+        paper_bgcolor: "#f8fafc",
+        // Subplot titles (paper-anchored annotations)
+        annotations: [
+          { text: "<b>Outputs por etapa constructiva</b>", xref: "paper", yref: "paper", x: 0.225, y: 0.96, xanchor: "center", showarrow: false, font: { size: 13 } },
+          { text: "<b>Maquinaria detectada (top 10)</b>",  xref: "paper", yref: "paper", x: 0.775, y: 0.96, xanchor: "center", showarrow: false, font: { size: 13 } },
+          { text: "<b>Personas trabajadoras a lo largo del tiempo</b>", xref: "paper", yref: "paper", x: 0.225, y: 0.46, xanchor: "center", showarrow: false, font: { size: 13 } },
+          { text: "<b>Fuente verificable</b>", xref: "paper", yref: "paper", x: 0.775, y: 0.46, xanchor: "center", showarrow: false, font: { size: 13 } },
+          {
+            text:
+              "<b>Coautores:</b> Master Juan Alejandro Herrera Lopez &lt;alejandroherreracr@gmail.com&gt; " +
+              "&nbsp;|&nbsp; Andres Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt; " +
+              "&nbsp;|&nbsp; Claude (Anthropic AI assistant)",
+            xref: "paper", yref: "paper",
+            x: 0.5, y: -0.08,
+            xanchor: "center", yanchor: "top",
+            showarrow: false,
+            font: { size: 10, color: "#6b7280" },
+          },
+        ],
+        // Bar chart axes (top-right)
+        xaxis2: { domain: [0.55, 1.0], anchor: "y2", automargin: true },
+        yaxis2: { domain: [0.52, 0.92], anchor: "x2", automargin: true },
+        // Scatter chart axes (bottom-left)
+        xaxis3: { domain: [0.0, 0.45], anchor: "y3", title: { text: "Datetime" }, automargin: true },
+        yaxis3: { domain: [0.05, 0.42], anchor: "x3", title: { text: "Personas" }, automargin: true },
+      };
+
+      await Plotly.newPlot("dashboard", data, layout, { displayModeBar: false, responsive: true });
+    }
+
+    $("run").addEventListener("click", run);
+    run();
+  </script>
+</body>
+</html>

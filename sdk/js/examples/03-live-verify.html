@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MaaS SDK — Live verification demo (Stellar + IPFS)</title>
+  <meta name="description" content="Demo en vivo del SDK monitor-as-a-service: lista outputs anclados en Stellar testnet y verifica criptograficamente los hashes contra IPFS.">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 4rem;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+    h1 { margin: 0 0 0.4rem; font-size: 1.6rem; }
+    h2 { font-size: 1.1rem; margin: 1.6rem 0 0.6rem; }
+    .lead { color: #555; margin: 0 0 1.2rem; font-size: 0.95rem; }
+    .controls {
+      display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;
+      padding: 0.9rem 1rem; background: #f6f8fa; border-radius: 8px;
+      border: 1px solid #e1e4e8; margin-bottom: 1rem;
+    }
+    .controls label { font-weight: 600; font-size: 0.9rem; }
+    .controls input, .controls select {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      flex: 1; min-width: 180px;
+    }
+    .controls input:focus, .controls select:focus {
+      outline: 2px solid #0969da; outline-offset: -1px;
+    }
+    button {
+      background: #1f883d; color: white; border: none;
+      padding: 6px 14px; border-radius: 6px; font-weight: 600;
+      cursor: pointer; font-size: 0.9rem;
+    }
+    button:hover { background: #1a7f37; }
+    button:disabled { background: #94a3a8; cursor: not-allowed; }
+    .status {
+      padding: 0.6rem 0.9rem; border-radius: 6px;
+      background: #ddf4ff; border: 1px solid #b6e3ff;
+      font-size: 0.9rem; margin-bottom: 1rem;
+    }
+    .status.error { background: #ffebe9; border-color: #ff8182; color: #82071e; }
+    .status.ok { background: #dafbe1; border-color: #4ac26b; color: #0f5323; }
+    .grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      border: 1px solid #d0d7de; border-radius: 8px; padding: 1rem;
+      background: #fff;
+    }
+    .card h3 { margin: 0 0 0.6rem; font-size: 0.95rem; color: #57606a; }
+    .row { display: flex; justify-content: space-between; gap: 0.6rem; padding: 0.25rem 0; font-size: 0.88rem; border-bottom: 1px dashed #eaeef2; }
+    .row:last-child { border-bottom: none; }
+    .row .k { color: #57606a; }
+    .row .v { font-family: ui-monospace, monospace; word-break: break-all; text-align: right; }
+    .hashbox {
+      font-family: ui-monospace, monospace; font-size: 0.78rem;
+      background: #f6f8fa; padding: 8px 10px; border-radius: 6px;
+      word-break: break-all; border: 1px solid #eaeef2;
+    }
+    .hashbox.ok { background: #dafbe1; border-color: #4ac26b; }
+    .hashbox.fail { background: #ffebe9; border-color: #ff8182; }
+    .hashlabel { font-size: 0.75rem; color: #57606a; margin: 0.6rem 0 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; margin-left: 6px; }
+    .badge.ok { background: #1f883d; color: white; }
+    .badge.fail { background: #cf222e; color: white; }
+    .badge.skip { background: #57606a; color: white; }
+    img.preview { max-width: 100%; max-height: 240px; border-radius: 6px; border: 1px solid #d0d7de; margin-top: 0.6rem; background: #f6f8fa; }
+    a { color: #0969da; }
+    code { background: #f6f8fa; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; }
+    .footer { font-size: 0.82rem; color: #57606a; margin-top: 2rem; text-align: center; }
+    .powered { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>MaaS SDK — verificacion en vivo</h1>
+  <p class="lead">
+    Esta pagina usa el paquete
+    <a href="https://www.npmjs.com/package/monitor-as-a-service" target="_blank"><code>monitor-as-a-service</code></a>
+    cargado desde jsDelivr (sin build, sin instalar nada). Lee outputs anclados en
+    <a href="https://horizon-testnet.stellar.org/" target="_blank">Stellar testnet</a>,
+    descarga el JSON+imagen desde IPFS y recomputa el SHA-256 para verificarlos contra el hash on-chain.
+    Si los bytes en IPFS coinciden con el hash anclado, podes confiar en la evidencia sin confiar en el publicador.
+  </p>
+
+  <div class="controls">
+    <label for="account">Cuenta Stellar:</label>
+    <input id="account" value="GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" spellcheck="false">
+    <button id="load">Cargar outputs</button>
+  </div>
+
+  <div id="status" class="status">Listo. Pulsa "Cargar outputs" para arrancar.</div>
+
+  <div id="picker-wrap" style="display:none">
+    <div class="controls">
+      <label for="output">Output:</label>
+      <select id="output"></select>
+      <button id="verify">Verificar</button>
+    </div>
+  </div>
+
+  <div id="detail" style="display:none">
+    <div class="grid">
+      <div class="card">
+        <h3>Metadata on-chain</h3>
+        <div id="meta"></div>
+      </div>
+      <div class="card">
+        <h3>Verificacion criptografica</h3>
+        <div id="verifyout"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Imagen anclada (IPFS)</h3>
+      <div id="imgwrap"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Source: <a href="https://github.com/alejoherrera/stellar_repo/blob/main/sdk/js/examples/03-live-verify.html" target="_blank">stellar_repo / sdk/js/examples/03-live-verify.html</a>
+    &middot; SDK <code>monitor-as-a-service@1.x</code> (MIT)
+    &middot; <span class="powered">Powered by <a href="https://mivisor.com" target="_blank">Mivisor.com</a></span>
+  </div>
+
+  <script type="module">
+    import { Client, VERSION, SCHEMA_VERSION } from "https://cdn.jsdelivr.net/npm/monitor-as-a-service@latest/monitor-as-a-service.js";
+
+    const $ = (id) => document.getElementById(id);
+    const status = $("status");
+    const picker = $("picker-wrap");
+    const detail = $("detail");
+    const meta = $("meta");
+    const verifyout = $("verifyout");
+    const imgwrap = $("imgwrap");
+    const select = $("output");
+
+    const setStatus = (msg, kind = "") => {
+      status.textContent = msg;
+      status.className = "status" + (kind ? " " + kind : "");
+    };
+
+    const row = (k, v) =>
+      `<div class="row"><span class="k">${k}</span><span class="v">${v ?? "&mdash;"}</span></div>`;
+
+    const link = (href, text) =>
+      href ? `<a href="${href}" target="_blank" rel="noopener">${text}</a>` : "&mdash;";
+
+    let client = null;
+    let outputs = [];
+
+    async function loadOutputs() {
+      const account = $("account").value.trim();
+      if (!account) { setStatus("Ingresa una cuenta Stellar.", "error"); return; }
+      setStatus(`Conectando a Stellar testnet (SDK v${VERSION}, schema v${SCHEMA_VERSION})...`);
+      try {
+        client = Client.testnet(account);
+        outputs = await client.outputs();
+        if (!outputs.length) {
+          setStatus("La cuenta no tiene outputs anclados.", "error");
+          picker.style.display = "none";
+          detail.style.display = "none";
+          return;
+        }
+        select.innerHTML = outputs.map((o, i) =>
+          `<option value="${i}">${o.outputId} &middot; ${o.projectCode ?? "?"} &middot; ${o.workers ?? "?"} workers &middot; ${o.phase ?? "?"}</option>`
+        ).join("");
+        picker.style.display = "block";
+        setStatus(`${outputs.length} outputs anclados en Stellar testnet. Eleg uno y pulsa "Verificar".`, "ok");
+        showDetail(0);
+      } catch (e) {
+        setStatus(`Error: ${e.message}`, "error");
+      }
+    }
+
+    function showDetail(idx) {
+      const o = outputs[idx];
+      detail.style.display = "block";
+      meta.innerHTML =
+        row("Output ID", o.outputId) +
+        row("Proyecto", o.projectCode) +
+        row("Datetime", o.datetime) +
+        row("Workers", o.workers) +
+        row("Maquinaria", o.machinery) +
+        row("Fase", o.phase) +
+        row("JSON CID", link(o.jsonUrl, o.jsonCid?.slice(0, 16) + "...")) +
+        row("Image CID", link(o.imageUrl, o.imageCid?.slice(0, 16) + "..."));
+      verifyout.innerHTML = `
+        <p style="margin:0 0 6px; font-size:0.88rem; color:#57606a;">
+          Pulsa <strong>Verificar</strong> arriba para descargar desde IPFS y recomputar el SHA-256.
+        </p>
+        <div class="hashlabel">JSON hash anclado en Stellar:</div>
+        <div class="hashbox">${o.jsonHashOnChain ?? "(none)"}</div>
+        <div class="hashlabel">Image hash anclado en Stellar:</div>
+        <div class="hashbox">${o.imageHashOnChain ?? "(none)"}</div>
+      `;
+      imgwrap.innerHTML = o.imageUrl
+        ? `<img class="preview" src="${o.imageUrl}" alt="output ${o.outputId}" loading="lazy">
+           <div style="font-size:0.8rem; color:#57606a; margin-top:6px;">${link(o.imageUrl, "Ver en gateway IPFS")}</div>`
+        : `<p style="color:#57606a;">No hay imagen anclada.</p>`;
+    }
+
+    async function verifySelected() {
+      const idx = parseInt(select.value, 10);
+      const o = outputs[idx];
+      setStatus(`Descargando JSON e imagen desde IPFS y recomputando hashes...`);
+      const btn = $("verify"); btn.disabled = true;
+      try {
+        const r = await client.verify(o.outputId, true);
+
+        const jsonBadge = r.jsonOk === true
+          ? `<span class="badge ok">MATCH</span>`
+          : r.jsonOk === false
+            ? `<span class="badge fail">MISMATCH</span>`
+            : `<span class="badge skip">SKIPPED</span>`;
+        const imageBadge = r.imageOk === true
+          ? `<span class="badge ok">MATCH</span>`
+          : r.imageOk === false
+            ? `<span class="badge fail">MISMATCH</span>`
+            : `<span class="badge skip">SKIPPED</span>`;
+
+        verifyout.innerHTML = `
+          <div style="margin-bottom: 0.8rem;">
+            <strong>JSON:</strong> ${jsonBadge}
+          </div>
+          <div class="hashlabel">Hash anclado en Stellar:</div>
+          <div class="hashbox">${o.jsonHashOnChain ?? "(none)"}</div>
+          <div class="hashlabel">Hash recomputado desde IPFS:</div>
+          <div class="hashbox ${r.jsonOk ? 'ok' : (r.computedJsonHash ? 'fail' : '')}">${r.computedJsonHash ?? "(no recomputado)"}</div>
+
+          <div style="margin: 1rem 0 0.8rem;">
+            <strong>Imagen:</strong> ${imageBadge}
+          </div>
+          <div class="hashlabel">Hash anclado en Stellar:</div>
+          <div class="hashbox">${o.imageHashOnChain ?? "(none)"}</div>
+          <div class="hashlabel">Hash recomputado desde IPFS:</div>
+          <div class="hashbox ${r.imageOk ? 'ok' : (r.computedImageHash ? 'fail' : '')}">${r.computedImageHash ?? "(no recomputado)"}</div>
+
+          ${r.errors?.length ? `<div class="status error" style="margin-top:1rem;">Errores: ${r.errors.join("; ")}</div>` : ""}
+        `;
+
+        const ok = r.jsonOk && (r.imageOk || r.imageOk === undefined);
+        setStatus(ok
+          ? "Verificacion exitosa: los bytes en IPFS coinciden con los hashes anclados en Stellar."
+          : "Verificacion completada con discrepancias. Revisa el detalle.", ok ? "ok" : "error");
+      } catch (e) {
+        setStatus(`Error: ${e.message}`, "error");
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    $("load").addEventListener("click", loadOutputs);
+    $("verify").addEventListener("click", verifySelected);
+    select.addEventListener("change", () => showDetail(parseInt(select.value, 10)));
+
+    loadOutputs();
+  </script>
+</body>
+</html>
