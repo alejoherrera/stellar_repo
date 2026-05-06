@@ -4,32 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Monitor as a Service — Dashboard interactivo (Stellar + IPFS)</title>
-  <meta name="description" content="Dashboard interactivo del SDK monitor-as-a-service: lee outputs anclados en Stellar testnet, verifica integridad contra IPFS y renderiza estadisticas con Plotly.">
+  <meta name="description" content="Dashboard interactivo del SDK monitor-as-a-service: lee outputs anclados en Stellar testnet, verifica integridad contra IPFS y renderiza estadísticas con Plotly.">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
   <style>
     * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
       max-width: 1180px;
       margin: 0 auto;
-      padding: 1.5rem 1rem 4rem;
+      padding: 1.2rem 1rem 4rem;
       color: #0f172a;
       background: #f8fafc;
       line-height: 1.5;
     }
+    a { color: #1a73e8; }
+
+    /* Loading overlay */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      z-index: 9999;
+      padding: 1rem;
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      animation: fadeIn 0.25s ease-out;
+    }
+    .overlay[hidden] { display: none !important; }
+    .overlay .spinner {
+      width: 64px; height: 64px;
+      border: 5px solid rgba(255, 255, 255, 0.25);
+      border-top-color: #fbbf24;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1.2rem;
+    }
+    .overlay .text {
+      color: white;
+      font-size: 1.15rem; font-weight: 600;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      max-width: 90vw;
+    }
+    .overlay .sub {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      text-align: center;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Banner */
     .banner {
       background: linear-gradient(135deg, #0c4a6e 0%, #1a73e8 100%);
       color: white;
-      padding: 1.5rem 1.8rem;
+      padding: 1.4rem 1.6rem;
       border-radius: 12px;
       margin-bottom: 1.2rem;
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
     }
-    .banner h1 { margin: 0 0 0.3rem; font-size: 1.6rem; }
-    .banner .sub { font-size: 0.95rem; opacity: 0.9; }
-    .banner .powered { margin-top: 0.6rem; font-size: 0.88rem; }
+    .banner h1 { margin: 0 0 0.3rem; font-size: 1.55rem; line-height: 1.25; }
+    .banner .sub { font-size: 0.95rem; opacity: 0.92; }
+    .banner .powered { margin-top: 0.7rem; font-size: 0.86rem; }
     .banner .powered strong { color: #fbbf24; }
     .banner a { color: #fbbf24; }
+
+    /* Controls */
     .controls {
       display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;
       padding: 0.8rem 1rem; background: white; border-radius: 8px;
@@ -39,19 +81,23 @@
     .controls input {
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       font-size: 0.82rem;
-      padding: 6px 10px;
+      padding: 7px 10px;
       border: 1px solid #cbd5e1;
       border-radius: 6px;
       background: #fff;
-      flex: 1; min-width: 180px;
+      flex: 1; min-width: 160px;
     }
     button {
       background: #1a73e8; color: white; border: none;
       padding: 7px 16px; border-radius: 6px; font-weight: 600;
-      cursor: pointer; font-size: 0.88rem;
+      cursor: pointer; font-size: 0.88rem; white-space: nowrap;
     }
     button:hover { background: #1557b0; }
     button:disabled { background: #94a3b8; cursor: not-allowed; }
+    button.secondary { background: white; color: #1a73e8; border: 1px solid #1a73e8; }
+    button.secondary:hover { background: #eff6ff; }
+
+    /* Status */
     .status {
       padding: 0.6rem 0.9rem; border-radius: 8px;
       background: #e0f2fe; border: 1px solid #7dd3fc;
@@ -59,59 +105,124 @@
     }
     .status.error { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
     .status.ok { background: #dcfce7; border-color: #86efac; color: #166534; }
-    .pipeline {
+
+    /* Cards: pipeline / project / period / gallery / dashboard */
+    .card {
       background: white; border: 1px solid #e2e8f0; border-radius: 8px;
       padding: 1rem 1.2rem; margin-bottom: 1rem;
     }
-    .pipeline h3 { margin: 0 0 0.6rem; font-size: 1rem; color: #334155; }
+    .card h3 { margin: 0 0 0.6rem; font-size: 1rem; color: #334155; }
+
     .step {
       padding: 0.4rem 0; border-bottom: 1px dashed #e2e8f0;
       font-size: 0.88rem;
-      display: flex; gap: 0.6rem; align-items: baseline;
+      display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap;
     }
     .step:last-child { border-bottom: none; }
     .step .num { color: #94a3b8; font-weight: 600; min-width: 1.4em; }
     .step .ok { color: #16a34a; font-weight: 600; }
     .step .pending { color: #94a3b8; }
     .step .label { color: #334155; }
-    .step .detail { color: #64748b; font-family: ui-monospace, monospace; font-size: 0.82rem; }
+    .step .detail { color: #64748b; font-family: ui-monospace, monospace; font-size: 0.82rem; word-break: break-word; }
+
     .meta {
-      display: grid; grid-template-columns: 1fr 2fr; gap: 0.4rem 1rem;
-      font-size: 0.88rem; padding: 0.6rem 0;
+      display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1rem;
+      font-size: 0.88rem; padding: 0.4rem 0;
     }
-    .meta .k { color: #64748b; text-align: right; }
+    .meta .k { color: #64748b; }
     .meta .v { color: #0f172a; font-weight: 600; word-break: break-all; }
+
+    /* Period selector */
+    .period-row { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+    .period-row label { font-weight: 600; font-size: 0.88rem; color: #334155; }
+    .period-row input[type="date"] {
+      padding: 6px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      background: white;
+    }
+
+    /* Photo gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+      gap: 0.7rem;
+      margin-top: 0.6rem;
+    }
+    .photo {
+      border-radius: 6px; overflow: hidden;
+      border: 1px solid #e2e8f0; background: white;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .photo:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12); }
+    .photo a { display: block; color: inherit; text-decoration: none; }
+    .photo img {
+      width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+      background: #f1f5f9;
+    }
+    .photo .caption {
+      padding: 6px 8px; font-size: 0.76rem; color: #475569; line-height: 1.35;
+    }
+    .photo .caption .id { font-family: ui-monospace, monospace; color: #0f172a; font-weight: 600; }
+    .photo .caption .meta-line { color: #64748b; margin-top: 2px; }
+
+    .gallery-empty {
+      padding: 1rem; text-align: center; color: #64748b; font-size: 0.9rem;
+      background: #f8fafc; border-radius: 6px; border: 1px dashed #cbd5e1;
+    }
+    .gallery-summary {
+      font-size: 0.85rem; color: #475569; margin-bottom: 0.5rem;
+    }
+
     #dashboard {
       background: white; border: 1px solid #e2e8f0; border-radius: 8px;
-      padding: 0.6rem; margin-top: 1rem;
+      padding: 0.4rem; margin-bottom: 1rem;
       min-height: 60px;
     }
+
+    /* Footer */
     .footer {
-      font-size: 0.82rem; color: #64748b; margin-top: 2rem;
+      font-size: 0.82rem; color: #64748b; margin-top: 1.4rem;
       padding: 1rem; background: white; border: 1px solid #e2e8f0; border-radius: 8px;
     }
-    .footer .row { margin-bottom: 0.4rem; }
+    .footer .row { margin-bottom: 0.4rem; word-break: break-word; }
+    .footer .row:last-child { margin-bottom: 0; }
     .footer strong { color: #334155; }
     .footer a { color: #1a73e8; }
     code { background: #e2e8f0; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; }
-    .badge.ok { background: #16a34a; color: white; }
-    .badge.fail { background: #dc2626; color: white; }
+
+    /* Mobile */
+    @media (max-width: 540px) {
+      body { padding: 0.8rem 0.6rem 3rem; }
+      .banner { padding: 1.1rem 1rem; }
+      .banner h1 { font-size: 1.3rem; }
+      .controls input, .period-row input { width: 100%; min-width: 0; }
+      button { width: 100%; }
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    }
   </style>
 </head>
 <body>
+  <!-- Loading overlay (centered, shown during cryptographic verification) -->
+  <div id="overlay" class="overlay" hidden>
+    <div class="spinner"></div>
+    <div class="text" id="overlay-text">Revisando integridad criptográfica…</div>
+    <div class="sub" id="overlay-sub">Descargando JSON e imagen desde IPFS, recomputando SHA-256 y comparando contra el hash anclado en Stellar.</div>
+  </div>
+
   <div class="banner">
-    <h1>Monitor as a Service &middot; live dashboard</h1>
+    <h1>Monitor as a Service · live dashboard</h1>
     <div class="sub">
-      Lee anclas de obra publica desde Stellar testnet, verifica integridad contra IPFS,
+      Lee anclas de obra pública desde Stellar testnet, verifica integridad contra IPFS,
       renderiza dashboard interactivo. Cero backend, cero API keys.
     </div>
     <div class="powered">
-      <strong>Powered by <a href="https://mivisor.com" target="_blank">Mivisor.com</a></strong>
+      <strong>Powered by <a href="https://mivisor.com" target="_blank" rel="noopener">Mivisor.com</a></strong>
       &nbsp;|&nbsp; Open Schema CC0
       &nbsp;|&nbsp; SDK MIT
-      &nbsp;|&nbsp; <a href="https://www.npmjs.com/package/monitor-as-a-service" target="_blank">npm</a>
-      &nbsp;|&nbsp; <a href="https://pypi.org/project/monitor-as-a-service/" target="_blank">PyPI</a>
+      &nbsp;|&nbsp; <a href="https://www.npmjs.com/package/monitor-as-a-service" target="_blank" rel="noopener">npm</a>
+      &nbsp;|&nbsp; <a href="https://pypi.org/project/monitor-as-a-service/" target="_blank" rel="noopener">PyPI</a>
     </div>
   </div>
 
@@ -121,16 +232,30 @@
     <button id="run">Ejecutar pipeline</button>
   </div>
 
-  <div id="status" class="status">Listo. Pulsa "Ejecutar pipeline" para arrancar (auto-corre al cargar la pagina).</div>
+  <div id="status" class="status">Listo. Pulsá "Ejecutar pipeline" para arrancar (auto-corre al cargar la página).</div>
 
-  <div id="pipeline-wrap" class="pipeline" style="display:none">
+  <div id="pipeline-wrap" class="card" style="display:none">
     <h3>Pipeline</h3>
     <div id="steps"></div>
   </div>
 
-  <div id="project-wrap" class="pipeline" style="display:none">
+  <div id="project-wrap" class="card" style="display:none">
     <h3>Metadata del proyecto on-chain</h3>
     <div class="meta" id="project-meta"></div>
+  </div>
+
+  <div id="period-wrap" class="card" style="display:none">
+    <h3>Fotografías por período</h3>
+    <div class="period-row">
+      <label for="dateFrom">Desde:</label>
+      <input type="date" id="dateFrom">
+      <label for="dateTo">Hasta:</label>
+      <input type="date" id="dateTo">
+      <button id="applyPeriod">Filtrar</button>
+      <button id="resetPeriod" class="secondary">Ver todas</button>
+    </div>
+    <div class="gallery-summary" id="gallery-summary"></div>
+    <div id="gallery" class="gallery"></div>
   </div>
 
   <div id="dashboard"></div>
@@ -138,18 +263,18 @@
   <div class="footer">
     <div class="row">
       <strong>Source:</strong>
-      <a href="https://github.com/alejoherrera/stellar_repo/blob/main/sdk/js/examples/04-dashboard.html" target="_blank">stellar_repo / sdk/js/examples/04-dashboard.html</a>
+      <a href="https://github.com/alejoherrera/stellar_repo/blob/main/sdk/js/examples/04-dashboard.html" target="_blank" rel="noopener">stellar_repo / sdk/js/examples/04-dashboard.html</a>
       &middot; SDK <code>monitor-as-a-service@1.x</code> (MIT) cargado desde
-      <a href="https://www.jsdelivr.com/package/npm/monitor-as-a-service" target="_blank">jsDelivr</a>
+      <a href="https://www.jsdelivr.com/package/npm/monitor-as-a-service" target="_blank" rel="noopener">jsDelivr</a>
     </div>
     <div class="row">
       <strong>Powered by:</strong>
-      <a href="https://mivisor.com" target="_blank">Mivisor.com</a>
+      <a href="https://mivisor.com" target="_blank" rel="noopener">Mivisor.com</a>
     </div>
     <div class="row">
       <strong>Coautores:</strong>
-      Master Juan Alejandro Herrera Lopez &lt;alejandroherreracr@gmail.com&gt;
-      &nbsp;|&nbsp; Andres Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt;
+      Master Juan Alejandro Herrera López &lt;alejandroherreracr@gmail.com&gt;
+      &nbsp;|&nbsp; Andrés Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt;
       &nbsp;|&nbsp; Claude (Anthropic AI assistant)
     </div>
   </div>
@@ -163,22 +288,36 @@
     const pipelineWrap = $("pipeline-wrap");
     const projectWrap = $("project-wrap");
     const projectMeta = $("project-meta");
+    const periodWrap = $("period-wrap");
+    const galleryEl = $("gallery");
+    const gallerySummary = $("gallery-summary");
+    const overlay = $("overlay");
+    const overlayText = $("overlay-text");
+    const overlaySub = $("overlay-sub");
+
+    const PUBLIC_URL = "https://www.obrapublica.info/ciudadania";
 
     const setStatus = (msg, kind = "") => {
       status.textContent = msg;
       status.className = "status" + (kind ? " " + kind : "");
     };
 
+    const showOverlay = (text, sub) => {
+      overlayText.textContent = text;
+      if (sub !== undefined) overlaySub.textContent = sub;
+      overlay.hidden = false;
+    };
+    const hideOverlay = () => { overlay.hidden = true; };
+
     let stepCount = 0;
-    function step(label, detail = "", state = "pending") {
+    function step(label, detail = "") {
       stepCount++;
       const id = `step-${stepCount}`;
-      const stateBadge = state === "ok" ? `<span class="ok">[OK]</span>` : `<span class="pending">[..]</span>`;
       stepsEl.insertAdjacentHTML(
         "beforeend",
         `<div class="step" id="${id}">
           <span class="num">${stepCount}.</span>
-          ${stateBadge}
+          <span class="pending">[..]</span>
           <span class="label">${label}</span>
           ${detail ? `<span class="detail">${detail}</span>` : ""}
         </div>`
@@ -197,102 +336,187 @@
       }
     }
 
-    const ACCOUNT_INPUT = $("account");
-
     function counter(items) {
       const m = new Map();
       for (const k of items) m.set(k, (m.get(k) || 0) + 1);
       return m;
     }
 
+    // Convierte outputId 'YYYYMMDD-HHMMSS' → 'YYYY-MM-DD'
+    function outputIdToDate(oid) {
+      if (!oid || oid.length < 8) return null;
+      return `${oid.slice(0, 4)}-${oid.slice(4, 6)}-${oid.slice(6, 8)}`;
+    }
+
+    let client = null;
+    let allOutputs = [];
+
     async function run() {
       stepCount = 0;
       stepsEl.innerHTML = "";
       pipelineWrap.style.display = "block";
       projectWrap.style.display = "none";
+      periodWrap.style.display = "none";
       $("dashboard").innerHTML = "";
       $("run").disabled = true;
 
-      const account = ACCOUNT_INPUT.value.trim();
-      if (!account) { setStatus("Ingresa una cuenta Stellar.", "error"); $("run").disabled = false; return; }
+      const account = $("account").value.trim();
+      if (!account) { setStatus("Ingresá una cuenta Stellar.", "error"); $("run").disabled = false; return; }
 
       const t0 = performance.now();
 
       try {
-        // Step 1
+        // 1
         let id = step("Conectando a Stellar Horizon (testnet)");
-        const client = Client.testnet(account);
+        client = Client.testnet(account);
         stepDone(id, "Conectado a Stellar Horizon (testnet)", `SDK v${VERSION} | schema v${SCHEMA_VERSION}`);
 
-        // Step 2
+        // 2
         id = step("Leyendo metadata del proyecto on-chain");
         const proj = await client.project();
         if (proj) {
           projectWrap.style.display = "block";
           projectMeta.innerHTML = [
-            ["Codigo on-chain", proj.code],
+            ["Código on-chain", proj.code],
             ["Nombre", proj.name || "(sin nombre)"],
             ["Sistema productor", proj.system || "(sin sistema)"],
-            ["URL publica", proj.url ? `<a href="https://${proj.url}" target="_blank">${proj.url}</a>` : "(no URL)"],
+            ["URL pública", `<a href="${PUBLIC_URL}" target="_blank" rel="noopener">${PUBLIC_URL}</a>`],
           ].map(([k, v]) => `<div class="k">${k}:</div><div class="v">${v}</div>`).join("");
-          stepDone(id, "Metadata del proyecto leida", `proyecto: ${proj.code}`);
+          stepDone(id, "Metadata del proyecto leída", `proyecto: ${proj.code}`);
         } else {
           stepDone(id, "Sin metadata de proyecto on-chain");
         }
 
-        // Step 3
+        // 3
         id = step("Decodificando data entries on-chain");
-        const outputs = await client.outputs();
-        if (!outputs.length) {
+        allOutputs = await client.outputs();
+        if (!allOutputs.length) {
           setStatus("La cuenta no tiene outputs anclados.", "error");
           $("run").disabled = false;
           return;
         }
-        stepDone(id, `${outputs.length} anclas decodificadas`,
-          `rango: ${outputs[outputs.length - 1].outputId} -> ${outputs[0].outputId}`);
+        stepDone(id, `${allOutputs.length} anclas decodificadas`,
+          `rango: ${allOutputs[allOutputs.length - 1].outputId} → ${allOutputs[0].outputId}`);
 
-        // Step 4 - verification sample
-        const N = Math.min(8, outputs.length);
-        id = step(`Verificando integridad criptografica (muestra ${N})`);
+        // 4 — verification (centered overlay during this step)
+        const N = Math.min(8, allOutputs.length);
+        id = step(`Verificando integridad criptográfica (muestra ${N})`);
+        showOverlay(
+          "Revisando integridad criptográfica…",
+          `Descargando JSON e imagen desde IPFS y recomputando SHA-256 contra el hash anclado en Stellar (${N} muestras).`
+        );
         let okCount = 0;
         for (let i = 0; i < N; i++) {
-          const r = await client.verify(outputs[i].outputId, false);
+          const r = await client.verify(allOutputs[i].outputId, false);
           if (r.jsonOk) okCount++;
         }
-        stepDone(id, `Verificacion criptografica completa`, `${okCount}/${N} OK desde IPFS`);
+        hideOverlay();
+        stepDone(id, "Verificación criptográfica completa", `${okCount}/${N} OK desde IPFS`);
 
-        // Step 5 - aggregations
-        id = step("Agregando estadisticas para el dashboard");
-        const phases = counter(outputs.map(o => o.phase || "(sin etapa)"));
+        // 5 — aggregations
+        id = step("Agregando estadísticas para el dashboard");
+        const phases = counter(allOutputs.map(o => o.phase || "(sin etapa)"));
         const machinery = counter(
-          outputs.flatMap(o =>
+          allOutputs.flatMap(o =>
             (o.machinery || "").split(",")
               .map(m => m.trim())
               .filter(m => m && m.toLowerCase() !== "ninguna")
           )
         );
-        const sortedByTime = [...outputs].sort((a, b) => (a.outputId < b.outputId ? -1 : 1));
+        const sortedByTime = [...allOutputs].sort((a, b) => (a.outputId < b.outputId ? -1 : 1));
         const workersSeries = sortedByTime.map(o => ({
           x: o.datetime || o.outputId,
           y: o.workers || 0,
         }));
         const totalPersonaObs = workersSeries.reduce((s, p) => s + p.y, 0);
-        stepDone(id, "Estadisticas agregadas",
-          `${phases.size} etapas | ${machinery.size} tipos maquinaria | ${totalPersonaObs} persona-observaciones`);
+        stepDone(id, "Estadísticas agregadas",
+          `${phases.size} etapas | ${machinery.size} tipos de maquinaria | ${totalPersonaObs} persona-observaciones`);
 
-        // Step 6 - render dashboard
+        // 6 — set up period selector + initial gallery render
+        id = step("Inicializando galería de fotografías por período");
+        setupPeriodSelector();
+        renderGallery(allOutputs);
+        periodWrap.style.display = "block";
+        stepDone(id, "Galería lista", `${allOutputs.length} fotografías disponibles`);
+
+        // 7 — dashboard
         id = step("Renderizando dashboard interactivo");
-        await renderDashboard({ outputs, proj, phases, machinery, workersSeries, okSample: okCount, totalSample: N, account });
+        await renderDashboard({
+          outputs: allOutputs, proj, phases, machinery, workersSeries,
+          okSample: okCount, totalSample: N, account
+        });
         stepDone(id, "Dashboard renderizado");
 
         const elapsed = ((performance.now() - t0) / 1000).toFixed(1);
-        setStatus(`Listo en ${elapsed}s. Toda la data viene de Stellar testnet + IPFS publico. Cero backend, cero API keys.`, "ok");
+        setStatus(`Listo en ${elapsed}s. Toda la data viene de Stellar testnet + IPFS público. Cero backend, cero API keys.`, "ok");
       } catch (e) {
+        hideOverlay();
         setStatus(`Error: ${e.message}`, "error");
         console.error(e);
       } finally {
         $("run").disabled = false;
       }
+    }
+
+    function setupPeriodSelector() {
+      const dates = [...new Set(allOutputs.map(o => outputIdToDate(o.outputId)).filter(Boolean))].sort();
+      if (!dates.length) return;
+      const minDate = dates[0];
+      const maxDate = dates[dates.length - 1];
+      const dateFrom = $("dateFrom");
+      const dateTo = $("dateTo");
+      dateFrom.min = minDate; dateFrom.max = maxDate; dateFrom.value = minDate;
+      dateTo.min = minDate;   dateTo.max = maxDate;   dateTo.value = maxDate;
+    }
+
+    async function applyPeriod() {
+      const from = $("dateFrom").value;
+      const to = $("dateTo").value;
+      if (!from || !to) { renderGallery(allOutputs); return; }
+      try {
+        const filtered = await client.outputsInRange(from, to);
+        renderGallery(filtered, { from, to });
+      } catch (e) {
+        gallerySummary.textContent = `Error: ${e.message}`;
+      }
+    }
+
+    function resetPeriod() {
+      const dates = [...new Set(allOutputs.map(o => outputIdToDate(o.outputId)).filter(Boolean))].sort();
+      if (dates.length) {
+        $("dateFrom").value = dates[0];
+        $("dateTo").value = dates[dates.length - 1];
+      }
+      renderGallery(allOutputs);
+    }
+
+    function renderGallery(outputs, range = null) {
+      const withImages = outputs.filter(o => o.imageUrl);
+      if (range) {
+        gallerySummary.textContent =
+          `${withImages.length} fotografías entre ${range.from} y ${range.to} ` +
+          `(de ${outputs.length} outputs en el rango).`;
+      } else {
+        gallerySummary.textContent =
+          `${withImages.length} fotografías disponibles (de ${outputs.length} outputs totales).`;
+      }
+      if (!withImages.length) {
+        galleryEl.innerHTML = `<div class="gallery-empty">No hay fotografías ancladas en el rango seleccionado.</div>`;
+        return;
+      }
+      galleryEl.innerHTML = withImages.map(o => `
+        <div class="photo">
+          <a href="${o.imageUrl}" target="_blank" rel="noopener" title="Abrir en IPFS gateway">
+            <img src="${o.imageUrl}" alt="output ${o.outputId}" loading="lazy">
+            <div class="caption">
+              <div class="id">${o.outputId}</div>
+              <div class="meta-line">
+                ${o.phase ? `${o.phase}` : ""}${o.workers ? ` · ${o.workers} pers.` : ""}
+              </div>
+            </div>
+          </a>
+        </div>
+      `).join("");
     }
 
     async function renderDashboard({ outputs, proj, phases, machinery, workersSeries, okSample, totalSample, account }) {
@@ -306,9 +530,6 @@
       const totalFeeXLM = outputs.length * 0.00008;
       const totalFeeUSD = totalFeeXLM * 0.30;
 
-      // Layout in 2x2 grid using paper-coordinate domains (no Plotly `grid` pattern)
-      // Top row: y in [0.52, 0.92]   Bottom row: y in [0.05, 0.42]
-      // Left col:  x in [0.00, 0.45]  Right col:  x in [0.55, 1.00]
       const data = [
         // Pie - phases (top-left)
         {
@@ -360,7 +581,7 @@
                 "Stellar account",
                 "Outputs anclados",
                 "Esquema",
-                "Verificacion (muestra)",
+                "Verificación (muestra)",
                 "Costo total fees",
                 "Dependencias backend",
               ],
@@ -369,7 +590,7 @@
                 `${account.slice(0, 8)}...${account.slice(-6)}`,
                 String(outputs.length),
                 "MaaS Open Schema v1 (CC0)",
-                `${okSample}/${totalSample} OK criptografico`,
+                `${okSample}/${totalSample} OK criptográfico`,
                 `~${totalFeeXLM.toFixed(5)} XLM (~${totalFeeUSD.toFixed(4)} USD)`,
                 "0 (lectura directa Stellar+IPFS)",
               ],
@@ -392,13 +613,12 @@
         `&nbsp;|&nbsp; Stellar testnet (verificable on-chain)</span>`;
 
       const layout = {
-        title: { text: titleHtml, x: 0.02, y: 0.98, yanchor: "top", font: { size: 20 } },
+        title: { text: titleHtml, x: 0.02, y: 0.98, yanchor: "top", font: { size: 18 } },
         showlegend: false,
         height: 1020,
         margin: { t: 145, b: 110, l: 60, r: 40 },
         plot_bgcolor: "white",
         paper_bgcolor: "#f8fafc",
-        // Subplot titles (paper-anchored annotations)
         annotations: [
           { text: "<b>Outputs por etapa constructiva</b>", xref: "paper", yref: "paper", x: 0.225, y: 0.96, xanchor: "center", showarrow: false, font: { size: 13 } },
           { text: "<b>Maquinaria detectada (top 10)</b>",  xref: "paper", yref: "paper", x: 0.775, y: 0.96, xanchor: "center", showarrow: false, font: { size: 13 } },
@@ -406,8 +626,8 @@
           { text: "<b>Fuente verificable</b>", xref: "paper", yref: "paper", x: 0.775, y: 0.46, xanchor: "center", showarrow: false, font: { size: 13 } },
           {
             text:
-              "<b>Coautores:</b> Master Juan Alejandro Herrera Lopez &lt;alejandroherreracr@gmail.com&gt; " +
-              "&nbsp;|&nbsp; Andres Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt; " +
+              "<b>Coautores:</b> Master Juan Alejandro Herrera López &lt;alejandroherreracr@gmail.com&gt; " +
+              "&nbsp;|&nbsp; Andrés Herrera Monge, CEO Mivisor &lt;andres.herrera@mivisor.com&gt; " +
               "&nbsp;|&nbsp; Claude (Anthropic AI assistant)",
             xref: "paper", yref: "paper",
             x: 0.5, y: -0.08,
@@ -416,10 +636,8 @@
             font: { size: 10, color: "#6b7280" },
           },
         ],
-        // Bar chart axes (top-right)
         xaxis2: { domain: [0.55, 1.0], anchor: "y2", automargin: true },
         yaxis2: { domain: [0.52, 0.92], anchor: "x2", automargin: true },
-        // Scatter chart axes (bottom-left)
         xaxis3: { domain: [0.0, 0.45], anchor: "y3", title: { text: "Datetime" }, automargin: true },
         yaxis3: { domain: [0.05, 0.42], anchor: "x3", title: { text: "Personas" }, automargin: true },
       };
@@ -428,6 +646,8 @@
     }
 
     $("run").addEventListener("click", run);
+    $("applyPeriod").addEventListener("click", applyPeriod);
+    $("resetPeriod").addEventListener("click", resetPeriod);
     run();
   </script>
 </body>
