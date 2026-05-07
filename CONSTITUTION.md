@@ -18,9 +18,9 @@ Toda spec posterior debe abrir con una seccion **"Cumplimiento constitucional"**
 | Smart contracts | Soroban (Rust + WASM) |
 | SDK off-chain | `@stellar/stellar-sdk` (TypeScript) y/o `stellar-sdk` (Python) |
 | Backend de servicios | FastAPI (Python) o Node + Express; elección final por spec |
-| Base de datos off-chain | PostgreSQL en Cloud SQL (instancia compartida `mivisor-db` del Universo A salvo justificacion explicita) |
-| Hosting | Google Cloud Run en proyecto `nifty-province-474317-m0` (Universo A); region `us-east1` |
-| Secretos | Google Secret Manager. **Prohibido hardcodear claves Stellar, API keys o credenciales en código o en `.env` versionado.** |
+| Base de datos off-chain | PostgreSQL gestionado. Proveedor concreto, instancia y reglas de compartición se definen en el CLAUDE.md local del proyecto. |
+| Hosting | Container hosting gestionado. Proveedor concreto, proyecto/cuenta y región se definen en el CLAUDE.md local del proyecto. |
+| Secretos | Gestor de secretos del proveedor de hosting (definido en CLAUDE.md local). **Prohibido hardcodear claves Stellar, API keys o credenciales en código o en `.env` versionado.** |
 | Identidad de firmantes humanos | Firma digital del MICITT (CR) o equivalente reconocido legalmente, mapeada a llaves Stellar via DID |
 | IA / modelos | Modelo y prompt versionados; idealmente reproducibles. Cada inferencia anclada con hash de modelo + hash de prompt + hash de input + hash de output. |
 
@@ -28,7 +28,7 @@ Cambiar de blockchain o de SDK requiere enmienda formal a esta Constitución.
 
 ## 2. Arquitectura no-negociable
 
-- **Separacion estricta on-chain / off-chain.** On-chain solo: hashes, autorizaciones, eventos auditables, balances de assets. Off-chain: datos crudos (PDFs, fotos, modelos BIM, reportes IA completos) almacenados en GCS o IPFS, referenciados por CID/URL + hash.
+- **Separacion estricta on-chain / off-chain.** On-chain solo: hashes, autorizaciones, eventos auditables, balances de assets. Off-chain: datos crudos (PDFs, fotos, modelos BIM, reportes IA completos) almacenados en object storage gestionado (S3-compatible, GCS, Azure Blob o equivalente) o IPFS, referenciados por CID/URL + hash.
 - **La IA nunca es autoridad final.** Todo evento que dispare liberacion de fondos o publicación oficial requiere firma humana adicional. La IA es una de N firmas, nunca M-de-M con N=1.
 - **El gemelo de transparencia no sustituye el sistema bancario.** El sistema legal de Tesoreria/SINPE permanece como fuente de verdad para flujos de valor reales. La cadena espeja eventos, no los reemplaza, salvo en escrows piloto explicitamente autorizados.
 - **Multisig obligatorio para wallets institucionales.** Wallets que controlan fondos públicos o emision de assets deben ser M-de-N con M >= 2, custodiadas en hardware (Ledger/HSM) o en proveedores institucionales (Anchorage, Fireblocks).
@@ -39,7 +39,7 @@ Cambiar de blockchain o de SDK requiere enmienda formal a esta Constitución.
 - **Cero credenciales en código (R1 global).** Pre-commit obligatorio que detecte llaves privadas Stellar (S...), API keys y service accounts.
 - **Privacidad por defecto.** Datos personales de funcionarios, contratistas o ciudadanos no se publican on-chain ni off-chain en claro. Solo hashes; los datos crudos viven en almacenamiento controlado con autorización.
 - **Auditabilidad total.** Toda transacción on-chain debe poder rastrearse a (a) un evento de negocio off-chain, (b) un firmante identificable, y (c) una justificacion legal o técnica.
-- **Region de datos:** us-east1 por defecto (Universo A). Datos personales de ciudadanos CR pueden requerir residencia local; revisar caso a caso.
+- **Region de datos:** la región por defecto del despliegue se especifica en el CLAUDE.md local del proyecto. Datos personales de ciudadanos CR pueden requerir residencia local; revisar caso a caso.
 - **KYC/AML:** wallets de contratistas y de inversionistas en bonos tokenizados requieren verificación via SEP-12 o equivalente reconocido por SUGEF.
 
 ## 4. Calidad
@@ -79,14 +79,14 @@ Cambiar de blockchain o de SDK requiere enmienda formal a esta Constitución.
 
 - **Observabilidad:**
   - Eventos on-chain monitoreados via Soroban RPC + Horizon.
-  - Servicios off-chain con logs estructurados a Cloud Logging.
+  - Servicios off-chain con logs estructurados al sistema de logging gestionado del proveedor de hosting (definido en CLAUDE.md local).
   - Dashboard público con métricas agregadas (obras activas, fondos comprometidos, fondos liberados, tasa de validación IA).
 - **Backups:**
-  - Datos off-chain (GCS): replicacion multi-region.
+  - Datos off-chain (object storage): replicacion multi-region.
   - Estado on-chain: irrelevante (la cadena es el backup), pero se mantiene snapshot diario para auditoria.
 - **Presupuesto operativo:**
   - Costos Stellar: despreciables (~USD 1-10/mes incluso con miles de eventos).
-  - Costos GCP: estimado USD 50-200/mes para Cloud Run + Cloud SQL + GCS en piloto.
+  - Costos de infraestructura gestionada (container hosting + PostgreSQL gestionado + object storage): estimado USD 50-200/mes en piloto. Proveedor concreto y desglose en CLAUDE.md local del proyecto.
   - Costos de custodia institucional (HSM, Anchorage, etc.): a negociar según adopcion.
 
 ## 8. Gobernanza y proceso de enmienda
@@ -121,7 +121,7 @@ dIAra **no vive en este repositorio**. Su integridad como proveedor de insumos e
 
 ### Fase 1 — Anclaje en Stellar
 
-Anclar en blockchain Stellar los hashes y metadatos de los datos+imagenes producidos por dIAra, como evidencia notarizada de obra. La cadena solo guarda hashes; los datos crudos viven en GCS o IPFS, referenciados por CID/URL.
+Anclar en blockchain Stellar los hashes y metadatos de los datos+imagenes producidos por dIAra, como evidencia notarizada de obra. La cadena solo guarda hashes; los datos crudos viven en object storage gestionado o IPFS, referenciados por CID/URL.
 
 - **Técnica primaria:** transacciones Stellar nativas (`manageData` o memo con hash). **Soroban no se utiliza en esta fase.**
 - **Sin dinero on-chain. Sin smart contracts. Sin alertas.** Solo notarizacion auditable.
@@ -158,6 +158,7 @@ Bono tokenizado emitido por un banco de desarrollo (BCIE, Banco Popular u otro) 
 
 ---
 
-**Versión:** 0.2 (2026-05-02) — agrega §10 Hoja de fases; aclara titularidad personal en §8.
+**Versión:** 0.3 (2026-05-06) — neutraliza referencias a proveedor de cloud específico en §1, §3, §7 y §10; los bindings concretos (proveedor, proyecto/cuenta, instancia, region, buckets, secretos) se mueven al `CLAUDE.md` local del repositorio. Sin cambios de stack constitucional (PostgreSQL, container hosting gestionado y object storage permanecen como elecciones no-negociables; Stellar+Soroban inalterado).
+**Versión anterior:** 0.2 (2026-05-02) — agrega §10 Hoja de fases; aclara titularidad personal en §8.
 **Versión anterior:** 0.1 (borrador inicial, 2026-04-30).
 **Aprobacion:** Pendiente de revision con interlocutor institucional. Mientras tanto, vigente como propuesta del autor a titulo personal.
