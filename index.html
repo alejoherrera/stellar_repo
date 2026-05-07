@@ -361,6 +361,78 @@
       color: #fbbf24;
     }
 
+    /* ============ AUTHORS ============ */
+    .authors {
+      background: #0c0c18;
+      padding: 4rem 1.5rem 4.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(148, 163, 184, 0.08);
+    }
+    .authors h2 {
+      font-size: 1.6rem;
+      color: #f1f5f9;
+      margin-bottom: 0.4rem;
+    }
+    .authors > p.section-sub {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+    .authors-grid {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .author-card {
+      width: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .author-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.4s ease, transform 0.4s ease;
+      border: 2px solid rgba(148, 163, 184, 0.2);
+    }
+    .author-card:hover .author-photo {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+    .author-name {
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+    .author-role {
+      margin-top: 0.25rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    .author-linkedin {
+      margin-top: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #60a5fa;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(96, 165, 250, 0.4);
+      padding-bottom: 1px;
+    }
+    .author-linkedin:hover {
+      color: #93c5fd;
+      border-bottom-color: #93c5fd;
+    }
+    .author-linkedin svg { width: 14px; height: 14px; fill: currentColor; }
+
     /* ============ FOOTER ============ */
     footer {
       background: #0a0a14;
@@ -661,6 +733,32 @@
   </div>
 </section>
 
+<!-- ================== AUTORES ================== -->
+<section class="authors">
+  <h2>Autores</h2>
+  <p class="section-sub">Quienes están detrás de este repositorio.</p>
+  <div class="authors-grid">
+    <div class="author-card">
+      <img class="author-photo" src="assets/authors/alejandro.jpg" alt="Alejandro Herrera">
+      <div class="author-name">Juan Alejandro Herrera López</div>
+      <div class="author-role">Co-autor</div>
+      <a class="author-linkedin" href="https://www.linkedin.com/in/alejandro-herreracr/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <div class="author-card">
+      <img class="author-photo" src="assets/authors/andres.jpg" alt="Andrés Herrera Monge">
+      <div class="author-name">Andrés Herrera Monge</div>
+      <div class="author-role">CEO Mivisor · Co-autor</div>
+      <a class="author-linkedin" href="https://www.linkedin.com/in/andresherreramonge/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ================== CONTEXT ================== -->
 <section class="context">
   <div class="container">
@@ -670,19 +768,19 @@
     </p>
     <ul style="color:#cbd5e1; font-size:0.98rem; padding-left: 1.2rem; margin: 1rem 0 1.5rem;">
       <li style="margin-bottom: 0.6rem;">
-        <strong style="color:#fbbf24;">TicoBlockchain 2026 — Blockchain &amp; Fintech Day</strong> ·
+        <a href="https://www.ticoblockchain.cr/" target="_blank" rel="noopener" style="color:#fbbf24; text-decoration:none; border-bottom:1px dotted rgba(251,191,36,0.4);"><strong>TicoBlockchain 2026 — Blockchain &amp; Fintech Day</strong></a> ·
         <span style="color:#94a3b8;">14 de mayo, Hotel Barceló San José.</span><br>
         Charla seleccionada por el comité curador:
         <em>"Generación de una red de monitoreo de obra pública mediante IoT, modelos de IA y blockchain"</em>.
       </li>
       <li style="margin-bottom: 0.6rem;">
-        <strong style="color:#fbbf24;">CIGEPRO 2026</strong> ·
+        <a href="https://cigepro.com/" target="_blank" rel="noopener" style="color:#fbbf24; text-decoration:none; border-bottom:1px dotted rgba(251,191,36,0.4);"><strong>CIGEPRO 2026</strong></a> ·
         Ponencia
         <em>"Fortaleciendo la gobernanza de la ejecución de obra pública con tecnologías 4.0
         viables en la región: IA, IoT y blockchain para el monitoreo en tiempo real"</em>.
       </li>
       <li>
-        <strong style="color:#fbbf24;">Hackathon Stellar</strong> ·
+        <a href="https://luma.com/mvyzvssd" target="_blank" rel="noopener" style="color:#fbbf24; text-decoration:none; border-bottom:1px dotted rgba(251,191,36,0.4);"><strong>Hackathon Morpho Studio</strong></a> ·
         Entrega del SDK con anclaje real en testnet, schema CC0 y SDKs MIT.
       </li>
     </ul>
@@ -695,7 +793,7 @@
     <div class="pill-row">
       <span class="pill">TicoBlockchain 2026</span>
       <span class="pill">CIGEPRO 2026</span>
-      <span class="pill">Hackathon Stellar</span>
+      <span class="pill">Hackathon Morpho Studio</span>
       <span class="pill">Open-source MIT</span>
       <span class="pill">Schema CC0</span>
     </div>

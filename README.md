@@ -92,6 +92,12 @@ Specs vigentes (modelo de fases vigente desde Constitution v0.2):
 
 Spec historica del modelo previo (3 etapas con escrow): no se redactó archivo final; el modelo fue reemplazado en CONSTITUTION v0.2 antes de llegar a código.
 
+## Divulgación
+
+Material derivado de este repositorio presentado en:
+
+- **TicoBlockchain 2026 — Blockchain & Fintech Day** · 14 de mayo, Hotel Barceló San José. Ponencia: *"Generación de una red de monitoreo de obra pública mediante IoT, modelos de IA y blockchain"*.
+
 ## Constitución
 
 Ver [`CONSTITUTION.md`](CONSTITUTION.md). Cualquier spec o decisión técnica debe acreditar cumplimiento constitucional antes de avanzar a código.
