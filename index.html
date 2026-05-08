@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>monitor-as-a-service · Anclaje Stellar de evidencia de obra pública</title>
-  <meta name="description" content="SDK open-source para anclar evidencia de obra pública en Stellar. SHA-256 + IPFS + transacciones Stellar nativas. Verificable por cualquier ciudadano o auditor.">
+  <title data-i18n="meta.title">monitor-as-a-service · Stellar anchoring of public-works evidence</title>
+  <meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Open-source SDK that anchors public-works evidence on Stellar. SHA-256 + IPFS + native Stellar transactions. Verifiable by any citizen or auditor.">
 
   <link rel="preconnect" href="https://horizon-testnet.stellar.org">
   <link rel="preconnect" href="https://stellar.expert">
@@ -103,7 +103,21 @@
       color: #94a3b8;
     }
     .topbar a { color: #cbd5e1; }
-    .topbar .nav { display: flex; gap: 1.5rem; }
+    .topbar .nav { display: flex; gap: 1.5rem; align-items: center; }
+    .lang-toggle {
+      background: transparent;
+      border: 1px solid rgba(203, 213, 225, 0.3);
+      color: #cbd5e1;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-family: inherit;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .lang-toggle:hover { color: #fbbf24; border-color: #fbbf24; }
     .badge {
       display: inline-block;
       padding: 4px 10px;
@@ -489,26 +503,27 @@
     <div class="topbar">
       <span><strong style="color:#fbbf24;">stellar.mivisor.com</strong></span>
       <nav class="nav">
-        <a href="#como">Cómo funciona</a>
-        <a href="#demo">Demo</a>
-        <a href="#recursos">Recursos</a>
+        <a href="#how" data-i18n="nav.how">How it works</a>
+        <a href="#demo" data-i18n="nav.demo">Demo</a>
+        <a href="#resources" data-i18n="nav.resources">Resources</a>
         <a href="https://github.com/alejoherrera/stellar_repo" target="_blank" rel="noopener">GitHub ↗</a>
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">ES</button>
       </nav>
     </div>
 
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="badge">Open-source · MIT · Stellar testnet</span>
+        <span class="badge" data-i18n="hero.badge">Open-source · MIT · Stellar testnet</span>
 
-        <h1 class="hero-title">
-          Anclaje en <span class="accent">Stellar</span> de evidencia<br>
-          de obra pública verificable.
+        <h1 class="hero-title" data-i18n="hero.title">
+          Public-works evidence,<br>
+          anchored on <span class="accent">Stellar</span> and verifiable.
         </h1>
 
-        <p class="hero-sub">
-          SDK que firma cada output con SHA-256, lo pinea en IPFS y lo ancla
-          en una transacción Stellar nativa. Cualquier ciudadano puede recomputar
-          el hash y verificar integridad sin confiar en el operador.
+        <p class="hero-sub" data-i18n="hero.sub">
+          An SDK that signs every output with SHA-256, pins it to IPFS, and anchors
+          it in a native Stellar transaction. Any citizen can recompute the hash and
+          verify integrity without trusting the operator.
         </p>
 
         <div class="install">
@@ -517,15 +532,15 @@
         </div>
 
         <div class="ctas">
-          <a class="btn btn-primary" href="https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb" target="_blank" rel="noopener">
-            ▶ Probar en Colab
+          <a class="btn btn-primary" href="https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb" target="_blank" rel="noopener" data-i18n="hero.cta.colab">
+            ▶ Try in Colab
           </a>
-          <a class="btn btn-ghost" href="#demo">Ver demo en vivo →</a>
-          <a class="btn btn-ghost" href="https://github.com/alejoherrera/stellar_repo" target="_blank" rel="noopener">Código fuente ↗</a>
+          <a class="btn btn-ghost" href="#demo" data-i18n="hero.cta.demo">See live demo →</a>
+          <a class="btn btn-ghost" href="https://github.com/alejoherrera/stellar_repo" target="_blank" rel="noopener" data-i18n="hero.cta.source">Source code ↗</a>
         </div>
 
         <div class="hero-meta">
-          <span>Cuenta validador (testnet):</span>
+          <span data-i18n="hero.meta.account">Validator account (testnet):</span>
           <a class="acct" href="https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" target="_blank" rel="noopener">
             GDRWQERI…3JCPFR
           </a>
@@ -548,34 +563,34 @@
 </header>
 
 <!-- ================== HOW IT WORKS ================== -->
-<section id="como">
+<section id="how">
   <div class="container">
-    <h2 class="section-title">Cómo funciona</h2>
-    <p class="section-sub">
-      Cuatro pasos simples. Sin custodios, sin servidor central, sin confianza requerida.
-      Cualquier tercero puede reproducir la verificación con código abierto.
+    <h2 class="section-title" data-i18n="how.title">How it works</h2>
+    <p class="section-sub" data-i18n="how.sub">
+      Four simple steps. No custodians, no central server, no trust required.
+      Any third party can reproduce the verification with open-source code.
     </p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h3>Hash canónico</h3>
-        <p>El SDK calcula <code>SHA-256</code> del JSON canonicalizado y de la imagen raw, en el lado del productor.</p>
+        <h3 data-i18n="how.step1.title">Canonical hash</h3>
+        <p data-i18n="how.step1.body">The SDK computes <code>SHA-256</code> of the canonicalized JSON and the raw image, on the producer side.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>IPFS pin</h3>
-        <p>El JSON y la imagen se pinean en IPFS. El <code>CID</code> resultante es el hash mismo (content-addressable).</p>
+        <h3 data-i18n="how.step2.title">IPFS pin</h3>
+        <p data-i18n="how.step2.body">JSON and image are pinned to IPFS. The resulting <code>CID</code> is the hash itself (content-addressable).</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>Stellar manageData</h3>
-        <p>Una transacción nativa con 8 ops <code>manageData</code> ancla los hashes y CIDs. Memo: <code>dIAra ancla v3</code>.</p>
+        <h3 data-i18n="how.step3.title">Stellar manageData</h3>
+        <p data-i18n="how.step3.body">A native transaction with 8 <code>manageData</code> ops anchors hashes and CIDs. Memo: <code>dIAra ancla v3</code>.</p>
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <h3>Verificación abierta</h3>
-        <p>Cualquiera lee la TX, fetchea IPFS desde cualquier gateway y recomputa el SHA-256. Coinciden o el ancla está rota.</p>
+        <h3 data-i18n="how.step4.title">Open verification</h3>
+        <p data-i18n="how.step4.body">Anyone reads the TX, fetches from any IPFS gateway, and recomputes the SHA-256. They match — or the anchor is broken.</p>
       </div>
     </div>
   </div>
@@ -586,34 +601,32 @@
   <div class="container">
     <div class="demo-box">
       <div>
-        <h3>Demo en vivo</h3>
-        <p>Dashboard interactivo conectado a Stellar testnet. Lee 100+ outputs anclados, verifica integridad criptográfica contra IPFS, y renderiza estadísticas de obra (etapas, maquinaria, personas-en-el-tiempo).</p>
-        <ul>
-          <li>Verificación SHA-256 en vivo, lado cliente</li>
-          <li>Fallback de gateways IPFS con timeout</li>
-          <li>Galería de fotografías ancladas</li>
-          <li>Selector de período por fecha</li>
+        <h3 data-i18n="demo.title">Live demo</h3>
+        <p data-i18n="demo.body">Interactive dashboard connected to Stellar testnet. Reads 100+ anchored outputs, verifies cryptographic integrity against IPFS, and renders worksite stats (stages, machinery, people over time).</p>
+        <ul data-i18n="demo.bullets">
+          <li>Live SHA-256 verification, client-side</li>
+          <li>IPFS gateway fallback with timeout</li>
+          <li>Gallery of anchored photographs</li>
+          <li>Date-range selector</li>
         </ul>
-        <a class="btn btn-primary" href="sdk/js/examples/04-dashboard.html" target="_blank" rel="noopener">
-          Abrir dashboard ↗
+        <a class="btn btn-primary" href="sdk/js/examples/04-dashboard.html" target="_blank" rel="noopener" data-i18n="demo.cta.dashboard">
+          Open dashboard ↗
         </a>
         &nbsp;
-        <a class="btn btn-ghost" href="sdk/js/examples/03-live-verify.html" target="_blank" rel="noopener">
+        <a class="btn btn-ghost" href="sdk/js/examples/03-live-verify.html" target="_blank" rel="noopener" data-i18n="demo.cta.verify">
           Live verify ↗
         </a>
       </div>
-      <div class="demo-mock">
-<span class="ok">[OK]</span> Conectado a horizon-testnet.stellar.org<br>
-<span class="ok">[OK]</span> Cuenta <span class="key">GDRW…3JCPFR</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp; outputs anclados: <span class="num">147</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp; rango: 2025-10-03 → 2026-04-22<br>
+      <div class="demo-mock" data-i18n="demo.mock"><span class="ok">[OK]</span> Connected to horizon-testnet.stellar.org<br>
+<span class="ok">[OK]</span> Account <span class="key">GDRW…3JCPFR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; anchored outputs: <span class="num">147</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; range: 2025-10-03 → 2026-04-22<br>
 <br>
 <span class="ok">[VERIFY]</span> output <span class="key">20251029-143000</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp; img CID: <span class="num">bafkrei…q4y</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp; img SHA-256: <span class="ok">match ✓</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp; json SHA-256: <span class="ok">match ✓</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp; integridad: <span class="ok">verificada</span>
-      </div>
+&nbsp;&nbsp;&nbsp;&nbsp; integrity: <span class="ok">verified</span></div>
     </div>
   </div>
 </section>
@@ -621,36 +634,36 @@
 <!-- ================== ON-CHAIN ================== -->
 <section style="padding-top: 1rem;">
   <div class="container">
-    <h2 class="section-title">Datos on-chain abiertos</h2>
-    <p class="section-sub">
-      Toda la evidencia anclada está pública en Stellar testnet. Cualquier desarrollador,
-      auditor o periodista puede consultar la cuenta sin permisos previos.
+    <h2 class="section-title" data-i18n="onchain.title">Open on-chain data</h2>
+    <p class="section-sub" data-i18n="onchain.sub">
+      Every anchored output is public on Stellar testnet. Any developer, auditor, or
+      journalist can query the account without prior authorization.
     </p>
 
     <div class="chain-card">
       <div>
-        <h3>Cuenta validador IA</h3>
+        <h3 data-i18n="onchain.account.title">AI validator account</h3>
         <div class="acct-block">GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR</div>
-        <p style="font-size: 0.9rem; color: #64748b; margin: 0.5rem 0 1rem;">
-          Cada output produce una transacción con 8 operaciones <code>manageData</code>.
+        <p style="font-size: 0.9rem; color: #64748b; margin: 0.5rem 0 1rem;" data-i18n="onchain.account.body">
+          Each output produces a transaction with 8 <code>manageData</code> operations.
           Memo: <code>dIAra ancla v3</code>.
         </p>
-        <a class="btn btn-ghost" style="color: #1a73e8; border-color: #1a73e8;" href="https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" target="_blank" rel="noopener">
-          Ver en stellar.expert ↗
+        <a class="btn btn-ghost" style="color: #1a73e8; border-color: #1a73e8;" href="https://stellar.expert/explorer/testnet/account/GDRWQERI6PI3WICTGPJBFBEFRV7ZRLCWG3IRA2YZQA5ZINHPY23JCPFR" target="_blank" rel="noopener" data-i18n="onchain.cta">
+          View on stellar.expert ↗
         </a>
       </div>
       <div class="stats">
         <div class="stat">
           <div class="stat-num">100+</div>
-          <div class="stat-label">Outputs anclados</div>
+          <div class="stat-label" data-i18n="onchain.stat1">Anchored outputs</div>
         </div>
         <div class="stat">
           <div class="stat-num">8 ops</div>
-          <div class="stat-label">Por TX (multi-op)</div>
+          <div class="stat-label" data-i18n="onchain.stat2">Per TX (multi-op)</div>
         </div>
         <div class="stat">
           <div class="stat-num">~800 stroops</div>
-          <div class="stat-label">Costo por output</div>
+          <div class="stat-label" data-i18n="onchain.stat3">Cost per output</div>
         </div>
       </div>
     </div>
@@ -658,90 +671,90 @@
 </section>
 
 <!-- ================== RESOURCES ================== -->
-<section id="recursos" style="background: #f1f5f9;">
+<section id="resources" style="background: #f1f5f9;">
   <div class="container">
-    <h2 class="section-title">Recursos</h2>
-    <p class="section-sub">
-      Schema, SDKs, demos y especificaciones técnicas. Todo bajo MIT (código) o CC0 (schema).
+    <h2 class="section-title" data-i18n="resources.title">Resources</h2>
+    <p class="section-sub" data-i18n="resources.sub">
+      Schema, SDKs, demos, and technical specifications. All under MIT (code) or CC0 (schema).
     </p>
 
     <div class="resources">
       <div class="res-card">
         <a href="https://github.com/alejoherrera/stellar_repo" target="_blank" rel="noopener">
-          <div class="res-tag">Repo</div>
+          <div class="res-tag" data-i18n="resources.repo.tag">Repo</div>
           <h4>GitHub · stellar_repo</h4>
-          <p>Código completo, contratos, specs Fase 1 y Fase 2, roadmap por fases.</p>
+          <p data-i18n="resources.repo.body">Full code, contracts, Phase 1 and Phase 2 specs, phased roadmap.</p>
         </a>
       </div>
       <div class="res-card">
         <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md" target="_blank" rel="noopener">
           <div class="res-tag">Schema · CC0</div>
           <h4>Open Anchor Schema v1</h4>
-          <p>Contrato público on-chain. Cualquiera puede construir sobre los datos sin permiso.</p>
+          <p data-i18n="resources.schema.body">Public on-chain contract. Anyone can build on top of the data, no permission needed.</p>
         </a>
       </div>
       <div class="res-card">
         <a href="https://colab.research.google.com/github/alejoherrera/stellar_repo/blob/main/sdk/py/examples/colab_demo.ipynb" target="_blank" rel="noopener">
           <div class="res-tag">Notebook</div>
           <h4>Colab demo (Python)</h4>
-          <p>Conecta a testnet, lista 100+ outputs, verifica integridad y genera dashboard. Cero install.</p>
+          <p data-i18n="resources.colab.body">Connects to testnet, lists 100+ outputs, verifies integrity, and generates a dashboard. Zero install.</p>
         </a>
       </div>
       <div class="res-card">
         <a href="https://pypi.org/project/monitor-as-a-service/" target="_blank" rel="noopener">
           <div class="res-tag">Python · PyPI</div>
           <h4>monitor-as-a-service</h4>
-          <p><code>pip install monitor-as-a-service</code>. SDK de referencia con widgets ipywidgets.</p>
+          <p data-i18n="resources.pypi.body"><code>pip install monitor-as-a-service</code>. Reference SDK with ipywidgets.</p>
         </a>
       </div>
       <div class="res-card">
         <a href="https://www.npmjs.com/package/monitor-as-a-service" target="_blank" rel="noopener">
           <div class="res-tag">JavaScript · npm</div>
           <h4>monitor-as-a-service</h4>
-          <p><code>npm install</code> o importable directo desde jsDelivr CDN sin build.</p>
+          <p data-i18n="resources.npm.body"><code>npm install</code> or import directly from the jsDelivr CDN, no build required.</p>
         </a>
       </div>
       <div class="res-card">
         <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/specs/2026-05-02_fase1_anclaje_stellar.md" target="_blank" rel="noopener">
           <div class="res-tag">Spec</div>
-          <h4>Fase 1 — Anclaje testnet</h4>
-          <p>Especificación técnica del anchor-service: ingesta, IPFS pinning, multi-op Stellar.</p>
+          <h4 data-i18n="resources.fase1.title">Phase 1 — Testnet anchoring</h4>
+          <p data-i18n="resources.fase1.body">Technical spec of the anchor-service: ingestion, IPFS pinning, Stellar multi-op.</p>
         </a>
       </div>
       <div class="res-card">
         <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/specs/2026-05-02_fase2_gemelo_transparencia.md" target="_blank" rel="noopener">
           <div class="res-tag">Spec</div>
-          <h4>Fase 2 — Soroban + alertas</h4>
-          <p>Smart contracts consultivos sobre pagos SICOP/Hacienda. Pre-requisito: Fase 1 en mainnet.</p>
+          <h4 data-i18n="resources.fase2.title">Phase 2 — Soroban + alerts</h4>
+          <p data-i18n="resources.fase2.body">Advisory smart contracts on SICOP/Treasury payments. Prerequisite: Phase 1 on mainnet.</p>
         </a>
       </div>
       <div class="res-card">
         <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/09_roadmap_etapas.md" target="_blank" rel="noopener">
           <div class="res-tag">Roadmap</div>
-          <h4>Modelo por fases</h4>
-          <p>Fase 0 (dIAra) → Fase 1 (anclaje) → Fase 2 (gemelo de transparencia) → Fase 3 (bono tokenizado).</p>
+          <h4 data-i18n="resources.roadmap.title">Phased model</h4>
+          <p data-i18n="resources.roadmap.body">Phase 0 (dIAra) → Phase 1 (anchoring) → Phase 2 (transparency twin) → Phase 3 (tokenized bond).</p>
         </a>
       </div>
       <div class="res-card">
         <a href="https://www.obrapublica.info/stellar" target="_blank" rel="noopener">
-          <div class="res-tag">Caso real</div>
+          <div class="res-tag" data-i18n="resources.case.tag">Real-world case</div>
           <h4>obrapublica.info / stellar</h4>
-          <p>Viewer ciudadano con datos reales: dashboard, mapa, timelapse y dev hub.</p>
+          <p data-i18n="resources.case.body">Citizen viewer with real data: dashboard, map, timelapse, and dev hub.</p>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================== AUTORES ================== -->
+<!-- ================== AUTHORS ================== -->
 <section class="authors">
-  <h2>Autores</h2>
-  <p class="section-sub">Quienes están detrás de este repositorio.</p>
+  <h2 data-i18n="authors.title">Authors</h2>
+  <p class="section-sub" data-i18n="authors.sub">The people behind this repository.</p>
   <div class="authors-grid">
     <div class="author-card">
       <img class="author-photo" src="assets/authors/alejandro.jpg" alt="Alejandro Herrera">
       <div class="author-name">Juan Alejandro Herrera López</div>
-      <div class="author-role">Co-autor</div>
+      <div class="author-role" data-i18n="authors.alejandro.role">Co-author</div>
       <a class="author-linkedin" href="https://www.linkedin.com/in/alejandro-herreracr/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.72C24 .77 23.2 0 22.22 0z"/></svg>
         LinkedIn
@@ -750,7 +763,7 @@
     <div class="author-card">
       <img class="author-photo" src="assets/authors/andres.jpg" alt="Andrés Herrera Monge">
       <div class="author-name">Andrés Herrera Monge</div>
-      <div class="author-role">Founder Mivisor · Co-autor</div>
+      <div class="author-role" data-i18n="authors.andres.role">Founder Mivisor · Co-author</div>
       <a class="author-linkedin" href="https://www.linkedin.com/in/andresherreramonge/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.72C24 .77 23.2 0 22.22 0z"/></svg>
         LinkedIn
@@ -762,33 +775,32 @@
 <!-- ================== CONTEXT ================== -->
 <section class="context">
   <div class="container">
-    <h2 class="section-title" style="color:#fbbf24;">Contexto</h2>
-    <p>
-      Este SDK acompaña tres iniciativas activas de divulgación técnica en 2026:
+    <h2 class="section-title" style="color:#fbbf24;" data-i18n="context.title">Context</h2>
+    <p data-i18n="context.intro">
+      This SDK accompanies three active technical-outreach initiatives in 2026:
     </p>
     <ul style="color:#cbd5e1; font-size:0.98rem; padding-left: 1.2rem; margin: 1rem 0 1.5rem;">
-      <li style="margin-bottom: 0.6rem;">
+      <li style="margin-bottom: 0.6rem;" data-i18n="context.item.tico">
         <a href="https://www.ticoblockchain.cr/" target="_blank" rel="noopener" style="color:#fbbf24; text-decoration:none; border-bottom:1px dotted rgba(251,191,36,0.4);"><strong>TicoBlockchain 2026 — Blockchain &amp; Fintech Day</strong></a> ·
-        <span style="color:#94a3b8;">14 de mayo, Hotel Barceló San José.</span><br>
-        Charla seleccionada por el comité curador:
-        <em>"Generación de una red de monitoreo de obra pública mediante IoT, modelos de IA y blockchain"</em>.
+        <span style="color:#94a3b8;">May 14, Hotel Barceló San José.</span><br>
+        Talk selected by the curatorial committee:
+        <em>"Building a public-works monitoring network with IoT, AI models, and blockchain"</em>.
       </li>
-      <li style="margin-bottom: 0.6rem;">
+      <li style="margin-bottom: 0.6rem;" data-i18n="context.item.cigepro">
         <a href="https://cigepro.com/" target="_blank" rel="noopener" style="color:#fbbf24; text-decoration:none; border-bottom:1px dotted rgba(251,191,36,0.4);"><strong>CIGEPRO 2026</strong></a> ·
-        Ponencia
-        <em>"Fortaleciendo la gobernanza de la ejecución de obra pública con tecnologías 4.0
-        viables en la región: IA, IoT y blockchain para el monitoreo en tiempo real"</em>.
+        Paper
+        <em>"Strengthening governance of public-works execution with regionally viable Industry 4.0 technologies: AI, IoT, and blockchain for real-time monitoring"</em>.
       </li>
-      <li>
+      <li data-i18n="context.item.morpho">
         <a href="https://luma.com/mvyzvssd" target="_blank" rel="noopener" style="color:#fbbf24; text-decoration:none; border-bottom:1px dotted rgba(251,191,36,0.4);"><strong>Hackathon Morpho Studio</strong></a> ·
-        Entrega del SDK con anclaje real en testnet, schema CC0 y SDKs MIT.
+        SDK submission with live testnet anchoring, CC0 schema, and MIT SDKs.
       </li>
     </ul>
-    <p>
-      El objetivo común: demostrar que la transparencia verificable de obra pública en
-      Costa Rica y LATAM es construible hoy con infraestructura abierta — Stellar, IPFS,
-      esquemas CC0 y SDKs MIT — sin depender de custodios, plataformas privadas o
-      licencias restrictivas.
+    <p data-i18n="context.goal">
+      Shared goal: showing that verifiable public-works transparency in Costa Rica
+      and LATAM can be built today on open infrastructure — Stellar, IPFS, CC0
+      schemas, and MIT SDKs — without depending on custodians, private platforms,
+      or restrictive licenses.
     </p>
     <div class="pill-row">
       <span class="pill">TicoBlockchain 2026</span>
@@ -797,8 +809,8 @@
       <span class="pill">Open-source MIT</span>
       <span class="pill">Schema CC0</span>
     </div>
-    <p style="margin-top: 1.5rem; font-size: 0.88rem; color: #94a3b8;">
-      Material académico y paper de referencia disponibles bajo solicitud:
+    <p style="margin-top: 1.5rem; font-size: 0.88rem; color: #94a3b8;" data-i18n="context.contact">
+      Academic material and reference paper available on request:
       <a href="mailto:alejandroherreracr@gmail.com" style="color:#fbbf24;">alejandroherreracr@gmail.com</a>
     </p>
   </div>
@@ -828,24 +840,160 @@
       viewer.classList.add('loaded');
       hideWatermark();
     });
-    // Fallback in case 'load' never fires
     setTimeout(() => viewer.classList.add('loaded'), 4000);
   })();
+</script>
+
+<script>
+  // ============ i18n ============
+  // EN is the default (lives inline in the HTML). The user can switch to ES;
+  // the choice is persisted in localStorage. No browser autodetect.
+  const i18n = {
+    es: {
+      "meta.title": "monitor-as-a-service · Anclaje Stellar de evidencia de obra pública",
+      "meta.description": "SDK open-source para anclar evidencia de obra pública en Stellar. SHA-256 + IPFS + transacciones Stellar nativas. Verificable por cualquier ciudadano o auditor.",
+
+      "nav.how": "Cómo funciona",
+      "nav.demo": "Demo",
+      "nav.resources": "Recursos",
+
+      "hero.badge": "Open-source · MIT · Stellar testnet",
+      "hero.title": "Anclaje en <span class=\"accent\">Stellar</span> de evidencia<br>de obra pública verificable.",
+      "hero.sub": "SDK que firma cada output con SHA-256, lo pinea en IPFS y lo ancla en una transacción Stellar nativa. Cualquier ciudadano puede recomputar el hash y verificar integridad sin confiar en el operador.",
+      "hero.cta.colab": "▶ Probar en Colab",
+      "hero.cta.demo": "Ver demo en vivo →",
+      "hero.cta.source": "Código fuente ↗",
+      "hero.meta.account": "Cuenta validador (testnet):",
+
+      "how.title": "Cómo funciona",
+      "how.sub": "Cuatro pasos simples. Sin custodios, sin servidor central, sin confianza requerida. Cualquier tercero puede reproducir la verificación con código abierto.",
+      "how.step1.title": "Hash canónico",
+      "how.step1.body": "El SDK calcula <code>SHA-256</code> del JSON canonicalizado y de la imagen raw, en el lado del productor.",
+      "how.step2.title": "IPFS pin",
+      "how.step2.body": "El JSON y la imagen se pinean en IPFS. El <code>CID</code> resultante es el hash mismo (content-addressable).",
+      "how.step3.title": "Stellar manageData",
+      "how.step3.body": "Una transacción nativa con 8 ops <code>manageData</code> ancla los hashes y CIDs. Memo: <code>dIAra ancla v3</code>.",
+      "how.step4.title": "Verificación abierta",
+      "how.step4.body": "Cualquiera lee la TX, fetchea IPFS desde cualquier gateway y recomputa el SHA-256. Coinciden o el ancla está rota.",
+
+      "demo.title": "Demo en vivo",
+      "demo.body": "Dashboard interactivo conectado a Stellar testnet. Lee 100+ outputs anclados, verifica integridad criptográfica contra IPFS, y renderiza estadísticas de obra (etapas, maquinaria, personas-en-el-tiempo).",
+      "demo.bullets": "<li>Verificación SHA-256 en vivo, lado cliente</li><li>Fallback de gateways IPFS con timeout</li><li>Galería de fotografías ancladas</li><li>Selector de período por fecha</li>",
+      "demo.cta.dashboard": "Abrir dashboard ↗",
+      "demo.cta.verify": "Live verify ↗",
+      "demo.mock": "<span class=\"ok\">[OK]</span> Conectado a horizon-testnet.stellar.org<br><span class=\"ok\">[OK]</span> Cuenta <span class=\"key\">GDRW…3JCPFR</span><br>&nbsp;&nbsp;&nbsp;&nbsp; outputs anclados: <span class=\"num\">147</span><br>&nbsp;&nbsp;&nbsp;&nbsp; rango: 2025-10-03 → 2026-04-22<br><br><span class=\"ok\">[VERIFY]</span> output <span class=\"key\">20251029-143000</span><br>&nbsp;&nbsp;&nbsp;&nbsp; img CID: <span class=\"num\">bafkrei…q4y</span><br>&nbsp;&nbsp;&nbsp;&nbsp; img SHA-256: <span class=\"ok\">match ✓</span><br>&nbsp;&nbsp;&nbsp;&nbsp; json SHA-256: <span class=\"ok\">match ✓</span><br>&nbsp;&nbsp;&nbsp;&nbsp; integridad: <span class=\"ok\">verificada</span>",
+
+      "onchain.title": "Datos on-chain abiertos",
+      "onchain.sub": "Toda la evidencia anclada está pública en Stellar testnet. Cualquier desarrollador, auditor o periodista puede consultar la cuenta sin permisos previos.",
+      "onchain.account.title": "Cuenta validador IA",
+      "onchain.account.body": "Cada output produce una transacción con 8 operaciones <code>manageData</code>. Memo: <code>dIAra ancla v3</code>.",
+      "onchain.cta": "Ver en stellar.expert ↗",
+      "onchain.stat1": "Outputs anclados",
+      "onchain.stat2": "Por TX (multi-op)",
+      "onchain.stat3": "Costo por output",
+
+      "resources.title": "Recursos",
+      "resources.sub": "Schema, SDKs, demos y especificaciones técnicas. Todo bajo MIT (código) o CC0 (schema).",
+      "resources.repo.tag": "Repo",
+      "resources.repo.body": "Código completo, contratos, specs Fase 1 y Fase 2, roadmap por fases.",
+      "resources.schema.body": "Contrato público on-chain. Cualquiera puede construir sobre los datos sin permiso.",
+      "resources.colab.body": "Conecta a testnet, lista 100+ outputs, verifica integridad y genera dashboard. Cero install.",
+      "resources.pypi.body": "<code>pip install monitor-as-a-service</code>. SDK de referencia con widgets ipywidgets.",
+      "resources.npm.body": "<code>npm install</code> o importable directo desde jsDelivr CDN sin build.",
+      "resources.fase1.title": "Fase 1 — Anclaje testnet",
+      "resources.fase1.body": "Especificación técnica del anchor-service: ingesta, IPFS pinning, multi-op Stellar.",
+      "resources.fase2.title": "Fase 2 — Soroban + alertas",
+      "resources.fase2.body": "Smart contracts consultivos sobre pagos SICOP/Hacienda. Pre-requisito: Fase 1 en mainnet.",
+      "resources.roadmap.title": "Modelo por fases",
+      "resources.roadmap.body": "Fase 0 (dIAra) → Fase 1 (anclaje) → Fase 2 (gemelo de transparencia) → Fase 3 (bono tokenizado).",
+      "resources.case.tag": "Caso real",
+      "resources.case.body": "Viewer ciudadano con datos reales: dashboard, mapa, timelapse y dev hub.",
+
+      "authors.title": "Autores",
+      "authors.sub": "Quienes están detrás de este repositorio.",
+      "authors.alejandro.role": "Co-autor",
+      "authors.andres.role": "Founder Mivisor · Co-autor",
+
+      "context.title": "Contexto",
+      "context.intro": "Este SDK acompaña tres iniciativas activas de divulgación técnica en 2026:",
+      "context.item.tico": "<a href=\"https://www.ticoblockchain.cr/\" target=\"_blank\" rel=\"noopener\" style=\"color:#fbbf24; text-decoration:none; border-bottom:1px dotted rgba(251,191,36,0.4);\"><strong>TicoBlockchain 2026 — Blockchain &amp; Fintech Day</strong></a> · <span style=\"color:#94a3b8;\">14 de mayo, Hotel Barceló San José.</span><br>Charla seleccionada por el comité curador: <em>\"Generación de una red de monitoreo de obra pública mediante IoT, modelos de IA y blockchain\"</em>.",
+      "context.item.cigepro": "<a href=\"https://cigepro.com/\" target=\"_blank\" rel=\"noopener\" style=\"color:#fbbf24; text-decoration:none; border-bottom:1px dotted rgba(251,191,36,0.4);\"><strong>CIGEPRO 2026</strong></a> · Ponencia <em>\"Fortaleciendo la gobernanza de la ejecución de obra pública con tecnologías 4.0 viables en la región: IA, IoT y blockchain para el monitoreo en tiempo real\"</em>.",
+      "context.item.morpho": "<a href=\"https://luma.com/mvyzvssd\" target=\"_blank\" rel=\"noopener\" style=\"color:#fbbf24; text-decoration:none; border-bottom:1px dotted rgba(251,191,36,0.4);\"><strong>Hackathon Morpho Studio</strong></a> · Entrega del SDK con anclaje real en testnet, schema CC0 y SDKs MIT.",
+      "context.goal": "El objetivo común: demostrar que la transparencia verificable de obra pública en Costa Rica y LATAM es construible hoy con infraestructura abierta — Stellar, IPFS, esquemas CC0 y SDKs MIT — sin depender de custodios, plataformas privadas o licencias restrictivas.",
+      "context.contact": "Material académico y paper de referencia disponibles bajo solicitud: <a href=\"mailto:alejandroherreracr@gmail.com\" style=\"color:#fbbf24;\">alejandroherreracr@gmail.com</a>",
+
+      "footer.credit": "Imágenes públicas generadas por el proyecto <strong>dIAra</strong> de la <a href=\"https://www.cgr.go.cr\" target=\"_blank\" rel=\"noopener\">Contraloría General de la República de Costa Rica</a>.",
+      "footer.case": "Caso real"
+    }
+  };
+
+  function applyLang(lang) {
+    if (lang !== 'es') lang = 'en';
+    const root = document.documentElement;
+    root.lang = lang;
+    root.dataset.lang = lang;
+
+    const dict = lang === 'es' ? i18n.es : null;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      const attrName = el.dataset.i18nAttr;
+
+      // Cache the original (EN) once, so we can restore on toggle back
+      if (!('i18nOriginal' in el.dataset)) {
+        el.dataset.i18nOriginal = attrName ? (el.getAttribute(attrName) || '') : el.innerHTML;
+      }
+
+      const value = (dict && key in dict) ? dict[key] : el.dataset.i18nOriginal;
+      if (attrName) {
+        el.setAttribute(attrName, value);
+      } else {
+        el.innerHTML = value;
+      }
+    });
+
+    const btn = document.getElementById('lang-toggle');
+    if (btn) {
+      btn.textContent = lang === 'en' ? 'ES' : 'EN';
+      btn.setAttribute('aria-label', lang === 'en' ? 'Cambiar a español' : 'Switch to English');
+    }
+
+    try { localStorage.setItem('lang', lang); } catch (_) {}
+  }
+
+  function initLang() {
+    let saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (_) {}
+    applyLang(saved === 'es' ? 'es' : 'en');
+
+    const btn = document.getElementById('lang-toggle');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const cur = document.documentElement.dataset.lang || 'en';
+        applyLang(cur === 'en' ? 'es' : 'en');
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLang);
+  } else {
+    initLang();
+  }
 </script>
 
 <!-- ================== FOOTER ================== -->
 <footer>
   <div class="footer-inner">
-    <div class="credit-cgr">
-      Imágenes públicas generadas por el proyecto <strong>dIAra</strong> de la
-      <a href="https://www.cgr.go.cr" target="_blank" rel="noopener">Contraloría General de la República de Costa Rica</a>.
+    <div class="credit-cgr" data-i18n="footer.credit">
+      Public images generated by the <strong>dIAra</strong> project of the
+      <a href="https://www.cgr.go.cr" target="_blank" rel="noopener">Comptroller General of the Republic of Costa Rica</a>.
     </div>
     <div class="footer-links">
       <a href="https://github.com/alejoherrera/stellar_repo" target="_blank" rel="noopener">GitHub</a>
       <a href="https://github.com/alejoherrera/stellar_repo/blob/main/docs/SCHEMA.md" target="_blank" rel="noopener">Schema CC0</a>
       <a href="https://pypi.org/project/monitor-as-a-service/" target="_blank" rel="noopener">PyPI</a>
       <a href="https://www.npmjs.com/package/monitor-as-a-service" target="_blank" rel="noopener">npm</a>
-      <a href="https://www.obrapublica.info/stellar" target="_blank" rel="noopener">Caso real</a>
+      <a href="https://www.obrapublica.info/stellar" target="_blank" rel="noopener" data-i18n="footer.case">Real-world case</a>
     </div>
     <div class="small">
       SDK MIT · Schema CC0 · Powered by
