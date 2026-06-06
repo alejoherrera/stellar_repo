@@ -27,11 +27,11 @@ Ambos paginas son HTML self-contained que cargan el SDK desde jsDelivr — sin b
 
 ## Estado
 
-**Pre-código / fase de exploracion conceptual.** Este repo recoge el resultado de una sesion de exploracion del 2026-04-29 / 2026-04-30. Aun no contiene contratos Soroban ni servicios desplegados. Es la base sobre la que se levantaran specs ejecutables (ver `docs/specs/`).
+**Fase 1 operativa en testnet.** La evidencia de obra se ancla en Stellar testnet con datos reales (100+ outputs anclados), las imágenes y JSON viven en IPFS (verificables por SHA-256), y los SDKs están publicados en **PyPI** y **npm** con un viewer público en vivo. El gemelo de transparencia con Soroban (Fase 2) y el bono tokenizado (Fase 3) son la aspiración del roadmap, aún no construidos. Ver `docs/specs/`.
 
 ## Idea en una línea
 
-Una arquitectura por **fases** que parte del **anclaje en Stellar de la evidencia de obra producida por dIAra** (sistema externo de IA + IoT, fuente de insumos), evoluciona hacia un **gemelo on-chain de transparencia** que además registra eventos de pago de SICOP/Hacienda y emite alertas públicas via smart contracts Soroban, y culmina en un **bono tokenizado emitido por un banco de desarrollo** para financiar obra pública con auditabilidad continua. Existe un fallback (escrow piloto) si Fase 3 no se asegura partner bancario en plazo razonable.
+Una arquitectura por **fases** que parte del **anclaje en Stellar de la evidencia de obra producida por un sistema de monitoreo con IA + IoT** (sistema externo, fuente de insumos), evoluciona hacia un **gemelo on-chain de transparencia** que además registra eventos de pago de SICOP/Hacienda y emite alertas públicas via smart contracts Soroban, y culmina en un **bono tokenizado emitido por un banco de desarrollo** para financiar obra pública con auditabilidad continua. Existe un fallback (escrow piloto) si Fase 3 no se asegura partner bancario en plazo razonable.
 
 ## Alcance
 
@@ -45,12 +45,12 @@ Una arquitectura por **fases** que parte del **anclaje en Stellar de la evidenci
 
 1. [Motivacion y contexto](docs/01_motivacion_y_contexto.md) — el problema que se busca resolver y por que Stellar.
 2. [Casos de uso](docs/02_casos_de_uso.md) — desde notarizacion pasiva hasta bono tokenizado.
-3. [Roadmap por fases](docs/09_roadmap_etapas.md) — Fase 0 (dIAra externa) → Fase 1 (anclaje en Stellar) → Fase 2 (gemelo de transparencia + alertas) → Fase 3 (bono tokenizado), con fallback Fase 2.5 (escrow piloto).
+3. [Roadmap por fases](docs/09_roadmap_etapas.md) — Fase 0 (monitoreo IA+IoT externo) → Fase 1 (anclaje en Stellar) → Fase 2 (gemelo de transparencia + alertas) → Fase 3 (bono tokenizado), con fallback Fase 2.5 (escrow piloto).
 4. [Open Anchor Schema v1 (CC0)](docs/SCHEMA.md) — contrato público on-chain para que terceros construyan sobre los datos sin permiso.
 
 ### Specs (R36 spec-driven development)
 
-- [Fase 1 — Anclaje en Stellar de outputs de dIAra](docs/specs/2026-05-02_fase1_anclaje_stellar.md) — schema v3 implementado en testnet.
+- [Fase 1 — Anclaje en Stellar de outputs del sistema de monitoreo](docs/specs/2026-05-02_fase1_anclaje_stellar.md) — schema v3 implementado en testnet.
 - [Fase 2 — Gemelo de transparencia con alertas Soroban](docs/specs/2026-05-02_fase2_gemelo_transparencia.md) — pre-requisito: Fase 1 en mainnet.
 
 ### Pendientes (a redactar según avance del roadmap)
@@ -86,7 +86,7 @@ Una arquitectura por **fases** que parte del **anclaje en Stellar de la evidenci
 
 Specs vigentes (modelo de fases vigente desde Constitution v0.2):
 
-- [Fase 1 — Anclaje en Stellar de outputs de dIAra](docs/specs/2026-05-02_fase1_anclaje_stellar.md) — primer paso construible. Imagenes raw en IPFS, transacciones nativas Stellar (sin Soroban). Borrador para revision.
+- [Fase 1 — Anclaje en Stellar de outputs del sistema de monitoreo](docs/specs/2026-05-02_fase1_anclaje_stellar.md) — primer paso construible. Imagenes raw en IPFS, transacciones nativas Stellar (sin Soroban). Borrador para revision.
 - [Fase 2 — Gemelo de transparencia con alertas Soroban](docs/specs/2026-05-02_fase2_gemelo_transparencia.md) — registro de pagos SICOP/Hacienda + smart contracts consultivos que emiten alertas. Borrador para revision. Pre-requisito: Fase 1 desplegada en mainnet.
 - Fase 3 — Bono tokenizado piloto: spec pendiente de redactar (bloqueada por dependencias no-técnicas, ver `docs/09_roadmap_etapas.md`).
 
