@@ -126,6 +126,6 @@ Pendiente de definir. Por defecto: todos los derechos reservados hasta que se de
 
 ## Autores
 
-- Master Juan Alejandro Herrera Lopez — alejandroherreracr@gmail.com
+-  Juan Alejandro Herrera Lopez — alejandroherreracr@gmail.com
 - Andres Herrera Monge, CEO Mivisor — andres.herrera@mivisor.com
 - Claude (Anthropic AI assistant) — co-autor de implementación (código, schema, SDKs)
