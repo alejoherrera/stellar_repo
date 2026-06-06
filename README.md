@@ -29,6 +29,10 @@ Ambos paginas son HTML self-contained que cargan el SDK desde jsDelivr — sin b
 
 **Fase 1 operativa en testnet.** La evidencia de obra se ancla en Stellar testnet con datos reales (100+ outputs anclados), las imágenes y JSON viven en IPFS (verificables por SHA-256), y los SDKs están publicados en **PyPI** y **npm** con un viewer público en vivo. El gemelo de transparencia con Soroban (Fase 2) y el bono tokenizado (Fase 3) son la aspiración del roadmap, aún no construidos. Ver `docs/specs/`.
 
+## Metodología — Spec-Driven Development (SDD)
+
+Este proyecto se construye con **SDD (R36):** `CONSTITUTION.md` → spec (`docs/specs/`) → contrato → código. Ninguna funcionalidad llega a código sin una spec aprobada que acredite cumplimiento constitucional. Specs vigentes: **Fase 1** (anclaje en Stellar, implementada en testnet) y **Fase 2** (gemelo de transparencia con Soroban). El [Open Anchor Schema (CC0)](docs/SCHEMA.md) es el contrato público on-chain.
+
 ## Idea en una línea
 
 Una arquitectura por **fases** que parte del **anclaje en Stellar de la evidencia de obra producida por un sistema de monitoreo con IA + IoT** (sistema externo, fuente de insumos), evoluciona hacia un **gemelo on-chain de transparencia** que además registra eventos de pago de SICOP/Hacienda y emite alertas públicas via smart contracts Soroban, y culmina en un **bono tokenizado emitido por un banco de desarrollo** para financiar obra pública con auditabilidad continua. Existe un fallback (escrow piloto) si Fase 3 no se asegura partner bancario en plazo razonable.
